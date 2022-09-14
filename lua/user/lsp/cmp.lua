@@ -1,19 +1,18 @@
 local status_ok_ui, lsp = pcall(require, "lsp-zero")
 if not status_ok_ui then
+	vim.notify("lsp-zero" .. " not found!")
 	return
 end
 
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-
 local status_cmp_ok, cmp = pcall(require, "cmp")
 if not status_cmp_ok then
-	print("cmp")
+	vim.notify("cmp" .. " not found!")
 	return
 end
 
 local status_luasnip_ok, luasnip = pcall(require, "luasnip")
 if not status_luasnip_ok then
-	print("luasnip")
+	vim.notify("luasnip" .. " not found!")
 	return
 end
 

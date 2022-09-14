@@ -32,6 +32,7 @@ end
 -- Have packer use a popup window
 packer.init({
 	max_jobs = 20,
+	snapshot_path = "./plugin/snapshot", -- Default save directory for snapshots
 	display = {
 		open_fn = function()
 			return require("packer.util").float({ border = "rounded" })
@@ -55,7 +56,7 @@ return packer.startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter-context" })
 	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "windwp/nvim-autopairs" })
-	-- use{ "windwp/nvim-ts-autotag" }
+	use({ "windwp/nvim-ts-autotag" })
 
 	-- utility
 	use({ "lewis6991/impatient.nvim" })
@@ -69,10 +70,16 @@ return packer.startup(function(use)
 	use({ "folke/zen-mode.nvim" })
 	use({ "ThePrimeagen/harpoon" })
 	use({ "dhruvasagar/vim-open-url" })
+	use({ "Darazaki/indent-o-matic" })
+	use({ "NMAC427/guess-indent.nvim" })
+	use({ "declancm/cinnamon.nvim" })
+	use({ "Shatur/neovim-session-manager" })
+	use({ "max397574/better-escape.nvim" })
 
 	-- color management
 	use({ "norcalli/nvim-colorizer.lua" })
 	use({ "max397574/colortils.nvim" })
+	use({ "folke/tokyonight.nvim" })
 
 	-- LSP
 	vim.g.python3_host_prog = "$HOME/.pyenv/versions/nvim/bin/python"
@@ -101,6 +108,7 @@ return packer.startup(function(use)
 	use({ "folke/lua-dev.nvim" })
 	use({ "glepnir/lspsaga.nvim", branch = "main" })
 	use({ "github/copilot.vim" })
+
 	use({
 		"zbirenbaum/copilot.lua",
 		commit = "ede741d935cf5d962c9a9e44db2400ed1a4aaf13",
@@ -116,6 +124,24 @@ return packer.startup(function(use)
 		commit = "67825246fa2aa6226ec3320d554640aa4697e1b1",
 		module = "copilot_cmp",
 	})
+
+	-- use({
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	event = { "VimEnter" },
+	-- 	config = function()
+	-- 		vim.defer_fn(function()
+	-- 			require("copilot").setup()
+	-- 		end, 100)
+	-- 	end,
+	-- })
+	-- use({
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = { "copilot.lua" },
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup()
+	-- 	end,
+	-- })
+
 	use({ "ThePrimeagen/refactoring.nvim" })
 	use({ "echasnovski/mini.nvim" })
 
@@ -153,7 +179,9 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope-fzf-native.nvim" })
 
 	-- Git
-	use({ "lewis6991/gitsigns.nvim", commit = "" })
+	use({ "lewis6991/gitsigns.nvim" })
+	use({ "akinsho/git-conflict.nvim", tag = "*" })
+	use({ "https://gitlab.com/yorickpeterse/nvim-pqf", as = "monokai-pro.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

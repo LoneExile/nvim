@@ -94,10 +94,20 @@ _G.packer_plugins = {
     path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
+  ["better-escape.nvim"] = {
+    loaded = true,
+    path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/better-escape.nvim",
+    url = "https://github.com/max397574/better-escape.nvim"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
+  },
+  ["cinnamon.nvim"] = {
+    loaded = true,
+    path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/cinnamon.nvim",
+    url = "https://github.com/declancm/cinnamon.nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -167,10 +177,20 @@ _G.packer_plugins = {
     path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["git-conflict.nvim"] = {
+    loaded = true,
+    path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/git-conflict.nvim",
+    url = "https://github.com/akinsho/git-conflict.nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["guess-indent.nvim"] = {
+    loaded = true,
+    path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/guess-indent.nvim",
+    url = "https://github.com/NMAC427/guess-indent.nvim"
   },
   harpoon = {
     loaded = true,
@@ -186,6 +206,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["indent-o-matic"] = {
+    loaded = true,
+    path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/indent-o-matic",
+    url = "https://github.com/Darazaki/indent-o-matic"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -222,10 +247,20 @@ _G.packer_plugins = {
     path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/mini.nvim",
     url = "https://github.com/echasnovski/mini.nvim"
   },
+  ["monokai-pro.nvim"] = {
+    loaded = true,
+    path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/monokai-pro.nvim",
+    url = "https://gitlab.com/yorickpeterse/nvim-pqf"
+  },
   ["neo-tree.nvim"] = {
     loaded = true,
     path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
     url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
+  },
+  ["neovim-session-manager"] = {
+    loaded = true,
+    path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/neovim-session-manager",
+    url = "https://github.com/Shatur/neovim-session-manager"
   },
   ["nightfox.nvim"] = {
     loaded = true,
@@ -312,6 +347,11 @@ _G.packer_plugins = {
     path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
+  ["nvim-ts-autotag"] = {
+    loaded = true,
+    path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
+    url = "https://github.com/windwp/nvim-ts-autotag"
+  },
   ["nvim-ts-context-commentstring"] = {
     loaded = true,
     path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
@@ -386,6 +426,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/home/bunlaikun/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-open-url"] = {
     loaded = true,

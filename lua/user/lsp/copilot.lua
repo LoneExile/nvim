@@ -26,5 +26,26 @@ local config = {
 	ft_disable = { "alpha" },
 	plugin_manager_path = vim.fn.expand("$HOME") .. "/.local/share/nvim/site/pack/packer",
 }
-
 copilot.setup(config)
+-- ----------------------------------------------------------------------------
+
+-- local status_ok, copilot = pcall(require, "copilot")
+-- if not status_ok then
+--   vim.notify("copilot" .. " not found!")
+--   return
+-- end
+--
+-- copilot.setup({
+--   panel = {
+--     enabled = false,
+--   },
+--   ft_disable = { "alpha" },
+--   plugin_manager_path = vim.fn.expand("$HOME") .. "/.local/share/nvim/site/pack/packer",
+-- })
+--
+-- require("copilot_cmp").setup({
+--   method = "getCompletionsCycling",
+--   -- formatters = {
+--   --   insert_text = require("copilot_cmp.format").remove_existing,
+--   -- },
+-- })

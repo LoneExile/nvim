@@ -2,11 +2,6 @@ require("user.packer.plugins")
 
 -- setting
 require("user.config")
-
--- require("user.config.keymaps")
--- require("user.config.options")
--- require("user.UI.neoTree")
-
 require("user.config.whichKey").setup()
 
 -- language server & debugger

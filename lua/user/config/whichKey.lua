@@ -125,6 +125,7 @@ function M.setup()
 			"<cmd>nohlsearch<CR>",
 			"No Highlight",
 		},
+		t = { name = "terminal" },
 		b = {
 			name = "Buffers",
 			-- c = { "<cmd>BufferKill<CR>", "Close Buffer" },
@@ -400,8 +401,21 @@ function M.setup()
 				"Colorscheme with Preview",
 			},
 		},
+		n = {
+			name = "Neotree",
+			b = { "<cmd>Neotree action=focus source=buffers position=float toggle=true<CR>", "Buffer" },
+			g = { "<cmd>Neotree action=focus source=git_status position=float toggle=true<CR>", "Git" },
+		},
 		u = {
 			name = "Utility",
+			s = {
+				name = "session",
+				l = { "<cmd>SessionManager load_last_session<cr>", "Load last session" },
+				s = { "<cmd>SessionManager save_current_session<cr>", "Save session" },
+				d = { "<cmd>SessionManager delete_session<cr>", "Delete session" },
+				L = { "<cmd>SessionManager load_session<cr>", "Load session" },
+				c = { "<cmd>SessionManager load_current_dir_session<cr>", "Load current dir" },
+			},
 			c = {
 				name = "+Color picker",
 				p = {

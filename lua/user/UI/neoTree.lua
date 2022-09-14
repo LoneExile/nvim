@@ -5,6 +5,7 @@ if not status_ok then
 end
 
 neoTree.setup({
+	use_default_mappings = false,
 	close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 	popup_border_style = "rounded",
 	enable_git_status = true,
@@ -78,11 +79,10 @@ neoTree.setup({
 			nowait = true,
 		},
 		mappings = {
-			["<space>"] = {
-				-- "toggle_node",
-				"close_window",
-				nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
-			},
+			-- ["<space>"] = {
+			-- 	"toggle_node",
+			-- 	nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+			-- },
 			["<2-LeftMouse>"] = "open",
 			["<cr>"] = "open",
 			["S"] = "open_split",

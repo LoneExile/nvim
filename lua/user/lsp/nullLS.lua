@@ -58,6 +58,10 @@ local sources = {
 	diagnostics.markdownlint.with({
 		filetypes = { "markdown" },
 	}),
+	diagnostics.shellcheck.with({
+		filetypes = { "bash", "csh", "ksh", "sh", "zsh" },
+		extra_args = { "--severity", "warning" },
+	}),
 	diagnostics.flake8.with({
 		filetypes = { "python" },
 		extra_args = { "--max-line-length", "90" },

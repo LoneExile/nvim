@@ -193,7 +193,7 @@ end
 -- local xvim = require("core.keymap")
 function M.load_defaults()
 	M.load(M.get_defaults())
-	-- xvim.keys = lvim.keys or {}
+	-- xvim.keys = xvim.keys or {}
 	-- for idx, _ in pairs(defaults) do
 	-- 	if not xvim.keys[idx] then
 	-- 		xvim.keys[idx] = {}

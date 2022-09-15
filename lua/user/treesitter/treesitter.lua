@@ -3,6 +3,8 @@ if not status_ok then
 	return
 end
 
+local commentConfig = require("user.treesitter.commentString").configs
+
 configs.setup({
 	ensure_installed = "all",
 	sync_install = false,
@@ -18,6 +20,8 @@ configs.setup({
 	-- **nvim-ts-context-commentstring**
 	context_commentstring = {
 		enable = true,
+		enable_autocmd = false,
+		config = commentConfig,
 	},
 
 	-- **nvim-ts-rainbow**
@@ -28,15 +32,15 @@ configs.setup({
 		max_file_lines = nil, -- Do not enable for files with more than n lines, int
 		-- termcolors = {} -- table of colour name strings
 		colors = {
-			"#68a0b0",
-			"#946EaD",
-			"#c7aA6D",
-			-- "Gold",
-			-- "Orchid",
-			-- "DodgerBlue",
-			-- -- "Cornsilk",
-			-- -- "Salmon",
-			-- -- "LawnGreen",
+			-- "#68a0b0",
+			-- "#946EaD",
+			-- "#c7aA6D",
+			"Gold",
+			"Orchid",
+			"DodgerBlue",
+			-- "Cornsilk",
+			-- "Salmon",
+			-- "LawnGreen",
 		},
 		disable = { "html" },
 	},

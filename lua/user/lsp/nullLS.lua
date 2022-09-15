@@ -127,10 +127,13 @@ local sources = {
 	code_actions.shellcheck.with({
 		extra_args = { "--severity", "warning" },
 	}),
+	code_actions.gitsigns.with({
+		-- disabled_filetypes = { "lua" },
+	}),
 
 	-- hover
 	hover.dictionary.with({
-		filetypes = { "text", "markdown" },
+		-- filetypes = { "text", "markdown" },
 	}),
 	hover.printenv.with({
 		filetypes = { "bash", "csh", "ksh", "sh", "zsh" },

@@ -30,9 +30,11 @@ if not status_ok then
 end
 
 -- Have packer use a popup window
+local snapshot_path = vim.fn.expand("$HOME") .. "/.config/nvim/plugin/snapshot/"
+
 packer.init({
 	max_jobs = 20,
-	snapshot_path = "./plugin/snapshot", -- Default save directory for snapshots
+	snapshot_path = snapshot_path, -- Default save directory for snapshots
 	display = {
 		open_fn = function()
 			return require("packer.util").float({ border = "rounded" })
@@ -82,7 +84,6 @@ return packer.startup(function(use)
 	use({ "folke/tokyonight.nvim" })
 
 	-- LSP
-	vim.g.python3_host_prog = "$HOME/.pyenv/versions/nvim/bin/python"
 	use({
 		"VonHeikemen/lsp-zero.nvim",
 		requires = {
@@ -182,6 +183,7 @@ return packer.startup(function(use)
 	use({ "lewis6991/gitsigns.nvim" })
 	use({ "akinsho/git-conflict.nvim", tag = "*" })
 	use({ "https://gitlab.com/yorickpeterse/nvim-pqf", as = "monokai-pro.nvim" })
+	use({ "sindrets/diffview.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

@@ -1,4 +1,4 @@
-vim.cmd("source ~/.config/lvim/lua/user/lsp/codi.vim")
+vim.cmd("source ~/.config/nvim/lua/user/swissKnife/coding/codi.vim")
 
 -- vim.g["codi#virtual_text_prefix"] = "❯❯❯ "
 -- vim.g["codi#rightsplit"] = 0

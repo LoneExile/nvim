@@ -107,18 +107,17 @@ function M.setup()
 		},
 		[";"] = { "<cmd>Alpha<CR>", "Dashboard" },
 		["w"] = { "<cmd>SaveNFormat<CR>", "Save" },
-		-- ["q"] = { "<cmd>lua require('lvim.utils.functions').smart_quit()<CR>", "Quit" },
+		["q"] = { "<cmd>lua require('user.config.utils.quit').smart_quit()<CR>", "Quit" },
 		["/"] = {
 			"<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
 			"Comment",
 		},
 		["c"] = {
-			-- "<cmd>BufferKill<CR>",
 			require("user.UI.bufferline").buf_kill,
 			"Close Buffer",
 		},
 		["f"] = {
-			-- require("lvim.core.telescope.custom-finders").find_project_files,
+			require("telescope.builtin").find_files,
 			"Find File",
 		},
 		["H"] = {
@@ -128,7 +127,6 @@ function M.setup()
 		t = { name = "terminal" },
 		b = {
 			name = "Buffers",
-			-- c = { "<cmd>BufferKill<CR>", "Close Buffer" },
 			p = {
 				"<cmd>echo expand('%:p')<cr>",
 				"Path",
@@ -259,8 +257,32 @@ function M.setup()
 				"Checkout commit(for current file)",
 			},
 			d = {
-				"<cmd>Gitsigns diffthis HEAD<cr>",
-				"Git Diff",
+				-- "<cmd>Gitsigns diffthis HEAD<cr>",
+				name = "Git Diff",
+				d = {
+					"<cmd>DiffviewOpen<cr>",
+					"Git Diff",
+				},
+				c = {
+					"<cmd>DiffviewClose<cr>",
+					"Diff Close",
+				},
+				t = {
+					"<cmd>DiffviewToggleFiles<cr>",
+					"Diff Toggle Files",
+				},
+				r = {
+					"<cmd>DiffviewRefresh<cr>",
+					"Diff Refresh",
+				},
+				h = {
+					"<cmd>DiffviewFileHistory %<cr>",
+					"History Current",
+				},
+				H = {
+					"<cmd>DiffviewFileHistory<cr>",
+					"Diff File History",
+				},
 			},
 		},
 		l = {
@@ -401,15 +423,16 @@ function M.setup()
 				"Colorscheme with Preview",
 			},
 		},
-		n = {
-			name = "Neotree",
-			b = { "<cmd>Neotree action=focus source=buffers position=float toggle=true<CR>", "Buffer" },
-			g = { "<cmd>Neotree action=focus source=git_status position=float toggle=true<CR>", "Git" },
-		},
 		u = {
-			name = "Utility",
+			name = "+Utility",
+			n = {
+				name = "+Neotree",
+				b = { "<cmd>Neotree action=focus source=buffers position=float toggle=true<CR>", "Buffer" },
+				g = { "<cmd>Neotree action=focus source=git_status position=float toggle=true<CR>", "Git" },
+				r = { "<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>", "Show tree right" },
+			},
 			s = {
-				name = "session",
+				name = "+Session",
 				l = { "<cmd>SessionManager load_last_session<cr>", "Load last session" },
 				s = { "<cmd>SessionManager save_current_session<cr>", "Save session" },
 				d = { "<cmd>SessionManager delete_session<cr>", "Delete session" },
@@ -463,6 +486,13 @@ function M.setup()
 		l = {
 			name = "LSP",
 			c = { name = "SnipRun", c = { "<cmd>lua require'sniprun'.run('v')<cr>", "Run" } },
+		},
+		g = {
+			name = "Git",
+			d = {
+				name = "Blame",
+				d = { "<cmd>DiffviewFileHistory<cr>", "History this line" },
+			},
 		},
 	}
 	vmappings["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment toggle linewise (visual)" }

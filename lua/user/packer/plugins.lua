@@ -79,9 +79,8 @@ return packer.startup(function(use)
 	use({ "max397574/better-escape.nvim" })
 
 	-- color management
-	use({ "norcalli/nvim-colorizer.lua" })
+	use({ "NvChad/nvim-colorizer.lua" })
 	use({ "max397574/colortils.nvim" })
-	use({ "folke/tokyonight.nvim" })
 
 	-- LSP
 	use({
@@ -174,6 +173,7 @@ return packer.startup(function(use)
 	use({ "LunarVim/onedarker.nvim" })
 	use({ "EdenEast/nightfox.nvim" })
 	use({ "glepnir/zephyr-nvim" })
+	use({ "folke/tokyonight.nvim" })
 
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim" })
@@ -182,7 +182,7 @@ return packer.startup(function(use)
 	-- Git
 	use({ "lewis6991/gitsigns.nvim" })
 	use({ "akinsho/git-conflict.nvim", tag = "*" })
-	use({ "https://gitlab.com/yorickpeterse/nvim-pqf", as = "monokai-pro.nvim" })
+	use({ "https://gitlab.com/yorickpeterse/nvim-pqf", as = "nvim-pqf" })
 	use({ "sindrets/diffview.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim

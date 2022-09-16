@@ -1,4 +1,4 @@
-require("user.lsp.luaDev")
+-- require("user.lsp.luaDev")
 require("user.lsp.lspZero")
 require("user.lsp.lspSaga")
 require("user.lsp.nullLS")

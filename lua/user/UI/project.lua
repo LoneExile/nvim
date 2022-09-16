@@ -25,7 +25,7 @@ project.setup({
 
 	-- Don't calculate root dir on specific directories
 	-- Ex: { "~/.cargo/*", ... }
-	exclude_dirs = {},
+	exclude_dirs = { "~/.cargo/*", "~/.local/share/" },
 
 	-- Show hidden files in telescope
 	show_hidden = false,

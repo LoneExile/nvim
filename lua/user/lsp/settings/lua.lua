@@ -1,9 +1,9 @@
-local status_ok_ui, luaDev = pcall(require, "lua-dev")
+local status_ok_ui, lsp = pcall(require, "lsp-zero")
 if not status_ok_ui then
 	return
 end
 
-luaDev.setup({
+local luadev = require("lua-dev").setup({
 	library = {
 		enabled = true, -- when not enabled, lua-dev will not change any settings to the LSP server
 		-- these settings will be used for your Neovim config directory
@@ -27,3 +27,20 @@ luaDev.setup({
 		end
 	end,
 })
+lsp.configure("sumneko_lua", luadev)
+-- lsp.configure("sumneko_lua", {
+-- 	settings = {
+-- 		Lua = {
+-- 			completion = {
+-- 				callSnippet = "Replace",
+-- 			},
+-- 			diagnostics = {
+-- 				globals = { "vim" },
+-- 			},
+-- 			telemetry = { enable = false },
+-- 		},
+-- 	},
+-- 	-- on_attach = function(client, bufnr)
+-- 	-- 	print("hello tsserver")
+-- 	-- end,
+-- })

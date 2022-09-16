@@ -1,3 +1,6 @@
 test.py
-plugins/*
+plugin/packer_compiled.lua
+plugin/packer*
+./plugin/packer_compiled.lua
 install.sh
+

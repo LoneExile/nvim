@@ -1,6 +1,4 @@
 test.py
 plugin/packer_compiled.lua
-plugin/packer*
-./plugin/packer_compiled.lua
 install.sh
 

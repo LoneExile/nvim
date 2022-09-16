@@ -267,7 +267,7 @@ function M.setup()
 					"<cmd>DiffviewClose<cr>",
 					"Diff Close",
 				},
-				t = {
+				f = {
 					"<cmd>DiffviewToggleFiles<cr>",
 					"Diff Toggle Files",
 				},

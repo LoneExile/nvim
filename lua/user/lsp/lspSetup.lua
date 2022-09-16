@@ -3,22 +3,22 @@ if not status_ok_ui then
 	return
 end
 
-lsp.configure("sumneko_lua", {
-	settings = {
-		Lua = {
-			completion = {
-				callSnippet = "Replace",
-			},
-			diagnostics = {
-				globals = { "vim" },
-			},
-			telemetry = { enable = false },
-		},
+local luadev = require("lua-dev").setup({
+	library = {
+		enabled = true,
+		runtime = true,
+		types = true,
+		plugins = true,
 	},
-	-- on_attach = function(client, bufnr)
-	-- 	print("hello tsserver")
-	-- end,
+	setup_jsonls = true,
+	override = function(root_dir, library)
+		if require("lua-dev.util").has_file(root_dir, "/etc/nixos") then
+			library.enabled = true
+			library.plugins = true
+		end
+	end,
 })
+lsp.configure("sumneko_lua", luadev)
 
 lsp.configure("pyright", {
 	settings = {

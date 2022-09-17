@@ -1,7 +1,7 @@
 -- git
-require("user.editor.coding.gitsigns")
-require("user.editor.coding.gitConflict")
-require("user.editor.coding.diffView")
+require("user.editor.git.gitsigns")
+require("user.editor.git.gitConflict")
+require("user.editor.git.diffView")
 
 -- coding
 require("user.editor.coding.refactoring")
@@ -10,15 +10,28 @@ require("user.editor.coding.codi")
 require("user.editor.coding.toggleterm").setup()
 
 -- tool
-require("user.editor.telescope").setup()
-require("user.editor.mini")
-require("user.editor.spectre")
-require("user.editor.numb")
-require("user.editor.colorizer")
-require("user.editor.colortils")
-require("user.editor.zen")
-require("user.editor.harpoon")
-require("user.editor.smoothScroll")
-require("user.editor.sessionManager")
-require("user.editor.betterEscape")
-require("user.editor.indentOmatic")
+require("user.editor.tool.telescope").setup()
+require("user.editor.tool.sessionManager")
+require("user.editor.tool.spectre")
+require("user.editor.tool.zen")
+require("user.editor.tool.indentOmatic")
+
+-- motion
+require("user.editor.motion.mini")
+require("user.editor.motion.numb")
+require("user.editor.motion.smoothScroll")
+require("user.editor.motion.harpoon")
+require("user.editor.motion.betterEscape")
+
+-- color
+require("user.editor.color.colorizer")
+require("user.editor.color.colortils")
+
+-- treesitter
+require("user.editor.treesitter.ts")
+require("user.editor.treesitter.tsContext")
+require("user.editor.treesitter.tsIndent")
+require("user.editor.treesitter.comment")
+require("user.editor.treesitter.autoTag")
+require("user.editor.treesitter.autoPair").setup()
+

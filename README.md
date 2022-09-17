@@ -17,6 +17,6 @@ cargo install stylua
 ## fixing thing
 
 ```bash
-rm -rf .cache/nvim/* ~/.local/share/nvim/site ~/.config/nvim/plugin/packer_compiled.lua
+rm -rf ~/.cache/nvim/* ~/.local/share/nvim/site ~/.config/nvim/plugin/packer_compiled.lua
 
 ```

@@ -1,9 +1,16 @@
 local status_ok_ui, lsp = pcall(require, "lsp-zero")
 if not status_ok_ui then
+	print("LSP Zero not found")
 	return
 end
 
-local luadev = require("lua-dev").setup({
+local status_ok, lua_dev = pcall(require, "lua-dev")
+if not status_ok then
+	print("lua-dev not found")
+	return
+end
+
+local luadev = lua_dev.setup({
 	library = {
 		enabled = true,
 		runtime = true,

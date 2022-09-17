@@ -1,6 +1,6 @@
 local M = {}
 
-local colors = require("user.UI.lualine.colors")
+local colors = require("user.utils.colors")
 
 M.theme = function()
 	return {

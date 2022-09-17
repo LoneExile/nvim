@@ -1,0 +1,7 @@
+require("user.ui.colorscheme")
+require("user.ui.bufferline")
+require("user.ui.neoTree")
+require("user.ui.lualine")
+require("user.ui.alpha")
+require("user.ui.project")
+-- require("user.ui.nvimTree").setup()

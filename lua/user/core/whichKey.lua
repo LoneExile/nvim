@@ -1,6 +1,6 @@
 local M = {}
 
-local terminal = require("user.swissKnife.coding.toggleterm").terminal
+local terminal = require("user.editor.coding.toggleterm").terminal
 terminal.execs = {
 	{ "lazygit", "<leader>gg", "LazyGit", "float" },
 	{ "lazygit", "<leader>tg", "LazyGit", "float" },
@@ -107,13 +107,13 @@ function M.setup()
 		},
 		[";"] = { "<cmd>Alpha<CR>", "Dashboard" },
 		["w"] = { "<cmd>SaveNFormat<CR>", "Save" },
-		["q"] = { "<cmd>lua require('user.config.utils.quit').smart_quit()<CR>", "Quit" },
+		["q"] = { "<cmd>lua require('user.utils.quit').smart_quit()<CR>", "Quit" },
 		["/"] = {
 			"<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
 			"Comment",
 		},
 		["c"] = {
-			require("user.UI.bufferline").buf_kill,
+			require("user.ui.bufferline").buf_kill,
 			"Close Buffer",
 		},
 		["f"] = {
@@ -298,7 +298,7 @@ function M.setup()
 				"Outline",
 			},
 			f = {
-				require("user.lsp.utils").format,
+				require("user.utils.format").format,
 				"Format",
 			},
 			R = {

@@ -3,7 +3,7 @@ if not status_ok then
 	return
 end
 
-local commentConfig = require("user.treesitter.commentString").configs
+local commentConfig = require("user.editor.treesitter.commentString").configs
 
 configs.setup({
 	ensure_installed = "all",

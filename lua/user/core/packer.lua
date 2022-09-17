@@ -50,6 +50,7 @@ return packer.startup(function(use)
 	use({ "nvim-lua/plenary.nvim" })
 	use({ "nvim-lua/popup.nvim" })
 	use({ "kyazdani42/nvim-web-devicons" })
+	use({ "folke/which-key.nvim" })
 
 	-- Treesitter
 	use({ "nvim-treesitter/nvim-treesitter" })
@@ -61,10 +62,11 @@ return packer.startup(function(use)
 	use({ "windwp/nvim-autopairs" })
 	use({ "windwp/nvim-ts-autotag" })
 
-	-- utility
+	-- optimization
 	use({ "lewis6991/impatient.nvim" })
 	use({ "antoinemadec/FixCursorHold.nvim" })
 
+	-- editor
 	use({ "windwp/nvim-spectre" })
 	use({ "nacro90/numb.nvim" })
 	use({ "michaelb/sniprun", run = "bash ./install.sh" })
@@ -78,10 +80,19 @@ return packer.startup(function(use)
 	use({ "declancm/cinnamon.nvim" })
 	use({ "Shatur/neovim-session-manager" })
 	use({ "max397574/better-escape.nvim" })
-
+	use({ "ThePrimeagen/refactoring.nvim" })
+	use({ "echasnovski/mini.nvim" })
 	-- color management
 	use({ "NvChad/nvim-colorizer.lua" })
 	use({ "max397574/colortils.nvim" })
+	-- Telescope
+	use({ "nvim-telescope/telescope.nvim" })
+	use({ "nvim-telescope/telescope-fzf-native.nvim" })
+	-- Git
+	use({ "lewis6991/gitsigns.nvim" })
+	use({ "akinsho/git-conflict.nvim", tag = "*" })
+	use({ "https://gitlab.com/yorickpeterse/nvim-pqf", as = "nvim-pqf" })
+	use({ "sindrets/diffview.nvim" })
 
 	-- LSP
 	use({
@@ -105,10 +116,10 @@ return packer.startup(function(use)
 			{ "rafamadriz/friendly-snippets" },
 		},
 	})
-	use({ "jose-elias-alvarez/null-ls.nvim" })
 	use({ "folke/lua-dev.nvim" })
 	use({ "glepnir/lspsaga.nvim", branch = "main" })
 	use({ "github/copilot.vim" })
+	use({ "jose-elias-alvarez/null-ls.nvim" })
 
 	use({
 		"zbirenbaum/copilot.lua",
@@ -143,9 +154,6 @@ return packer.startup(function(use)
 	-- 	end,
 	-- })
 
-	use({ "ThePrimeagen/refactoring.nvim" })
-	use({ "echasnovski/mini.nvim" })
-
 	-- debugger
 	use({ "mfussenegger/nvim-dap" })
 	use({ "Pocco81/dap-buddy.nvim" })
@@ -158,33 +166,19 @@ return packer.startup(function(use)
 	-- UI
 	use({ "goolord/alpha-nvim" })
 	use({ "nvim-neo-tree/neo-tree.nvim", requires = { "MunifTanjim/nui.nvim" } })
-	-- use({ "kyazdani42/nvim-tree.lua" })
 	use({ "akinsho/bufferline.nvim" })
 	use({ "nvim-lualine/lualine.nvim" })
 	use({ "akinsho/toggleterm.nvim" })
 	use({ "rcarriga/nvim-notify" })
-
 	use({ "ahmedkhalf/project.nvim" })
 	use({ "b0o/schemastore.nvim" })
-
-	-- shortcut plugins
-	use({ "folke/which-key.nvim", commit = "" })
+	-- use({ "kyazdani42/nvim-tree.lua" })
 
 	-- Colorschemes
 	use({ "LunarVim/onedarker.nvim" })
 	use({ "EdenEast/nightfox.nvim" })
 	use({ "glepnir/zephyr-nvim" })
 	use({ "folke/tokyonight.nvim" })
-
-	-- Telescope
-	use({ "nvim-telescope/telescope.nvim" })
-	use({ "nvim-telescope/telescope-fzf-native.nvim" })
-
-	-- Git
-	use({ "lewis6991/gitsigns.nvim" })
-	use({ "akinsho/git-conflict.nvim", tag = "*" })
-	use({ "https://gitlab.com/yorickpeterse/nvim-pqf", as = "nvim-pqf" })
-	use({ "sindrets/diffview.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
@@ -195,4 +189,3 @@ end)
 
 -- edluffy/hologram.nvim
 -- samodostal/image.nvim
-

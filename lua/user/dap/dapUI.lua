@@ -1,5 +1,6 @@
 local status_ok_ui, dapui = pcall(require, "dapui")
 if not status_ok_ui then
+	vim.notify("dapui" .. " not found!")
 	return
 end
 

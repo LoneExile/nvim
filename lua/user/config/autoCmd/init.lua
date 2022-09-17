@@ -1,5 +1,0 @@
-require("user.config.autoCmd.transparent")
-require("user.config.autoCmd.attachColor")
-require("user.config.autoCmd.fileType")
-require("user.config.autoCmd.saveAndFormat")
-require("user.config.autoCmd.autoRun")

@@ -1,18 +1,8 @@
-require("user.packer.plugins")
-
--- setting
-require("user.config")
-require("user.config.whichKey").setup()
-
--- language server & debugger
+require("user.core.packer")
+require("user.core")
+require("user.autoCmd")
 require("user.lsp")
 require("user.dap")
-
--- treesitter
 require("user.treesitter")
-
--- utility
-require("user.swissKnife")
-
--- UI
-require("user.UI")
+require("user.editor")
+require("user.ui")

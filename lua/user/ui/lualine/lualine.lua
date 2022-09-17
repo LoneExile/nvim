@@ -4,8 +4,8 @@ if not status_ok then
 	return
 end
 
-local components = require("user.UI.lualine.components")
-local theme = require("user.UI.lualine.theme").theme()
+local components = require("user.ui.lualine.components")
+local theme = require("user.ui.lualine.theme").theme()
 
 lualine.setup({
 	options = {

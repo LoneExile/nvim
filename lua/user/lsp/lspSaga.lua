@@ -110,30 +110,30 @@ lspsagaM.init_lsp_saga(config)
 -- -- })
 
 -------------------------------------------------------------------------------
-local colors = {
-	fg = "#bbc2cf",
-	red = "#e95678",
-	orange = "#FF8700",
-	yellow = "#f7bb3b",
-	green = "#afd700",
-	cyan = "#36d0e0",
-	blue = "#61afef",
-	violet = "#CBA6F7",
-	teal = "#1abc9c",
-}
-
-local kind = require("lspsaga.lspkind")
-local prefix = "LspSagaWinbar"
-local winbar_sep = "LspSagaWinbarSep"
-local group = vim.api.nvim_create_augroup("transparencyTheme", { clear = true })
-vim.api.nvim_create_autocmd("ColorScheme", {
-	pattern = "*",
-	callback = function()
-		for _, v in pairs(kind) do
-			vim.api.nvim_set_hl(0, prefix .. v[1], { fg = v[3], italic = true })
-		end
-		vim.api.nvim_set_hl(0, winbar_sep, { fg = "#d16d9e" })
-		vim.api.nvim_set_hl(1, prefix .. "File", { fg = colors.fg, bold = true, italic = true })
-	end,
-	group = group,
-})
+-- local colors = {
+-- 	fg = "#bbc2cf",
+-- 	red = "#e95678",
+-- 	orange = "#FF8700",
+-- 	yellow = "#f7bb3b",
+-- 	green = "#afd700",
+-- 	cyan = "#36d0e0",
+-- 	blue = "#61afef",
+-- 	violet = "#CBA6F7",
+-- 	teal = "#1abc9c",
+-- }
+--
+-- local kind = require("lspsaga.lspkind")
+-- local prefix = "LspSagaWinbar"
+-- local winbar_sep = "LspSagaWinbarSep"
+-- local group = vim.api.nvim_create_augroup("transparencyTheme", { clear = true })
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		for _, v in pairs(kind) do
+-- 			vim.api.nvim_set_hl(0, prefix .. v[1], { fg = v[3], italic = true })
+-- 		end
+-- 		vim.api.nvim_set_hl(0, winbar_sep, { fg = "#d16d9e" })
+-- 		vim.api.nvim_set_hl(1, prefix .. "File", { fg = colors.fg, bold = true, italic = true })
+-- 	end,
+-- 	group = group,
+-- })

@@ -61,6 +61,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 			vim.cmd([[highlight NeoTreeTabInactive guifg=#777777 guibg=none]])
 			vim.cmd([[highlight NeoTreeTabActive guibg=#141414 gui=bold,italic]])
 			vim.cmd([[highlight NeoTreeTabSeparatorInactive guifg=#777777 guibg=none]])
+
+			-- navic
+			vim.cmd([[highlight NavicSeparator guifg=#61afef gui=bold,italic]])
+			vim.cmd([[highlight NavicText guifg=#d16d9e gui=bold,italic]])
 		end
 	end,
 	-- group = group,

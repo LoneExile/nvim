@@ -69,6 +69,7 @@ local pluginTable = {
 	},
 	{ "folke/lua-dev.nvim" },
 	{ "glepnir/lspsaga.nvim", branch = "main" },
+	{ "SmiteshP/nvim-navic" },
 	{ "github/copilot.vim" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{

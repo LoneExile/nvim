@@ -15,6 +15,7 @@ local pluginTable = {
 	{ "lukas-reineke/indent-blankline.nvim" },
 	{ "windwp/nvim-autopairs" },
 	{ "windwp/nvim-ts-autotag" },
+	{ "David-Kunz/markid" },
 
 	-- optimization
 	{ "lewis6991/impatient.nvim" },

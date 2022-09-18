@@ -34,4 +34,3 @@ require("user.editor.treesitter.tsIndent")
 require("user.editor.treesitter.comment")
 require("user.editor.treesitter.autoTag")
 require("user.editor.treesitter.autoPair").setup()
-

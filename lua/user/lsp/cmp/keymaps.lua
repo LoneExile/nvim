@@ -27,6 +27,20 @@ local confirmOpts = {
 M.keymaps = {
 	-- ["<C-k>"] = cmp.mapping.select_prev_item(),
 	-- ["<C-j>"] = cmp.mapping.select_next_item(),
+	["<C-j>"] = cmp.mapping(function(fallback)
+		if luasnip.jumpable(1) then
+			luasnip.jump(1)
+		else
+			fallback()
+		end
+	end, { "i", "s" }),
+	["<C-k>"] = cmp.mapping(function(fallback)
+		if luasnip.jumpable(-1) then
+			luasnip.jump(-1)
+		else
+			fallback()
+		end
+	end, { "i", "s" }),
 	["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ cmp_select }), { "i" }),
 	["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ cmp_select }), { "i" }),
 	["<C-d>"] = cmp.mapping.scroll_docs(-4),

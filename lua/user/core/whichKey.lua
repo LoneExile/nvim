@@ -16,6 +16,12 @@ terminal.execs = {
 		"htop",
 		"float",
 	},
+	{
+		"bash ~/.config/nvim/scripts/cht/cht.sh",
+		"<leader>tc",
+		"cheet sheet",
+		"float",
+	},
 }
 
 function M.setup()
@@ -125,7 +131,7 @@ function M.setup()
 			"<cmd>nohlsearch<CR>",
 			"No Highlight",
 		},
-		t = { name = "terminal" },
+		t = { name = "terminal", t = { "<cmd>ToggleTerm<CR>", "Toggle Terminal" } },
 		b = {
 			name = "Buffers",
 			p = {
@@ -468,7 +474,22 @@ function M.setup()
 		d = {
 			name = "Debug",
 			t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+			T = { "lua require('dapui').toggle()<cr>", "Toggle Dap UI" },
+			e = { "lua require('dapui').eval()<cr>", "Evaluate Expression" },
+			f = {
+				"<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>",
+				"UI Scopes",
+			},
 			b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
+			B = {
+				"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
+				"Breakpoint condition",
+			},
+			l = {
+				"<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>",
+				"Log point",
+			},
+			L = { "<Cmd>lua require'dap'.run_last()<CR>", "Run last" },
 			c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
 			C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
 			d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },

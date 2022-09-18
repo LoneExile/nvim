@@ -1,5 +1,6 @@
 local status_ok_ui, lsp = pcall(require, "lsp-zero")
 if not status_ok_ui then
+	vim.notify("LspZero not found", vim.log.levels.ERROR)
 	return
 end
 local status_ok, navic = pcall(require, "nvim-navic")
@@ -32,18 +33,18 @@ lsp.set_preferences({
 	},
 })
 
+local add_lsp_buffer_keybindings = require("user.lsp.lspKeymaps").add_lsp_buffer_keybindings
 require("user.lsp.lspSetup")
 require("user.lsp.mason")
-require("user.lsp.lspKeymaps")
 require("user.lsp.cmp")
 
 -- attach to all buffers
 lsp.on_attach(function(client, bufnr)
+	add_lsp_buffer_keybindings(bufnr)
 	if vim.b.lsp_attached then
 		return
 	end
 	vim.b.lsp_attached = true
-
 	navic.attach(client, bufnr)
 end)
 

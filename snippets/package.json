@@ -1,0 +1,181 @@
+{
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "plaintext",
+          "markdown",
+          "tex",
+          "html",
+          "global",
+          "all"
+        ],
+        "path": "./snippets/global.json"
+      },
+      {
+        "language": "lua",
+        "path": "./lua.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./typescriptreact.json"
+      },
+      {
+        "language": [
+          "html",
+          "jade",
+          "pug",
+          "eruby"
+        ],
+        "path": "./snippets/html.json"
+      },
+      {
+        "language": [
+          "css",
+          "scss",
+          "sass",
+          "less",
+          "stylus"
+        ],
+        "path": "./snippets/css.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "javascriptreact",
+          "vue",
+          "svelte"
+        ],
+        "path": "./snippets/javascript/javascript.json"
+      },
+      {
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./snippets/javascript/typescript.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/javascript/react.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/javascript/react-native.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/javascript/next.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/javascript/react-ts.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/javascript/next-ts.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/javascript/react-native-ts.json"
+      },
+      {
+        "language": [
+          "javascriptreact",
+          "typescriptreact"
+        ],
+        "path": "./snippets/javascript/react-es7.json"
+      },
+      {
+        "language": "vue",
+        "path": "./snippets/frameworks/vue/html.json"
+      },
+      {
+        "language": "vue",
+        "path": "./snippets/frameworks/vue/pug.json"
+      },
+      {
+        "language": "vue",
+        "path": "./snippets/frameworks/vue/javascript.json"
+      },
+      {
+        "language": "vue",
+        "path": "./snippets/frameworks/vue/vue.json"
+      },
+      {
+        "language": "svelte",
+        "path": "./snippets/svelte.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python/base.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python/comprehension.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python/debug.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python/python.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python/unittest.json"
+      },
+      {
+        "language": "yaml",
+        "path": "./snippets/kubernetes.json"
+      },
+      {
+        "language": "c",
+        "path": "./snippets/c.json"
+      },
+      {
+        "language": "cpp",
+        "path": "./snippets/cpp.json"
+      },
+      {
+        "language": [
+          "csharp",
+          "cs"
+        ],
+        "path": "./snippets/csharp.json"
+      },
+      {
+        "language": [
+          "gitcommit",
+          "NeogitCommitMessage"
+        ],
+        "path": "./snippets/gitcommit.json"
+      },
+      {
+        "language": "ejs",
+        "path": "./snippets/frameworks/ejs.json"
+      },
+      {
+        "language": "sql",
+        "path": "./snippets/sql.json"
+      },
+      {
+        "language": [
+          "shellscript",
+          "shell",
+          "sh",
+          "zsh"
+        ],
+        "path": "./snippets/shell.json"
+      },
+      {
+        "language": [
+          "markdown",
+          "rmd"
+        ],
+        "path": "./snippets/markdown.json"
+      }
+    ]
+  }
+}

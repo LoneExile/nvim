@@ -1,7 +1,7 @@
 local colors = {
+	nobg = nil,
 	darkgray = "#16161d",
 	gray = "#727169",
-	nobg = nil,
 	outerbg = "#16161D",
 	normal = "#7e9cd8",
 	insert = "#98bb6c",

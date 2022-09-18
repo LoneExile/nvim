@@ -99,7 +99,7 @@ function M.setup()
 	local mappings = {
 		["e"] = {
 			-- "<cmd>NvimTreeToggle<CR>",
-			"<cmd>NeoTreeFloatToggle<CR>",
+			"<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>",
 			-- function()
 			-- 	vim.cmd("NeoTreeFloatToggle")
 			-- 	-- 	vim.cmd("Neotree position=float toggle=true")

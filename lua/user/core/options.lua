@@ -1,3 +1,5 @@
+vim.g.python3_host_prog = "$HOME/.pyenv/versions/nvim/bin/python3"
+
 local options = {
 	backup = false, -- creates a backup file
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard

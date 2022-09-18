@@ -3,6 +3,8 @@ if not status_ok_ui then
 	return
 end
 
+M = {}
+
 local buffer_mappings = {
 	normal_mode = {
 		["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Show hover" },
@@ -26,7 +28,7 @@ local buffer_mappings = {
 	},
 }
 
-local function add_lsp_buffer_keybindings(bufnr)
+function M.add_lsp_buffer_keybindings(bufnr)
 	local mappings = {
 		normal_mode = "n",
 		insert_mode = "i",
@@ -40,6 +42,4 @@ local function add_lsp_buffer_keybindings(bufnr)
 	end
 end
 
-lsp.on_attach(function(client, bufnr)
-	add_lsp_buffer_keybindings(bufnr)
-end)
+return M

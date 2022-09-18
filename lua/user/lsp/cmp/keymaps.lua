@@ -5,11 +5,15 @@ if not cmp_ok then
 	vim.notify("cmp" .. " not found!")
 	return
 end
+
 local luasnip_ok, luasnip = pcall(require, "luasnip")
 if not luasnip_ok then
 	vim.notify("luasnip" .. " not found!")
 	return
 end
+require("user.lsp.cmp.luasnip")
+
+--------------------------------------------------
 
 local jumpable = require("user.lsp.cmp.utils").jumpable
 local has_words_before = require("user.lsp.cmp.utils").has_words_before
@@ -21,8 +25,8 @@ local confirmOpts = {
 }
 
 M.keymaps = {
-	["<C-k>"] = cmp.mapping.select_prev_item(),
-	["<C-j>"] = cmp.mapping.select_next_item(),
+	-- ["<C-k>"] = cmp.mapping.select_prev_item(),
+	-- ["<C-j>"] = cmp.mapping.select_next_item(),
 	["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ cmp_select }), { "i" }),
 	["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ cmp_select }), { "i" }),
 	["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -65,30 +69,30 @@ M.keymaps = {
 	end, { "i", "s" }),
 	["<C-Space>"] = cmp.mapping.complete(),
 	["<C-e>"] = cmp.mapping.abort(),
-	["<CR>"] = cmp.mapping(function(fallback)
-		if cmp.visible() then
-			local confirm_opts = confirmOpts
-			local is_insert_mode = function()
-				return vim.api.nvim_get_mode().mode:sub(1, 1) == "i"
-			end
-			if is_insert_mode() then -- prevent overwriting brackets
-				confirm_opts.behavior = cmp.ConfirmBehavior.Insert
-			end
-			cmp.confirm(confirm_opts)
-			if jumpable(1) then
-				luasnip.jump(1)
-			end
-			return
-		end
-
-		if jumpable(1) then
-			if not luasnip.jump(1) then
-				fallback()
-			end
-		else
-			fallback()
-		end
-	end),
+	-- ["<CR>"] = cmp.mapping(function(fallback)
+	-- 	if cmp.visible() then
+	-- 		local confirm_opts = confirmOpts
+	-- 		local is_insert_mode = function()
+	-- 			return vim.api.nvim_get_mode().mode:sub(1, 1) == "i"
+	-- 		end
+	-- 		if is_insert_mode() then -- prevent overwriting brackets
+	-- 			confirm_opts.behavior = cmp.ConfirmBehavior.Insert
+	-- 		end
+	-- 		cmp.confirm(confirm_opts)
+	-- 		if jumpable(1) then
+	-- 			luasnip.jump(1)
+	-- 		end
+	-- 		return
+	-- 	end
+	--
+	-- 	if jumpable(1) then
+	-- 		if not luasnip.jump(1) then
+	-- 			fallback()
+	-- 		end
+	-- 	else
+	-- 		fallback()
+	-- 	end
+	-- end),
 }
 
 return M

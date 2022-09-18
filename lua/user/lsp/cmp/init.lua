@@ -40,6 +40,7 @@ local setting = {
 		luasnip = 1,
 	},
 	duplicates_default = 0,
+	word_length = 2,
 }
 
 local cmp_config = lsp.defaults.cmp_config({
@@ -79,13 +80,13 @@ local cmp_config = lsp.defaults.cmp_config({
 		documentation = cmp.config.window.bordered(),
 	},
 	sources = {
-		{ name = "copilot" },
-		{ name = "nvim_lsp" },
+		{ name = "copilot", keyword_length = setting.word_length },
+		{ name = "nvim_lsp", keyword_length = setting.word_length },
 		{ name = "path" },
-		{ name = "luasnip" },
+		{ name = "luasnip", keyword_length = setting.word_length },
 		{ name = "cmp_tabnine" },
 		{ name = "nvim_lua" },
-		{ name = "buffer" },
+		{ name = "buffer", keyword_length = setting.word_length },
 		{ name = "calc" },
 		{ name = "emoji" },
 		{ name = "treesitter" },
@@ -96,3 +97,23 @@ local cmp_config = lsp.defaults.cmp_config({
 })
 
 cmp.setup(cmp_config)
+
+-- Add vim-dadbod-completion in sql files
+-- _ = vim.cmd([[
+--   augroup DadbodSql
+--     au!
+--     autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }
+--   augroup END
+-- ]])
+--
+-- _ = vim.cmd([[
+--   augroup CmpZsh
+--     au!
+--     autocmd Filetype zsh lua require'cmp'.setup.buffer { sources = { { name = "zsh" }, } }
+--   augroup END
+-- ]])
+
+--[[
+" Disable cmp for a buffer
+autocmd FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
+--]]

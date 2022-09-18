@@ -79,7 +79,7 @@ local config = {
 				filetype = "neo-tree",
 				text = "Explorer",
 				highlight = "PanelHeading",
-				padding = 1,
+				padding = 0,
 			},
 			{
 				filetype = "DiffviewFiles",

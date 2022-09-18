@@ -4,8 +4,26 @@ if not status_ok then
 	return
 end
 
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+-- If you want icons for diagnostic errors, you'll need to define them somewhere:
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+
 neoTree.setup({
 	use_default_mappings = false,
+	source_selector = {
+		winbar = true, -- toggle to show selector on winbar
+		statusline = false, -- toggle to show selector on statusline
+		show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path of the top visible node when scrolled down.
+		tab_labels = { -- falls back to source_name if nil
+			filesystem = "  Files ",
+			buffers = "  Buffs ",
+			git_status = "  Git ",
+			diagnostics = " 裂Diagnostics ",
+		},
+	},
 	close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 	popup_border_style = "rounded",
 	enable_git_status = true,
@@ -72,8 +90,8 @@ neoTree.setup({
 		},
 	},
 	window = {
-		position = "float",
-		width = 40,
+		position = "right",
+		width = 35,
 		mapping_options = {
 			noremap = true,
 			nowait = true,
@@ -85,11 +103,15 @@ neoTree.setup({
 			-- },
 			["<2-LeftMouse>"] = "open",
 			["<cr>"] = "open",
+			["<esc>"] = "revert_preview",
+			["P"] = { "toggle_preview", config = { use_float = true } },
 			["S"] = "open_split",
 			["s"] = "open_vsplit",
 			-- ["S"] = "split_with_window_picker",
 			-- ["s"] = "vsplit_with_window_picker",
 			["t"] = "open_tabnew",
+			-- ["<cr>"] = "open_drop",
+			-- ["t"] = "open_tab_drop",
 			["w"] = "open_with_window_picker",
 			--["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
 			["C"] = "close_node",

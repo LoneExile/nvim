@@ -1,4 +1,5 @@
 test.py
 plugin/packer_compiled.lua
 install.sh
+nvim.log
 

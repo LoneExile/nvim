@@ -1,5 +1,0 @@
-require("user.autoCmd.transparent")
-require("user.autoCmd.attachColor")
-require("user.autoCmd.fileType")
-require("user.autoCmd.saveAndFormat")
-require("user.autoCmd.autoRun")

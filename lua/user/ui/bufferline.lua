@@ -77,8 +77,14 @@ local config = {
 			},
 			{
 				filetype = "neo-tree",
-				text = "Explorer",
-				highlight = "PanelHeading",
+				text = "explorer",
+				highlight = "panelheading",
+				padding = 0,
+			},
+			{
+				filetype = "lspsagaoutline",
+				text = "Outline",
+				highlight = "panelheading",
 				padding = 0,
 			},
 			{

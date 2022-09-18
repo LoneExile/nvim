@@ -1,6 +1,7 @@
 -- check requirements
 require("user.utils.requirements")
 require("user.core.packer")
+-- TODO if nor pass requirements, exit
 ----------------------------------
 
 require("user.utils.autoCmd")

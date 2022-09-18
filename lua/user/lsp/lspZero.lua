@@ -2,6 +2,11 @@ local status_ok_ui, lsp = pcall(require, "lsp-zero")
 if not status_ok_ui then
 	return
 end
+local status_ok, navic = pcall(require, "nvim-navic")
+if not status_ok then
+	vim.notify("nvim-navic" .. " not found!")
+	return
+end
 
 -- lsp.preset("recommended")
 -- lsp.setup()
@@ -32,4 +37,15 @@ require("user.lsp.mason")
 require("user.lsp.lspKeymaps")
 require("user.lsp.cmp")
 
+-- attach to all buffers
+lsp.on_attach(function(client, bufnr)
+	if vim.b.lsp_attached then
+		return
+	end
+	vim.b.lsp_attached = true
+
+	navic.attach(client, bufnr)
+end)
+
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 lsp.setup()

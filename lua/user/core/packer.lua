@@ -23,16 +23,13 @@ end
 --   augroup end
 -- ]])
 
--- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
 	vim.notify("packer" .. " not found!")
 	return
 end
 
--- Have packer use a popup window
 local snapshot_path = vim.fn.expand("$HOME") .. "/.config/nvim/plugin/snapshot/"
-
 packer.init({
 	max_jobs = 20,
 	snapshot_path = snapshot_path, -- Default save directory for snapshots
@@ -47,152 +44,13 @@ local pluginTable = require("user.core.plugins")
 
 -- Install your plugins here
 return packer.startup(function(use)
-	-- for use(pluginTable)
 	for _, plugin in ipairs(pluginTable) do
 		use(plugin)
 	end
 
-	-- -- base
-	-- use({ "wbthomason/packer.nvim" })
-	-- use({ "nvim-lua/plenary.nvim" })
-	-- use({ "nvim-lua/popup.nvim" })
-	-- use({ "kyazdani42/nvim-web-devicons" })
-	-- use({ "folke/which-key.nvim" })
-	--
-	-- -- Treesitter
-	-- use({ "nvim-treesitter/nvim-treesitter" })
-	-- use({ "p00f/nvim-ts-rainbow" })
-	-- use({ "numToStr/Comment.nvim" })
-	-- use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-	-- use({ "nvim-treesitter/nvim-treesitter-context" })
-	-- use({ "lukas-reineke/indent-blankline.nvim" })
-	-- use({ "windwp/nvim-autopairs" })
-	-- use({ "windwp/nvim-ts-autotag" })
-	--
-	-- -- optimization
-	-- use({ "lewis6991/impatient.nvim" })
-	-- use({ "antoinemadec/FixCursorHold.nvim" })
-	--
-	-- -- editor
-	-- use({ "windwp/nvim-spectre" })
-	-- use({ "nacro90/numb.nvim" })
-	-- use({ "michaelb/sniprun", run = "bash ./install.sh" })
-	-- use({ "metakirby5/codi.vim", cmd = "Codi" })
-	-- use({ "tpope/vim-repeat" })
-	-- use({ "folke/zen-mode.nvim" })
-	-- use({ "ThePrimeagen/harpoon" })
-	-- use({ "dhruvasagar/vim-open-url" })
-	-- use({ "Darazaki/indent-o-matic" })
-	-- use({ "NMAC427/guess-indent.nvim" })
-	-- use({ "declancm/cinnamon.nvim" })
-	-- use({ "Shatur/neovim-session-manager" })
-	-- use({ "max397574/better-escape.nvim" })
-	-- use({ "ThePrimeagen/refactoring.nvim" })
-	-- use({ "echasnovski/mini.nvim" })
-	-- -- color management
-	-- use({ "NvChad/nvim-colorizer.lua" })
-	-- use({ "max397574/colortils.nvim" })
-	-- -- Telescope
-	-- use({ "nvim-telescope/telescope.nvim" })
-	-- use({ "nvim-telescope/telescope-fzf-native.nvim" })
-	-- -- Git
-	-- use({ "lewis6991/gitsigns.nvim" })
-	-- use({ "akinsho/git-conflict.nvim", tag = "*" })
-	-- use({ "https://gitlab.com/yorickpeterse/nvim-pqf", as = "nvim-pqf" })
-	-- use({ "sindrets/diffview.nvim" })
-	--
-	-- -- LSP
-	-- use({
-	-- 	"VonHeikemen/lsp-zero.nvim",
-	-- 	requires = {
-	-- 		-- LSP Support
-	-- 		{ "neovim/nvim-lspconfig" },
-	-- 		{ "williamboman/mason.nvim" },
-	-- 		{ "williamboman/mason-lspconfig.nvim" },
-	--
-	-- 		-- Autocompletion
-	-- 		{ "hrsh7th/nvim-cmp" },
-	-- 		{ "hrsh7th/cmp-buffer" },
-	-- 		{ "hrsh7th/cmp-path" },
-	-- 		{ "saadparwaiz1/cmp_luasnip" },
-	-- 		{ "hrsh7th/cmp-nvim-lsp" },
-	-- 		{ "hrsh7th/cmp-nvim-lua" },
-	--
-	-- 		-- Snippets
-	-- 		{ "L3MON4D3/LuaSnip" },
-	-- 		{ "rafamadriz/friendly-snippets" },
-	-- 	},
-	-- })
-	-- use({ "folke/lua-dev.nvim" })
-	-- use({ "glepnir/lspsaga.nvim", branch = "main" })
-	-- use({ "github/copilot.vim" })
-	-- use({ "jose-elias-alvarez/null-ls.nvim" })
-	--
-	-- use({
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	commit = "ede741d935cf5d962c9a9e44db2400ed1a4aaf13",
-	-- 	event = { "VimEnter" },
-	-- 	config = function()
-	-- 		vim.defer_fn(function()
-	-- 			require("copilot").setup()
-	-- 		end, 100)
-	-- 	end,
-	-- })
-	-- use({
-	-- 	"zbirenbaum/copilot-cmp",
-	-- 	commit = "67825246fa2aa6226ec3320d554640aa4697e1b1",
-	-- 	module = "copilot_cmp",
-	-- })
-	--
-	-- -- use({
-	-- -- 	"zbirenbaum/copilot.lua",
-	-- -- 	event = { "VimEnter" },
-	-- -- 	config = function()
-	-- -- 		vim.defer_fn(function()
-	-- -- 			require("copilot").setup()
-	-- -- 		end, 100)
-	-- -- 	end,
-	-- -- })
-	-- -- use({
-	-- -- 	"zbirenbaum/copilot-cmp",
-	-- -- 	after = { "copilot.lua" },
-	-- -- 	config = function()
-	-- -- 		require("copilot_cmp").setup()
-	-- -- 	end,
-	-- -- })
-	--
-	-- -- debugger
-	-- use({ "mfussenegger/nvim-dap" })
-	-- use({ "Pocco81/dap-buddy.nvim" })
-	-- use({ "rcarriga/nvim-dap-ui" })
-	-- use({ "theHamsta/nvim-dap-virtual-text" })
-	-- use({ "nvim-telescope/telescope-dap.nvim" })
-	-- use({ "mfussenegger/nvim-dap-python" })
-	-- use({ "leoluz/nvim-dap-go" })
-	--
-	-- -- UI
-	-- use({ "goolord/alpha-nvim" })
-	-- use({ "nvim-neo-tree/neo-tree.nvim", requires = { "MunifTanjim/nui.nvim" } })
-	-- use({ "akinsho/bufferline.nvim" })
-	-- use({ "nvim-lualine/lualine.nvim" })
-	-- use({ "akinsho/toggleterm.nvim" })
-	-- use({ "rcarriga/nvim-notify" })
-	-- use({ "ahmedkhalf/project.nvim" })
-	-- use({ "b0o/schemastore.nvim" })
-	-- -- use({ "kyazdani42/nvim-tree.lua" })
-	--
-	-- -- Colorschemes
-	-- use({ "LunarVim/onedarker.nvim" })
-	-- use({ "EdenEast/nightfox.nvim" })
-	-- use({ "glepnir/zephyr-nvim" })
-	-- use({ "folke/tokyonight.nvim" })
-	--
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
 end)
-
--- edluffy/hologram.nvim
--- samodostal/image.nvim

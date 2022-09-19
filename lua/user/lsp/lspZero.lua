@@ -33,6 +33,15 @@ lsp.set_preferences({
 	},
 })
 
+-- lsp.ensure_installed({
+--   "html",
+--   "cssls",
+--   "tsserver",
+--   "eslint",
+--   "sumenko_lua",
+-- })
+--
+
 local add_lsp_buffer_keybindings = require("user.lsp.lspKeymaps").add_lsp_buffer_keybindings
 require("user.lsp.lspSetup")
 require("user.lsp.mason")
@@ -46,6 +55,21 @@ lsp.on_attach(function(client, bufnr)
 	end
 	vim.b.lsp_attached = true
 	navic.attach(client, bufnr)
+	vim.diagnostic.config({
+		virtual_text = false,
+		signs = true,
+		update_in_insert = false,
+		underline = true,
+		severity_sort = true,
+		float = {
+			focusable = false,
+			style = "minimal",
+			border = "rounded",
+			source = "always",
+			header = "",
+			prefix = "",
+		},
+	})
 end)
 
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"

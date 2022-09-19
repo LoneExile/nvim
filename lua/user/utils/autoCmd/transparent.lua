@@ -65,6 +65,12 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 			-- navic
 			vim.cmd([[highlight NavicSeparator guifg=#61afef gui=bold,italic]])
 			vim.cmd([[highlight NavicText guifg=#d16d9e gui=bold,italic]])
+
+			-- diagnostics
+			vim.cmd([[highlight DiagnosticVirtualTextError guifg=#db4b4b guibg=none]])
+
+			-- Mark
+			vim.cmd([[highlight MarkSignHL guifg=#61afef guibg=none gui=bold,italic]])
 		end
 	end,
 	-- group = group,

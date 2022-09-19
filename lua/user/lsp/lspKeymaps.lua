@@ -1,8 +1,3 @@
-local status_ok_ui, lsp = pcall(require, "lsp-zero")
-if not status_ok_ui then
-	return
-end
-
 M = {}
 
 local buffer_mappings = {

@@ -45,20 +45,20 @@ end
 -- ---always selects null-ls if it's available and caches the value per buffer
 -- ---@param client table client attached to a buffer
 -- ---@return boolean if client matches
--- function M.format_filter(client)
--- 	local filetype = vim.bo.filetype
--- 	local n = require("null-ls")
--- 	local s = require("null-ls.sources")
--- 	local method = n.methods.FORMATTING
--- 	local avalable_formatters = s.get_available(filetype, method)
+function M.format_filter(client)
+	local filetype = vim.bo.filetype
+	local n = require("null-ls")
+	local s = require("null-ls.sources")
+	local method = n.methods.FORMATTING
+	local avalable_formatters = s.get_available(filetype, method)
 
--- 	if #avalable_formatters > 0 then
--- 		return client.name == "null-ls"
--- 	elseif client.supports_method("textDocument/formatting") then
--- 		return true
--- 	else
--- 		return false
--- 	end
--- end
+	if #avalable_formatters > 0 then
+		return client.name == "null-ls"
+	elseif client.supports_method("textDocument/formatting") then
+		return true
+	else
+		return false
+	end
+end
 
 return M

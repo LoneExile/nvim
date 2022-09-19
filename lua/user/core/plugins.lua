@@ -16,35 +16,54 @@ local pluginTable = {
 	{ "windwp/nvim-autopairs" },
 	{ "windwp/nvim-ts-autotag" },
 	{ "David-Kunz/markid" },
+	{ "nvim-treesitter/nvim-treesitter-textobjects" },
+	{ "RRethy/nvim-treesitter-textsubjects" },
 
 	-- optimization
 	{ "lewis6991/impatient.nvim" },
 	{ "antoinemadec/FixCursorHold.nvim" },
 
-	-- editor
-	{ "windwp/nvim-spectre" },
-	{ "nacro90/numb.nvim" },
-	{ "michaelb/sniprun", run = "bash ./install.sh" },
-	{ "metakirby5/codi.vim", cmd = "codi" },
+	---- editor
 	{ "tpope/vim-repeat" },
-	{ "folke/zen-mode.nvim" },
-	{ "theprimeagen/harpoon" },
+	-- { "wellle/targets.vim" },
 	{ "dhruvasagar/vim-open-url" },
-	{ "darazaki/indent-o-matic" },
-	{ "nmac427/guess-indent.nvim" },
-	{ "declancm/cinnamon.nvim" },
+
+	-- tool
+	{ "windwp/nvim-spectre" },
 	{ "shatur/neovim-session-manager" },
-	{ "max397574/better-escape.nvim" },
-	{ "theprimeagen/refactoring.nvim" },
-	{ "echasnovski/mini.nvim" },
-	{ "nvchad/nvim-colorizer.lua" },
-	{ "max397574/colortils.nvim" },
+	{ "akinsho/toggleterm.nvim" },
 	{ "nvim-telescope/telescope.nvim" },
 	{ "nvim-telescope/telescope-fzf-native.nvim" },
+	{ "darazaki/indent-o-matic" },
+	{ "nmac427/guess-indent.nvim" },
+
+	-- productivity
+	{ "folke/zen-mode.nvim" },
+	{ "folke/twilight.nvim" },
+	{ "folke/todo-comments.nvim" },
+
+	-- code
+	{ "theprimeagen/refactoring.nvim" },
+	{ "michaelb/sniprun", run = "bash ./install.sh" },
+	{ "metakirby5/codi.vim" },
+
+	--motion
+	{ "echasnovski/mini.nvim" },
+	{ "nacro90/numb.nvim" },
+	{ "declancm/cinnamon.nvim" },
+	{ "theprimeagen/harpoon" },
+	{ "max397574/better-escape.nvim" },
+	{ "chentoast/marks.nvim" },
+
+	--git
 	{ "lewis6991/gitsigns.nvim" },
 	{ "akinsho/git-conflict.nvim", tag = "*" },
 	{ "https://gitlab.com/yorickpeterse/nvim-pqf", as = "nvim-pqf" },
 	{ "sindrets/diffview.nvim" },
+
+	-- color
+	{ "nvchad/nvim-colorizer.lua" },
+	{ "max397574/colortils.nvim" },
 
 	-- lsp
 	{
@@ -103,7 +122,6 @@ local pluginTable = {
 	},
 	{ "akinsho/bufferline.nvim" },
 	{ "nvim-lualine/lualine.nvim" },
-	{ "akinsho/toggleterm.nvim" },
 	{ "rcarriga/nvim-notify" },
 	{ "ahmedkhalf/project.nvim" },
 	{ "b0o/schemastore.nvim" },
@@ -117,6 +135,10 @@ local pluginTable = {
 
 return pluginTable
 
+-- anuvyklack/windows.nvim -- cool
 -- edluffy/hologram.nvim
 -- samodostal/image.nvim
 -- kyazdani42/nvim-tree.lua
+-- jbyuki/instant.nvim
+-- j-hui/fidget.nvim,
+-- AckslD/nvim-neoclip.lua

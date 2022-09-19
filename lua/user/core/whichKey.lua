@@ -1,5 +1,11 @@
 local M = {}
 
+local status_ok, whichkey = pcall(require, "which-key")
+if not status_ok then
+	vim.notify("which-key" .. " not found!")
+	return
+end
+
 local terminal = require("user.editor.coding.toggleterm").terminal
 terminal.execs = {
 	{ "lazygit", "<leader>gg", "LazyGit", "float" },
@@ -25,12 +31,6 @@ terminal.execs = {
 }
 
 function M.setup()
-	local status_ok, whichkey = pcall(require, "which-key")
-	if not status_ok then
-		vim.notify("which-key" .. " not found!")
-		return
-	end
-
 	local conf = {
 		plugins = {
 			marks = true, -- shows a list of your marks on ' and `
@@ -112,7 +112,15 @@ function M.setup()
 			-- end,
 			"Explorer",
 		},
-		[";"] = { "<cmd>Alpha<CR>", "Dashboard" },
+		[";"] = {
+			"<cmd>Alpha<CR>",
+			-- function()
+			-- 	if ft ~= "neo-tree" then
+			-- 		vim.cmd("Alpha")
+			-- 	end
+			-- end,
+			"Dashboard",
+		},
 		["w"] = { "<cmd>SaveNFormat<CR>", "Save" },
 		["q"] = { "<cmd>lua require('user.utils.quit').smart_quit()<CR>", "Quit" },
 		["/"] = {
@@ -120,7 +128,7 @@ function M.setup()
 			"Comment",
 		},
 		["c"] = {
-			require("user.ui.bufferline").buf_kill,
+			require("user.utils.bufKill"),
 			"Close Buffer",
 		},
 		["f"] = {
@@ -192,6 +200,7 @@ function M.setup()
 				"Update",
 			},
 		},
+		T = { name = "tool", t = { "<cmd>Twilight<cr>", "Twilight" }, z = { "<cmd>ZenMode<cr>", "Zen" } },
 		h = {
 			name = "Harpoon",
 			h = {
@@ -473,13 +482,18 @@ function M.setup()
 		},
 		d = {
 			name = "Debug",
-			t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
-			T = { "lua require('dapui').toggle()<cr>", "Toggle Dap UI" },
-			e = { "lua require('dapui').eval()<cr>", "Evaluate Expression" },
-			f = {
-				"<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>",
-				"UI Scopes",
+			U = {
+				name = "UI",
+				T = { "lua require('dapui').toggle()<cr>", "Toggle Dap UI" },
+				e = { "lua require('dapui').eval()<cr>", "Evaluate Expression" },
+				f = {
+					"<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>",
+					"UI Scopes",
+				},
 			},
+			v = { "<cmd>DapVirtualTextToggle<cr>", "Toggle virtual text" },
+			T = { "<cmd>DapTerminate<cr>", "Terminate" },
+			t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
 			b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
 			B = {
 				"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
@@ -519,8 +533,12 @@ function M.setup()
 	}
 	vmappings["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment toggle linewise (visual)" }
 	whichkey.setup(conf)
+
 	whichkey.register(mappings, opts)
 	whichkey.register(vmappings, vopts)
 end
+
+-- local buf = vim.api.nvim_get_current_buf()
+-- local ft = vim.api.nvim_buf_get_option(buf, "filetype")
 
 return M

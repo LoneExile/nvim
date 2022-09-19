@@ -13,7 +13,6 @@ require("user.editor.coding.toggleterm").setup()
 require("user.editor.tool.telescope").setup()
 require("user.editor.tool.sessionManager")
 require("user.editor.tool.spectre")
-require("user.editor.tool.zen")
 require("user.editor.tool.indentOmatic")
 
 -- motion
@@ -22,6 +21,7 @@ require("user.editor.motion.numb")
 require("user.editor.motion.smoothScroll")
 require("user.editor.motion.harpoon")
 require("user.editor.motion.betterEscape")
+require("user.editor.motion.mark")
 
 -- color
 require("user.editor.color.colorizer")

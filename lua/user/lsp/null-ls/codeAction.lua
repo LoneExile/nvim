@@ -7,9 +7,6 @@ local code_actions = null_ls.builtins.code_actions
 
 local codeAction = {
 	-- code_actions
-	code_actions.gitsigns.with({
-		disabled_filetypes = { "lua" },
-	}),
 	code_actions.refactoring.with({
 		filetype = { "go", "javascript", "lua", "python", "typescript" },
 	}),

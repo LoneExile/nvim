@@ -1,5 +1,11 @@
 local status_ok_ui, lsp = pcall(require, "lsp-zero")
 if not status_ok_ui then
+	vim.notify("LspZero not found", vim.log.levels.ERROR)
+	return
+end
+local status_ok, navic = pcall(require, "nvim-navic")
+if not status_ok then
+	vim.notify("nvim-navic" .. " not found!")
 	return
 end
 
@@ -27,9 +33,44 @@ lsp.set_preferences({
 	},
 })
 
+-- lsp.ensure_installed({
+--   "html",
+--   "cssls",
+--   "tsserver",
+--   "eslint",
+--   "sumenko_lua",
+-- })
+--
+
+local add_lsp_buffer_keybindings = require("user.lsp.lspKeymaps").add_lsp_buffer_keybindings
 require("user.lsp.lspSetup")
 require("user.lsp.mason")
-require("user.lsp.lspKeymaps")
 require("user.lsp.cmp")
 
+-- attach to all buffers
+lsp.on_attach(function(client, bufnr)
+	add_lsp_buffer_keybindings(bufnr)
+	if vim.b.lsp_attached then
+		return
+	end
+	vim.b.lsp_attached = true
+	navic.attach(client, bufnr)
+	vim.diagnostic.config({
+		virtual_text = false,
+		signs = true,
+		update_in_insert = false,
+		underline = true,
+		severity_sort = true,
+		float = {
+			focusable = false,
+			style = "minimal",
+			border = "rounded",
+			source = "always",
+			header = "",
+			prefix = "",
+		},
+	})
+end)
+
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 lsp.setup()

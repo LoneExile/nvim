@@ -1,18 +1,12 @@
-require("user.packer.plugins")
+-- check requirements
+require("user.utils.requirements")
+require("user.core.packer")
+-- TODO if nor pass requirements, exit
+----------------------------------
 
--- setting
-require("user.config")
-require("user.config.whichKey").setup()
-
--- language server & debugger
+require("user.utils.autoCmd")
+require("user.core")
 require("user.lsp")
 require("user.dap")
-
--- treesitter
-require("user.treesitter")
-
--- utility
-require("user.swissKnife")
-
--- UI
-require("user.UI")
+require("user.editor")
+require("user.ui")

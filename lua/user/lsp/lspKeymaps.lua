@@ -1,7 +1,4 @@
-local status_ok_ui, lsp = pcall(require, "lsp-zero")
-if not status_ok_ui then
-	return
-end
+M = {}
 
 local buffer_mappings = {
 	normal_mode = {
@@ -13,8 +10,8 @@ local buffer_mappings = {
 		["gq"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
 		["gj"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next diagnostic" },
 		["gk"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Prev diagnostic" },
-		["gD"] = { vim.lsp.buf.declaration, "Goto declaration" },
-		["gi"] = { vim.lsp.buf.implementation, "Goto Implementation" },
+		["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Goto declaration" },
+		["gi"] = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Goto Implementation" },
 		["gl"] = {
 			"<cmd>Lspsaga show_line_diagnostics<cr>",
 			"Show line diagnostics",
@@ -26,7 +23,7 @@ local buffer_mappings = {
 	},
 }
 
-local function add_lsp_buffer_keybindings(bufnr)
+function M.add_lsp_buffer_keybindings(bufnr)
 	local mappings = {
 		normal_mode = "n",
 		insert_mode = "i",
@@ -40,6 +37,4 @@ local function add_lsp_buffer_keybindings(bufnr)
 	end
 end
 
-lsp.on_attach(function(client, bufnr)
-	add_lsp_buffer_keybindings(bufnr)
-end)
+return M

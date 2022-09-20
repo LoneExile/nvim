@@ -1,6 +1,0 @@
-require("user.treesitter.treesitter")
-require("user.treesitter.tsContext")
-require("user.treesitter.tsIndent")
-require("user.treesitter.comment")
-require("user.treesitter.autoPair").setup()
-require("user.treesitter.autoTag")

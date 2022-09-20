@@ -1,5 +1,6 @@
 local status_ok_ui, dapui = pcall(require, "dapui")
 if not status_ok_ui then
+	vim.notify("dapui" .. " not found!")
 	return
 end
 
@@ -69,11 +70,11 @@ if not status_ok then
 end
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
-	dapui.open()
+	dapui.open({})
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
-	dapui.close()
+	dapui.close({})
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
-	dapui.close()
+	dapui.close({})
 end

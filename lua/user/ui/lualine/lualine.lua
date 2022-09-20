@@ -13,7 +13,7 @@ lualine.setup({
 		theme = theme,
 		component_separators = "",
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "NvimTree", "Outline", "neo-tree" },
+		disabled_filetypes = { "alpha", "NvimTree", "Outline" },
 		always_divide_middle = true,
 		globalstatus = true,
 	},
@@ -25,7 +25,6 @@ lualine.setup({
 		lualine_y = {
 			components.treesitter,
 			components.lsp,
-			components.python_env,
 			components.diagnostics,
 			components.diff,
 			components.branch,

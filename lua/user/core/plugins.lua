@@ -18,6 +18,7 @@ local pluginTable = {
 	{ "David-Kunz/markid" },
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ "RRethy/nvim-treesitter-textsubjects" },
+	{ "RRethy/vim-illuminate" },
 
 	-- optimization
 	{ "lewis6991/impatient.nvim" },
@@ -32,10 +33,13 @@ local pluginTable = {
 	{ "windwp/nvim-spectre" },
 	{ "shatur/neovim-session-manager" },
 	{ "akinsho/toggleterm.nvim" },
-	{ "nvim-telescope/telescope.nvim" },
-	{ "nvim-telescope/telescope-fzf-native.nvim" },
 	{ "darazaki/indent-o-matic" },
 	{ "nmac427/guess-indent.nvim" },
+
+	-- telescope
+	{ "nvim-telescope/telescope.nvim" },
+	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+	{ "nvim-telescope/telescope-ui-select.nvim" },
 
 	-- productivity
 	{ "folke/zen-mode.nvim" },
@@ -43,6 +47,7 @@ local pluginTable = {
 	{ "folke/todo-comments.nvim" },
 
 	-- code
+	{ "AckslD/swenv.nvim" },
 	{ "theprimeagen/refactoring.nvim" },
 	{ "michaelb/sniprun", run = "bash ./install.sh" },
 	{ "metakirby5/codi.vim" },
@@ -60,6 +65,7 @@ local pluginTable = {
 	{ "akinsho/git-conflict.nvim", tag = "*" },
 	{ "https://gitlab.com/yorickpeterse/nvim-pqf", as = "nvim-pqf" },
 	{ "sindrets/diffview.nvim" },
+	{ "ThePrimeagen/git-worktree.nvim" },
 
 	-- color
 	{ "nvchad/nvim-colorizer.lua" },
@@ -125,6 +131,7 @@ local pluginTable = {
 	{ "rcarriga/nvim-notify" },
 	{ "ahmedkhalf/project.nvim" },
 	{ "b0o/schemastore.nvim" },
+	-- { "stevearc/dressing.nvim" },
 
 	-- Colorschemes
 	{ "LunarVim/onedarker.nvim" },
@@ -135,6 +142,7 @@ local pluginTable = {
 
 return pluginTable
 
+-- check it out later
 -- anuvyklack/windows.nvim -- cool
 -- edluffy/hologram.nvim
 -- samodostal/image.nvim
@@ -142,3 +150,11 @@ return pluginTable
 -- jbyuki/instant.nvim
 -- j-hui/fidget.nvim,
 -- AckslD/nvim-neoclip.lua
+-- mattn/emmet-vim
+-- numToStr/FTerm.nvim
+
+-- debugger
+-- nvim-neotest/neotest
+
+-- graveyard
+-- { "matbme/JABS.nvim" },

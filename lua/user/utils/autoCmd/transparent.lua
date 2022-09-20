@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 			-- neotree
 			vim.cmd([[highlight NeoTreeNormal ctermbg=none guibg=none guifg=#f2f4f8 ]])
-			vim.cmd([[highlight NeoTreeGitModified guifg=#7e9cd8]])
+			vim.cmd([[highlight NeoTreeGitModified guifg=#c678dd]])
 			vim.cmd([[highlight NeoTreeGitConflict gui=bold guifg=#e46876]])
 			vim.cmd([[highlight NeoTreeGitUntracked guifg=#c678dd]])
 
@@ -71,6 +71,11 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 			-- Mark
 			vim.cmd([[highlight MarkSignHL guifg=#61afef guibg=none gui=bold,italic]])
+
+			-- Illuminated
+			vim.cmd([[highlight IlluminatedWordText guibg=#1b1f27]])
+			vim.cmd([[highlight IlluminatedWordRead guibg=#1b1f27]])
+			vim.cmd([[highlight IlluminatedWordWrite guibg=#1b1f27]])
 		end
 	end,
 	-- group = group,

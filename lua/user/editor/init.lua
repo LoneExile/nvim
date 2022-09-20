@@ -8,12 +8,16 @@ require("user.editor.coding.refactoring")
 require("user.editor.coding.sniprun")
 require("user.editor.coding.codi")
 require("user.editor.coding.toggleterm").setup()
+require("user.editor.coding.swenv")
 
 -- tool
-require("user.editor.tool.telescope").setup()
 require("user.editor.tool.sessionManager")
 require("user.editor.tool.spectre")
 require("user.editor.tool.indentOmatic")
+require("user.editor.tool.illuminate")
+
+-- telescope
+require("user.editor.tool.telescope").setup()
 
 -- motion
 require("user.editor.motion.mini")

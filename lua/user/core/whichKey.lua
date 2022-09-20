@@ -105,6 +105,7 @@ function M.setup()
 	local mappings = {
 		["e"] = {
 			-- "<cmd>NvimTreeToggle<CR>",
+			-- "<cmd>Neotree action=focus source=filesystem position=float toggle=true<CR>",
 			"<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>",
 			-- function()
 			-- 	vim.cmd("NeoTreeFloatToggle")
@@ -200,7 +201,6 @@ function M.setup()
 				"Update",
 			},
 		},
-		T = { name = "tool", t = { "<cmd>Twilight<cr>", "Twilight" }, z = { "<cmd>ZenMode<cr>", "Zen" } },
 		h = {
 			name = "Harpoon",
 			h = {
@@ -272,6 +272,11 @@ function M.setup()
 				"<cmd>Telescope git_bcommits<cr>",
 				"Checkout commit(for current file)",
 			},
+			w = {
+				name = "Worktree",
+				a = { "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "Add" },
+				c = { "<cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "Checkout" },
+			},
 			d = {
 				-- "<cmd>Gitsigns diffthis HEAD<cr>",
 				name = "Git Diff",
@@ -314,7 +319,8 @@ function M.setup()
 				"Outline",
 			},
 			f = {
-				require("user.utils.format").format,
+				-- require("user.utils.format").format,
+				"<cmd>FormatCurrentBuf<CR>",
 				"Format",
 			},
 			R = {
@@ -384,16 +390,18 @@ function M.setup()
 			name = "Search",
 			s = {
 				"<cmd>lua require('spectre').open_file_search()<CR>",
-				"Search in current file",
+				"Search/Replace Buf",
 			},
 			S = {
 				"<cmd>lua require('spectre').open()<CR>",
-				"Search in project",
+				"Search/Replace Global",
 			},
-			b = {
-				"<cmd>Telescope git_branches<cr>",
-				"Checkout branch",
-			},
+			-- b = {
+			-- 	"<cmd>Telescope git_branches<cr>",
+			-- 	"Checkout branch",
+			-- },
+			b = { "<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>", "Buffer Show" },
+			g = { "<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>", "Git" },
 			c = {
 				"<cmd>Telescope colorscheme<cr>",
 				"Colorscheme",
@@ -441,11 +449,27 @@ function M.setup()
 		},
 		u = {
 			name = "+Utility",
+			t = { "<cmd>Twilight<cr>", "HL Twilight" },
+			z = { "<cmd>ZenMode<cr>", "Zen" },
+			p = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Pick Pyenv" },
+			h = {
+				"<cmd>IlluminateToggle<CR>",
+				"HL Word",
+			},
+			m = {
+				name = "+Mark",
+				a = { "<cmd>MarksToggleSigns<cr>", "Toggle" },
+				b = { "<cmd>MarksListBuf<cr>", "List" },
+				g = { "<cmd>MarksListGlobal<cr>", "List All" },
+				d = { "<cmd>lua require'marks'.delete_buf()<cr>", "Delete buf" },
+				j = { "<Plug>(Marks-next)", "Next" },
+				k = { "<Plug>(Marks-prev)", "Prev" },
+			},
 			n = {
 				name = "+Neotree",
-				b = { "<cmd>Neotree action=focus source=buffers position=float toggle=true<CR>", "Buffer" },
-				g = { "<cmd>Neotree action=focus source=git_status position=float toggle=true<CR>", "Git" },
-				r = { "<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>", "Show tree right" },
+				b = { "<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>", "Buffer" },
+				g = { "<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>", "Git" },
+				r = { "<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>", "Files" },
 			},
 			s = {
 				name = "+Session",

@@ -29,21 +29,25 @@ for _, value in ipairs(all) do
 end
 
 -------------------------------------------------------------------------------------------
---https://neovim.discourse.group/t/how-select-server-vim-lsp-buf-format/3098
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
-			-- apply whatever logic you want (in this example, we'll only use null-ls)
 			return client.name == "null-ls"
 		end,
 		bufnr = bufnr,
 	})
+	-- require("user.utils.format").format({
+	-- 	filter = function(client)
+	-- 		return client.name == "null-ls"
+	-- 	end,
+	-- 	bufnr = bufnr,
+	-- })
 end
--- if you want to set up formatting on save, you can use this as a callback
+
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 local on_attach = function(client, bufnr)
 	-- if client.name ~= "null-ls" then
-	-- 	client.server_capabilities.document_formatting = false -- 0.7 and earlier
 	-- 	client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
 	-- end
 	if client.supports_method("textDocument/formatting") then
@@ -55,10 +59,17 @@ local on_attach = function(client, bufnr)
 				lsp_formatting(bufnr)
 			end,
 		})
+		-- vim.api.nvim_create_user_command("SaveNFormat", function()
+		-- 	lsp_formatting(bufnr)
+		-- 	vim.cmd("w!")
+		-- end, {})
+		-- vim.api.nvim_create_user_command("FormatCurrentBuf", function()
+		-- 	lsp_formatting(bufnr)
+		-- end, {})
 	end
 end
 -------------------------------------------------------------------------------------------
 null_ls.setup({
-	on_attach = on_attach,
+	-- on_attach = on_attach,
 	sources = sources,
 })

@@ -13,13 +13,13 @@ lualine.setup({
 		theme = theme,
 		component_separators = "",
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "NvimTree", "Outline" },
+		disabled_filetypes = { "alpha", "Outline" },
 		always_divide_middle = true,
 		globalstatus = true,
 	},
 	sections = {
 		lualine_a = { "mode" },
-		lualine_b = { "" },
+		lualine_b = { components.filename },
 		lualine_c = { "" },
 		lualine_x = {},
 		lualine_y = {

@@ -14,7 +14,7 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSig
 neoTree.setup({
 	use_default_mappings = false,
 	source_selector = {
-		winbar = true, -- toggle to show selector on winbar
+		winbar = false, -- toggle to show selector on winbar
 		statusline = false, -- toggle to show selector on statusline
 		show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path of the top visible node when scrolled down.
 		tab_labels = { -- falls back to source_name if nil
@@ -91,7 +91,7 @@ neoTree.setup({
 	},
 	window = {
 		position = "right",
-		width = 35,
+		width = 30,
 		mapping_options = {
 			noremap = true,
 			nowait = true,

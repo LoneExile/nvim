@@ -6,7 +6,7 @@ M.theme = function()
 	return {
 		inactive = {
 			a = { fg = colors.blue, bg = colors.nobg, gui = "bold" },
-			b = { bg = colors.nobg },
+			b = { bg = colors.nobg, gui = "bold" },
 			c = { bg = colors.nobg },
 			x = { bg = colors.nobg },
 			y = { bg = colors.nobg },
@@ -14,7 +14,7 @@ M.theme = function()
 		},
 		visual = {
 			a = { fg = colors.black, bg = colors.mauve, gui = "bold" },
-			b = { bg = colors.nobg },
+			b = { bg = colors.nobg, gui = "bold" },
 			c = { bg = colors.nobg },
 			x = { bg = colors.nobg },
 			y = { bg = colors.nobg },
@@ -22,7 +22,7 @@ M.theme = function()
 		},
 		replace = {
 			a = { fg = colors.black, bg = colors.red, gui = "bold" },
-			b = { bg = colors.nobg },
+			b = { bg = colors.nobg, gui = "bold" },
 			c = { bg = colors.nobg },
 			x = { bg = colors.nobg },
 			y = { bg = colors.nobg },
@@ -30,7 +30,7 @@ M.theme = function()
 		},
 		normal = {
 			a = { fg = colors.white, bg = colors.buleish, gui = "bold" },
-			b = { bg = colors.nobg },
+			b = { bg = colors.nobg, gui = "bold" },
 			c = { bg = colors.nobg },
 			x = { bg = colors.nobg },
 			y = { bg = colors.nobg },
@@ -38,7 +38,7 @@ M.theme = function()
 		},
 		insert = {
 			a = { fg = colors.black, bg = colors.light_green, gui = "bold" },
-			b = { bg = colors.nobg },
+			b = { bg = colors.nobg, gui = "bold" },
 			c = { bg = colors.nobg },
 			x = { bg = colors.nobg },
 			y = { bg = colors.nobg },
@@ -46,7 +46,7 @@ M.theme = function()
 		},
 		command = {
 			a = { fg = colors.black, bg = colors.peach, gui = "bold" },
-			b = { bg = colors.nobg },
+			b = { bg = colors.nobg, gui = "bold" },
 			c = { bg = colors.nobg },
 			x = { bg = colors.nobg },
 			y = { bg = colors.nobg },

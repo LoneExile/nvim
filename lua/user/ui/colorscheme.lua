@@ -1,4 +1,4 @@
-local colorscheme = "onedarker" -- "tokyonight-storm" -- "duskfox" -- "carbonfox" -- "onedarker"
+local colorscheme = "tokyonight-storm" -- "tokyonight-storm" -- "duskfox" -- "carbonfox" -- "onedarker"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then

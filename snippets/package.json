@@ -10,7 +10,7 @@
           "global",
           "all"
         ],
-        "path": "./snippets/global.json"
+        "path": "./global.json"
       },
       {
         "language": "lua",
@@ -27,7 +27,7 @@
           "pug",
           "eruby"
         ],
-        "path": "./snippets/html.json"
+        "path": "./html.json"
       },
       {
         "language": [
@@ -37,7 +37,7 @@
           "less",
           "stylus"
         ],
-        "path": "./snippets/css.json"
+        "path": "./css.json"
       },
       {
         "language": [
@@ -46,119 +46,119 @@
           "vue",
           "svelte"
         ],
-        "path": "./snippets/javascript/javascript.json"
+        "path": "./javascript/javascript.json"
       },
       {
         "language": [
           "typescript",
           "typescriptreact"
         ],
-        "path": "./snippets/javascript/typescript.json"
+        "path": "./javascript/typescript.json"
       },
       {
         "language": "javascriptreact",
-        "path": "./snippets/javascript/react.json"
+        "path": "./javascript/react.json"
       },
       {
         "language": "javascriptreact",
-        "path": "./snippets/javascript/react-native.json"
+        "path": "./javascript/react-native.json"
       },
       {
         "language": "javascriptreact",
-        "path": "./snippets/javascript/next.json"
+        "path": "./javascript/next.json"
       },
       {
         "language": "typescriptreact",
-        "path": "./snippets/javascript/react-ts.json"
+        "path": "./javascript/react-ts.json"
       },
       {
         "language": "typescriptreact",
-        "path": "./snippets/javascript/next-ts.json"
+        "path": "./javascript/next-ts.json"
       },
       {
         "language": "typescriptreact",
-        "path": "./snippets/javascript/react-native-ts.json"
+        "path": "./javascript/react-native-ts.json"
       },
       {
         "language": [
           "javascriptreact",
           "typescriptreact"
         ],
-        "path": "./snippets/javascript/react-es7.json"
+        "path": "./javascript/react-es7.json"
       },
       {
         "language": "vue",
-        "path": "./snippets/frameworks/vue/html.json"
+        "path": "./frameworks/vue/html.json"
       },
       {
         "language": "vue",
-        "path": "./snippets/frameworks/vue/pug.json"
+        "path": "./frameworks/vue/pug.json"
       },
       {
         "language": "vue",
-        "path": "./snippets/frameworks/vue/javascript.json"
+        "path": "./frameworks/vue/javascript.json"
       },
       {
         "language": "vue",
-        "path": "./snippets/frameworks/vue/vue.json"
+        "path": "./frameworks/vue/vue.json"
       },
       {
         "language": "svelte",
-        "path": "./snippets/svelte.json"
+        "path": "./svelte.json"
       },
       {
         "language": "python",
-        "path": "./snippets/python/base.json"
+        "path": "./python/base.json"
       },
       {
         "language": "python",
-        "path": "./snippets/python/comprehension.json"
+        "path": "./python/comprehension.json"
       },
       {
         "language": "python",
-        "path": "./snippets/python/debug.json"
+        "path": "./python/debug.json"
       },
       {
         "language": "python",
-        "path": "./snippets/python/python.json"
+        "path": "./python/python.json"
       },
       {
         "language": "python",
-        "path": "./snippets/python/unittest.json"
+        "path": "./python/unittest.json"
       },
       {
         "language": "yaml",
-        "path": "./snippets/kubernetes.json"
+        "path": "./kubernetes.json"
       },
       {
         "language": "c",
-        "path": "./snippets/c.json"
+        "path": "./c.json"
       },
       {
         "language": "cpp",
-        "path": "./snippets/cpp.json"
+        "path": "./cpp.json"
       },
       {
         "language": [
           "csharp",
           "cs"
         ],
-        "path": "./snippets/csharp.json"
+        "path": "./csharp.json"
       },
       {
         "language": [
           "gitcommit",
           "NeogitCommitMessage"
         ],
-        "path": "./snippets/gitcommit.json"
+        "path": "./gitcommit.json"
       },
       {
         "language": "ejs",
-        "path": "./snippets/frameworks/ejs.json"
+        "path": "./frameworks/ejs.json"
       },
       {
         "language": "sql",
-        "path": "./snippets/sql.json"
+        "path": "./sql.json"
       },
       {
         "language": [
@@ -167,14 +167,14 @@
           "sh",
           "zsh"
         ],
-        "path": "./snippets/shell.json"
+        "path": "./shell.json"
       },
       {
         "language": [
           "markdown",
           "rmd"
         ],
-        "path": "./snippets/markdown.json"
+        "path": "./markdown.json"
       }
     ]
   }

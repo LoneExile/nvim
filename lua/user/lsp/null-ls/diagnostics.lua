@@ -5,10 +5,13 @@ if not status_ok then
 end
 local diagnostics = null_ls.builtins.diagnostics
 
-local diagnostics = {
+local diagnosticsTable = {
 	-- diagnostics
 	diagnostics.markdownlint.with({
 		filetypes = { "markdown" },
+	}),
+	diagnostics.selene.with({
+		filetype = { "lua" },
 	}),
 	diagnostics.shellcheck.with({
 		filetypes = { "bash", "csh", "ksh", "sh", "zsh" },
@@ -51,4 +54,4 @@ local diagnostics = {
 	}),
 }
 
-return diagnostics
+return diagnosticsTable

@@ -1,15 +1,3 @@
-local api = vim.api
-
--- Highlight on yank
-local yankGrp = api.nvim_create_augroup("YankHighlight", { clear = true })
-api.nvim_create_autocmd("TextYankPost", {
-	command = "silent! lua vim.highlight.on_yank()",
-	group = yankGrp,
-})
-
--------------------------------------------------------------
-
--- local group = vim.api.nvim_create_augroup("transparencyTheme", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {
 	pattern = "*",
 	callback = function()
@@ -52,6 +40,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 			-- neotree
 			vim.cmd([[highlight NeoTreeNormal ctermbg=none guibg=none guifg=#f2f4f8 ]])
+			vim.cmd([[highlight NeoTreeNormalNC ctermbg=none guibg=none guifg=#a9b1d6 ]])
 			vim.cmd([[highlight NeoTreeGitModified guifg=#c678dd]])
 			vim.cmd([[highlight NeoTreeGitConflict gui=bold guifg=#e46876]])
 			vim.cmd([[highlight NeoTreeGitUntracked guifg=#c678dd]])
@@ -78,5 +67,4 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 			vim.cmd([[highlight IlluminatedWordWrite guibg=#1b1f27]])
 		end
 	end,
-	-- group = group,
 })

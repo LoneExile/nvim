@@ -85,6 +85,9 @@ function M.setup()
         hidden = true,
         previewer = false,
       },
+      colorscheme = {
+        theme = 'dropdown',
+      },
       live_grep = {
         --@usage don't include the filename in the search results
         only_sort_text = true,
@@ -103,11 +106,15 @@ function M.setup()
         show_pluto = true,
         show_moon = true,
       },
+      git_status = {
+        initial_mode = 'normal',
+      },
       git_files = {
         theme = 'dropdown',
         hidden = true,
         previewer = false,
         show_untracked = true,
+        initial_mode = 'normal',
       },
       lsp_references = {
         theme = 'dropdown',
@@ -122,7 +129,7 @@ function M.setup()
         initial_mode = 'normal',
       },
       lsp_implementations = {
-        theme = 'dropdown',
+        theme = 'cursor',
         initial_mode = 'normal',
       },
     },

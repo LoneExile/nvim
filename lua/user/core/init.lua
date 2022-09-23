@@ -1,4 +1,3 @@
--- require("user.core.packer").setup()
 require('user.core.optimize')
 require('user.core.options')
 require('user.core.notify')

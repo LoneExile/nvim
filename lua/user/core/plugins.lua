@@ -29,6 +29,7 @@ local pluginTable = {
   { 'lewis6991/impatient.nvim' },
   { 'antoinemadec/FixCursorHold.nvim' },
   { 'dstein64/vim-startuptime' },
+  -- { 'nathom/filetype.nvim' },
 
   ---- editor
   { 'tpope/vim-repeat' },
@@ -141,6 +142,7 @@ local pluginTable = {
   { 'b0o/schemastore.nvim' },
   { 'stevearc/dressing.nvim' },
   -- { "kyazdani42/nvim-tree.lua" },
+  { 'j-hui/fidget.nvim' },
 
   -- Colorschemes
   -- { "LunarVim/onedarker.nvim" },
@@ -162,6 +164,7 @@ return pluginTable
 -- AckslD/nvim-neoclip.lua
 -- mattn/emmet-vim
 -- numToStr/FTerm.nvim
+-- rmagatti/alternate-toggler
 
 -- debugger
 -- nvim-neotest/neotest

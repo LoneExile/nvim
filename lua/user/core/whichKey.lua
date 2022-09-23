@@ -66,14 +66,14 @@ function M.setup()
       winblend = 0,
     },
     layout = {
-      height = { min = 4, max = 25 }, -- min and max height of the columns
-      width = { min = 20, max = 50 }, -- min and max width of the columns
+      height = { min = 4, max = 20 }, -- min and max height of the columns
+      width = { min = 20, max = 30 }, -- min and max width of the columns
       spacing = 2, -- spacing between columns
       align = 'left', -- align columns left, center or right
     },
     hidden = { '<silent>', '<cmd>', '<Cmd>', '<CR>', 'call', 'lua', '^:', '^ ' }, -- hide mapping boilerplate
     ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
-    show_help = true, -- show help message on the command line when the popup is visible
+    show_help = false, -- show help message on the command line when the popup is visible
     triggers = 'auto', -- automatically setup triggers
     -- triggers = {"<leader>"} -- or specify a list manually
     triggers_blacklist = {
@@ -82,6 +82,10 @@ function M.setup()
       -- most people should not need to change this
       i = { 'j', 'k' },
       v = { 'j', 'k' },
+    },
+    disable = {
+      -- buftypes = { '*' },
+      -- filetypes = {'lua'},
     },
   }
 
@@ -114,8 +118,8 @@ function M.setup()
 
   local m_mappings = {
     m = { '<cmd>lua require("harpoon.mark").add_file()<cr>', 'Harpoon' },
-    ['.'] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', 'Harpoon Next' },
-    [','] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', 'Harpoon Prev' },
+    ['j'] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', 'Harpoon Next' },
+    ['k'] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', 'Harpoon Prev' },
     s = { '<cmd>Telescope harpoon marks<cr>', 'Search Files' },
     [';'] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', 'Harpoon UI' },
   }
@@ -626,8 +630,5 @@ function M.setup()
   whichkey.register(vmappings, vopts)
   whichkey.register(m_mappings, m_opts)
 end
-
--- local buf = vim.api.nvim_get_current_buf()
--- local ft = vim.api.nvim_buf_get_option(buf, "filetype")
 
 return M

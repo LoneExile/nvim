@@ -1,7 +1,7 @@
-local status_ok, impatient = pcall(require, "impatient")
+local status_ok, impatient = pcall(require, 'impatient')
 if not status_ok then
-	vim.notify("impatient" .. " not found!")
-	return
+  vim.notify('impatient' .. ' not found!')
+  return
 end
 
 impatient.enable_profile()
@@ -10,7 +10,7 @@ impatient.enable_profile()
 -- in millisecond, used for both CursorHold and CursorHoldI,
 -- use updatetime instead if not defined
 
-vim.g["cursorhold_updatetime"] = 100
+vim.g['cursorhold_updatetime'] = 100
 
 ------------------------------------------------------------
 --disable_distribution_plugins
@@ -32,3 +32,4 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
+-------------------------------------------------------------

@@ -1,41 +1,41 @@
-local status_ok, lspsagaM = pcall(require, "lspsaga")
+local status_ok, lspsagaM = pcall(require, 'lspsaga')
 if not status_ok then
-	vim.notify("lspsaga" .. " not found!")
-	return
+  vim.notify('lspsaga' .. ' not found!')
+  return
 end
 
 ------------------------------------------------------------------------------------------
 local config = {
-	border_style = "rounded",
-	finder_request_timeout = 15000,
-	finder_action_keys = {
-		open = "o",
-		vsplit = "s",
-		split = "i",
-		tabe = "t",
-		quit = "q",
-		scroll_down = "<C-f>",
-		scroll_up = "<C-d>", -- quit can be a table
-	},
-	code_action_keys = {
-		quit = "q",
-		exec = "<CR>",
-	},
-	rename_action_quit = "<C-c>",
-	code_action_icon = "💡",
-	code_action_lightbulb = {
-		enable = true,
-		sign = true,
-		enable_in_insert = true,
-		sign_priority = 20,
-		virtual_text = false,
-	}, -- show symbols in winbar must nightly
-	symbol_in_winbar = {
-		in_custom = false,
-		enable = false,
-		separator = "  ",
-		click_support = false,
-	},
+  border_style = 'rounded',
+  finder_request_timeout = 15000,
+  finder_action_keys = {
+    open = 'o',
+    vsplit = 's',
+    split = 'i',
+    tabe = 't',
+    quit = 'q',
+    scroll_down = '<C-f>',
+    scroll_up = '<C-d>', -- quit can be a table
+  },
+  code_action_keys = {
+    quit = 'q',
+    exec = '<CR>',
+  },
+  rename_action_quit = '<C-c>',
+  code_action_icon = '💡',
+  code_action_lightbulb = {
+    enable = true,
+    sign = false,
+    enable_in_insert = true,
+    sign_priority = 20,
+    virtual_text = false,
+  }, -- show symbols in winbar must nightly
+  symbol_in_winbar = {
+    in_custom = false,
+    enable = false,
+    separator = '  ',
+    click_support = false,
+  },
 }
 
 lspsagaM.init_lsp_saga(config)

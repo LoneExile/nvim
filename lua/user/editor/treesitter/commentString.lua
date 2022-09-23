@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 M.configs = {
 	javascript = {

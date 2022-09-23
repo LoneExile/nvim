@@ -4,7 +4,8 @@ local pluginTable = {
   { 'nvim-lua/plenary.nvim' },
   { 'nvim-lua/popup.nvim' },
   { 'kyazdani42/nvim-web-devicons' },
-  { 'folke/which-key.nvim' },
+  -- { 'folke/which-key.nvim' },
+  { 'LoneExile/which-key.nvim' }, -- NOTE: use hydra and my brain instead
 
   -- Treesitter
   {
@@ -23,7 +24,7 @@ local pluginTable = {
   -- { 'David-Kunz/markid' }, -- highlight variable to use same color
   -- { "nvim-treesitter/nvim-treesitter-textobjects" }, -- movement around text objects
   { 'RRethy/nvim-treesitter-textsubjects' },
-  { 'RRethy/vim-illuminate' },
+  { 'RRethy/vim-illuminate' }, -- NOTE: no need to HL word?
 
   -- optimization
   { 'lewis6991/impatient.nvim' },
@@ -38,10 +39,9 @@ local pluginTable = {
 
   -- tool
   { 'windwp/nvim-spectre' },
-  { 'shatur/neovim-session-manager' },
-  -- { 'LoneExile/neovim-session-manager' },
+  { 'shatur/neovim-session-manager' }, -- NOTE: don't need this anymore, harpoon is enough
   { 'akinsho/toggleterm.nvim' },
-  { 'darazaki/indent-o-matic' },
+  { 'darazaki/indent-o-matic' }, -- NOTE: what is this can do honestly
   -- { "nmac427/guess-indent.nvim" },
 
   -- telescope
@@ -50,16 +50,16 @@ local pluginTable = {
   -- { "nvim-telescope/telescope-ui-select.nvim" },
 
   -- productivity
-  { 'folke/zen-mode.nvim' },
-  { 'folke/twilight.nvim' },
-  { 'folke/todo-comments.nvim' },
+  { 'folke/zen-mode.nvim' }, -- NOTE: useless
+  { 'folke/twilight.nvim' }, -- NOTE: useless
+  { 'folke/todo-comments.nvim' }, -- NOTE: useless? treesitter already supported
 
   -- code
-  { 'AckslD/swenv.nvim' },
+  { 'AckslD/swenv.nvim' }, -- NOTE: change python env, useless?
   { 'theprimeagen/refactoring.nvim' },
   { '0x100101/lab.nvim', run = 'cd js && npm ci' },
-  { 'michaelb/sniprun', run = 'bash ./install.sh' },
-  { 'metakirby5/codi.vim' },
+  { 'michaelb/sniprun', run = 'bash ./install.sh' }, -- NOTE: look cool but lab.nvim can replace this
+  { 'metakirby5/codi.vim' }, -- NOTE: buggy
 
   --motion
   { 'echasnovski/mini.nvim' },
@@ -67,14 +67,14 @@ local pluginTable = {
   { 'declancm/cinnamon.nvim' },
   { 'theprimeagen/harpoon' },
   -- { "max397574/better-escape.nvim" },
-  { 'chentoast/marks.nvim' },
+  { 'chentoast/marks.nvim' }, -- NOTE: am i really use mark?
 
   --git
   { 'lewis6991/gitsigns.nvim' },
   -- { "akinsho/git-conflict.nvim", tag = "*" },
   -- { "https://gitlab.com/yorickpeterse/nvim-pqf", as = "nvim-pqf" },
   { 'sindrets/diffview.nvim' },
-  { 'ThePrimeagen/git-worktree.nvim' },
+  { 'ThePrimeagen/git-worktree.nvim' }, -- NOTE: just use it on cmdline?
 
   -- color
   { 'nvchad/nvim-colorizer.lua' },
@@ -123,7 +123,7 @@ local pluginTable = {
   { 'mfussenegger/nvim-dap' },
   { 'Pocco81/dap-buddy.nvim' },
   { 'rcarriga/nvim-dap-ui' },
-  { 'theHamsta/nvim-dap-virtual-text' },
+  { 'theHamsta/nvim-dap-virtual-text' }, -- NOTE: use dap-ui hover instead?
   -- { "nvim-telescope/telescope-dap.nvim" },
   { 'mfussenegger/nvim-dap-python' },
   -- { "leoluz/nvim-dap-go" },
@@ -142,15 +142,15 @@ local pluginTable = {
   { 'b0o/schemastore.nvim' },
   { 'stevearc/dressing.nvim' },
   -- { "kyazdani42/nvim-tree.lua" },
-  { 'j-hui/fidget.nvim' },
+  { 'j-hui/fidget.nvim' }, -- NOTE: Hmmmmm
 
   -- Colorschemes
   -- { "LunarVim/onedarker.nvim" },
   -- { "EdenEast/nightfox.nvim" },
   -- { "glepnir/zephyr-nvim" },
   { 'folke/tokyonight.nvim' },
-  { 'catppuccin/nvim' },
-  { 'lunarvim/darkplus.nvim' },
+  -- { 'catppuccin/nvim' },
+  -- { 'lunarvim/darkplus.nvim' },
 }
 
 return pluginTable

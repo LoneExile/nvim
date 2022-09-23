@@ -1,5 +1,5 @@
 -- TODO move this to utils
-M = {}
+local M = {}
 function M.format(opts)
 	opts = opts or {}
 	opts.filter = opts.filter or M.format_filter

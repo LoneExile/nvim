@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 local use_icons = true
 M.configs = {

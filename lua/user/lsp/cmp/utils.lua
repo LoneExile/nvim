@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 local status_luasnip_ok, luasnip = pcall(require, "luasnip")
 if not status_luasnip_ok then

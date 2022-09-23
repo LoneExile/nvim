@@ -163,46 +163,46 @@ function M.setup()
       'No Highlight',
     },
     t = { name = 'terminal', t = { '<cmd>ToggleTerm<CR>', 'Toggle Terminal' } },
-    b = {
-      name = 'Buffers',
-      x = {
-        "<cmd>echo expand('%:p')<cr>",
-        'Path',
-      },
-      j = {
-        '<cmd>BufferLinePick<cr>',
-        'Jump',
-      },
-      s = {
-        '<cmd>Telescope buffers<cr>',
-        'find',
-      },
-      p = {
-        '<cmd>BufferLineCyclePrev<cr>',
-        'Previous',
-      },
-      -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" },
-      e = {
-        '<cmd>BufferLinePickClose<cr>',
-        'Pick which buffer to close',
-      },
-      h = {
-        '<cmd>BufferLineCloseLeft<cr>',
-        'Close all to the left',
-      },
-      l = {
-        '<cmd>BufferLineCloseRight<cr>',
-        'Close all to the right',
-      },
-      D = {
-        '<cmd>BufferLineSortByDirectory<cr>',
-        'Sort by directory',
-      },
-      L = {
-        '<cmd>BufferLineSortByExtension<cr>',
-        'Sort by language',
-      },
-    },
+    -- b = {
+    --   name = 'Buffers',
+    --   x = {
+    --     "<cmd>echo expand('%:p')<cr>",
+    --     'Path',
+    --   },
+    --   j = {
+    --     '<cmd>BufferLinePick<cr>',
+    --     'Jump',
+    --   },
+    --   s = {
+    --     '<cmd>Telescope buffers<cr>',
+    --     'find',
+    --   },
+    --   p = {
+    --     '<cmd>BufferLineCyclePrev<cr>',
+    --     'Previous',
+    --   },
+    --   -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" },
+    --   e = {
+    --     '<cmd>BufferLinePickClose<cr>',
+    --     'Pick which buffer to close',
+    --   },
+    --   h = {
+    --     '<cmd>BufferLineCloseLeft<cr>',
+    --     'Close all to the left',
+    --   },
+    --   l = {
+    --     '<cmd>BufferLineCloseRight<cr>',
+    --     'Close all to the right',
+    --   },
+    --   D = {
+    --     '<cmd>BufferLineSortByDirectory<cr>',
+    --     'Sort by directory',
+    --   },
+    --   L = {
+    --     '<cmd>BufferLineSortByExtension<cr>',
+    --     'Sort by language',
+    --   },
+    -- },
     p = {
       name = 'Packer',
       c = {

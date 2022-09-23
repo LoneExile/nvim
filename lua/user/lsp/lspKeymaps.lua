@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 local buffer_mappings = {
   normal_mode = {

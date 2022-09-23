@@ -18,7 +18,7 @@ require('marks').setup({
   -- default 10.
   sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
   -- disables mark tracking for specific filetypes. default {}
-  excluded_filetypes = { 'toggleterm', 'harpoon', 'notify' },
+  excluded_filetypes = { 'toggleterm', 'harpoon', 'notify', 'DressingSelect' },
   -- marks.nvim allows you to configure up to 10 bookmark groups, each with its own
   -- sign/virttext. Bookmarks can be used to group together positions and quickly move
   -- across multiple buffers. default sign is '!@#$%^&*()' (from 0 to 9), and
@@ -32,9 +32,10 @@ require('marks').setup({
   },
   mappings = {
     -- set_next = "m,",
-    next = 'm]',
-    -- preview = "m;",
     -- set_bookmark0 = "m0",
+    next = 'm]',
+    preview = 'mp',
     prev = 'm[', -- pass false to disable only this default mapping
+    delete = 'dm',
   },
 })

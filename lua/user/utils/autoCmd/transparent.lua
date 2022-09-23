@@ -87,3 +87,4 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 -- '@text.literal.markdown_inline',
 -- "DiffviewVertSplit",
 -- "DiffviewCursorLine",
+-- 'CursorLineNr',

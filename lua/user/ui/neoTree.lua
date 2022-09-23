@@ -14,11 +14,11 @@ vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSig
 neoTree.setup({
   event_handlers = {
     {
-      event = "file_opened",
+      event = 'file_opened',
       handler = function(file_path)
         --auto close
-        require("neo-tree").close_all()
-      end
+        require('neo-tree').close_all()
+      end,
     },
   },
   use_default_mappings = false,
@@ -158,45 +158,44 @@ neoTree.setup({
   filesystem = {
     components = {
       harpoon_index = function(config, node, state)
-        local Marked = require("harpoon.mark")
+        local Marked = require('harpoon.mark')
         local path = node:get_id()
         local succuss, index = pcall(Marked.get_index_of, path)
         if succuss and index and index > 0 then
           return {
-            text = string.format(" ⥤ %d", index), -- <-- Add your favorite harpoon like arrow here
-            highlight = config.highlight or "NeoTreeDirectoryIcon",
+            text = string.format(' ⥤ %d', index), -- <-- Add your favorite harpoon like arrow here
+            highlight = config.highlight or 'NeoTreeDirectoryIcon',
           }
         else
           return {}
         end
-      end
+      end,
     },
     renderers = {
       file = {
-        { "indent" },
-        { "icon" },
+        { 'indent' },
+        { 'icon' },
         {
-          "container",
+          'container',
           content = {
             {
-              "name",
-              zindex = 10
+              'name',
+              zindex = 10,
             },
-            { "harpoon_index", zindex = 10
-            },
+            { 'harpoon_index', zindex = 10 },
             -- {
             --   "symlink_target",
             --   zindex = 10,
             --   highlight = "NeoTreeSymbolicLinkTarget",
             -- },
-            { "clipboard", zindex = 10 },
-            { "bufnr", zindex = 10 },
-            { "modified", zindex = 20, align = "right" },
-            { "diagnostics", zindex = 20, align = "right" },
-            { "git_status", zindex = 20, align = "right" },
+            { 'clipboard', zindex = 10 },
+            { 'bufnr', zindex = 10 },
+            { 'modified', zindex = 20, align = 'right' },
+            { 'diagnostics', zindex = 20, align = 'right' },
+            { 'git_status', zindex = 20, align = 'right' },
           },
         },
-      }
+      },
     },
     filtered_items = {
       visible = false, -- when true, they will just be displayed differently than normal items

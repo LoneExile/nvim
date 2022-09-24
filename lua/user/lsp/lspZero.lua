@@ -9,6 +9,13 @@ if not status_ok then
   return
 end
 
+lsp.ensure_installed({
+  'html',
+  'cssls',
+  'tsserver',
+  'css-lsp',
+})
+
 lsp.set_preferences({
   suggest_lsp_servers = true,
   setup_servers_on_start = false,

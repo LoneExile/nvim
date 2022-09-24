@@ -10,11 +10,11 @@ if not status then
   return
 end
 
-function M.setup()
-  local previewers = require('telescope.previewers')
-  local sorters = require('telescope.sorters')
-  local actions = require('telescope.actions')
+local _, actions = pcall(require, 'telescope.actions')
+local _, sorters = pcall(require, 'telescope.sorters')
+local _, previewers = pcall(require, 'telescope.previewers')
 
+function M.setup()
   local configsTelescope = {
     defaults = {
       file_previewer = previewers.vim_buffer_cat.new,
@@ -146,14 +146,15 @@ function M.setup()
     },
   }
 
-  telescope.setup(configsTelescope)
-
-  telescope.load_extension('fzf')
-  telescope.load_extension('projects')
-  telescope.load_extension('notify')
-  telescope.load_extension('git_worktree')
-  telescope.load_extension('refactoring')
-  -- telescope.load_extension("ui-select")
+  if status then
+    telescope.setup(configsTelescope)
+    telescope.load_extension('fzf')
+    telescope.load_extension('projects')
+    telescope.load_extension('notify')
+    telescope.load_extension('git_worktree')
+    telescope.load_extension('refactoring')
+    -- telescope.load_extension("ui-select")
+  end
 end
 
-return M
+return M.setup()

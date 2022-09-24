@@ -5,7 +5,11 @@ vim.api.nvim_create_autocmd(events, {
   pattern = { '*' },
   -- command = ":ColorizerAttachToBuffer",
   callback = function()
-    vim.cmd('ColorizerAttachToBuffer')
+    -- vim.cmd('ColorizerAttachToBuffer')
+    vim.cmd([[
+    if exists('g:colorizer')
+      ColorizerAttachToBuffer
+    ]])
     -- vim.cmd('Neotree close')
   end,
   group = group,

@@ -14,17 +14,20 @@ local pluginTable = {
       pcall(vim.cmd, 'TSUpdate')
     end,
   },
+
   { 'p00f/nvim-ts-rainbow' },
-  { 'numToStr/Comment.nvim' },
-  { 'JoosepAlviste/nvim-ts-context-commentstring' },
   { 'nvim-treesitter/nvim-treesitter-context' },
+  { 'windwp/nvim-ts-autotag' },
+  { 'RRethy/nvim-treesitter-textsubjects' },
+  { 'JoosepAlviste/nvim-ts-context-commentstring' },
+
+  { 'numToStr/Comment.nvim' },
   { 'lukas-reineke/indent-blankline.nvim' },
   { 'windwp/nvim-autopairs' },
-  { 'windwp/nvim-ts-autotag' },
+  { 'RRethy/vim-illuminate' }, -- NOTE: no need to HL word?
+
   -- { 'David-Kunz/markid' }, -- highlight variable to use same color
   -- { "nvim-treesitter/nvim-treesitter-textobjects" }, -- movement around text objects
-  { 'RRethy/nvim-treesitter-textsubjects' },
-  { 'RRethy/vim-illuminate' }, -- NOTE: no need to HL word?
 
   -- optimization
   { 'lewis6991/impatient.nvim' },
@@ -39,7 +42,7 @@ local pluginTable = {
 
   -- tool
   { 'windwp/nvim-spectre' },
-  { 'shatur/neovim-session-manager' }, -- NOTE: don't need this anymore, harpoon is enough
+  -- { 'shatur/neovim-session-manager' }, -- NOTE: don't need this anymore, harpoon is enough
   { 'akinsho/toggleterm.nvim' },
   { 'darazaki/indent-o-matic' }, -- NOTE: what is this can do honestly
   -- { "nmac427/guess-indent.nvim" },
@@ -105,8 +108,8 @@ local pluginTable = {
   { 'folke/lua-dev.nvim' },
   { 'glepnir/lspsaga.nvim', branch = 'main' },
   { 'SmiteshP/nvim-navic' },
-  { 'github/copilot.vim' },
   { 'jose-elias-alvarez/null-ls.nvim' },
+  { 'github/copilot.vim' },
   {
     'zbirenbaum/copilot.lua',
     commit = 'ede741d935cf5d962c9a9e44db2400ed1a4aaf13',
@@ -117,7 +120,11 @@ local pluginTable = {
       end, 100)
     end,
   },
-  { 'zbirenbaum/copilot-cmp', commit = '67825246fa2aa6226ec3320d554640aa4697e1b1', module = 'copilot_cmp' },
+  {
+    'zbirenbaum/copilot-cmp',
+    commit = '67825246fa2aa6226ec3320d554640aa4697e1b1',
+    module = 'copilot_cmp',
+  },
 
   -- debugger
   { 'mfussenegger/nvim-dap' },

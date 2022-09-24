@@ -85,7 +85,7 @@ function M.setup()
     },
     disable = {
       -- buftypes = { '*' },
-      -- filetypes = {'lua'},
+      -- filetypes = { '*' },
     },
   }
 
@@ -435,11 +435,11 @@ function M.setup()
         'Colorscheme with Preview',
       },
     },
-    z = {
+    N = {
       name = 'neovim',
       s = { '<cmd>StartupTime<cr>', 'Startup Time' },
-      c = { '<cmd>checkhealth<cr>', 'Check Health' },
-      C = { '<cmd>LuaCacheClear<cr>', 'Clear Cache' },
+      h = { '<cmd>checkhealth<cr>', 'Check Health' },
+      c = { '<cmd>LuaCacheClear<cr>', 'Clear Cache' },
     },
     u = {
       name = '+Utility',
@@ -631,4 +631,4 @@ function M.setup()
   whichkey.register(m_mappings, m_opts)
 end
 
-return M
+return M.setup()

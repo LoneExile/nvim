@@ -1,9 +1,8 @@
 -- check requirements
-require('user.utils.requirements')
 require('user.core.packer')
--- TODO: if not pass requirements, exit
-----------------------------------
+require('user.utils.requirements')
 
+------------------------------------------------------------------
 require('user.utils.autoCmd')
 require('user.core')
 require('user.lsp')

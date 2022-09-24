@@ -1,4 +1,9 @@
-require('marks').setup({
+local status_ok, mark = pcall(require, 'marks')
+if not status_ok then
+  vim.notify('mark' .. ' not found!')
+  return
+end
+mark.setup({
   -- whether to map keybinds or not. default true
   default_mappings = false,
   -- which builtin marks to show. default {}

@@ -66,6 +66,9 @@ configs.setup({
   -- ** textobjects **
   -- textobjects = { tsTextObjects },
 
+  -- ** ts autopairs **
+  -- autopairs = { enable = true },
+
   -- ** nvim-treesitter-textsubjects **
   textsubjects = {
     enable = true,

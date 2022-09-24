@@ -1,4 +1,9 @@
-require('notify').setup({
+local status_ok, notify = pcall(require, 'notify')
+if not status_ok then
+  vim.notify('notify' .. ' not found!')
+  return
+end
+notify.setup({
   background_colour = '#000000',
   -- background_colour = 'Normal',
   fps = 30,

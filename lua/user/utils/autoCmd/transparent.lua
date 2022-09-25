@@ -58,15 +58,15 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       vim.cmd([[highlight NeoTreeTabActive guibg=#141414 gui=bold,italic]])
       vim.cmd([[highlight NeoTreeTabSeparatorInactive guifg=#777777 guibg=none]])
 
-      -- navic
-      vim.cmd([[highlight NavicSeparator guifg=#61afef gui=bold,italic]])
-      vim.cmd([[highlight NavicText guifg=#d16d9e gui=bold,italic]])
-
       -- diagnostics
       vim.cmd([[highlight DiagnosticVirtualTextError guifg=#db4b4b guibg=none]])
 
       -- Mark
       vim.cmd([[highlight MarkSignHL guifg=#61afef guibg=none gui=bold,italic]])
+
+      -- navic
+      vim.cmd([[highlight NavicSeparator guifg=#61afef gui=bold,italic]])
+      vim.cmd([[highlight NavicText guifg=#d16d9e gui=bold,italic]])
 
       -- Illuminated
       vim.cmd([[highlight IlluminatedWordText guibg=#1b1f27]])
@@ -75,16 +75,3 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     end
   end,
 })
-
--- 'QuickFixLine',
--- 'BufferCurrent',
--- 'ColorColumn',
--- 'TabLineFill',
--- 'TabLineSel',
--- 'TabLine',
--- 'mkdCodeDelimiter',
--- 'mkdCode',
--- '@text.literal.markdown_inline',
--- "DiffviewVertSplit",
--- "DiffviewCursorLine",
--- 'CursorLineNr',

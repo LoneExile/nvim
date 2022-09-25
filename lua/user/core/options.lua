@@ -1,3 +1,4 @@
+-- vim.g.python3_host_prog = "C:\\Users\\Bunlaikun\\scoop\\apps\\pyenv\\current\\pyenv-win\\shims\\python3.bat",
 vim.g.python3_host_prog = '$HOME/.pyenv/versions/nvim/bin/python3'
 
 local options = {
@@ -36,6 +37,7 @@ local options = {
   sidescrolloff = 8,
   -- guifont = "monospace:h17", -- the font used in graphical neovim applications
   whichwrap = 'h,l,<,>,[,],~',
+  -- guicursor = 'n-v-c-i:block',
 }
 
 vim.opt.shortmess:append('c')

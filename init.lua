@@ -11,8 +11,6 @@ require('user.editor')
 require('user.ui')
 ---------------------------------
 
--- TODO PERF FIX WARNING HACK NOTE
-
 -- TODO: remaps which-key when i change filetypes
 
 -- FIX: startup time

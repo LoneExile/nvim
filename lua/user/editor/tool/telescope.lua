@@ -153,6 +153,7 @@ function M.setup()
     telescope.load_extension('notify')
     telescope.load_extension('git_worktree')
     telescope.load_extension('refactoring')
+    telescope.load_extension('projects')
     -- telescope.load_extension("ui-select")
   end
 end

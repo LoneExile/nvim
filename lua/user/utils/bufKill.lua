@@ -5,7 +5,7 @@ local M = {}
 ---@param bufnr? number defaults to the current buffer
 ---@param force? boolean defaults to false
 function M.buf_kill(kill_command, bufnr, force)
-  kill_command = kill_command or "bd"
+  kill_command = kill_command or 'bd'
 
   local bo = vim.bo
   local api = vim.api
@@ -21,15 +21,15 @@ function M.buf_kill(kill_command, bufnr, force)
   if not force then
     local warning
     if bo[bufnr].modified then
-      warning = fmt([[No write since last change for (%s)]], fnamemodify(bufname, ":t"))
-    elseif api.nvim_buf_get_option(bufnr, "buftype") == "terminal" then
+      warning = fmt([[No write since last change for (%s)]], fnamemodify(bufname, ':t'))
+    elseif api.nvim_buf_get_option(bufnr, 'buftype') == 'terminal' then
       warning = fmt([[Terminal %s will be killed]], bufname)
     end
     if warning then
       vim.ui.input({
         prompt = string.format([[%s. Close it anyway? [y]es or [n]o (default: no): ]], warning),
       }, function(choice)
-        if choice:match("ye?s?") then
+        if choice:match('ye?s?') then
           force = true
         end
       end)
@@ -49,7 +49,7 @@ function M.buf_kill(kill_command, bufnr, force)
   end
 
   if force then
-    kill_command = kill_command .. "!"
+    kill_command = kill_command .. '!'
   end
 
   -- Get list of active buffers
@@ -75,7 +75,7 @@ function M.buf_kill(kill_command, bufnr, force)
   -- Check if buffer still exists, to ensure the target buffer wasn't killed
   -- due to options like bufhidden=wipe.
   if api.nvim_buf_is_valid(bufnr) and bo[bufnr].buflisted then
-    vim.cmd(string.format("%s %d", kill_command, bufnr))
+    vim.cmd(string.format('%s %d', kill_command, bufnr))
   end
 end
 

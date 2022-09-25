@@ -1,6 +1,6 @@
-local status_ok, null_ls = pcall(require, "null-ls")
+local status_ok, null_ls = pcall(require, 'null-ls')
 if not status_ok then
-  vim.notify("null_ls" .. " not found!")
+  vim.notify('null_ls' .. ' not found!')
   return
 end
 local code_actions = null_ls.builtins.code_actions
@@ -12,11 +12,11 @@ local codeAction = {
   -- }),
   code_actions.eslint.with({
     filetypes = {
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact",
-      "vue",
+      'javascript',
+      'javascriptreact',
+      'typescript',
+      'typescriptreact',
+      'vue',
     },
     extra_args = {
       -- "-f",
@@ -24,13 +24,13 @@ local codeAction = {
       -- "--stdin",
       -- "--stdin-filename",
       -- "$FILENAME",
-      "--no-eslintrc",
-      "--env",
-      "es6",
+      '--no-eslintrc',
+      '--env',
+      'es6',
     },
   }),
   code_actions.shellcheck.with({
-    extra_args = { "--severity", "warning" },
+    extra_args = { '--severity', 'warning' },
   }),
   -- code_actions.gitsigns.with({
   -- 	-- disabled_filetypes = { "lua" },

@@ -34,6 +34,7 @@ masonCofig.setup({
 
     'html-lsp',
     'typescript-language-server',
+    'vue-language-server',
 
     -- linters
     'eslint_d',

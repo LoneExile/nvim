@@ -12,7 +12,7 @@ M.CURRENTOS = vim.loop.os_uname().sysname
 M.TRANPARENT = true
 
 if M.CURRENTOS == 'Darwin' then
-  TRANPARENT = false
+  M.TRANPARENT = false
   vim.g.clipboard = {
     name = 'macOS-clipboard',
     copy = {
@@ -31,7 +31,7 @@ end
 
 -- windows -- MINGW64_NT-10.0
 if M.CURRENTOS == 'windows' or M.CURRENTOS == 'windows_nt' then
-  TRANPARENT = false
+  M.TRANPARENT = false
   vim.g.clipboard = {
     name = 'win32yank',
     copy = {

@@ -36,6 +36,7 @@ local linux = {
   },
 }
 
+local CURRENTOS = require('user.utils.requirements').CURRENTOS
 if CURRENTOS == 'Linux' then
   for _, v in ipairs(linux) do
     table.insert(terminal.execs, v)

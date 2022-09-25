@@ -1,4 +1,6 @@
-if not TRANPARENT then
+local TRANPARENT = require('user.utils.requirements').TRANPARENT
+
+if TRANPARENT then
   vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = '*',
     callback = function()

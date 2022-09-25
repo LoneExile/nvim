@@ -6,12 +6,6 @@ if not cmp_ok then
   return
 end
 
-local status_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
-if not status_ok then
-  vim.notify('nvim-autopairs not installed', vim.log.levels.ERROR)
-  return
-end
-
 local luasnip_ok, luasnip = pcall(require, 'luasnip')
 if not luasnip_ok then
   vim.notify('luasnip' .. ' not found!')
@@ -20,10 +14,27 @@ end
 require('user.lsp.cmp.luasnip')
 
 --------------------------------------------------
-
 -- https://github.com/windwp/nvim-autopairs#you-need-to-add-mapping-cr-on-nvim-cmp-setupcheck-readmemd-on-nvim-cmp-repo
-cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-
+-- local _, cmp = pcall(require, 'cmp')
+local _, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+local _, handlers = pcall(require, 'nvim-autopairs.completion.handlers')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done({
+    filetypes = {
+      -- "*" is a alias to all filetypes
+      ['*'] = {
+        ['('] = {
+          kind = {
+            cmp.lsp.CompletionItemKind.Function,
+            cmp.lsp.CompletionItemKind.Method,
+          },
+          handler = handlers['*'],
+        },
+      },
+    },
+  })
+)
 --------------------------------------------------
 
 local jumpable = require('user.lsp.cmp.utils').jumpable

@@ -8,9 +8,13 @@ end
 
 -- https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
 local terminal = require('user.editor.coding.toggleterm').terminal
+
 terminal.execs = {
   { 'lazygit', '<leader>gg', 'LazyGit', 'float' },
   { 'lazygit', '<leader>tg', 'LazyGit', 'float' },
+}
+
+local linux = {
   {
     'nnn -er',
     '<leader>tn',
@@ -31,6 +35,12 @@ terminal.execs = {
     'float',
   },
 }
+
+if CURRENTOS == 'Linux' then
+  for _, v in ipairs(linux) do
+    table.insert(terminal.execs, v)
+  end
+end
 
 function M.setup()
   local conf = {

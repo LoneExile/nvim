@@ -1,4 +1,3 @@
--- vim.g.python3_host_prog = "C:\\Users\\Bunlaikun\\scoop\\apps\\pyenv\\current\\pyenv-win\\shims\\python3.bat",
 vim.g.python3_host_prog = '$HOME/.pyenv/versions/nvim/bin/python3'
 
 local options = {
@@ -46,10 +45,15 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+-- don't comment next line
 vim.cmd('autocmd BufEnter * set formatoptions-=cro')
 vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 
-if vim.loop.os_uname().sysname == 'Darwin' then
+_G.CURRENTOS = vim.loop.os_uname().sysname
+_G.TRANPARENT = true
+
+if CURRENTOS == 'Darwin' then
+  TRANPARENT = false
   vim.g.clipboard = {
     name = 'macOS-clipboard',
     copy = {
@@ -64,4 +68,23 @@ if vim.loop.os_uname().sysname == 'Darwin' then
   }
   vim.g.python_host_prog = '/usr/bin/python'
   vim.g.python3_host_prog = '/usr/local/bin/python3'
+end
+
+-- windows -- MINGW64_NT-10.0
+if CURRENTOS == 'windows' or CURRENTOS == 'windows_nt' then
+  TRANPARENT = false
+  vim.g.clipboard = {
+    name = 'win32yank',
+    copy = {
+      ['+'] = 'win32yank.exe -i --crlf',
+      ['*'] = 'win32yank.exe -i --crlf',
+    },
+    paste = {
+      ['+'] = 'win32yank.exe -o --lf',
+      ['*'] = 'win32yank.exe -o --lf',
+    },
+    cache_enabled = 0,
+  }
+  vim.g.python_host_prog = 'c:\\users\\bunlaikun\\scoop\\apps\\pyenv\\current\\pyenv-win\\shims\\python.bat'
+  vim.g.python3_host_prog = 'c:\\users\\bunlaikun\\scoop\\apps\\pyenv\\current\\pyenv-win\\shims\\python3.bat'
 end

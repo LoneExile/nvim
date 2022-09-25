@@ -67,7 +67,7 @@ M.keymaps = {
   ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ cmp_select }), { 'i' }),
   ['<C-d>'] = cmp.mapping.scroll_docs(-4),
   ['<C-f>'] = cmp.mapping.scroll_docs(4),
-  ['<C-y>'] = cmp.mapping({
+  ['<C-a>'] = cmp.mapping({
     i = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
@@ -105,30 +105,33 @@ M.keymaps = {
   end, { 'i', 's' }),
   ['<C-Space>'] = cmp.mapping.complete(),
   ['<C-e>'] = cmp.mapping.abort(),
-  -- ["<CR>"] = cmp.mapping(function(fallback)
-  -- 	if cmp.visible() then
-  -- 		local confirm_opts = confirmOpts
-  -- 		local is_insert_mode = function()
-  -- 			return vim.api.nvim_get_mode().mode:sub(1, 1) == "i"
-  -- 		end
-  -- 		if is_insert_mode() then -- prevent overwriting brackets
-  -- 			confirm_opts.behavior = cmp.ConfirmBehavior.Insert
-  -- 		end
-  -- 		cmp.confirm(confirm_opts)
-  -- 		if jumpable(1) then
-  -- 			luasnip.jump(1)
-  -- 		end
-  -- 		return
-  -- 	end
-  --
-  -- 	if jumpable(1) then
-  -- 		if not luasnip.jump(1) then
-  -- 			fallback()
-  -- 		end
-  -- 	else
-  -- 		fallback()
-  -- 	end
-  -- end),
+  ['<CR>'] = cmp.mapping(function(fallback)
+    fallback()
+    -- if cmp.visible() then
+    --   local confirm_opts = confirmOpts
+    --   local is_insert_mode = function()
+    --     return vim.api.nvim_get_mode().mode:sub(1, 1) == 'i'
+    --   end
+    --   if is_insert_mode() then -- prevent overwriting brackets
+    --     confirm_opts.behavior = cmp.ConfirmBehavior.Insert
+    --   end
+    --   cmp.confirm(confirm_opts)
+    --   if jumpable(1) then
+    --     luasnip.jump(1)
+    --   end
+    --   return
+    -- end
+    -- -- local line, _ = unpack(vim.api.nvim_win_get_cursor(0))
+    -- -- vim.cmd(line .. ',s/.$//')
+    --
+    -- if jumpable(1) then
+    --   if not luasnip.jump(1) then
+    --     fallback()
+    --   end
+    -- else
+    --   fallback()
+    -- end
+  end),
 }
 
 return M

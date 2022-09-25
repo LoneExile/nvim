@@ -49,8 +49,8 @@ end
 vim.cmd('autocmd BufEnter * set formatoptions-=cro')
 vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 
-_G.CURRENTOS = vim.loop.os_uname().sysname
-_G.TRANPARENT = true
+CURRENTOS = vim.loop.os_uname().sysname
+TRANPARENT = true
 
 if CURRENTOS == 'Darwin' then
   TRANPARENT = false

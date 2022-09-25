@@ -113,7 +113,7 @@ return {
         end
         return msg
       end
-      local buf_ft = vim.bo.filetype
+      -- local buf_ft = vim.bo.filetype
       local buf_client_names = {}
 
       -- add client

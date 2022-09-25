@@ -4,8 +4,8 @@ if not status_ok_ui then
   return
 end
 
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
+-- local opts = { noremap = true, silent = true }
+-- local keymap = vim.api.nvim_set_keymap
 
 -- keymap("n", "co", "<Plug>(git-conflict-ours)", opts)
 -- keymap("n", "ct", "<Plug>(git-conflict-theirs)", opts)
@@ -14,17 +14,17 @@ local keymap = vim.api.nvim_set_keymap
 -- keymap("n", "]x", "<Plug>(git-conflict-prev-conflict)", opts)
 -- keymap("n", "[x", "<Plug>(git-conflict-next-conflict)", opts)
 
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'GitConflictDetected',
-  callback = function()
-    vim.notify('Conflict detected in ' .. vim.fn.expand('<afile>'))
-    vim.keymap.set('n', 'cww', function()
-      engage.conflict_buster()
-      create_buffer_local_mappings()
-    end)
-  end,
-})
-
+-- vim.api.nvim_create_autocmd('User', {
+--   pattern = 'GitConflictDetected',
+--   callback = function()
+--     vim.notify('Conflict detected in ' .. vim.fn.expand('<afile>'))
+--     vim.keymap.set('n', 'cww', function()
+--       engage.conflict_buster()
+--       create_buffer_local_mappings()
+--     end)
+--   end,
+-- })
+--
 local configs = {
   {
     default_mappings = false, -- disable buffer local mapping created by this plugin

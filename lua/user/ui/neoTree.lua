@@ -15,7 +15,7 @@ neoTree.setup({
   event_handlers = {
     {
       event = 'file_opened',
-      handler = function(file_path)
+      handler = function(--[[ file_path ]])
         --auto close
         require('neo-tree').close_all()
       end,
@@ -155,9 +155,10 @@ neoTree.setup({
     },
   },
   nesting_rules = {},
+  -- harpoon_index = function(config, node, state)
   filesystem = {
     components = {
-      harpoon_index = function(config, node, state)
+      harpoon_index = function(config, node)
         local Marked = require('harpoon.mark')
         local path = node:get_id()
         local succuss, index = pcall(Marked.get_index_of, path)

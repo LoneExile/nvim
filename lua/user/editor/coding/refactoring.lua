@@ -1,9 +1,9 @@
-local status_ok_ui, telescope = pcall(require, 'telescope')
+local status_ok_ui, refactoring = pcall(require, 'refactoring')
 if not status_ok_ui then
   return
 end
 
-require('refactoring').setup({
+refactoring.setup({
   prompt_func_return_type = {
     go = false,
     java = false,

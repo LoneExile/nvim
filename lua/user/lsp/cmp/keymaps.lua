@@ -41,10 +41,10 @@ local jumpable = require('user.lsp.cmp.utils').jumpable
 local has_words_before = require('user.lsp.cmp.utils').has_words_before
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-local confirmOpts = {
-  behavior = cmp.ConfirmBehavior.Replace,
-  select = false,
-}
+-- local confirmOpts = {
+--   behavior = cmp.ConfirmBehavior.Replace,
+--   select = false,
+-- }
 
 M.keymaps = {
   -- ["<C-k>"] = cmp.mapping.select_prev_item(),

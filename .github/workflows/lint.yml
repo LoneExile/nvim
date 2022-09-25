@@ -2,28 +2,15 @@ name: Main
 on: push
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-20.04
+  super-lint:
+    name: Lint code base
+    runs-on: ubuntu-latest
     steps:
-      - name: Clone repo
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Luacheck
-        uses: nebularg/actions-luacheck@v1
-        with:
-          files: .
-          annotate: warning
-
-  format:
-    name: Format
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Clone repo
-        uses: actions/checkout@v3
-
-      - name: StyLua
-        uses: JohnnyMorganz/stylua-action@v1.1.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          args: --color always --check .
+      - name: Run Super-Linter
+        uses: github/super-linter@v3
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

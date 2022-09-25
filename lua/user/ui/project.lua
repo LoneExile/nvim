@@ -25,7 +25,7 @@ project.setup({
 
   -- Don't calculate root dir on specific directories
   -- Ex: { "~/.cargo/*", ... }
-  exclude_dirs = { '~/.cargo/*', '~/.local/share/*', vim.fn.stdpath('data'), '/home/bunlaikun/.local/' },
+  exclude_dirs = { '~/.cargo/*', '~/.local/share/*', './node_modules/*' },
 
   -- Show hidden files in telescope
   show_hidden = false,
@@ -38,5 +38,3 @@ project.setup({
   -- telescope
   datapath = vim.fn.stdpath('data'),
 })
-
-require('telescope').load_extension('projects')

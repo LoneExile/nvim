@@ -24,6 +24,7 @@ terminal.execs = {
     'float',
   },
   {
+    -- TODO: use config location instead
     'bash ~/.config/nvim/scripts/cht/cht.sh',
     '<leader>tc',
     'cheet sheet',
@@ -85,7 +86,7 @@ function M.setup()
     },
     disable = {
       -- buftypes = { '*' },
-      -- filetypes = { '*' },
+      filetypes = { '*' },
     },
   }
 
@@ -126,12 +127,9 @@ function M.setup()
 
   local mappings = {
     ['e'] = {
-      -- "<cmd>NvimTreeToggle<CR>",
-      -- "<cmd>Neotree action=focus source=filesystem position=float toggle=true<CR>",
       '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>',
       -- function()
-      -- 	vim.cmd("NeoTreeFloatToggle")
-      -- 	-- 	vim.cmd("Neotree position=float toggle=true")
+      -- 	vim.cmd("Neotree position=float toggle=true")
       -- end,
       'Explorer',
     },
@@ -451,6 +449,7 @@ function M.setup()
           'Word',
         },
         t = { '<cmd>Twilight<cr>', 'Paragraph' },
+        a = { '<cmd>lua require("hlargs").toggle()<cr>', 'Arguments' },
       },
       t = { '<cmd>TodoTelescope<cr>', 'TODO' },
       p = { "<cmd>lua require('swenv.api').pick_venv()<cr>", 'Pyenv' },

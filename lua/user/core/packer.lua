@@ -2,9 +2,9 @@ local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/'
 local snapshot_path = vim.fn.expand('$HOME') .. '/.config/nvim/plugin/snapshot/'
 local pluginTable = require('user.core.plugins')
-
+local M = {}
 if fn.empty(fn.glob(install_path .. 'packer.nvim')) > 0 then
-  PACKER_BOOTSTRAP = fn.system({
+  M.PACKER_BOOTSTRAP = fn.system({
     'git',
     'clone',
     '--depth',
@@ -37,10 +37,12 @@ packer.startup(function(use)
     use(plugin)
   end
 
-  if PACKER_BOOTSTRAP then
+  if M.PACKER_BOOTSTRAP then
     require('packer').sync()
   end
 end)
+
+return M
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 -- vim.cmd([[

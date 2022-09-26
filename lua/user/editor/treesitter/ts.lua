@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 local commentConfig = require('user.editor.treesitter.commentString').configs
--- local tsTextObjects = require("user.editor.treesitter.tsTextObjects")
+local tsTextObjects = require('user.editor.treesitter.tsTextObjects')
 
 configs.setup({
   -- ensure_installed = 'all',
@@ -63,7 +63,7 @@ configs.setup({
   },
 
   -- ** textobjects **
-  -- textobjects = { tsTextObjects },
+  textobjects = tsTextObjects,
 
   -- ** ts autopairs **
   -- autopairs = { enable = true },

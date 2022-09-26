@@ -27,6 +27,7 @@ require('user.editor.motion.smoothScroll')
 require('user.editor.motion.harpoon')
 -- require("user.editor.motion.betterEscape")
 require('user.editor.motion.mark')
+require('user.editor.motion.hop')
 
 -- color
 require('user.editor.color.colorizer')

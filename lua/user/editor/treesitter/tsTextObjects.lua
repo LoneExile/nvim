@@ -24,28 +24,28 @@ local config = {
     move = {
       enable = true,
       set_jumps = true,
-      -- goto_next_start = {
-      --   ["]m"] = "@function.outer",
-      --   ["]]"] = "@class.outer",
-      -- },
-      -- goto_next_end = {
-      --   ["]M"] = "@function.outer",
-      --   ["]["] = "@class.outer",
-      -- },
-      -- goto_previous_start = {
-      --   ["[m"] = "@function.outer",
-      --   ["[["] = "@class.outer",
-      -- },
-      -- goto_previous_end = {
-      --   ["[M"] = "@function.outer",
-      --   ["[]"] = "@class.outer",
-      -- },
+      goto_next_start = {
+        [']m'] = '@function.outer',
+        [']]'] = '@class.outer',
+      },
+      goto_next_end = {
+        [']M'] = '@function.outer',
+        [']['] = '@class.outer',
+      },
+      goto_previous_start = {
+        ['[m'] = '@function.outer',
+        ['[['] = '@class.outer',
+      },
+      goto_previous_end = {
+        ['[M'] = '@function.outer',
+        ['[]'] = '@class.outer',
+      },
     },
-    -- swap = {
-    --   enable = true,
-    --   swap_next = { ["<leader>xp"] = "@parameter.inner" },
-    --   swap_previous = { ["<leader>xP"] = "@parameter.inner" },
-    -- },
+    swap = {
+      enable = true,
+      swap_next = { ['<leader>xp'] = '@parameter.inner' },
+      swap_previous = { ['<leader>xP'] = '@parameter.inner' },
+    },
   },
 }
 

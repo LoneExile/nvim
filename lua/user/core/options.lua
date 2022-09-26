@@ -1,9 +1,7 @@
-vim.g.python3_host_prog = '$HOME/.pyenv/versions/nvim/bin/python3'
-
 local options = {
   showtabline = 0, -- always show tabs
   backup = false, -- creates a backup file
-  clipboard = 'unnamedplus', -- allows neovim to access the system clipboard
+  -- clipboard = 'unnamedplus', -- allows neovim to access the system clipboard
   cmdheight = 1, -- more space in the neovim command line for displaying messages
   completeopt = { 'menuone', 'noselect' }, -- mostly just for cmp
   conceallevel = 0, -- so that `` is visible in markdown files

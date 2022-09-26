@@ -31,7 +31,7 @@ local pluginTable = {
   { 'RRethy/vim-illuminate' }, -- NOTE: no need to HL word?
 
   -- { 'David-Kunz/markid' }, -- highlight variable to use same color
-  -- { "nvim-treesitter/nvim-treesitter-textobjects" }, -- movement around text objects
+  { 'nvim-treesitter/nvim-treesitter-textobjects' }, -- movement around text objects
 
   -- optimization
   { 'lewis6991/impatient.nvim' },
@@ -70,6 +70,7 @@ local pluginTable = {
 
   --motion
   { 'echasnovski/mini.nvim' },
+  { 'phaazon/hop.nvim' },
   { 'nacro90/numb.nvim' },
   { 'declancm/cinnamon.nvim' },
   { 'theprimeagen/harpoon' },

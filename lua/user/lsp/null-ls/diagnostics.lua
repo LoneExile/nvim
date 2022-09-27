@@ -30,7 +30,7 @@ local diagnosticsTable = {
       'javascriptreact',
       'typescript',
       'typescriptreact',
-      'vue',
+      -- 'vue',
     },
     extra_args = {
       '-f',

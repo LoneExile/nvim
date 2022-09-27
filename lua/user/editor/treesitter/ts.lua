@@ -63,7 +63,7 @@ configs.setup({
   },
 
   -- ** textobjects **
-  textobjects = tsTextObjects,
+  -- textobjects = tsTextObjects,
 
   -- ** ts autopairs **
   -- autopairs = { enable = true },

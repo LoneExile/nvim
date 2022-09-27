@@ -1,8 +1,13 @@
-require("marks").setup({
+local status_ok, mark = pcall(require, 'marks')
+if not status_ok then
+  vim.notify('mark' .. ' not found!')
+  return
+end
+mark.setup({
   -- whether to map keybinds or not. default true
-  default_mappings = true,
+  default_mappings = false,
   -- which builtin marks to show. default {}
-  builtin_marks = { ".", "<", ">", "^" },
+  builtin_marks = { '.', '<', '>', '^' },
   -- whether movements cycle back to the beginning/end of buffer. default true
   cyclic = true,
   -- whether the shada file is updated after modifying uppercase marks. default false
@@ -18,23 +23,24 @@ require("marks").setup({
   -- default 10.
   sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
   -- disables mark tracking for specific filetypes. default {}
-  excluded_filetypes = {},
+  excluded_filetypes = { 'toggleterm', 'harpoon', 'notify', 'DressingSelect' },
   -- marks.nvim allows you to configure up to 10 bookmark groups, each with its own
   -- sign/virttext. Bookmarks can be used to group together positions and quickly move
   -- across multiple buffers. default sign is '!@#$%^&*()' (from 0 to 9), and
   -- default virt_text is "".
   bookmark_0 = {
-    sign = "⚑",
-    virt_text = "hello world",
+    sign = '⚑',
+    virt_text = 'hello world',
     -- explicitly prompt for a virtual line annotation when setting a bookmark from this group.
     -- defaults to false.
     annotate = false,
   },
   mappings = {
-    set_next = "m,",
-    next = "m]",
-    preview = "m;",
-    set_bookmark0 = "m0",
-    prev = false, -- pass false to disable only this default mapping
+    -- set_next = "m,",
+    -- set_bookmark0 = "m0",
+    next = 'm]',
+    preview = 'mp',
+    prev = 'm[', -- pass false to disable only this default mapping
+    delete = 'dm',
   },
 })

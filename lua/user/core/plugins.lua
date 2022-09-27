@@ -1,144 +1,203 @@
 local pluginTable = {
-	-- base
-	{ "wbthomason/packer.nvim" },
-	{ "nvim-lua/plenary.nvim" },
-	{ "nvim-lua/popup.nvim" },
-	{ "kyazdani42/nvim-web-devicons" },
-	{ "folke/which-key.nvim" },
+  -- base
+  { 'wbthomason/packer.nvim' },
+  { 'nvim-lua/plenary.nvim' },
+  { 'nvim-lua/popup.nvim' },
+  { 'kyazdani42/nvim-web-devicons' },
+  -- { 'folke/which-key.nvim' },
+  { 'LoneExile/which-key.nvim' }, -- NOTE: use hydra and my brain instead
 
-	-- Treesitter
-	{ "nvim-treesitter/nvim-treesitter" },
-	{ "p00f/nvim-ts-rainbow" },
-	{ "numToStr/Comment.nvim" },
-	{ "JoosepAlviste/nvim-ts-context-commentstring" },
-	{ "nvim-treesitter/nvim-treesitter-context" },
-	{ "lukas-reineke/indent-blankline.nvim" },
-	{ "windwp/nvim-autopairs" },
-	{ "windwp/nvim-ts-autotag" },
-	{ "David-Kunz/markid" },
-	{ "nvim-treesitter/nvim-treesitter-textobjects" },
-	{ "RRethy/nvim-treesitter-textsubjects" },
+  -- Treesitter
+  {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      pcall(vim.cmd, 'TSUpdate')
+    end,
+  },
 
-	-- optimization
-	{ "lewis6991/impatient.nvim" },
-	{ "antoinemadec/FixCursorHold.nvim" },
+  { 'p00f/nvim-ts-rainbow' },
+  { 'nvim-treesitter/nvim-treesitter-context' },
+  { 'windwp/nvim-ts-autotag' },
+  { 'RRethy/nvim-treesitter-textsubjects' },
+  { 'JoosepAlviste/nvim-ts-context-commentstring' },
 
-	---- editor
-	{ "tpope/vim-repeat" },
-	-- { "wellle/targets.vim" },
-	{ "dhruvasagar/vim-open-url" },
+  {
+    'm-demare/hlargs.nvim',
+    requires = { 'nvim-treesitter/nvim-treesitter' },
+  },
+  { 'numToStr/Comment.nvim' },
+  { 'lukas-reineke/indent-blankline.nvim' },
+  { 'windwp/nvim-autopairs' },
+  { 'RRethy/vim-illuminate' }, -- NOTE: no need to HL word?
 
-	-- tool
-	{ "windwp/nvim-spectre" },
-	{ "shatur/neovim-session-manager" },
-	{ "akinsho/toggleterm.nvim" },
-	{ "nvim-telescope/telescope.nvim" },
-	{ "nvim-telescope/telescope-fzf-native.nvim" },
-	{ "darazaki/indent-o-matic" },
-	{ "nmac427/guess-indent.nvim" },
+  -- { 'David-Kunz/markid' }, -- highlight variable to use same color
+  { 'nvim-treesitter/nvim-treesitter-textobjects' }, -- movement around text objects
 
-	-- productivity
-	{ "folke/zen-mode.nvim" },
-	{ "folke/twilight.nvim" },
-	{ "folke/todo-comments.nvim" },
+  -- optimization
+  { 'lewis6991/impatient.nvim' },
+  { 'antoinemadec/FixCursorHold.nvim' },
+  { 'dstein64/vim-startuptime' },
+  -- { 'nathom/filetype.nvim' },
 
-	-- code
-	{ "theprimeagen/refactoring.nvim" },
-	{ "michaelb/sniprun", run = "bash ./install.sh" },
-	{ "metakirby5/codi.vim" },
+  ---- editor
+  { 'tpope/vim-repeat' },
+  { 'wellle/targets.vim' }, -- textobject
+  { 'dhruvasagar/vim-open-url' },
 
-	--motion
-	{ "echasnovski/mini.nvim" },
-	{ "nacro90/numb.nvim" },
-	{ "declancm/cinnamon.nvim" },
-	{ "theprimeagen/harpoon" },
-	{ "max397574/better-escape.nvim" },
-	{ "chentoast/marks.nvim" },
+  -- tool
+  { 'windwp/nvim-spectre' },
+  -- { 'shatur/neovim-session-manager' }, -- NOTE: don't need this anymore, harpoon is enough
+  { 'akinsho/toggleterm.nvim' },
+  { 'darazaki/indent-o-matic' }, -- NOTE: what is this can do honestly
+  -- { "nmac427/guess-indent.nvim" },
 
-	--git
-	{ "lewis6991/gitsigns.nvim" },
-	{ "akinsho/git-conflict.nvim", tag = "*" },
-	{ "https://gitlab.com/yorickpeterse/nvim-pqf", as = "nvim-pqf" },
-	{ "sindrets/diffview.nvim" },
+  -- telescope
+  { 'nvim-telescope/telescope.nvim' },
+  { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+  -- { "nvim-telescope/telescope-ui-select.nvim" },
 
-	-- color
-	{ "nvchad/nvim-colorizer.lua" },
-	{ "max397574/colortils.nvim" },
+  -- productivity
+  { 'folke/zen-mode.nvim' }, -- NOTE: useless
+  { 'folke/twilight.nvim' }, -- NOTE: useless
+  { 'folke/todo-comments.nvim' }, -- NOTE: useless? treesitter already supported
 
-	-- lsp
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		requires = {
-			-- LSP Support
-			{ "neovim/nvim-lspconfig" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
+  -- code
+  { 'AckslD/swenv.nvim' }, -- NOTE: change python env, useless?
+  { 'theprimeagen/refactoring.nvim' },
+  { '0x100101/lab.nvim', run = 'cd js && npm ci' },
+  { 'michaelb/sniprun', run = 'bash ./install.sh' }, -- NOTE: look cool but lab.nvim can replace this
+  { 'metakirby5/codi.vim' }, -- NOTE: buggy
 
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-nvim-lua" },
+  --motion
+  { 'echasnovski/mini.nvim' },
+  { 'phaazon/hop.nvim' },
+  { 'nacro90/numb.nvim' },
+  { 'declancm/cinnamon.nvim' },
+  { 'theprimeagen/harpoon' },
+  -- { "max397574/better-escape.nvim" },
+  { 'chentoast/marks.nvim' }, -- NOTE: am i really use mark?
 
-			-- Snippets
-			{ "L3MON4D3/LuaSnip" },
-			-- { "rafamadriz/friendly-snippets" },
-		},
-	},
-	{ "folke/lua-dev.nvim" },
-	{ "glepnir/lspsaga.nvim", branch = "main" },
-	{ "SmiteshP/nvim-navic" },
-	{ "github/copilot.vim" },
-	{ "jose-elias-alvarez/null-ls.nvim" },
-	{
-		"zbirenbaum/copilot.lua",
-		commit = "ede741d935cf5d962c9a9e44db2400ed1a4aaf13",
-		event = { "VimEnter" },
-		config = function()
-			vim.defer_fn(function()
-				require("copilot").setup()
-			end, 100)
-		end,
-	},
-	{ "zbirenbaum/copilot-cmp", commit = "67825246fa2aa6226ec3320d554640aa4697e1b1", module = "copilot_cmp" },
+  --git
+  { 'lewis6991/gitsigns.nvim' },
+  -- { "akinsho/git-conflict.nvim", tag = "*" },
+  -- { "https://gitlab.com/yorickpeterse/nvim-pqf", as = "nvim-pqf" },
+  { 'sindrets/diffview.nvim' },
+  { 'ThePrimeagen/git-worktree.nvim' }, -- NOTE: just use it on cmdline?
 
-	-- debugger
-	{ "mfussenegger/nvim-dap" },
-	{ "Pocco81/dap-buddy.nvim" },
-	{ "rcarriga/nvim-dap-ui" },
-	{ "theHamsta/nvim-dap-virtual-text" },
-	{ "nvim-telescope/telescope-dap.nvim" },
-	{ "mfussenegger/nvim-dap-python" },
-	{ "leoluz/nvim-dap-go" },
+  -- color
+  { 'nvchad/nvim-colorizer.lua' },
+  { 'max397574/colortils.nvim' },
 
-	-- UI
-	{ "goolord/alpha-nvim" },
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
-		requires = { "MunifTanjim/nui.nvim", "s1n7ax/nvim-window-picker" },
-	},
-	{ "akinsho/bufferline.nvim" },
-	{ "nvim-lualine/lualine.nvim" },
-	{ "rcarriga/nvim-notify" },
-	{ "ahmedkhalf/project.nvim" },
-	{ "b0o/schemastore.nvim" },
+  -- lsp
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    requires = {
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' },
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig.nvim' },
 
-	-- Colorschemes
-	{ "LunarVim/onedarker.nvim" },
-	{ "EdenEast/nightfox.nvim" },
-	{ "glepnir/zephyr-nvim" },
-	{ "folke/tokyonight.nvim" },
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lua' },
+
+      -- Snippets
+      { 'L3MON4D3/LuaSnip' },
+      -- { "rafamadriz/friendly-snippets" },
+    },
+  },
+  { 'jcha0713/cmp-tw2css' },
+  { 'folke/lua-dev.nvim' },
+  { 'glepnir/lspsaga.nvim', branch = 'main' },
+  { 'SmiteshP/nvim-navic' },
+  { 'jose-elias-alvarez/null-ls.nvim' },
+  { 'github/copilot.vim' },
+  {
+    'zbirenbaum/copilot.lua',
+    commit = 'ede741d935cf5d962c9a9e44db2400ed1a4aaf13',
+    event = { 'VimEnter' },
+    config = function()
+      vim.defer_fn(function()
+        require('copilot').setup()
+      end, 100)
+    end,
+  },
+  {
+    'zbirenbaum/copilot-cmp',
+    commit = '67825246fa2aa6226ec3320d554640aa4697e1b1',
+    module = 'copilot_cmp',
+  },
+
+  -- {
+  --   'zbirenbaum/copilot.lua',
+  --   event = { 'VimEnter' },
+  --   config = function()
+  --     vim.defer_fn(function()
+  --       require('copilot').setup()
+  --     end, 100)
+  --   end,
+  -- },
+  -- {
+  --   'zbirenbaum/copilot-cmp',
+  --   after = { 'copilot.lua' },
+  --   config = function()
+  --     require('copilot_cmp').setup()
+  --   end,
+  -- },
+
+  -- debugger
+  { 'mfussenegger/nvim-dap' },
+  { 'Pocco81/dap-buddy.nvim' },
+  { 'rcarriga/nvim-dap-ui' },
+  { 'theHamsta/nvim-dap-virtual-text' }, -- NOTE: use dap-ui hover instead?
+  -- { "nvim-telescope/telescope-dap.nvim" },
+  { 'mfussenegger/nvim-dap-python' },
+  -- { "leoluz/nvim-dap-go" },
+
+  -- UI
+  { 'goolord/alpha-nvim' },
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v2.x',
+    requires = { 'MunifTanjim/nui.nvim', 's1n7ax/nvim-window-picker' },
+  },
+  -- { "akinsho/bufferline.nvim" },
+  { 'nvim-lualine/lualine.nvim' },
+  { 'rcarriga/nvim-notify' },
+  { 'ahmedkhalf/project.nvim' },
+  { 'b0o/schemastore.nvim' },
+  { 'stevearc/dressing.nvim' },
+  -- { "kyazdani42/nvim-tree.lua" },
+  { 'j-hui/fidget.nvim' }, -- NOTE: Hmmmmm
+
+  -- Colorschemes
+  -- { "LunarVim/onedarker.nvim" },
+  -- { "EdenEast/nightfox.nvim" },
+  -- { "glepnir/zephyr-nvim" },
+  { 'folke/tokyonight.nvim' },
+  -- { 'catppuccin/nvim' },
+  -- { 'lunarvim/darkplus.nvim' },
 }
 
 return pluginTable
 
+-- check it out later
 -- anuvyklack/windows.nvim -- cool
 -- edluffy/hologram.nvim
 -- samodostal/image.nvim
--- kyazdani42/nvim-tree.lua
 -- jbyuki/instant.nvim
--- j-hui/fidget.nvim,
+-- j-hui/fidget.nvim, -- show loading lsp
 -- AckslD/nvim-neoclip.lua
+-- mattn/emmet-vim
+-- numToStr/FTerm.nvim
+-- rmagatti/alternate-toggler
+
+-- debugger
+-- nvim-neotest/neotest
+
+-- graveyard
+-- { "matbme/JABS.nvim" },

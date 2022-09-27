@@ -1,1 +1,1 @@
-require("user.ui.lualine.lualine")
+require('user.ui.lualine.lualine')

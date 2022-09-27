@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 local use_icons = true
 M.configs = {
@@ -7,12 +7,12 @@ M.configs = {
     hijack_netrw = true,
     open_on_setup = false,
     open_on_setup_file = false,
-    sort_by = "name",
+    sort_by = 'name',
     ignore_buffer_on_setup = false,
     ignore_ft_on_setup = {
-      "startify",
-      "dashboard",
-      "alpha",
+      'startify',
+      'dashboard',
+      'alpha',
     },
 
     auto_reload_on_write = true,
@@ -28,10 +28,10 @@ M.configs = {
       enable = true,
       show_on_dirs = false,
       icons = {
-        hint = " ",
-        info = " ",
-        warning = " ",
-        error = " ",
+        hint = ' ',
+        info = ' ',
+        warning = ' ',
+        error = ' ',
       },
     },
     update_focused_file = {
@@ -52,7 +52,7 @@ M.configs = {
       width = 30,
       height = 30,
       hide_root_folder = true,
-      side = "right",
+      side = 'right',
       preserve_window_proportions = false,
       mappings = {
         custom_only = false,
@@ -60,12 +60,12 @@ M.configs = {
       },
       number = false,
       relativenumber = false,
-      signcolumn = "yes",
+      signcolumn = 'yes',
       float = {
         enable = true,
         open_win_config = {
-          relative = "editor",
-          border = "rounded",
+          relative = 'editor',
+          border = 'rounded',
           width = 30,
           height = 30,
           row = 1,
@@ -79,10 +79,10 @@ M.configs = {
       indent_markers = {
         enable = false,
         icons = {
-          corner = "└",
-          edge = "│",
-          item = "│",
-          none = " ",
+          corner = '└',
+          edge = '│',
+          item = '│',
+          none = ' ',
         },
       },
       icons = {
@@ -94,36 +94,36 @@ M.configs = {
           folder_arrow = use_icons,
         },
         glyphs = {
-          default = "",
-          symlink = "",
+          default = '',
+          symlink = '',
           git = {
-            unstaged = "",
-            staged = "S",
-            unmerged = "",
-            renamed = "➜",
-            deleted = "",
-            untracked = "U",
-            ignored = "◌",
+            unstaged = '',
+            staged = 'S',
+            unmerged = '',
+            renamed = '➜',
+            deleted = '',
+            untracked = 'U',
+            ignored = '◌',
           },
           folder = {
-            default = "",
-            open = "",
-            empty = "",
-            empty_open = "",
-            symlink = "",
+            default = '',
+            open = '',
+            empty = '',
+            empty_open = '',
+            symlink = '',
           },
         },
       },
       highlight_git = true,
-      root_folder_modifier = ":t",
+      root_folder_modifier = ':t',
     },
     filters = {
       dotfiles = false,
-      custom = { "node_modules", "\\.cache" },
+      custom = { 'node_modules', '\\.cache' },
       exclude = {},
     },
     trash = {
-      cmd = "trash",
+      cmd = 'trash',
       require_confirm = true,
     },
     log = {
@@ -150,10 +150,10 @@ M.configs = {
         resize_window = false,
         window_picker = {
           enable = true,
-          chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+          chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
           exclude = {
-            filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
-            buftype = { "nofile", "terminal", "help" },
+            filetype = { 'notify', 'packer', 'qf', 'diff', 'fugitive', 'fugitiveblame' },
+            buftype = { 'nofile', 'terminal', 'help' },
           },
         },
       },
@@ -162,7 +162,7 @@ M.configs = {
 }
 
 function M.setup()
-  local status_ok, nvim_tree = pcall(require, "nvim-tree")
+  local status_ok, nvim_tree = pcall(require, 'nvim-tree')
   if not status_ok then
     -- Log:error("Failed to load nvim-tree")
     return
@@ -184,22 +184,22 @@ function M.setup()
   -- end
 
   local function telescope_find_files(_)
-    require("nvim-tree").start_telescope("find_files")
+    require('nvim-tree').start_telescope('find_files')
   end
 
   local function telescope_live_grep(_)
-    require("nvim-tree").start_telescope("live_grep")
+    require('nvim-tree').start_telescope('live_grep')
   end
 
   -- Add useful keymaps
   if #M.configs.setup.view.mappings.list == 0 then
     M.configs.setup.view.mappings.list = {
-      { key = { "l", "<CR>", "o" }, action = "edit", mode = "n" },
-      { key = "h", action = "close_node" },
-      { key = "v", action = "vsplit" },
-      { key = "C", action = "cd" },
-      { key = "gtf", action = "telescope_find_files", action_cb = telescope_find_files },
-      { key = "gtg", action = "telescope_live_grep", action_cb = telescope_live_grep },
+      { key = { 'l', '<CR>', 'o' }, action = 'edit', mode = 'n' },
+      { key = 'h', action = 'close_node' },
+      { key = 'v', action = 'vsplit' },
+      { key = 'C', action = 'cd' },
+      { key = 'gtf', action = 'telescope_find_files', action_cb = telescope_find_files },
+      { key = 'gtg', action = 'telescope_live_grep', action_cb = telescope_live_grep },
     }
   end
 
@@ -211,11 +211,11 @@ function M.setup()
 end
 
 function M.start_telescope(telescope_mode)
-  local node = require("nvim-tree.lib").get_node_at_cursor()
+  local node = require('nvim-tree.lib').get_node_at_cursor()
   local abspath = node.link_to or node.absolute_path
   local is_folder = node.open ~= nil
-  local basedir = is_folder and abspath or vim.fn.fnamemodify(abspath, ":h")
-  require("telescope.builtin")[telescope_mode]({
+  local basedir = is_folder and abspath or vim.fn.fnamemodify(abspath, ':h')
+  require('telescope.builtin')[telescope_mode]({
     cwd = basedir,
   })
 end

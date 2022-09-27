@@ -17,5 +17,3 @@ require('user.ui')
 -- FIX: startup time
 
 -- WARNING: formatting not from null-ls will remove mark on format
-
--- NOTE: TS-Textobject plugin not work like `di,` use targets.vim instead (remove config file?)

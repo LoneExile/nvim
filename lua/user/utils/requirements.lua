@@ -8,7 +8,6 @@ end
 
 local M = {}
 
--- NOTE: test vim.g or vim.opt work with clipboard ?
 vim.g.python_host_prog = '$HOME/.pyenv/shims/python'
 vim.g.python3_host_prog = '$HOME/.pyenv/versions/nvim/bin/python3'
 vim.opt.clipboard = 'unnamedplus' -- allows neovim to access the system clipboard
@@ -18,7 +17,7 @@ M.TRANPARENT = true
 
 if M.CURRENTOS == 'Darwin' then
   M.TRANPARENT = false
-  vim.opt.clipboard = {
+  vim.opt.clipboard = { -- or use vim.g.clipboard
     name = 'macOS-clipboard',
     copy = {
       ['+'] = 'pbcopy',
@@ -34,10 +33,9 @@ if M.CURRENTOS == 'Darwin' then
   vim.g.python3_host_prog = '/usr/local/bin/python3'
 end
 
--- windows -- MINGW64_NT-10.0
 if M.CURRENTOS == 'windows' or M.CURRENTOS == 'windows_nt' then
   M.TRANPARENT = false
-  vim.opt.clipboard = {
+  vim.opt.clipboard = { -- or use vim.g.clipboard
     name = 'win32yank',
     copy = {
       ['+'] = 'win32yank.exe -i --crlf',

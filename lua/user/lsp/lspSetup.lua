@@ -1,7 +1,22 @@
-local _, lsp = pcall(require, 'lsp-zero')
+M = {}
 
-require('user.lsp.settings.sumneko').setup(lsp)
-require('user.lsp.settings.pyright').setup(lsp)
-require('user.lsp.settings.jsonls').setup(lsp)
-require('user.lsp.settings.vuels').setup(lsp)
--- require('user.lsp.settings.volar').setup(lsp)
+local severs = {
+  'sumneko',
+  'pyright',
+  'jsonls',
+  'vuels',
+  -- 'volar',
+}
+
+M.severs = function(lsp)
+  for _, server in ipairs(severs) do
+    local status_ok, config = pcall(require, 'user.lsp.settings.' .. server)
+    if status_ok then
+      config.setup(lsp)
+    else
+      vim.notify('LSP ' .. server .. ' not found!')
+    end
+  end
+end
+
+return M

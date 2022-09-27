@@ -40,11 +40,7 @@ M.terminal = {
       return term.name
     end,
   },
-  -- Add executables on the config.lua
-  -- { exec, keymap, name}
-  execs = {
-    { 'lazygit', '<leader>gg', 'LazyGit', 'float' },
-  },
+  execs = {},
 }
 
 M.setup = function()
@@ -59,7 +55,6 @@ M.setup = function()
       cmd = exec[1],
       keymap = exec[2],
       label = exec[3],
-      -- NOTE: unable to consistently bind id/count <= 9, see #2146
       count = i + 100,
       direction = exec[4] or M.terminal.direction,
       size = M.terminal.size,

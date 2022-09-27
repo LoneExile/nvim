@@ -33,8 +33,8 @@ lsp.set_preferences({
 })
 
 local add_lsp_buffer_keybindings = require('user.lsp.lspKeymaps').add_lsp_buffer_keybindings
-require('user.lsp.lspSetup')
-require('user.lsp.mason')
+require('user.lsp.lspSetup').severs(lsp)
+require('user.lsp.integrate.mason')
 require('user.lsp.cmp')
 
 -- attach to all buffers

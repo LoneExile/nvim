@@ -49,24 +49,24 @@ configs.setup({
     max_file_lines = nil, -- Do not enable for files with more than n lines, int
     -- termcolors = {} -- table of colour name strings
     colors = {
-      -- "#68a0b0",
-      -- "#946EaD",
-      -- "#c7aA6D",
+      '#68a0b0',
+      '#946EaD',
+      '#c7aA6D',
       'Gold',
       'Orchid',
       'DodgerBlue',
-      -- "Cornsilk",
-      -- "Salmon",
-      -- "LawnGreen",
+      'Cornsilk',
+      'Salmon',
+      'LawnGreen',
     },
     disable = { 'html' },
   },
 
   -- ** textobjects **
-  -- textobjects = tsTextObjects,
+  textobjects = tsTextObjects,
 
   -- ** ts autopairs **
-  -- autopairs = { enable = true },
+  autopairs = { enable = true },
 
   -- ** nvim-treesitter-textsubjects **
   textsubjects = {

@@ -22,9 +22,9 @@ local linux = {
     'float',
   },
   {
-    'htop',
-    '<leader>th',
-    'htop',
+    'btop',
+    '<leader>tt',
+    'btop',
     'float',
   },
   {
@@ -171,7 +171,7 @@ function M.setup()
       '<cmd>nohlsearch<CR>',
       'No Highlight',
     },
-    t = { name = 'terminal', t = { '<cmd>ToggleTerm<CR>', 'Toggle Terminal' } },
+    t = { name = 'terminal' },
     -- b = {
     --   name = 'Buffers',
     --   x = {

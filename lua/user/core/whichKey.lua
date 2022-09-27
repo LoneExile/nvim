@@ -28,8 +28,7 @@ local linux = {
     'float',
   },
   {
-    -- TODO: use config location instead
-    'bash ~/.config/nvim/scripts/cht/cht.sh',
+    'bash ' .. vim.fn.stdpath('config') .. '/scripts/cht/cht.sh',
     '<leader>tc',
     'cheet sheet',
     'float',

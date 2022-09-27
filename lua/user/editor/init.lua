@@ -21,7 +21,8 @@ require('user.editor.tool.illuminate')
 require('user.editor.tool.telescope')
 
 -- motion
-require('user.editor.motion.mini')
+-- require('user.editor.motion.mini')
+require('user.editor.motion.surround')
 require('user.editor.motion.numb')
 require('user.editor.motion.smoothScroll')
 require('user.editor.motion.harpoon')

@@ -6,13 +6,13 @@ end
 local diagnostics = null_ls.builtins.diagnostics
 
 local diagnosticsTable = {
-  -- diagnostics
   diagnostics.markdownlint.with({
     filetypes = { 'markdown' },
   }),
-  -- diagnostics.selene.with({
-  -- 	filetype = { "lua" },
-  -- }),
+  diagnostics.luacheck.with({
+    filetype = { 'lua' },
+    extra_args = { '--config', vim.fn.stdpath('config') .. '/.luacheckrc' },
+  }),
   diagnostics.shellcheck.with({
     filetypes = { 'bash', 'csh', 'ksh', 'sh', 'zsh' },
     extra_args = { '--severity', 'warning' },
@@ -50,7 +50,6 @@ local diagnosticsTable = {
 
   diagnostics.actionlint.with({
     filetype = { 'yaml' },
-    extra_args = { '-no-color', '-format', '{{json .}}', '-' },
   }),
 }
 

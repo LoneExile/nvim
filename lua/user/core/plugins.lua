@@ -31,7 +31,6 @@ local pluginTable = {
   { 'lukas-reineke/indent-blankline.nvim' },
   { 'windwp/nvim-autopairs' },
   { 'RRethy/vim-illuminate' }, -- NOTE: no need to HL word?
-
   -- { 'David-Kunz/markid' }, -- highlight variable to use same color
 
   -- optimization
@@ -47,7 +46,6 @@ local pluginTable = {
 
   -- tool
   { 'windwp/nvim-spectre' },
-  -- { 'shatur/neovim-session-manager' }, -- NOTE: don't need this anymore, harpoon is enough
   { 'akinsho/toggleterm.nvim' },
   { 'darazaki/indent-o-matic' }, -- NOTE: what is this can do honestly
   -- { "nmac427/guess-indent.nvim" },
@@ -70,19 +68,15 @@ local pluginTable = {
   { 'metakirby5/codi.vim' }, -- NOTE: buggy
 
   --motion
-  -- { 'echasnovski/mini.nvim' },
   { 'kylechui/nvim-surround' },
   { 'phaazon/hop.nvim' },
   { 'nacro90/numb.nvim' },
   { 'declancm/cinnamon.nvim' },
   { 'theprimeagen/harpoon' },
-  -- { "max397574/better-escape.nvim" },
   { 'chentoast/marks.nvim' }, -- NOTE: am i really use mark?
 
   --git
   { 'lewis6991/gitsigns.nvim' },
-  -- { "akinsho/git-conflict.nvim", tag = "*" },
-  -- { "https://gitlab.com/yorickpeterse/nvim-pqf", as = "nvim-pqf" },
   { 'sindrets/diffview.nvim' },
   { 'ThePrimeagen/git-worktree.nvim' }, -- NOTE: just use it on cmdline?
 
@@ -167,13 +161,11 @@ local pluginTable = {
     branch = 'v2.x',
     requires = { 'MunifTanjim/nui.nvim', 's1n7ax/nvim-window-picker' },
   },
-  -- { "akinsho/bufferline.nvim" },
   { 'nvim-lualine/lualine.nvim' },
   { 'rcarriga/nvim-notify' },
   { 'ahmedkhalf/project.nvim' },
   { 'b0o/schemastore.nvim' },
   { 'stevearc/dressing.nvim' },
-  -- { "kyazdani42/nvim-tree.lua" },
   { 'j-hui/fidget.nvim' }, -- NOTE: Hmmmmm
 
   -- Colorschemes
@@ -201,5 +193,5 @@ return pluginTable
 -- debugger
 -- nvim-neotest/neotest
 
--- graveyard
+-- look cool but not for me
 -- { "matbme/JABS.nvim" },

@@ -41,7 +41,8 @@ local setting = {
     luasnip = 1,
   },
   duplicates_default = 0,
-  word_length = 5,
+  word_min = 2,
+  max_suggest = 5,
 }
 
 local cmp_config = lsp.defaults.cmp_config({
@@ -81,14 +82,14 @@ local cmp_config = lsp.defaults.cmp_config({
     documentation = cmp.config.window.bordered(),
   },
   sources = {
-    { name = 'copilot', keyword_length = setting.word_length },
-    { name = 'nvim_lsp', keyword_length = setting.word_length },
+    { name = 'copilot', keyword_length = setting.word_min },
+    { name = 'nvim_lsp', keyword_length = setting.word_min, max_item_count = setting.max_suggest },
     { name = 'path' },
-    { name = 'luasnip', keyword_length = 2 },
-    -- { name = 'cmp_tabnine', keyword_length = setting.word_length },
-    { name = 'nvim_lua', keyword_length = setting.word_length },
+    { name = 'luasnip', keyword_length = setting.word_min, max_item_count = setting.max_suggest },
+    -- { name = 'cmp_tabnine'},
+    { name = 'nvim_lua', keyword_length = setting.word_min, max_item_count = setting.max_suggest },
     { name = 'cmp-tw2css' },
-    { name = 'buffer', keyword_length = setting.word_length },
+    { name = 'buffer', keyword_length = setting.word_min, max_item_count = setting.max_suggest },
     -- { name = 'calc' },
     -- { name = 'emoji' },
     -- { name = 'treesitter' },

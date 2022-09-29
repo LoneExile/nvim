@@ -7,3 +7,4 @@
 -- { 'echasnovski/mini.nvim' },
 -- { "max397574/better-escape.nvim" },
 -- { 'shatur/neovim-session-manager' },
+-- { 'kylechui/nvim-surround' },

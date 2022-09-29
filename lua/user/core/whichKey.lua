@@ -96,7 +96,7 @@ function M.setup()
     },
     disable = {
       -- buftypes = { '*' },
-      filetypes = { '*' },
+      -- filetypes = { '*' },
     },
   }
 

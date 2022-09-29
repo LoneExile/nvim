@@ -24,25 +24,25 @@ local diagnosticsTable = {
   diagnostics.shellcheck.with({
     extra_args = { '--severity', 'warning' },
   }),
-  diagnostics.eslint.with({
-    filetypes = {
-      'javascript',
-      'javascriptreact',
-      'typescript',
-      'typescriptreact',
-      -- 'vue',
-    },
-    extra_args = {
-      '-f',
-      'json',
-      '--stdin',
-      '--stdin-filename',
-      '$FILENAME',
-      -- '--no-eslintrc',
-      -- '--env',
-      -- 'es6',
-    },
-  }),
+  -- diagnostics.eslint.with({
+  --   filetypes = {
+  --     'javascript',
+  --     'javascriptreact',
+  --     'typescript',
+  --     'typescriptreact',
+  --     -- 'vue',
+  --   },
+  --   extra_args = {
+  --     '-f',
+  --     'json',
+  --     '--stdin',
+  --     '--stdin-filename',
+  --     '$FILENAME',
+  --     -- '--no-eslintrc',
+  --     -- '--env',
+  --     -- 'es6',
+  --   },
+  -- }),
   diagnostics.zsh.with({
     filetypes = { 'zsh' },
     extra_args = { '-n', '$FILENAME' },

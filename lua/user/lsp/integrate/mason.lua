@@ -18,13 +18,11 @@ mason.setup({
 mason_lspconfig.setup({
   ensure_installed = {
     -- lsp
+    'tsserver',
     'sumneko_lua',
-    'lua-language-server',
     'pyright',
-    'rust_analyzer',
-    'bash-language-server',
-    'marksman',
-    'sqls',
+    'jsonls',
+    'vuels',
 
     -- linters
     'eslint_d',

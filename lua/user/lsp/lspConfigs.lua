@@ -1,5 +1,10 @@
 local lsp_defaults = require('user.lsp.settings.defaults')
-local lspconfig = require('lspconfig')
+local status_ok, lspconfig = pcall(require, 'lspconfig')
+if not status_ok then
+  vim.notify('lspconfig is not installed', vim.log.levels.ERROR)
+  return
+end
+
 lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
 require('user.lsp.settings.diagnostic')
 

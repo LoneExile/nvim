@@ -67,6 +67,7 @@ local pluginTable = {
   { '0x100101/lab.nvim', run = 'cd js && npm ci' },
   { 'michaelb/sniprun', run = 'bash ./install.sh' }, -- NOTE: look cool but lab.nvim can replace this
   { 'metakirby5/codi.vim' }, -- NOTE: buggy
+  { 'ray-x/web-tools.nvim' },
 
   --motion
   { 'echasnovski/mini.nvim' },
@@ -109,7 +110,7 @@ local pluginTable = {
   },
   { 'jose-elias-alvarez/typescript.nvim' },
   { 'jcha0713/cmp-tw2css' },
-  { 'folke/lua-dev.nvim' },
+  { 'folke/lua-dev.nvim', branch = 'main' },
   { 'glepnir/lspsaga.nvim', branch = 'main' },
   { 'SmiteshP/nvim-navic' },
   { 'jose-elias-alvarez/null-ls.nvim' },

@@ -1,3 +1,4 @@
+-- https://github.com/jose-elias-alvarez/typescript.nvim
 local M = {}
 M.setup = function(lspconfig)
   lspconfig.tsserver.setup({

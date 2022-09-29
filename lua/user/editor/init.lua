@@ -38,3 +38,10 @@ require('user.editor.treesitter.comment')
 require('user.editor.treesitter.autoTag')
 require('user.editor.treesitter.autoPair')
 require('user.editor.treesitter.hlargs')
+
+require('web-tools').setup({
+  keymaps = {
+    rename = nil, -- by default use same setup of lspconfig
+    repeat_rename = '.', -- . to repeat
+  },
+})

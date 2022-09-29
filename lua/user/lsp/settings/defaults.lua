@@ -14,7 +14,10 @@ local lsp_defaults = {
     navic.attach(client, bufnr)
     add_lsp_buffer_keybindings(bufnr)
     if client.name == 'tsserver' then
-      require('typescript').setup({})
+      local _, typescript = pcall(require, 'typescript')
+      typescript.setup({})
+    elseif client.name == 'eslint' then
+      client.server_capabilities.documentFormattingProvider = true
     end
   end,
 }

@@ -1,9 +1,8 @@
-local _, lspconfig = pcall(require, 'lspconfig')
 -- https://github.com/neoclide/coc-vetur#configuration-options
 
 local M = {}
-M.setup = function(lsp)
-  lsp.configure('vuels', {
+M.setup = function(lspconfig)
+  lspconfig.vuels.setup({
     cmd = { 'vls' },
     filetypes = { 'vue' },
     root_dir = function(fname)

@@ -1,22 +1,21 @@
-local status_ok_ui, masonSet = pcall(require, 'mason.settings')
-if not status_ok_ui then
-  vim.notify('Mason not found', vim.log.levels.ERROR)
+local status_ok, mason = pcall(require, 'mason')
+if not status_ok then
+  vim.notify('mason is not installed', vim.log.levels.ERROR)
   return
 end
 
-local status, masonCofig = pcall(require, 'mason-lspconfig')
+local status, mason_lspconfig = pcall(require, 'mason-lspconfig')
 if not status then
-  vim.notify('Mason-lspconfig' .. ' not found!')
+  vim.notify('mason-lspconfig is not installed', vim.log.levels.ERROR)
   return
 end
 
-masonSet.set({
+mason.setup({
   ui = {
     border = 'rounded',
   },
 })
-
-masonCofig.setup({
+mason_lspconfig.setup({
   ensure_installed = {
     -- lsp
     'sumneko_lua',
@@ -26,15 +25,6 @@ masonCofig.setup({
     'bash-language-server',
     'marksman',
     'sqls',
-
-    'dockerfile-language-server',
-    'yaml-language-server',
-    'json-lsp',
-    'taplo',
-
-    'html-lsp',
-    'typescript-language-server',
-    'vetur-vls',
 
     -- linters
     'eslint_d',

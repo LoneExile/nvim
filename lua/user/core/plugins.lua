@@ -22,6 +22,7 @@ local pluginTable = {
   { 'JoosepAlviste/nvim-ts-context-commentstring' },
   { 'nvim-treesitter/nvim-treesitter-textobjects' }, -- movement around text objects
   -- , after = 'nvim-treesitter'
+  -- , event = 'VimEnter'
 
   {
     'm-demare/hlargs.nvim',
@@ -68,7 +69,7 @@ local pluginTable = {
   { 'metakirby5/codi.vim' }, -- NOTE: buggy
 
   --motion
-  { 'kylechui/nvim-surround' },
+  { 'echasnovski/mini.nvim' },
   { 'phaazon/hop.nvim' },
   { 'nacro90/numb.nvim' },
   { 'declancm/cinnamon.nvim' },
@@ -106,6 +107,7 @@ local pluginTable = {
       -- { "rafamadriz/friendly-snippets" },
     },
   },
+  { 'jose-elias-alvarez/typescript.nvim' },
   { 'jcha0713/cmp-tw2css' },
   { 'folke/lua-dev.nvim' },
   { 'glepnir/lspsaga.nvim', branch = 'main' },

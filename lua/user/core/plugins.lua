@@ -67,7 +67,15 @@ local pluginTable = {
   { '0x100101/lab.nvim', run = 'cd js && npm ci' },
   { 'michaelb/sniprun', run = 'bash ./install.sh' }, -- NOTE: look cool but lab.nvim can replace this
   { 'metakirby5/codi.vim' }, -- NOTE: buggy
-  { 'ray-x/web-tools.nvim' },
+  {
+    'ray-x/web-tools.nvim',
+    opt = true,
+    cmd = { 'BrowserOpen', 'Browserstop' },
+    filetypes = { 'html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+    config = function()
+      require('web-tools').setup()
+    end,
+  },
 
   --motion
   { 'echasnovski/mini.nvim' },
@@ -87,27 +95,27 @@ local pluginTable = {
   { 'max397574/colortils.nvim' },
 
   -- lsp
-  {
-    'VonHeikemen/lsp-zero.nvim',
-    requires = {
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' },
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
+  -- {
+  --   'VonHeikemen/lsp-zero.nvim',
+  --   requires = {
+  -- LSP Support
+  { 'neovim/nvim-lspconfig' },
+  { 'williamboman/mason.nvim' },
+  { 'williamboman/mason-lspconfig.nvim' },
 
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lua' },
+  -- Autocompletion
+  { 'hrsh7th/nvim-cmp' },
+  { 'hrsh7th/cmp-buffer' },
+  { 'hrsh7th/cmp-path' },
+  { 'saadparwaiz1/cmp_luasnip' },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/cmp-nvim-lua' },
 
-      -- Snippets
-      { 'L3MON4D3/LuaSnip' },
-      -- { "rafamadriz/friendly-snippets" },
-    },
-  },
+  -- Snippets
+  { 'L3MON4D3/LuaSnip' },
+  -- { "rafamadriz/friendly-snippets" },
+  --   },
+  -- },
   { 'jose-elias-alvarez/typescript.nvim' },
   { 'jcha0713/cmp-tw2css' },
   { 'folke/lua-dev.nvim', branch = 'main' },

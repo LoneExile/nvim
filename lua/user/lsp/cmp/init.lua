@@ -1,10 +1,10 @@
 require('user.lsp.cmp.copilot')
 
-local status_ok_lsp, lsp = pcall(require, 'lsp-zero')
-if not status_ok_lsp then
-  vim.notify('lsp-zero' .. ' not found!')
-  return
-end
+-- local status_ok_lsp, lsp = pcall(require, 'lsp-zero')
+-- if not status_ok_lsp then
+--   vim.notify('lsp-zero' .. ' not found!')
+--   return
+-- end
 
 local cmp_ok, cmp = pcall(require, 'cmp')
 if not cmp_ok then
@@ -45,7 +45,8 @@ local setting = {
   max_suggest = 5,
 }
 
-local cmp_config = lsp.defaults.cmp_config({
+-- local cmp_config = lsp.defaults.cmp_config({
+local cmp_config = {
   completion = {
     keyword_length = 1,
   },
@@ -96,8 +97,10 @@ local cmp_config = lsp.defaults.cmp_config({
     -- { name = 'crates' },
     -- { name = 'tmux' },
   },
-  mapping = lsp.defaults.cmp_mappings(keymaps),
-})
+  -- mapping = lsp.defaults.cmp_mappings(keymaps),
+  mapping = keymaps,
+  -- })
+}
 
 cmp.setup(cmp_config)
 

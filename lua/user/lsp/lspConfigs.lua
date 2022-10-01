@@ -20,6 +20,7 @@ local servers = {
   'jsonls',
   'vuels',
   -- 'deno',
+  -- 'eslint-lsp',
 }
 
 for _, server in ipairs(servers) do

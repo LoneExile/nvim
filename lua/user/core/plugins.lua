@@ -14,14 +14,12 @@ local pluginTable = {
       pcall(vim.cmd, 'TSUpdate')
     end,
   },
-
   { 'p00f/nvim-ts-rainbow', event = 'VimEnter' },
   { 'nvim-treesitter/nvim-treesitter-context', event = 'VimEnter' },
   { 'windwp/nvim-ts-autotag', event = 'VimEnter' },
   { 'RRethy/nvim-treesitter-textsubjects', event = 'VimEnter' },
   { 'JoosepAlviste/nvim-ts-context-commentstring', event = 'VimEnter' },
   { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'VimEnter' }, -- movement around text objects
-
   { 'numToStr/Comment.nvim', event = 'VimEnter' },
   { 'lukas-reineke/indent-blankline.nvim', event = 'VimEnter' },
   { 'm-demare/hlargs.nvim', requires = { 'nvim-treesitter/nvim-treesitter' } },
@@ -128,9 +126,9 @@ local pluginTable = {
     requires = {
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-      { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
+      { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' },
       { 'jcha0713/cmp-tw2css', after = 'nvim-cmp' },
     },
   },
@@ -164,6 +162,7 @@ local pluginTable = {
 
   {
     'zbirenbaum/copilot.lua',
+    -- commit = '',
     event = { 'VimEnter' },
     config = function()
       vim.defer_fn(function()
@@ -173,6 +172,7 @@ local pluginTable = {
   },
   {
     'zbirenbaum/copilot-cmp',
+    -- commit = '',
     after = { 'copilot.lua' },
     config = function()
       require('user.lsp.cmp.copilot').cmpSetup()
@@ -181,12 +181,29 @@ local pluginTable = {
 
   -- debugger
   { 'mfussenegger/nvim-dap' },
-  { 'Pocco81/dap-buddy.nvim' },
-  { 'rcarriga/nvim-dap-ui' },
-  { 'theHamsta/nvim-dap-virtual-text' }, -- NOTE: use dap-ui hover instead?
+  { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } },
+  { 'theHamsta/nvim-dap-virtual-text', requires = { 'mfussenegger/nvim-dap' } }, -- NOTE: use dap-ui hover instead?
   -- { "nvim-telescope/telescope-dap.nvim" },
-  { 'mfussenegger/nvim-dap-python' },
-  -- { "leoluz/nvim-dap-go" },
+  { 'mfussenegger/nvim-dap-python', requires = { 'mfussenegger/nvim-dap' } },
+  {
+    -- https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
+    'mxsdev/nvim-dap-vscode-js',
+    requires = {
+      { 'mfussenegger/nvim-dap' },
+      {
+        'microsoft/vscode-js-debug',
+        opt = true,
+        run = 'npm install --legacy-peer-deps && npm run compile',
+      },
+    },
+  },
+  -- {
+  --   'leoluz/nvim-dap-go',
+  --   run = 'go install github.com/go-delve/delve/cmd/dlv@latest',
+  --   config = function()
+  --     require('dap-go').setup()
+  --   end,
+  -- },
 
   -- UI
   { 'goolord/alpha-nvim' },
@@ -223,6 +240,9 @@ return pluginTable
 -- mattn/emmet-vim
 -- numToStr/FTerm.nvim
 -- rmagatti/alternate-toggler
+-- https://git.sr.ht/~whynothugo/lsp_lines.nvim
+-- simrat39/symbols-outline.nvim
+-- weilbith/nvim-code-action-menu
 
 -- debugger
 -- nvim-neotest/neotest

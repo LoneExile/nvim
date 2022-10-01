@@ -2,6 +2,7 @@ local M = {}
 
 M.setup = function(lspconfig)
   lspconfig.eslint.setup({
+    cmd = { 'vscode-eslint-language-server', '--stdio' },
     root_dir = lspconfig.util.root_pattern('.eslintrc', '.eslintrc.js', '.eslintrc.json'),
     settings = {
       format = {

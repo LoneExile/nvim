@@ -206,7 +206,12 @@ local pluginTable = {
   -- },
 
   -- UI
-  { 'goolord/alpha-nvim' },
+  {
+    'goolord/alpha-nvim',
+    config = function()
+      require('user.ui.alpha')
+    end,
+  },
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',

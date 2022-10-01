@@ -4,39 +4,74 @@ if not status_ok then
 end
 
 local dashboard = require('alpha.themes.dashboard')
+-- padding
+dashboard.section.header.opts.position = 'center'
+dashboard.section.buttons.opts.position = 'center'
+dashboard.section.footer.opts.position = 'center'
+
+-- dashboard.section.header.val = {
+--   [[　　　 　　/＾>》, -―‐‐＜＾}]],
+--   [[　　　 　./:::/,≠´::::::ヽ.]],
+--   [[　　　　/::::〃::::／}::丿ハ]],
+--   [[　　　./:::::i{l|／　ﾉ／ }::}]],
+--   [[　　 /:::::::瓜イ＞　´＜ ,:ﾉ]],
+--   [[　 ./::::::|ﾉﾍ.{､　(_ﾌ_ノﾉイ＿]],
+--   [[　 |:::::::|／}｀ｽ /          /]],
+--   [[.　|::::::|(_:::つ/ ThinkPad /　neovim!]],
+--   [[.￣￣￣￣￣￣￣＼/＿＿＿＿＿/￣￣￣￣￣]],
+-- }
 dashboard.section.header.val = {
-  '',
-  '⡆⣐⢕⢕⢕⢕⢕⢕⢕⢕⠅⢗⢕⢕⢕⢕⢕⢕⢕⠕⠕⢕⢕⢕⢕⢕⢕⢕⢕⢕',
-  '⢐⢕⢕⢕⢕⢕⣕⢕⢕⠕⠁⢕⢕⢕⢕⢕⢕⢕⢕⠅⡄⢕⢕⢕⢕⢕⢕⢕⢕⢕',
-  '⢕⢕⢕⢕⢕⠅⢗⢕⠕⣠⠄⣗⢕⢕⠕⢕⢕⢕⠕⢠⣿⠐⢕⢕⢕⠑⢕⢕⠵⢕',
-  '⢕⢕⢕⢕⠁⢜⠕⢁⣴⣿⡇⢓⢕⢵⢐⢕⢕⠕⢁⣾⢿⣧⠑⢕⢕⠄⢑⢕⠅⢕',
-  '⢕⢕⠵⢁⠔⢁⣤⣤⣶⣶⣶⡐⣕⢽⠐⢕⠕⣡⣾⣶⣶⣶⣤⡁⢓⢕⠄⢑⢅⢑',
-  '⠍⣧⠄⣶⣾⣿⣿⣿⣿⣿⣿⣷⣔⢕⢄⢡⣾⣿⣿⣿⣿⣿⣿⣿⣦⡑⢕⢤⠱⢐',
-  '⢠⢕⠅⣾⣿⠋⢿⣿⣿⣿⠉⣿⣿⣷⣦⣶⣽⣿⣿⠈⣿⣿⣿⣿⠏⢹⣷⣷⡅⢐',
-  '⣔⢕⢥⢻⣿⡀⠈⠛⠛⠁⢠⣿⣿⣿⣿⣿⣿⣿⣿⡀⠈⠛⠛⠁⠄⣼⣿⣿⡇⢔',
-  '⢕⢕⢽⢸⢟⢟⢖⢖⢤⣶⡟⢻⣿⡿⠻⣿⣿⡟⢀⣿⣦⢤⢤⢔⢞⢿⢿⣿⠁⢕',
-  '⢕⢕⠅⣐⢕⢕⢕⢕⢕⣿⣿⡄⠛⢀⣦⠈⠛⢁⣼⣿⢗⢕⢕⢕⢕⢕⢕⡏⣘⢕',
-  '⢕⢕⠅⢓⣕⣕⣕⣕⣵⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣷⣕⢕⢕⢕⢕⡵⢀⢕⢕',
-  '⢑⢕⠃⡈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢃⢕⢕⢕',
-  '⣆⢕⠄⢱⣄⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢁⢕⢕⠕⢁',
-  '⣿⣦⡀⣿⣿⣷⣶⣬⣍⣛⣛⣛⡛⠿⠿⠿⠛⠛⢛⣛⣉⣭⣤⣂⢜⠕⢑⣡⣴⣿',
-  '',
+  [[]],
+  [[]],
+  [[]],
+  [[]],
+  [[]],
+  [[  ／|_       ]],
+  [[ (o o /      ]],
+  [[  |.   ~.    ]],
+  [[  じしf_,)ノ ]],
 }
+-- dashboard.section.header.val = {
+--   '',
+--   '⡆⣐⢕⢕⢕⢕⢕⢕⢕⢕⠅⢗⢕⢕⢕⢕⢕⢕⢕⠕⠕⢕⢕⢕⢕⢕⢕⢕⢕⢕',
+--   '⢐⢕⢕⢕⢕⢕⣕⢕⢕⠕⠁⢕⢕⢕⢕⢕⢕⢕⢕⠅⡄⢕⢕⢕⢕⢕⢕⢕⢕⢕',
+--   '⢕⢕⢕⢕⢕⠅⢗⢕⠕⣠⠄⣗⢕⢕⠕⢕⢕⢕⠕⢠⣿⠐⢕⢕⢕⠑⢕⢕⠵⢕',
+--   '⢕⢕⢕⢕⠁⢜⠕⢁⣴⣿⡇⢓⢕⢵⢐⢕⢕⠕⢁⣾⢿⣧⠑⢕⢕⠄⢑⢕⠅⢕',
+--   '⢕⢕⠵⢁⠔⢁⣤⣤⣶⣶⣶⡐⣕⢽⠐⢕⠕⣡⣾⣶⣶⣶⣤⡁⢓⢕⠄⢑⢅⢑',
+--   '⠍⣧⠄⣶⣾⣿⣿⣿⣿⣿⣿⣷⣔⢕⢄⢡⣾⣿⣿⣿⣿⣿⣿⣿⣦⡑⢕⢤⠱⢐',
+--   '⢠⢕⠅⣾⣿⠋⢿⣿⣿⣿⠉⣿⣿⣷⣦⣶⣽⣿⣿⠈⣿⣿⣿⣿⠏⢹⣷⣷⡅⢐',
+--   '⣔⢕⢥⢻⣿⡀⠈⠛⠛⠁⢠⣿⣿⣿⣿⣿⣿⣿⣿⡀⠈⠛⠛⠁⠄⣼⣿⣿⡇⢔',
+--   '⢕⢕⢽⢸⢟⢟⢖⢖⢤⣶⡟⢻⣿⡿⠻⣿⣿⡟⢀⣿⣦⢤⢤⢔⢞⢿⢿⣿⠁⢕',
+--   '⢕⢕⠅⣐⢕⢕⢕⢕⢕⣿⣿⡄⠛⢀⣦⠈⠛⢁⣼⣿⢗⢕⢕⢕⢕⢕⢕⡏⣘⢕',
+--   '⢕⢕⠅⢓⣕⣕⣕⣕⣵⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣷⣕⢕⢕⢕⢕⡵⢀⢕⢕',
+--   '⢑⢕⠃⡈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢃⢕⢕⢕',
+--   '⣆⢕⠄⢱⣄⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢁⢕⢕⠕⢁',
+--   '⣿⣦⡀⣿⣿⣷⣶⣬⣍⣛⣛⣛⡛⠿⠿⠿⠛⠛⢛⣛⣉⣭⣤⣂⢜⠕⢑⣡⣴⣿',
+--   '',
+-- }
 dashboard.section.buttons.val = {
   dashboard.button('f', '  Find file', ':Telescope find_files <CR>'),
   dashboard.button('e', '  New file', ':ene <BAR> startinsert <CR>'),
   dashboard.button('p', '  Find project', ':Telescope projects <CR>'),
   dashboard.button('r', '  Recently used files', ':Telescope oldfiles <CR>'),
-  -- dashboard.button('t', '  Find text', ':Telescope live_grep <CR>'),
   dashboard.button('c', '  Configuration', ':e ~/.config/nvim/init.lua <CR>'),
   dashboard.button('q', '  Quit Neovim', ':qa<CR>'),
 }
 
-local function footer()
-  return ''
+local function info()
+  local plugins = #vim.tbl_keys(packer_plugins)
+  local v = vim.version()
+  local datetime = os.date(' %d-%m-%Y   %H:%M:%S')
+  local platform = vim.fn.has('win32') == 1 and '' or ''
+  return string.format(' %d   v%d.%d.%d %s  %s', plugins, v.major, v.minor, v.patch, platform, datetime)
 end
 
-dashboard.section.footer.val = footer()
+dashboard.section.footer.val = {
+  '',
+  '            Apinant U-suwantim',
+  '',
+  info(),
+}
 
 dashboard.section.footer.opts.hl = 'Type'
 dashboard.section.header.opts.hl = 'Include'

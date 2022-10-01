@@ -6,4 +6,5 @@ ignore = {
 
 globals = {
   'vim',
+  'packer_plugins',
 }

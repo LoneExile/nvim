@@ -31,13 +31,11 @@
 local M = {}
 local status_ok, copilot = pcall(require, 'copilot')
 if not status_ok then
-  vim.notify('copilot' .. ' not found!')
   return
 end
 
 local status, cmp = pcall(require, 'copilot_cmp')
 if not status then
-  vim.notify('cmp' .. ' not found!')
   return
 end
 
@@ -46,7 +44,7 @@ M.setup = function()
     panel = { -- no config options yet
       enabled = true,
     },
-    ft_disable = {},
+    ft_disable = { 'alpha', 'neo-tree' },
     suggestion = {
       enabled = true,
       auto_trigger = true,

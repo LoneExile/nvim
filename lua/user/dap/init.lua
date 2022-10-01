@@ -3,7 +3,6 @@ require('user.dap.dap')
 
 local status_ok, dapPy = pcall(require, 'dap-python')
 if not status_ok then
-  vim.notify('dap-python' .. ' not found!')
   return
 end
 dapPy.setup('~/.pyenv/shims/python')

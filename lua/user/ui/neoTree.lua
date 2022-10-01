@@ -1,6 +1,5 @@
 local status_ok, neoTree = pcall(require, 'neo-tree')
 if not status_ok then
-  vim.notify('neoTree' .. ' not found!')
   return
 end
 

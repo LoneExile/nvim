@@ -1,6 +1,5 @@
 local status_ok, indentOmatic = pcall(require, 'indent-o-matic')
 if not status_ok then
-  vim.notify('indentOmatic' .. ' not found!')
   return
 end
 

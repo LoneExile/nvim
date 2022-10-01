@@ -1,6 +1,5 @@
 local status_ok_code, spectre = pcall(require, 'spectre')
 if not status_ok_code then
-  vim.notify('spectre' .. ' not found!')
   return
 end
 

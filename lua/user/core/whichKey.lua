@@ -305,7 +305,7 @@ function M.setup()
       w = {
         name = 'Worktree',
         a = { "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", 'Add' },
-        c = { "<cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", 'Checkout' },
+        c = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", 'Checkout' },
       },
       d = {
         -- "<cmd>Gitsigns diffthis HEAD<cr>",
@@ -458,7 +458,7 @@ function M.setup()
           '<cmd>IlluminateToggle<CR>',
           'Word',
         },
-        t = { '<cmd>Twilight<cr>', 'Paragraph' },
+        p = { '<cmd>Twilight<cr>', 'Paragraph' },
         a = { '<cmd>lua require("hlargs").toggle()<cr>', 'Arguments' },
       },
       t = { '<cmd>TodoTelescope<cr>', 'TODO' },

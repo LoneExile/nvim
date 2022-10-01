@@ -3,7 +3,12 @@ if not status_ok then
   return
 end
 
-local commentConfig = require('user.editor.treesitter.commentString').configs
+local status, commentConfig = pcall(require, 'user.editor.treesitter.commentString')
+if not status then
+  commentConfig = {}
+  vim.notify('Treesitter comment config not found')
+end
+
 local tsTextObjects = require('user.editor.treesitter.tsTextObjects')
 
 configs.setup({

@@ -1,5 +1,16 @@
 local M = {}
 
+local status_ok, commmentStr = pcall(require, 'ts_context_commentstring.internal')
+if not status_ok then
+  vim.notify('Installing Treesitter... \nplesae restart nvim after install is complete')
+  return
+end
+
+local status, tsComment = pcall(require, 'ts_context_commentstring.utils')
+if not status then
+  return
+end
+
 M.configs = {
   javascript = {
     __default = '// %s',
@@ -12,12 +23,12 @@ M.configs = {
   typescript = { __default = '// %s', __multiline = '/* %s */' },
 }
 
-require('ts_context_commentstring.internal').update_commentstring({
+commmentStr.update_commentstring({
   key = '__multiline',
 })
 
-require('ts_context_commentstring.internal').calculate_commentstring({
-  location = require('ts_context_commentstring.utils').get_cursor_location(),
+commmentStr.calculate_commentstring({
+  location = tsComment.get_cursor_location(),
 })
 
-return M
+return M.configs

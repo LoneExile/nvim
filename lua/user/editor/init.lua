@@ -1,14 +1,14 @@
 -- git
 require('user.editor.git.gitsigns')
-require('user.editor.git.diffView')
+-- require('user.editor.git.diffView')
 
 -- coding
 require('user.editor.coding.refactoring')
 require('user.editor.coding.sniprun')
 require('user.editor.coding.codi')
 require('user.editor.coding.toggleterm').setup()
-require('user.editor.coding.swenv')
-require('user.editor.coding.lab')
+-- require('user.editor.coding.swenv')
+-- require('user.editor.coding.lab')
 
 -- tool
 require('user.editor.tool.spectre')

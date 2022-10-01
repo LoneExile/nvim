@@ -1,6 +1,5 @@
 local status_ok, twilight = pcall(require, 'twilight')
 if not status_ok then
-  vim.notify('twilight' .. ' not found!')
   return
 end
 twilight.setup({

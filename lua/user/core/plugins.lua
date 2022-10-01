@@ -15,29 +15,24 @@ local pluginTable = {
     end,
   },
 
-  { 'p00f/nvim-ts-rainbow' },
-  { 'nvim-treesitter/nvim-treesitter-context' },
-  { 'windwp/nvim-ts-autotag' },
-  { 'RRethy/nvim-treesitter-textsubjects' },
-  { 'JoosepAlviste/nvim-ts-context-commentstring' },
-  { 'nvim-treesitter/nvim-treesitter-textobjects' }, -- movement around text objects
-  -- , after = 'nvim-treesitter'
-  -- , event = 'VimEnter'
+  { 'p00f/nvim-ts-rainbow', event = 'VimEnter' },
+  { 'nvim-treesitter/nvim-treesitter-context', event = 'VimEnter' },
+  { 'windwp/nvim-ts-autotag', event = 'VimEnter' },
+  { 'RRethy/nvim-treesitter-textsubjects', event = 'VimEnter' },
+  { 'JoosepAlviste/nvim-ts-context-commentstring', event = 'VimEnter' },
+  { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'VimEnter' }, -- movement around text objects
 
-  {
-    'm-demare/hlargs.nvim',
-    requires = { 'nvim-treesitter/nvim-treesitter' },
-  },
-  { 'numToStr/Comment.nvim' },
-  { 'lukas-reineke/indent-blankline.nvim' },
-  { 'windwp/nvim-autopairs' },
-  { 'RRethy/vim-illuminate' }, -- NOTE: no need to HL word?
+  { 'numToStr/Comment.nvim', event = 'VimEnter' },
+  { 'lukas-reineke/indent-blankline.nvim', event = 'VimEnter' },
+  { 'm-demare/hlargs.nvim', requires = { 'nvim-treesitter/nvim-treesitter' } },
+  { 'windwp/nvim-autopairs', requires = { 'nvim-treesitter/nvim-treesitter' } },
+  { 'RRethy/vim-illuminate', requires = { 'nvim-treesitter/nvim-treesitter' } }, -- NOTE: no need to HL word?
   -- { 'David-Kunz/markid' }, -- highlight variable to use same color
 
   -- optimization
   { 'lewis6991/impatient.nvim' },
   { 'antoinemadec/FixCursorHold.nvim' },
-  { 'dstein64/vim-startuptime' },
+  { 'dstein64/vim-startuptime', opt = true, cmd = 'StartupTime' },
   -- { 'nathom/filetype.nvim' },
 
   ---- editor
@@ -57,16 +52,31 @@ local pluginTable = {
   -- { "nvim-telescope/telescope-ui-select.nvim" },
 
   -- productivity
-  { 'folke/zen-mode.nvim' }, -- NOTE: useless
-  { 'folke/twilight.nvim' }, -- NOTE: useless
-  { 'folke/todo-comments.nvim' }, -- NOTE: useless? treesitter already supported
+  { 'folke/zen-mode.nvim', opt = true, cmd = 'ZenMode' },
+  { 'folke/twilight.nvim', opt = true, cmd = 'Twilight' },
+  { 'folke/todo-comments.nvim' },
 
   -- code
-  { 'AckslD/swenv.nvim' }, -- NOTE: change python env, useless?
+  {
+    'AckslD/swenv.nvim',
+    opt = true,
+    ft = { 'python' },
+    config = function()
+      require('user.editor.coding.swenv')
+    end,
+  },
   { 'theprimeagen/refactoring.nvim' },
-  { '0x100101/lab.nvim', run = 'cd js && npm ci' },
-  { 'michaelb/sniprun', run = 'bash ./install.sh' }, -- NOTE: look cool but lab.nvim can replace this
-  { 'metakirby5/codi.vim' }, -- NOTE: buggy
+  {
+    '0x100101/lab.nvim',
+    run = 'cd js && npm ci',
+    opt = true,
+    ft = { 'javascript', 'typescript', 'lua', 'python' },
+    config = function()
+      require('user.editor.coding.lab')
+    end,
+  },
+  { 'michaelb/sniprun', run = 'bash ./install.sh' },
+  { 'metakirby5/codi.vim', opt = true, cmd = 'Codi' }, -- NOTE: buggy
   {
     'ray-x/web-tools.nvim',
     opt = true,
@@ -87,60 +97,57 @@ local pluginTable = {
 
   --git
   { 'lewis6991/gitsigns.nvim' },
-  { 'sindrets/diffview.nvim' },
+  {
+    'sindrets/diffview.nvim',
+    opt = true,
+    cmd = 'DiffviewOpen',
+    config = function()
+      require('user.editor.git.diffView')
+    end,
+  },
   { 'ThePrimeagen/git-worktree.nvim' }, -- NOTE: just use it on cmdline?
 
   -- color
   { 'nvchad/nvim-colorizer.lua' },
   { 'max397574/colortils.nvim' },
 
-  -- lsp
-  -- {
-  --   'VonHeikemen/lsp-zero.nvim',
-  --   requires = {
   -- LSP Support
   { 'neovim/nvim-lspconfig' },
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
+  { 'jose-elias-alvarez/typescript.nvim' },
+  { 'folke/lua-dev.nvim', branch = 'main' },
 
   -- Autocompletion
-  { 'hrsh7th/nvim-cmp' },
-  { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-path' },
-  { 'saadparwaiz1/cmp_luasnip' },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-nvim-lua' },
+  {
+    'hrsh7th/nvim-cmp',
+    -- event = 'InsertEnter',
+    -- config = function()
+    --   require('user.lsp.cmp')
+    -- end,
+    requires = {
+      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+      { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
+      { 'jcha0713/cmp-tw2css', after = 'nvim-cmp' },
+    },
+  },
 
   -- Snippets
-  { 'L3MON4D3/LuaSnip' },
+  {
+    'L3MON4D3/LuaSnip', -- event = 'InsertCharPre',
+  },
   -- { "rafamadriz/friendly-snippets" },
-  --   },
-  -- },
-  { 'jose-elias-alvarez/typescript.nvim' },
-  { 'jcha0713/cmp-tw2css' },
-  { 'folke/lua-dev.nvim', branch = 'main' },
+
   { 'glepnir/lspsaga.nvim', branch = 'main' },
   { 'SmiteshP/nvim-navic' },
   { 'jose-elias-alvarez/null-ls.nvim' },
-  { 'github/copilot.vim' },
-  {
-    'zbirenbaum/copilot.lua',
-    commit = 'ede741d935cf5d962c9a9e44db2400ed1a4aaf13',
-    event = { 'VimEnter' },
-    config = function()
-      vim.defer_fn(function()
-        require('copilot').setup()
-      end, 100)
-    end,
-  },
-  {
-    'zbirenbaum/copilot-cmp',
-    commit = '67825246fa2aa6226ec3320d554640aa4697e1b1',
-    module = 'copilot_cmp',
-  },
-
+  -- { 'github/copilot.vim' },
   -- {
   --   'zbirenbaum/copilot.lua',
+  --   commit = 'ede741d935cf5d962c9a9e44db2400ed1a4aaf13',
   --   event = { 'VimEnter' },
   --   config = function()
   --     vim.defer_fn(function()
@@ -150,11 +157,26 @@ local pluginTable = {
   -- },
   -- {
   --   'zbirenbaum/copilot-cmp',
-  --   after = { 'copilot.lua' },
-  --   config = function()
-  --     require('copilot_cmp').setup()
-  --   end,
+  --   commit = '67825246fa2aa6226ec3320d554640aa4697e1b1',
+  --   module = 'copilot_cmp',
   -- },
+
+  {
+    'zbirenbaum/copilot.lua',
+    event = { 'VimEnter' },
+    config = function()
+      vim.defer_fn(function()
+        require('user.lsp.cmp.copilot').setup()
+      end, 100)
+    end,
+  },
+  {
+    'zbirenbaum/copilot-cmp',
+    after = { 'copilot.lua' },
+    config = function()
+      require('user.lsp.cmp.copilot').cmpSetup()
+    end,
+  },
 
   -- debugger
   { 'mfussenegger/nvim-dap' },

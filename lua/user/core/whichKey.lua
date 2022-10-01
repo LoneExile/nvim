@@ -2,7 +2,6 @@ local M = {}
 
 local status_ok, whichkey = pcall(require, 'which-key')
 if not status_ok then
-  vim.notify('which-key' .. ' not found!')
   return
 end
 
@@ -462,7 +461,6 @@ function M.setup()
         a = { '<cmd>lua require("hlargs").toggle()<cr>', 'Arguments' },
       },
       t = { '<cmd>TodoTelescope<cr>', 'TODO' },
-      p = { "<cmd>lua require('swenv.api').pick_venv()<cr>", 'Pyenv' },
       m = {
         name = '+Mark',
         a = { '<cmd>MarksToggleSigns<cr>', 'Toggle' },
@@ -478,14 +476,14 @@ function M.setup()
         g = { '<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>', 'Git' },
         r = { '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>', 'Files' },
       },
-      s = {
-        name = '+Session',
-        l = { '<cmd>SessionManager load_last_session<cr>', 'Load last session' },
-        s = { '<cmd>SessionManager save_current_session<cr>', 'Save session' },
-        d = { '<cmd>SessionManager delete_session<cr>', 'Delete session' },
-        L = { '<cmd>SessionManager load_session<cr>', 'Load session' },
-        c = { '<cmd>SessionManager load_current_dir_session<cr>', 'Load current dir' },
-      },
+      -- s = {
+      --   name = '+Session',
+      --   l = { '<cmd>SessionManager load_last_session<cr>', 'Load last session' },
+      --   s = { '<cmd>SessionManager save_current_session<cr>', 'Save session' },
+      --   d = { '<cmd>SessionManager delete_session<cr>', 'Delete session' },
+      --   L = { '<cmd>SessionManager load_session<cr>', 'Load session' },
+      --   c = { '<cmd>SessionManager load_current_dir_session<cr>', 'Load current dir' },
+      -- },
       c = {
         name = '+Color picker',
         p = {
@@ -512,24 +510,10 @@ function M.setup()
       },
     },
     x = {
-      name = '+Code',
-      c = {
-        name = 'Codi',
-        c = {
-          '<cmd>Codi!!<cr>',
-          'Codi Toggle',
-        },
-        e = {
-          '<cmd>CodiExpand<cr>',
-          'Expand',
-        },
-        s = {
-          '<cmd>:CodiSelect<cr>',
-          'Select',
-        },
-      },
+      name = '+Execute',
+      p = { "<cmd>lua require('swenv.api').pick_venv()<cr>", 'Pyenv' },
       r = {
-        name = 'refactor',
+        name = 'Refactor',
         b = { "<Cmd>lua require('refactoring').refactor('Extract Block')<cr>", 'Extract Block' },
         B = {
           "<Cmd>lua require('refactoring').refactor('Extract Function To File')<cr>",
@@ -538,39 +522,57 @@ function M.setup()
         i = { "<Cmd>lua require('refactoring').refactor('Inline Variable')<cr>", 'Inline Local' },
         s = { "<Cmd>lua require('refactoring').select_refactor()<CR>", 'Select Refactor' },
       },
-      s = {
-        name = '+Sniprun',
+      c = {
+        name = '+Code',
         c = {
-          "<cmd>lua require'sniprun'.run()<cr>",
-          'Run',
-        },
-        r = {
-          "<cmd>lua require'sniprun'.reset()<cr>",
-          'Reset',
+          name = '+Codi',
+          c = {
+            '<cmd>Codi!!<cr>',
+            'Codi Toggle',
+          },
+          e = {
+            '<cmd>CodiExpand<cr>',
+            'Expand',
+          },
+          s = {
+            '<cmd>:CodiSelect<cr>',
+            'Select',
+          },
         },
         s = {
-          "<cmd>lua require'sniprun.display'.close_all()<cr>",
-          'Stop',
+          name = '+Sniprun',
+          c = {
+            "<cmd>lua require'sniprun'.run()<cr>",
+            'Run',
+          },
+          r = {
+            "<cmd>lua require'sniprun'.reset()<cr>",
+            'Reset',
+          },
+          s = {
+            "<cmd>lua require'sniprun.display'.close_all()<cr>",
+            'Stop',
+          },
+          l = {
+            "<cmd>lua require'sniprun.live_mode'.toggle()<cr>",
+            'Live',
+          },
+          i = {
+            "<cmd>lua require'sniprun'.info()<cr>",
+            'Info',
+          },
+          m = {
+            "<cmd>lua require'sniprun'.clear_repl()<cr>",
+            'Memory Clear',
+          },
         },
         l = {
-          "<cmd>lua require'sniprun.live_mode'.toggle()<cr>",
-          'Live',
+          name = '+Lab',
+          r = { '<cmd>Lab code run<cr>', 'Run' },
+          s = { '<cmd>Lab code stop<cr>', 'Stop' },
+          p = { '<cmd>Lab code panel<cr>', 'Panel' },
+          c = { '<cmd>Lab code config<cr>', 'Config' },
         },
-        i = {
-          "<cmd>lua require'sniprun'.info()<cr>",
-          'Info',
-        },
-        m = {
-          "<cmd>lua require'sniprun'.clear_repl()<cr>",
-          'Memory Clear',
-        },
-      },
-      l = {
-        name = '+Lab',
-        r = { '<cmd>Lab code run<cr>', 'Run' },
-        s = { '<cmd>Lab code stop<cr>', 'Stop' },
-        p = { '<cmd>Lab code panel<cr>', 'Panel' },
-        c = { '<cmd>Lab code config<cr>', 'Config' },
       },
     },
     d = {

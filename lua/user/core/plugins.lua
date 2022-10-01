@@ -80,7 +80,7 @@ local pluginTable = {
   {
     'ray-x/web-tools.nvim',
     opt = true,
-    cmd = { 'BrowserOpen', 'Browserstop' },
+    cmd = { 'BrowserOpen', 'Browserstop', 'BrowserRestart' },
     filetypes = { 'html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
     config = function()
       require('web-tools').setup()
@@ -143,6 +143,7 @@ local pluginTable = {
 
   { 'glepnir/lspsaga.nvim', branch = 'main' },
   { 'SmiteshP/nvim-navic' },
+  -- { 'lvimuser/lsp-inlayhints.nvim' }, -- TODO: not working
   { 'jose-elias-alvarez/null-ls.nvim' },
   -- { 'github/copilot.vim' },
   -- {

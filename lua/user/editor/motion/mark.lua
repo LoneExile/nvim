@@ -1,6 +1,5 @@
 local status_ok, mark = pcall(require, 'marks')
 if not status_ok then
-  vim.notify('mark' .. ' not found!')
   return
 end
 mark.setup({

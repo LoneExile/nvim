@@ -11,7 +11,6 @@ keymap('n', 'gh', '<CMD>HopWord<CR>', opts)
 
 local status_ok, hop = pcall(require, 'hop')
 if not status_ok then
-  vim.notify('Hop not installed')
   return
 end
 

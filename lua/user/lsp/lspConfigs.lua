@@ -1,7 +1,6 @@
 local lsp_defaults = require('user.lsp.settings.defaults')
 local status_ok, lspconfig = pcall(require, 'lspconfig')
 if not status_ok then
-  vim.notify('lspconfig is not installed', vim.log.levels.ERROR)
   return
 end
 

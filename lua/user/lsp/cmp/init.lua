@@ -1,4 +1,4 @@
-require('user.lsp.cmp.copilot')
+-- require('user.lsp.cmp.copilot')
 
 -- local status_ok_lsp, lsp = pcall(require, 'lsp-zero')
 -- if not status_ok_lsp then
@@ -8,7 +8,6 @@ require('user.lsp.cmp.copilot')
 
 local cmp_ok, cmp = pcall(require, 'cmp')
 if not cmp_ok then
-  vim.notify('cmp' .. ' not found!')
   return
 end
 --

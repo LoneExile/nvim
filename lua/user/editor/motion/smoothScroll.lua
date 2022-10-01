@@ -1,6 +1,5 @@
 local status_ok, smoothScroll = pcall(require, 'cinnamon')
 if not status_ok then
-  vim.notify('smooth-scroll' .. ' not found!')
   return
 end
 

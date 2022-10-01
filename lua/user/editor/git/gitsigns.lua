@@ -1,6 +1,5 @@
 local status_ok_ui, gitsigns = pcall(require, 'gitsigns')
 if not status_ok_ui then
-  vim.notify('gitsigns' .. ' not found!')
   return
 end
 

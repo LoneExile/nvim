@@ -13,26 +13,28 @@ mason.setup({
     border = 'rounded',
   },
 })
+
+-- mason ensure installed make slow startup time
 mason_lspconfig.setup({
-  ensure_installed = {
-    -- lsp
-    'tsserver',
-    'sumneko_lua',
-    'pyright',
-    'jsonls',
-    'vuels',
-
-    -- linters
-    'eslint_d',
-    'flake8',
-    'markdownlint',
-    'shellcheck',
-
-    -- formatters
-    'prettier',
-    'black',
-    'stylua',
-    'shfmt',
-    'markdownlint',
-  },
+  -- ensure_installed = {
+  --   -- lsp
+  --   'tsserver',
+  --   'sumneko_lua',
+  --   'pyright',
+  --   'jsonls',
+  --   'vuels',
+  --
+  --   -- linters
+  --   'eslint_d',
+  --   'flake8',
+  --   'markdownlint',
+  --   'shellcheck',
+  --
+  --   -- formatters
+  --   'prettier',
+  --   'black',
+  --   'stylua',
+  --   'shfmt',
+  --   'markdownlint',
+  -- },
 })

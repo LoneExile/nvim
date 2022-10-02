@@ -71,6 +71,12 @@ if TRANPARENT then
         vim.cmd([[highlight NavicSeparator guifg=#61afef gui=bold,italic]])
         vim.cmd([[highlight NavicText guifg=#d16d9e gui=bold,italic]])
 
+        -- DiffText
+        vim.cmd([[highlight DiffText guibg=#F0FFFF]])
+        vim.cmd([[highlight DiffChange guibg=none]])
+        vim.cmd([[highlight diffChanged guibg=none]])
+        -- vim.cmd([[highlight BufferCurrentSign guifg=#0db9d7 guibg=none]])
+
         -- Illuminated
         vim.cmd([[highlight IlluminatedWordText guibg=#1b1f27]])
         vim.cmd([[highlight IlluminatedWordRead guibg=#1b1f27]])

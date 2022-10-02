@@ -50,8 +50,22 @@ local pluginTable = {
   -- { "nvim-telescope/telescope-ui-select.nvim" },
 
   -- productivity
-  { 'folke/zen-mode.nvim', opt = true, cmd = 'ZenMode' },
-  { 'folke/twilight.nvim', opt = true, cmd = 'Twilight' },
+  {
+    'folke/zen-mode.nvim',
+    opt = true,
+    cmd = 'ZenMode',
+    config = function()
+      require('user.ui.productivity.zen')
+    end,
+  },
+  {
+    'folke/twilight.nvim',
+    opt = true,
+    cmd = 'Twilight',
+    config = function()
+      require('user.ui.productivity.twilight')
+    end,
+  },
   { 'folke/todo-comments.nvim' },
 
   -- code
@@ -140,17 +154,19 @@ local pluginTable = {
   -- { "rafamadriz/friendly-snippets" },
 
   { 'glepnir/lspsaga.nvim', branch = 'main' },
-  { 'SmiteshP/nvim-navic' },
+  -- { 'SmiteshP/nvim-navic' },
+  { 'j-hui/fidget.nvim' }, -- NOTE: Hmmmmm
   -- { 'lvimuser/lsp-inlayhints.nvim' }, -- TODO: not working
+
   { 'jose-elias-alvarez/null-ls.nvim' },
   {
     'zbirenbaum/copilot.lua',
     -- commit = '',
     event = { 'VimEnter' },
     config = function()
-      vim.defer_fn(function()
+      vim.schedule(function()
         require('user.lsp.cmp.copilot').setup()
-      end, 100)
+      end)
     end,
   },
   {
@@ -197,15 +213,40 @@ local pluginTable = {
   },
   {
     'nvim-neo-tree/neo-tree.nvim',
+    event = 'BufWinEnter',
+    config = function()
+      vim.schedule(function()
+        require('user.ui.neoTree')
+      end)
+    end,
     branch = 'v2.x',
-    requires = { 'MunifTanjim/nui.nvim', 's1n7ax/nvim-window-picker' },
+    requires = { { 'MunifTanjim/nui.nvim' }, { 's1n7ax/nvim-window-picker' } },
   },
-  { 'nvim-lualine/lualine.nvim' },
+  {
+    'nvim-lualine/lualine.nvim',
+    event = 'BufWinEnter',
+    config = function()
+      vim.schedule(function()
+        vim.cmd([[lua vim.o.ls=1]]) -- enable statusline
+        require('user.ui.lualine')
+      end)
+    end,
+  },
   { 'rcarriga/nvim-notify' },
   { 'ahmedkhalf/project.nvim' },
   { 'b0o/schemastore.nvim' },
   { 'stevearc/dressing.nvim' },
-  { 'j-hui/fidget.nvim' }, -- NOTE: Hmmmmm
+  {
+    'anuvyklack/windows.nvim',
+    event = 'WinEnter',
+    requires = {
+      'anuvyklack/middleclass',
+      'anuvyklack/animation.nvim',
+    },
+    config = function()
+      require('user.ui.windows')
+    end,
+  },
 
   -- Colorschemes
   -- { "LunarVim/onedarker.nvim" },

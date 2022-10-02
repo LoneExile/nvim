@@ -78,4 +78,5 @@ dashboard.section.header.opts.hl = 'Include'
 dashboard.section.buttons.opts.hl = 'Keyword'
 
 dashboard.opts.opts.noautocmd = true
+vim.cmd([[lua vim.o.ls=0]]) -- disable statusline
 alpha.setup(dashboard.opts)

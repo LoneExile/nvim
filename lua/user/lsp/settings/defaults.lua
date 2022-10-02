@@ -1,8 +1,8 @@
 local add_lsp_buffer_keybindings = require('user.lsp.settings.keymaps').add_lsp_buffer_keybindings
-local status_ok, navic = pcall(require, 'nvim-navic')
-if not status_ok then
-  return
-end
+-- local status_ok, navic = pcall(require, 'nvim-navic')
+-- if not status_ok then
+--   return
+-- end
 
 local lsp_defaults = {
   flags = {
@@ -11,7 +11,7 @@ local lsp_defaults = {
   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   on_attach = function(client, bufnr)
     vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
-    navic.attach(client, bufnr)
+    -- navic.attach(client, bufnr)
     add_lsp_buffer_keybindings(bufnr)
     if client.name == 'tsserver' then
       local _, typescript = pcall(require, 'typescript')
@@ -22,6 +22,6 @@ local lsp_defaults = {
   end,
 }
 
-vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+-- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 
 return lsp_defaults

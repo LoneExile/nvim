@@ -450,6 +450,18 @@ function M.setup()
     },
     u = {
       name = '+Utility',
+      w = {
+        name = '+Windows',
+        m = { '<cmd>WindowsMaximize!<cr>', 'Maximize' },
+        e = { '<cmd>WindowsEqualize<cr>', 'Equal' },
+        t = { '<cmd>WindowsToggleAutowidth<cr>', 'Toggle' },
+      },
+      d = {
+        name = 'Diff Buf',
+        a = { '<cmd>windo diffthis<cr>', 'Diff All' },
+        c = { '<cmd>diffoff!<cr>', 'Diff Off' },
+        t = { '<cmd>diffthis<cr>', 'Diff This' },
+      },
       z = { '<cmd>ZenMode<cr>', 'Zen' },
       h = {
         name = 'highlight',
@@ -511,6 +523,12 @@ function M.setup()
     },
     x = {
       name = '+Execute',
+      b = {
+        name = '+Browser',
+        s = { '<cmd>Browserstop<cr>', 'Stop' },
+        o = { '<cmd>BrowserOpen<cr>', 'Open' },
+        r = { '<cmd>BrowserRestart<cr>', 'Restart' },
+      },
       p = { "<cmd>lua require('swenv.api').pick_venv()<cr>", 'Pyenv' },
       r = {
         name = 'Refactor',

@@ -16,7 +16,7 @@ M.CURRENTOS = vim.loop.os_uname().sysname
 M.TRANPARENT = true
 
 if M.CURRENTOS == 'Darwin' then
-  M.TRANPARENT = false
+  M.TRANPARENT = true
   vim.opt.clipboard = { -- or use vim.g.clipboard
     name = 'macOS-clipboard',
     copy = {

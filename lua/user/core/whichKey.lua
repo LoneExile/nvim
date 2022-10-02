@@ -379,7 +379,7 @@ function M.setup()
       },
 
       n = {
-        "<cmd>lua require('telescope').extensions.notify.notify(require('telescope.themes').get_dropdown({}))<cr>",
+        "<cmd>lua require('telescope').extensions.notify.notify(require('telescope.themes').get_dropdown({initial_mode = 'normal'}))<cr>",
         'Notifications',
       },
       s = {

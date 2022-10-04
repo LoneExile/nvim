@@ -22,6 +22,7 @@ local pluginTable = {
   { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'VimEnter' }, -- movement around text objects
   { 'numToStr/Comment.nvim', event = 'VimEnter' },
   { 'lukas-reineke/indent-blankline.nvim', event = 'VimEnter' },
+  { 'andymass/vim-matchup' },
   { 'm-demare/hlargs.nvim', requires = { 'nvim-treesitter/nvim-treesitter' } },
   { 'windwp/nvim-autopairs', requires = { 'nvim-treesitter/nvim-treesitter' } },
   { 'RRethy/vim-illuminate', requires = { 'nvim-treesitter/nvim-treesitter' } }, -- NOTE: no need to HL word?
@@ -128,7 +129,24 @@ local pluginTable = {
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
   { 'jose-elias-alvarez/typescript.nvim' },
-  { 'folke/lua-dev.nvim', branch = 'main' },
+  { 'folke/lua-dev.nvim' },
+  -- {
+  --   'simrat39/rust-tools.nvim',
+  --   ft = { 'rust' },
+  --   config = function()
+  --     require('user.lsp.settings.rust')
+  --   end,
+  --   requires = {
+  --     {
+  --       'saecki/crates.nvim',
+  --       tag = 'v0.3.0',
+  --       requires = { 'nvim-lua/plenary.nvim' },
+  --       config = function()
+  --         require('crates').setup()
+  --       end,
+  --     },
+  --   },
+  -- },
 
   -- Autocompletion
   {
@@ -183,7 +201,14 @@ local pluginTable = {
   { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } },
   { 'theHamsta/nvim-dap-virtual-text', requires = { 'mfussenegger/nvim-dap' } }, -- NOTE: use dap-ui hover instead?
   -- { "nvim-telescope/telescope-dap.nvim" },
-  { 'mfussenegger/nvim-dap-python', requires = { 'mfussenegger/nvim-dap' } },
+  {
+    'mfussenegger/nvim-dap-python',
+    requires = { 'mfussenegger/nvim-dap' },
+    ft = { 'python' },
+    config = function()
+      require('dap-python').setup('~/.pyenv/shims/python')
+    end,
+  },
   {
     -- https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
     'mxsdev/nvim-dap-vscode-js',
@@ -196,13 +221,14 @@ local pluginTable = {
       },
     },
   },
-  -- {
-  --   'leoluz/nvim-dap-go',
-  --   run = 'go install github.com/go-delve/delve/cmd/dlv@latest',
-  --   config = function()
-  --     require('dap-go').setup()
-  --   end,
-  -- },
+  {
+    'leoluz/nvim-dap-go',
+    ft = { 'go' },
+    run = 'go install github.com/go-delve/delve/cmd/dlv@latest',
+    config = function()
+      require('dap-go').setup()
+    end,
+  },
 
   -- UI
   {
@@ -224,10 +250,9 @@ local pluginTable = {
   },
   {
     'nvim-lualine/lualine.nvim',
-    event = 'BufWinEnter',
     config = function()
       vim.schedule(function()
-        vim.cmd([[lua vim.o.ls=1]]) -- enable statusline
+        -- vim.cmd([[lua vim.o.ls=1]]) -- enable statusline
         require('user.ui.lualine')
       end)
     end,
@@ -249,15 +274,66 @@ local pluginTable = {
   },
 
   -- Colorschemes
+  { 'folke/tokyonight.nvim' },
   -- { "LunarVim/onedarker.nvim" },
   -- { "EdenEast/nightfox.nvim" },
   -- { "glepnir/zephyr-nvim" },
-  { 'folke/tokyonight.nvim' },
   -- { 'catppuccin/nvim' },
   -- { 'lunarvim/darkplus.nvim' },
+
+  -- experimental
+  -- {
+  --   'Dax89/ide.nvim',
+  --   config = function()
+  --     require('ide').setup({
+  --       ignore_filetypes = {},
+  --       root_patterns = { '.git/' },
+  --       shadow_build = false,
+  --       auto_create = true,
+  --       debug = false,
+  --       build_dir = 'build',
+  --       project_file = 'project.nvide',
+  --       mappings = {},
+  --       quickfix = {
+  --         pos = 'bel',
+  --       },
+  --       integrations = {
+  --         dap = {
+  --           enable = false,
+  --         },
+  --         dapui = {
+  --           enable = false,
+  --         },
+  --       },
+  --     })
+  --   end,
+  --   requires = {
+  --     { 'nvim-lua/plenary.nvim' },
+  --     { 'rcarriga/nvim-notify' }, -- Notifications Popup (Optional)
+  --     { 'stevearc/dressing.nvim' }, -- Improved UI (Optional)
+  --     { 'mfussenegger/nvim-dap' }, -- DAP Support (Optional)
+  --     { 'rcarriga/nvim-dap-ui' }, -- DAP-UI Support (Optional)
+  --   },
+  -- },
+
+  -- {
+  --   'folke/noice.nvim',
+  --   event = 'VimEnter',
+  --   config = function()
+  --     require('noice').setup()
+  --   end,
+  --   requires = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --     'MunifTanjim/nui.nvim',
+  --     'rcarriga/nvim-notify',
+  --     'hrsh7th/nvim-cmp',
+  --   },
+  -- },
 }
 
 return pluginTable
+
+-----------------------------------------------------------------------------------------------
 
 -- check it out later
 -- anuvyklack/windows.nvim -- cool
@@ -272,9 +348,15 @@ return pluginTable
 -- https://git.sr.ht/~whynothugo/lsp_lines.nvim
 -- simrat39/symbols-outline.nvim
 -- weilbith/nvim-code-action-menu
+-- andythigpen/nvim-coverage
+
+-----------------------------------------------------------------------------------------------
 
 -- debugger
 -- nvim-neotest/neotest
+-----------------------------------------------------------------------------------------------
 
 -- look cool but not for me
 -- { "matbme/JABS.nvim" },
+
+-----------------------------------------------------------------------------------------------

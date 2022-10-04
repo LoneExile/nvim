@@ -84,6 +84,13 @@ configs.setup({
     },
   },
 
+  -- matchup
+  matchup = {
+    enable = true, -- mandatory, false will disable the whole extension
+    disable = { 'c', 'ruby' }, -- optional, list of language that will be disabled
+    -- [options]
+  },
+
   -- ** markid ** better highlight (currently suck!?)
   -- markid = { enable = false },
 })

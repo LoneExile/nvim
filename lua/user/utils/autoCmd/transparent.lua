@@ -41,6 +41,7 @@ if TRANPARENT then
       }
       for _, name in ipairs(hl_groups) do
         vim.cmd(string.format('highlight %s ctermbg=none guibg=none', name))
+
         vim.cmd([[highlight TreesitterContext ctermbg=none guibg=none gui=bold]])
         vim.cmd([[highlight IndentBlanklineContextChar guifg=#61AFEF gui=nocombine]])
         vim.cmd([[highlight IndentBlanklineSpaceChar guifg=#5c6370 gui=nocombine]])
@@ -76,6 +77,11 @@ if TRANPARENT then
         vim.cmd([[highlight DiffChange guibg=none]])
         vim.cmd([[highlight diffChanged guibg=none]])
         -- vim.cmd([[highlight BufferCurrentSign guifg=#0db9d7 guibg=none]])
+
+        -- MatchUp
+        vim.cmd([[highlight MatchParen guifg=#ff9e64 gui=bold]])
+        vim.cmd([[highlight MatchParenCur guifg=none gui=bold]])
+        vim.cmd([[highlight MatchWordCur guifg=none gui=bold]])
 
         -- Illuminated
         vim.cmd([[highlight IlluminatedWordText guibg=#1b1f27]])

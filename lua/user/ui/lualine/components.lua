@@ -23,6 +23,33 @@ local function env_cleanup(venv)
   return venv
 end
 
+----------------------------------------------------------------------------
+
+-- for lsp component
+local null_ls_status_ok, null_ls = pcall(require, 'null-ls')
+if not null_ls_status_ok then
+  return
+end
+
+local list_registered_providers_names = function(filetype)
+  local _, s = pcall(require, 'null-ls.sources')
+  local available_sources = s.get_available(filetype)
+  local registered = {}
+  for _, source in ipairs(available_sources) do
+    for method in pairs(source.methods) do
+      registered[method] = registered[method] or {}
+      table.insert(registered[method], source.name)
+    end
+  end
+  return registered
+end
+--
+local list_registered_formatters = function(filetype)
+  local registered_providers = list_registered_providers_names(filetype)
+  local method = null_ls.methods.FORMATTING
+  return registered_providers[method] or {}
+end
+
 -----------------------------------------------------------------------------------------
 
 return {
@@ -120,6 +147,10 @@ return {
           table.insert(buf_client_names, client.name)
         end
       end
+
+      local supported_formatters = list_registered_formatters(vim.bo.filetype)
+      -- print(vim.inspect(supported_formatters))
+      vim.list_extend(buf_client_names, supported_formatters, 1, #supported_formatters)
 
       local unique_client_names = vim.fn.uniq(buf_client_names)
       return '[' .. table.concat(unique_client_names, ', ') .. ']'

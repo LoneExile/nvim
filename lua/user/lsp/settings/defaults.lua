@@ -16,15 +16,17 @@ local lsp_defaults = {
     debounce_text_changes = 150,
   },
   capabilities = cmpLSP.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  on_attach = function(client, bufnr)
+  on_attach = function(
+    client --[[ , bufnr ]]
+  )
     vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
     -- navic.attach(client, bufnr)
     -- add_lsp_buffer_keybindings(bufnr)
 
-    if client.name == 'tsserver' then
-      local _, typescript = pcall(require, 'typescript')
-      typescript.setup({})
-    end
+    -- if client.name == 'tsserver' then
+    --   local _, typescript = pcall(require, 'typescript')
+    --   typescript.setup({})
+    -- end
 
     if client.name == 'eslint' then
       client.server_capabilities.documentFormattingProvider = true

@@ -21,6 +21,7 @@ local servers = {
   'vuels',
   -- 'deno',
   -- 'eslint-lsp',
+  -- 'rust_analyzer',
 }
 
 for _, server in ipairs(servers) do

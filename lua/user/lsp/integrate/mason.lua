@@ -17,20 +17,21 @@ mason.setup({
 -- mason ensure installed make slow startup time?
 mason_lspconfig.setup({
   ensure_installed = {
-    -- lsp
+    -- lsp --
     'tsserver',
     'sumneko_lua',
     'pyright',
     'jsonls',
     'vuels',
+    'rust_analyzer',
 
-    -- linters
+    -- linters --
     'eslint_d',
     'flake8',
-    -- 'markdownlint',
     'shellcheck',
+    -- 'markdownlint',
 
-    -- formatters
+    -- formatters --
     'prettier',
     'black',
     'stylua',

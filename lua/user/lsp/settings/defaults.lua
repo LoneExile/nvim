@@ -4,11 +4,12 @@ local add_lsp_buffer_keybindings = require('user.lsp.settings.keymaps').add_lsp_
 --   return
 -- end
 
--- require('cmp_nvim_lsp')
 local status, cmpLSP = pcall(require, 'cmp_nvim_lsp')
 if not status then
   return
 end
+
+add_lsp_buffer_keybindings()
 
 local lsp_defaults = {
   flags = {
@@ -18,11 +19,14 @@ local lsp_defaults = {
   on_attach = function(client, bufnr)
     vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
     -- navic.attach(client, bufnr)
-    add_lsp_buffer_keybindings(bufnr)
+    -- add_lsp_buffer_keybindings(bufnr)
+
     if client.name == 'tsserver' then
       local _, typescript = pcall(require, 'typescript')
       typescript.setup({})
-    elseif client.name == 'eslint' then
+    end
+
+    if client.name == 'eslint' then
       client.server_capabilities.documentFormattingProvider = true
     end
   end,

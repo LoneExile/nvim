@@ -12,7 +12,7 @@ require('windows').setup({
   },
   ignore = {
     buftype = { 'quickfix' },
-    filetype = { 'neo-tree', 'lspsagaoutline', 'spectre_panel' },
+    filetype = { 'neo-tree', 'lspsagaoutline', 'spectre_panel', 'DiffviewFiles ' },
   },
   animation = {
     enable = true,

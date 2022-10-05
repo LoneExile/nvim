@@ -24,7 +24,7 @@ local diagnosticsTable = {
   diagnostics.shellcheck.with({
     extra_args = { '--severity', 'warning' },
   }),
-  -- diagnostics.eslint.with({
+  -- diagnostics.eslint_d.with({
   --   filetypes = {
   --     'javascript',
   --     'javascriptreact',
@@ -43,6 +43,7 @@ local diagnosticsTable = {
   --     -- 'es6',
   --   },
   -- }),
+
   diagnostics.zsh.with({
     filetypes = { 'zsh' },
     extra_args = { '-n', '$FILENAME' },

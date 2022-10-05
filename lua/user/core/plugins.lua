@@ -126,10 +126,13 @@ local pluginTable = {
 
   -- LSP Support
   { 'neovim/nvim-lspconfig' },
+  { 'jose-elias-alvarez/null-ls.nvim' },
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
+  { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
   { 'jose-elias-alvarez/typescript.nvim' },
   { 'folke/lua-dev.nvim' },
+  -- { 'Decodetalkers/csharpls-extended-lsp.nvim' }, -- C#
   -- {
   --   'simrat39/rust-tools.nvim',
   --   ft = { 'rust' },
@@ -176,7 +179,6 @@ local pluginTable = {
   { 'j-hui/fidget.nvim' }, -- NOTE: Hmmmmm
   -- { 'lvimuser/lsp-inlayhints.nvim' }, -- TODO: not working
 
-  { 'jose-elias-alvarez/null-ls.nvim' },
   {
     'zbirenbaum/copilot.lua',
     -- commit = '',

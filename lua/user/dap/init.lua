@@ -7,6 +7,11 @@ require('user.dap.dap')
 -- end
 -- dapPy.setup('~/.pyenv/shims/python')
 
-require('nvim-dap-virtual-text').setup({})
+local status, dap_vir_text = pcall(require, 'nvim-dap-virtual-text')
+if not status then
+  return
+end
+dap_vir_text.setup({})
+
 require('user.dap.dapUI')
 require('user.dap.node')

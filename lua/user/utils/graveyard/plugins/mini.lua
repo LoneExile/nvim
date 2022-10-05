@@ -1,3 +1,4 @@
+-- { 'echasnovski/mini.nvim' },
 local status_ok_code, surround = pcall(require, 'mini.surround')
 if not status_ok_code then
   return

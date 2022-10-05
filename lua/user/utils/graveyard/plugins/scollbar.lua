@@ -1,3 +1,4 @@
+-- { 'petertriho/nvim-scrollbar' },
 local colors = require('tokyonight.colors').setup()
 require('scrollbar').setup({
   show = true,

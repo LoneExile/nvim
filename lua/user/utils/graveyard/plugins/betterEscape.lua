@@ -1,3 +1,5 @@
+-- { "max397574/better-escape.nvim" },
+
 local status_ok, betterEscape = pcall(require, 'better_escape')
 if not status_ok then
   vim.notify('better_escape' .. ' not found!')

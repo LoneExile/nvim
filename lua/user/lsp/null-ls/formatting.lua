@@ -14,9 +14,6 @@ local format = {
       'typescript',
       'typescriptreact',
       'javascriptreact',
-      'json',
-      'yaml',
-      'markdown',
       'html',
       'css',
       'scss',
@@ -26,6 +23,15 @@ local format = {
     extra_args = { '--no-semi', '--single-quote', '--no-bracket-spacing' },
     disabled_filetypes = { 'lua', 'python' },
     extra_filetypes = { 'toml' },
+  }),
+
+  formatting.yamlfmt.with({
+    filetypes = { 'yaml' },
+    extra_args = { '-' },
+  }),
+
+  formatting.jq.with({
+    filetypes = { 'json' },
   }),
 
   formatting.stylua.with({
@@ -38,15 +44,16 @@ local format = {
     extra_args = { '--fast', '--line-length', '90' },
   }),
 
-  formatting.beautysh.with({
+  formatting.shfmt.with({
     filetypes = { 'bash', 'csh', 'ksh', 'sh', 'zsh' },
-    extra_args = { '$FILENAME', '--indent', '4' },
+    extra_args = { '-filename', '$FILENAME' },
   }),
 
-  -- formatting.shfmt.with({
-  --   filetypes = { "bash", "csh", "ksh", "sh", "zsh" },
-  --   extra_args = { "-i", "4", "-ci", "-sr", "-bn", "-kp", "-s", "-ln", "bash" },
-  -- }),
+  formatting.csharpier.with({
+    filetypes = { 'cs' },
+    command = 'dotnet-csharpier',
+    extra_args = { '--write-stdout' },
+  }),
 
   formatting.markdownlint.with({
     filetypes = { 'markdown' },

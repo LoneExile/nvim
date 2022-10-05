@@ -49,7 +49,8 @@ mason_tool.setup({
     'vetur-vls',
 
     -- DAP
-    'netcoredbg',
+    'netcoredbg', -- C#
+    'js-debug-adapter', -- JavaScript, TypeScript
 
     -- FORMATTER
     'stylua',

@@ -201,7 +201,13 @@ local pluginTable = {
   -- debugger
   { 'mfussenegger/nvim-dap' },
   { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } },
-  { 'theHamsta/nvim-dap-virtual-text', requires = { 'mfussenegger/nvim-dap' } }, -- NOTE: use dap-ui hover instead?
+  {
+    'theHamsta/nvim-dap-virtual-text',
+    requires = { 'mfussenegger/nvim-dap' },
+    config = function()
+      require('nvim-dap-virtual-text').setup({})
+    end,
+  }, -- NOTE: use dap-ui hover instead?
   -- { "nvim-telescope/telescope-dap.nvim" },
   {
     'mfussenegger/nvim-dap-python',

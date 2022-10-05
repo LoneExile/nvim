@@ -14,14 +14,21 @@ end
 
 local configs = { default_handler }
 local servers = {
+
   'tsserver',
-  'sumneko_lua',
-  'pyright',
-  'jsonls',
   'vuels',
   -- 'deno',
   -- 'eslint-lsp',
-  -- 'rust_analyzer',
+
+  'sumneko_lua', -- Lua
+  'pyright', -- python
+  'jsonls', -- json
+
+  'csharp_ls', -- c#
+  -- 'omnisharp', -- c#
+
+  -- 'rust_analyzer', -- rust
+  -- 'lemminx', -- xml
 }
 
 for _, server in ipairs(servers) do

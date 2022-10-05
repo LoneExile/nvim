@@ -1,3 +1,4 @@
+-- { 'kevinhwang91/nvim-hlslens' },
 require('hlslens').setup({
   override_lens = function(render, posList, nearest, idx, relIdx)
     local sfw = vim.v.searchforward == 1

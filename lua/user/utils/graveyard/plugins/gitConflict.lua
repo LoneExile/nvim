@@ -1,3 +1,6 @@
+-- { "akinsho/git-conflict.nvim", tag = "*" },
+-- { "https://gitlab.com/yorickpeterse/nvim-pqf", as = "nvim-pqf" },
+
 local status_ok_ui, gitConflict = pcall(require, 'git-conflict')
 if not status_ok_ui then
   vim.notify('git-conflict' .. ' not found!')

@@ -1,3 +1,4 @@
+-- { 'shatur/neovim-session-manager' },
 local status_ok, sessionMan = pcall(require, 'session_manager')
 if not status_ok then
   vim.notify('session_manager' .. ' not found!')
@@ -19,4 +20,14 @@ sessionMan.setup({
   },
   autosave_only_in_session = false, -- Always autosaves session. If true, only autosaves after a session is active.
   max_path_length = 80, -- Shorten the display path if length exceeds this threshold. Use 0 if don't want to shorten the path at all.
+})
+
+local config_group = vim.api.nvim_create_augroup('MyConfigGroup', {}) -- A global group for all your config autocommands
+
+vim.api.nvim_create_autocmd({ 'User' }, {
+  pattern = 'SessionLoadPost',
+  group = config_group,
+  callback = function()
+    vim.cmd('LspRestart')
+  end,
 })

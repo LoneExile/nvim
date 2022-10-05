@@ -1,3 +1,4 @@
+-- { "kyazdani42/nvim-tree.lua" },
 local M = {}
 
 local use_icons = true

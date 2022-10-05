@@ -181,7 +181,6 @@ local pluginTable = {
 
   {
     'zbirenbaum/copilot.lua',
-    -- commit = '',
     event = { 'VimEnter' },
     config = function()
       vim.schedule(function()
@@ -191,7 +190,6 @@ local pluginTable = {
   },
   {
     'zbirenbaum/copilot-cmp',
-    -- commit = '',
     after = { 'copilot.lua' },
     config = function()
       require('user.lsp.cmp.copilot').cmpSetup()
@@ -207,7 +205,7 @@ local pluginTable = {
     config = function()
       require('nvim-dap-virtual-text').setup({})
     end,
-  }, -- NOTE: use dap-ui hover instead?
+  },
   -- { "nvim-telescope/telescope-dap.nvim" },
   {
     'mfussenegger/nvim-dap-python',
@@ -218,15 +216,9 @@ local pluginTable = {
     end,
   },
   {
-    -- https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
     'mxsdev/nvim-dap-vscode-js',
     requires = {
       { 'mfussenegger/nvim-dap' },
-      {
-        'microsoft/vscode-js-debug',
-        opt = true,
-        run = 'npm install --legacy-peer-deps && npm run compile',
-      },
     },
   },
   {

@@ -62,19 +62,19 @@ local config = {
 
 dapui.setup(config)
 
--- dap ui --
-local status_ok, dap = pcall(require, 'dap')
-if not status_ok then
-  vim.notify('dap' .. ' not found!')
-  return
+------------------------------------------------------------------------------
+local M = {}
+
+function M.setup(dap)
+  dap.listeners.after.event_initialized['dapui_config'] = function()
+    dapui.open({})
+  end
+  dap.listeners.before.event_terminated['dapui_config'] = function()
+    dapui.close({})
+  end
+  dap.listeners.before.event_exited['dapui_config'] = function()
+    dapui.close({})
+  end
 end
 
-dap.listeners.after.event_initialized['dapui_config'] = function()
-  dapui.open({})
-end
-dap.listeners.before.event_terminated['dapui_config'] = function()
-  dapui.close({})
-end
-dap.listeners.before.event_exited['dapui_config'] = function()
-  dapui.close({})
-end
+return M

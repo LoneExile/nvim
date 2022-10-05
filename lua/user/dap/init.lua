@@ -1,17 +1,10 @@
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
-require('user.dap.dap')
-
--- local status_ok, dapPy = pcall(require, 'dap-python')
--- if not status_ok then
---   return
--- end
--- dapPy.setup('~/.pyenv/shims/python')
-
-local status, dap_vir_text = pcall(require, 'nvim-dap-virtual-text')
-if not status then
+local status_ok, dap = pcall(require, 'dap')
+if not status_ok then
   return
 end
-dap_vir_text.setup({})
 
-require('user.dap.dapUI')
-require('user.dap.node')
+require('user.dap.dap').setup(dap)
+require('user.dap.dapUI').setup(dap)
+require('user.dap.node').setup(dap)
+require('user.dap.csharp').setup(dap)

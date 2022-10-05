@@ -49,6 +49,7 @@ mason_tool.setup({
     'vetur-vls',
 
     -- DAP
+    'netcoredbg',
 
     -- FORMATTER
     'stylua',

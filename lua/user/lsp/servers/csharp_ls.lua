@@ -6,6 +6,8 @@ local M = {}
 -- NOTE: quickfix
 -- dotnet clean
 -- dotnet build
+-- dotnet restore
+-- dotnet new --list
 -- dotnet --list-runtimes
 -- dotnet --list-sdks
 

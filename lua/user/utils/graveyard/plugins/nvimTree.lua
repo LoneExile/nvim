@@ -28,11 +28,17 @@ M.configs = {
     diagnostics = {
       enable = true,
       show_on_dirs = false,
+      -- icons = {
+      --   hint = ' ',
+      --   info = ' ',
+      --   warning = ' ',
+      --   error = ' ',
+      -- },
       icons = {
-        hint = ' ',
-        info = ' ',
-        warning = ' ',
-        error = ' ',
+        hint = ' ',
+        info = '⚑ ',
+        warning = '▲ ',
+        error = '✘ ',
       },
     },
     update_focused_file = {
@@ -50,8 +56,8 @@ M.configs = {
       timeout = 200,
     },
     view = {
-      width = 30,
-      height = 30,
+      width = 40,
+      height = 40,
       hide_root_folder = true,
       side = 'right',
       preserve_window_proportions = false,

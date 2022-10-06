@@ -154,10 +154,6 @@ local pluginTable = {
   -- Autocompletion
   {
     'hrsh7th/nvim-cmp',
-    -- event = 'InsertEnter',
-    -- config = function()
-    --   require('user.lsp.cmp')
-    -- end,
     requires = {
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
@@ -245,7 +241,8 @@ local pluginTable = {
         require('user.ui.neoTree')
       end)
     end,
-    branch = 'v2.x',
+    -- branch = 'v2.x',
+    branch = 'main',
     requires = { { 'MunifTanjim/nui.nvim' }, { 's1n7ax/nvim-window-picker' } },
   },
   {

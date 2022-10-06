@@ -13,16 +13,19 @@ M.setup = function()
   copilot.setup({
     panel = { -- no config options yet
       enabled = true,
-      -- auto_refresh = false,
-      -- keymap = {
-      --   jump_prev = '[[',
-      --   jump_next = ']]',
-      --   accept = '<CR>',
-      --   refresh = 'gr',
-      --   open = '<M-CR>',
-      -- },
+      auto_refresh = true,
+      keymap = {
+        -- jump_prev = '[[',
+        -- jump_next = ']]',
+        -- accept = '<CR>',
+        -- refresh = 'gr',
+        -- open = '<M-CR>',
+      },
     },
-    ft_disable = { 'alpha', 'neo-tree' },
+    filetypes = {
+      alpha = false,
+      neo_tree = false,
+    },
     suggestion = {
       enabled = true,
       auto_trigger = true,

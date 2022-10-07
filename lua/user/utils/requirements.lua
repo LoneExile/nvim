@@ -47,8 +47,8 @@ if M.CURRENTOS == 'windows' or M.CURRENTOS == 'windows_nt' then
     },
     cache_enabled = 0,
   }
-  vim.g.python_host_prog = 'c:\\users\\bunlaikun\\scoop\\apps\\pyenv\\current\\pyenv-win\\shims\\python.bat'
-  vim.g.python3_host_prog = 'c:\\users\\bunlaikun\\scoop\\apps\\pyenv\\current\\pyenv-win\\shims\\python3.bat'
+  vim.g.python_host_prog = '$HOME\\scoop\\apps\\pyenv\\current\\pyenv-win\\shims\\python.bat'
+  vim.g.python3_host_prog = '$HOME\\scoop\\apps\\pyenv\\current\\pyenv-win\\shims\\python3.bat'
 end
 
 return M

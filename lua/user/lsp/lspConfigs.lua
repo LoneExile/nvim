@@ -19,6 +19,7 @@ local servers = {
   'vuels',
   -- 'deno',
   -- 'eslint-lsp',
+  -- 'emmet-ls',
 
   'sumneko_lua', -- Lua
   'pyright', -- python

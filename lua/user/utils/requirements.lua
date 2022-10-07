@@ -17,7 +17,7 @@ M.TRANPARENT = true
 
 if M.CURRENTOS == 'Darwin' then
   M.TRANPARENT = true
-  vim.opt.clipboard = { -- or use vim.g.clipboard
+  vim.g.clipboard = {
     name = 'macOS-clipboard',
     copy = {
       ['+'] = 'pbcopy',
@@ -33,7 +33,7 @@ end
 
 if M.CURRENTOS == 'windows' or M.CURRENTOS == 'windows_nt' then
   M.TRANPARENT = false
-  vim.opt.clipboard = { -- or use vim.g.clipboard
+  vim.g.clipboard = {
     name = 'win32yank',
     copy = {
       ['+'] = 'win32yank.exe -i --crlf',

@@ -18,9 +18,18 @@ M.setup = function(lspconfig)
     init_options = {
       AutomaticWorkspaceInit = true,
     },
-    -- root_dir = function(fname)
-    --   return lspconfig.util.root_pattern('*.sln', '*.csproj', '.git')(fname) or lspconfig.util.path.dirname(fname)
+    -- on_attach = function(_, bufnr)
+    --   vim.keymap.set(
+    --     'n',
+    --     'gD',
+    --     '<cmd>lua require("csharpls_extended").lsp_definitions()<cr>',
+    --     { buffer = bufnr, desc = 'Goto declaration', noremap = true, silent = true }
+    --   )
     -- end,
+
+    root_dir = function(fname)
+      return lspconfig.util.root_pattern('*.sln', '*.csproj', '.git')(fname) or lspconfig.util.path.dirname(fname)
+    end,
   })
 end
 return M

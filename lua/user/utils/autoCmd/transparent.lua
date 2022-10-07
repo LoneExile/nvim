@@ -87,6 +87,18 @@ if TRANPARENT then
         vim.cmd([[highlight IlluminatedWordText guibg=#1b1f27]])
         vim.cmd([[highlight IlluminatedWordRead guibg=#1b1f27]])
         vim.cmd([[highlight IlluminatedWordWrite guibg=#1b1f27]])
+
+        -- Notify
+        vim.cmd([[highlight NotifyINFOBody guifg=#c0caf5 guibg=none]])
+        vim.cmd([[highlight NotifyINFOBorder guifg=#1d546a guibg=none]])
+        vim.cmd([[highlight NotifyERRORBody guifg=#c0caf5 guibg=none]])
+        vim.cmd([[highlight NotifyERRORBorder guifg=#5b3340 guibg=none]])
+        vim.cmd([[highlight NotifyWARNBody guifg=#c0caf5 guibg=none]])
+        vim.cmd([[highlight NotifyWARNBorder guifg=#5c5149 guibg=none]])
+        vim.cmd([[highlight NotifyDEBUGBody guifg=#c0caf5 guibg=none]])
+        vim.cmd([[highlight NotifyDEBUGBorder guifg=#3b4252 guibg=none]])
+        vim.cmd([[highlight NotifyTRACEBody guifg=#c0caf5 guibg=none]])
+        vim.cmd([[highlight NotifyTRACEBorder guifg=#48416a guibg=none]])
       end
     end,
   })

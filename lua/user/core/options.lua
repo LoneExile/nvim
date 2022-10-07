@@ -43,6 +43,9 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+vim.g['loaded_ruby_provider'] = 0
+vim.g['loaded_perl_provider'] = 0
+
 -- don't comment next line
 vim.cmd('autocmd BufEnter * set formatoptions-=cro')
 vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')

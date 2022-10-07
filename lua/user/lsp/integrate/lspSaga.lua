@@ -20,6 +20,13 @@ local config = {
     quit = 'q',
     exec = '<CR>',
   },
+  definition_action_keys = {
+    edit = '<C-w>oo',
+    vsplit = '<C-w>ov',
+    split = '<C-w>os',
+    tabe = '<C-w>ot',
+    quit = 'q',
+  },
   rename_action_quit = '<C-c>',
   code_action_icon = '💡',
   code_action_lightbulb = {
@@ -28,7 +35,7 @@ local config = {
     enable_in_insert = true,
     sign_priority = 20,
     virtual_text = false,
-  }, -- show symbols in winbar must nightly
+  },
   symbol_in_winbar = {
     in_custom = false,
     enable = true,

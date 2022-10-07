@@ -132,7 +132,6 @@ local pluginTable = {
   { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
   { 'jose-elias-alvarez/typescript.nvim' },
   { 'folke/lua-dev.nvim' },
-  -- { 'Decodetalkers/csharpls-extended-lsp.nvim' }, -- C#
   -- {
   --   'simrat39/rust-tools.nvim',
   --   ft = { 'rust' },
@@ -213,6 +212,7 @@ local pluginTable = {
   },
   {
     'mxsdev/nvim-dap-vscode-js',
+    -- ft = { 'typescript', 'javascript' },
     requires = {
       { 'mfussenegger/nvim-dap' },
     },
@@ -272,13 +272,17 @@ local pluginTable = {
 
   -- Colorschemes
   { 'folke/tokyonight.nvim' },
-  -- { "LunarVim/onedarker.nvim" },
+  { 'catppuccin/nvim', as = 'catppuccin' },
   -- { "EdenEast/nightfox.nvim" },
   -- { "glepnir/zephyr-nvim" },
-  -- { 'catppuccin/nvim' },
   -- { 'lunarvim/darkplus.nvim' },
+  -- { "LunarVim/onedarker.nvim" },
 
+  -----------------------------------------------------------------------------------------------
   -- experimental
+
+  -- {'smjonas/live-command.nvim'}
+
   -- {
   --   'Dax89/ide.nvim',
   --   config = function()

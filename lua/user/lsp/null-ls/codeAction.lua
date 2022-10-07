@@ -6,9 +6,6 @@ end
 local code_actions = null_ls.builtins.code_actions
 
 local codeAction = {
-  -- code_actions.refactoring.with({
-  -- 	filetype = { "go", "javascript", "lua", "python", "typescript" },
-  -- }),
   code_actions.eslint_d.with({
     filetypes = {
       'javascript',
@@ -31,6 +28,10 @@ local codeAction = {
   code_actions.shellcheck.with({
     extra_args = { '--severity', 'warning' },
   }),
+  -- code_actions.refactoring.with({
+  -- 	filetype = { "go", "javascript", "lua", "python", "typescript" },
+  -- }),
+
   -- code_actions.gitsigns.with({
   -- 	-- disabled_filetypes = { "lua" },
   -- }),

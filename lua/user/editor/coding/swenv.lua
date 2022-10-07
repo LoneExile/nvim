@@ -11,6 +11,7 @@ local configs = {
     return require('swenv.api').get_venvs(venvs_path)
   end,
   -- Path passed to `get_venvs`.
+  -- TODO: add PATH for windows
   venvs_path = vim.fn.expand('~/.pyenv/versions'),
   -- Something to do after setting an environment
   post_set_venv = function()

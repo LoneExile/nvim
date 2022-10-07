@@ -47,6 +47,7 @@ mason_tool.setup({
     'html-lsp',
     'css-lsp',
     'vetur-vls',
+    -- 'emmet-ls', -- emmet
 
     -- DAP
     'netcoredbg', -- C#

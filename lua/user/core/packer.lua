@@ -1,6 +1,13 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/'
 local snapshot_path = vim.fn.expand('$HOME') .. '/.config/nvim/plugin/snapshot/'
+
+local os = vim.loop.os_uname().sysname
+if os == 'windows' or os == 'windows_nt' then
+  -- TODO: test this is right path or use this? -- vim.fn.stdpath('config')
+  snapshot_path = vim.fn.expand('$HOME') .. '\\AppData\\Local\\nvim\\plugin\\snapshot\\'
+end
+
 local pluginTable = require('user.core.plugins')
 local M = {}
 if fn.empty(fn.glob(install_path .. 'packer.nvim')) > 0 then

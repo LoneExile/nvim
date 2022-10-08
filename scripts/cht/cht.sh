@@ -1,18 +1,17 @@
 #!/usr/bin/env bash
-selected=$(cat ~/.config/scripts/cht/cht-languages ~/.config/scripts/cht/cht-command | fzf)
+selected=$(cat ~/.config/nvim/scripts/cht/cht-languages ~/.config/nvim/scripts/cht/cht-command | fzf)
 if [[ -z $selected ]]; then
-    exit 0
+	exit 0
 fi
 
 read -r -p "Enter Query: " query
 
-if grep -qs "$selected" ~/.config/scripts/cht/cht-languages; then
-    query=$(echo "$query" | tr ' ' '+') 
-    curl -s cht.sh/"$selected"/"$query" | less
+if grep -qs "$selected" ~/.config/nvim/scripts/cht/cht-languages; then
+	query=$(echo "$query" | tr ' ' '+')
+	curl -s cht.sh/"$selected"/"$query" | less
 else
-    curl -s cht.sh/"$selected"/"$query" | less
+	curl -s cht.sh/"$selected"/"$query" | less
 fi
-
 
 #########################################################################################################
 # credit ThePrimeagen

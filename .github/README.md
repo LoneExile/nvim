@@ -30,8 +30,16 @@ dragon-drop glow ttf-jetbrains-mono xsel
 <details>
 <summary>macOS</summary>
 
+[brew](https://brew.sh/)
+
 ```bash
-# maybe later
+brew install bat btop docker fd fzf cmake gcc git jq lazygit nnn ripgrep\
+tmux tree tree-sitter wget gdu gnupg unzip glow
+
+brew install ruby go luarocks perl rust dotnet
+brew install nvm pyenv pyenv-virtualenv
+brew tap homebrew/cask-fonts && brew install --cask font-jetbrains-mono-nerd-font
+
 ```
 
 </details>
@@ -39,7 +47,7 @@ dragon-drop glow ttf-jetbrains-mono xsel
 <details>
 <summary>windows</summary>
 
-via [scoop](scoop.sh)
+via [scoop](https://scoop.sh)
 
 ```bash
 scoop install git
@@ -58,11 +66,8 @@ lazygit JetBrainsMono-NF make mingw  sudo winget wget rust go luarocks
 ### general
 
 ```bash
-cargo install stylua
-npm install -g prettier neovim yarn eslint pnpm alex bash-language-server tree-sitter-cli
-pip install isort black pynvim flake8 debugpy proselint pgcli beautysh ueberzug \
-pynvim msgpack codespell markdownlint-cli
-go install github.com/rhysd/actionlint/cmd/actionlint
+npm install -g neovim pnpm # tree-sitter-cli
+pip install pynvim # pgcli ueberzug
 ```
 
 ---
@@ -80,18 +85,19 @@ rm -rf ~/.cache/nvim/* ~/.local/share/nvim/site ~/.config/nvim/plugin/packer_com
 
 ## my note
 
+- Improve key repeat
+
+```bash
+# mac os need restart, Too fast !?
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+linux
+xset r rate 210 40
+```
+
 `:'<,'>s/[word-to-remove]/[word-to-replace]` -> **search and replace**
 
 `<`(or `>`) + `i` (or `a`) + `p` (or `{},[], etc`) -> **indent +/-**
 
 `:w !sudo tee %` -> **write sudo**
-
----
-
-`:%s/\s\+$//e` -> **remove trailing whitespace**
-
-`:set list` -> **show whitespace**
-
-`:set list!` -> **hide whitespace**
-
-`:set listchars=tab:▸\ ,trail:·,nbsp:␣` -> **customize whitespace**

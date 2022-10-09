@@ -15,5 +15,3 @@ require('user.ui')
 -- TODO: remaps which-key when i change filetypes
 
 -- FIX: startup time
-
--- WARNING: formatting not from null-ls will remove mark on format ?

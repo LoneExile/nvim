@@ -1,21 +1,23 @@
 # nvim
 
 <!--toc:start-->
-
 - [nvim](#nvim)
   - [install dependencies](#install-dependencies)
-    - [general](#general)
-  - [fixing thing](#fixing-thing)
-    - [on arch](#on-arch)
-  - [my note](#my-note)
-  <!--toc:end-->
+    - [OS](#os)
+    - [General](#general)
+  - [Fixing thing](#fixing-thing)
+    - [on Arch or MacOS](#on-arch-or-macos)
+  - [My note](#my-note)
+<!--toc:end-->
 
 ## install dependencies
 
 `node` `npm` `python3` `pip` `go` `rust` `cargo` `cmake` `git`
 
+### OS
+
 <details>
-<summary>arch</summary>
+<summary>Arch</summary>
 
 via [yay](https://github.com/Jguer/yay)
 
@@ -28,9 +30,9 @@ dragon-drop glow ttf-jetbrains-mono xsel
 </details>
 
 <details>
-<summary>macOS</summary>
+<summary>MacOS</summary>
 
-[brew](https://brew.sh/)
+via [brew](https://brew.sh/)
 
 ```bash
 brew install bat btop docker fd fzf cmake gcc git jq lazygit nnn ripgrep\
@@ -45,7 +47,7 @@ brew tap homebrew/cask-fonts && brew install --cask font-jetbrains-mono-nerd-fon
 </details>
 
 <details>
-<summary>windows</summary>
+<summary>Windows</summary>
 
 via [scoop](https://scoop.sh)
 
@@ -63,7 +65,7 @@ lazygit JetBrainsMono-NF make mingw  sudo winget wget rust go luarocks
 
 ---
 
-### general
+### General
 
 ```bash
 npm install -g neovim pnpm # tree-sitter-cli
@@ -72,18 +74,18 @@ pip install pynvim # pgcli ueberzug
 
 ---
 
-## fixing thing
+## Fixing thing
 
-### on arch
+### on Arch or MacOS
 
 ```bash
-rm -rf ~/.cache/nvim/* ~/.local/share/nvim/site ~/.config/nvim/plugin/packer_compiled.lua
+rm -rf ~/.cache/nvim/* ~/.local/share/nvim/site/* ~/.config/nvim/plugin/packer_compiled.lua
 
 ```
 
 ---
 
-## my note
+## My note
 
 - Improve key repeat
 

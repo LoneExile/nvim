@@ -43,7 +43,6 @@ local pluginTable = {
   { 'windwp/nvim-spectre' },
   { 'akinsho/toggleterm.nvim' },
   { 'darazaki/indent-o-matic' }, -- NOTE: what is this can do honestly
-  -- { "nmac427/guess-indent.nvim" },
 
   -- telescope
   { 'nvim-telescope/telescope.nvim' },

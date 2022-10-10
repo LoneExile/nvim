@@ -112,7 +112,7 @@ local pluginTable = {
   {
     'sindrets/diffview.nvim',
     opt = true,
-    cmd = 'DiffviewOpen',
+    cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
     config = function()
       require('user.editor.git.diffView')
     end,

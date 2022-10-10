@@ -58,7 +58,7 @@ mason_tool.setup({
     'jq',
     'prettier',
     'black',
-    'shfmt',
+    'beautysh',
     'csharpier',
     'markdownlint',
     'yamlfmt',

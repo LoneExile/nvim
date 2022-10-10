@@ -44,9 +44,9 @@ local format = {
     extra_args = { '--fast', '--line-length', '90' },
   }),
 
-  formatting.shfmt.with({
+  formatting.beautysh.with({
     filetypes = { 'bash', 'csh', 'ksh', 'sh', 'zsh' },
-    extra_args = { '-filename', '$FILENAME' },
+    extra_args = { '$FILENAME' },
   }),
 
   formatting.csharpier.with({

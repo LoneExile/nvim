@@ -21,9 +21,6 @@ local diagnosticsTable = {
     filetypes = { 'python' },
     extra_args = { '--max-line-length', '90' },
   }),
-  diagnostics.shellcheck.with({
-    extra_args = { '--severity', 'warning' },
-  }),
   -- diagnostics.eslint_d.with({
   --   filetypes = {
   --     'javascript',

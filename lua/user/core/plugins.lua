@@ -169,7 +169,7 @@ local pluginTable = {
   -- { "rafamadriz/friendly-snippets" },
 
   { 'glepnir/lspsaga.nvim', branch = 'main' },
-  -- { 'SmiteshP/nvim-navic' },
+  { 'SmiteshP/nvim-navic' },
   { 'j-hui/fidget.nvim' }, -- NOTE: Hmmmmm
   -- { 'lvimuser/lsp-inlayhints.nvim' }, -- TODO: not working
 

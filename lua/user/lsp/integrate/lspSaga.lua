@@ -38,7 +38,7 @@ local config = {
   },
   symbol_in_winbar = {
     in_custom = false,
-    enable = true,
+    enable = false,
     separator = '  ',
     click_support = false,
     -- show_file = false,

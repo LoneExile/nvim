@@ -79,7 +79,7 @@ if TRANPARENT then
         -- vim.cmd([[highlight BufferCurrentSign guifg=#0db9d7 guibg=none]])
 
         -- MatchUp
-        vim.cmd([[highlight MatchParen guifg=#ff9e64 gui=bold]])
+        vim.cmd([[highlight MatchParen guifg=#FFD700 gui=bold]])
         vim.cmd([[highlight MatchParenCur guifg=none gui=bold]])
         vim.cmd([[highlight MatchWordCur guifg=none gui=bold]])
 

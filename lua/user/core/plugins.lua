@@ -271,7 +271,7 @@ local pluginTable = {
 
   -- Colorschemes
   { 'folke/tokyonight.nvim' },
-  { 'catppuccin/nvim', as = 'catppuccin' },
+  -- { 'catppuccin/nvim', as = 'catppuccin' },
   -- { "EdenEast/nightfox.nvim" },
   -- { "glepnir/zephyr-nvim" },
   -- { 'lunarvim/darkplus.nvim' },

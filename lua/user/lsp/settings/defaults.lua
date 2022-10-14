@@ -19,6 +19,8 @@ local lsp_defaults = {
   on_attach = function(client, bufnr)
     vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
     navic.attach(client, bufnr)
+    vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
     -- add_lsp_buffer_keybindings(bufnr)
 
     -- if client.name == 'tsserver' then
@@ -32,6 +34,12 @@ local lsp_defaults = {
   end,
 }
 
-vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-
 return lsp_defaults
+
+-----------------------------------------------------------------------------------------
+-- -- check if has navic string
+-- local navic_values = require('nvim-navic').get_location()
+-- if #navic_values > 0 then
+--   navic.attach(client, bufnr)
+--   vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+-- end

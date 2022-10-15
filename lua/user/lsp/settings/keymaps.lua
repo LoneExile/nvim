@@ -2,6 +2,7 @@ local M = {}
 
 local buffer_mappings = {
   normal_mode = {
+    -- ['K'] = { '<cmd>Lspsaga hover_doc<CR>', 'Show hover' },
     ['K'] = { '<cmd>Lspsaga hover_doc<CR>', 'Show hover' },
     ['gd'] = { '<cmd>Lspsaga peek_definition<CR>', 'Goto Definition' },
     ['gs'] = { vim.lsp.buf.signature_help, 'show signature help' },

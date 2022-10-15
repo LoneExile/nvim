@@ -1,4 +1,4 @@
-local _, lua_dev = pcall(require, 'lua-dev')
+local _, lua_dev = pcall(require, 'neodev')
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')

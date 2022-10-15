@@ -15,7 +15,7 @@ local lsp_defaults = {
   flags = {
     debounce_text_changes = 150,
   },
-  capabilities = cmpLSP.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = cmpLSP.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   on_attach = function(client, bufnr)
     vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
     navic.attach(client, bufnr)

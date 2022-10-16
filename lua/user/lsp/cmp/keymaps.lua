@@ -15,7 +15,6 @@ require('user.lsp.cmp.luasnip')
 
 --------------------------------------------------
 -- https://github.com/windwp/nvim-autopairs#you-need-to-add-mapping-cr-on-nvim-cmp-setupcheck-readmemd-on-nvim-cmp-repo
--- local _, cmp = pcall(require, 'cmp')
 local status_cmp, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
 local status_handlers, handlers = pcall(require, 'nvim-autopairs.completion.handlers')
 if status_cmp and status_handlers then

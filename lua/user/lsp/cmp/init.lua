@@ -1,11 +1,3 @@
--- require('user.lsp.cmp.copilot')
-
--- local status_ok_lsp, lsp = pcall(require, 'lsp-zero')
--- if not status_ok_lsp then
---   vim.notify('lsp-zero' .. ' not found!')
---   return
--- end
-
 local cmp_ok, cmp = pcall(require, 'cmp')
 if not cmp_ok then
   return
@@ -40,11 +32,8 @@ local setting = {
     luasnip = 1,
   },
   duplicates_default = 0,
-  word_min = 2,
-  max_suggest = 5,
 }
 
--- local cmp_config = lsp.defaults.cmp_config({
 local cmp_config = {
   completion = {
     keyword_length = 1,
@@ -82,23 +71,21 @@ local cmp_config = {
     documentation = cmp.config.window.bordered(),
   },
   sources = {
-    { name = 'copilot', keyword_length = setting.word_min },
-    { name = 'nvim_lsp', keyword_length = setting.word_min, max_item_count = setting.max_suggest },
+    { name = 'copilot' },
+    { name = 'nvim_lsp' },
     { name = 'path' },
-    { name = 'luasnip', keyword_length = setting.word_min, max_item_count = setting.max_suggest },
+    { name = 'luasnip' },
     -- { name = 'cmp_tabnine'},
-    { name = 'nvim_lua', keyword_length = setting.word_min, max_item_count = setting.max_suggest },
+    { name = 'nvim_lua' },
     { name = 'cmp-tw2css' },
-    { name = 'buffer', keyword_length = setting.word_min, max_item_count = setting.max_suggest },
+    { name = 'buffer' },
     -- { name = 'calc' },
     -- { name = 'emoji' },
     -- { name = 'treesitter' },
     -- { name = 'crates' },
     -- { name = 'tmux' },
   },
-  -- mapping = lsp.defaults.cmp_mappings(keymaps),
   mapping = keymaps,
-  -- })
 }
 
 cmp.setup(cmp_config)

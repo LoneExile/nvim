@@ -6,6 +6,12 @@ local pluginTable = {
   { 'kyazdani42/nvim-web-devicons' },
   -- { 'folke/which-key.nvim' },
   { 'LoneExile/which-key.nvim' }, -- NOTE: use hydra and my brain instead
+  {
+    'glacambre/firenvim',
+    run = function()
+      vim.fn['firenvim#install'](0)
+    end,
+  },
 
   -- Treesitter
   {

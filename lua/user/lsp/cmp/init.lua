@@ -78,7 +78,7 @@ local cmp_config = {
     -- { name = 'cmp_tabnine'},
     { name = 'nvim_lua' },
     { name = 'cmp-tw2css' },
-    { name = 'buffer' },
+    { name = 'buffer', max_item_count = 5 },
     -- { name = 'calc' },
     -- { name = 'emoji' },
     -- { name = 'treesitter' },

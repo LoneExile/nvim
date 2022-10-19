@@ -73,7 +73,7 @@ if TRANPARENT then
         vim.cmd([[highlight NavicText guifg=#d16d9e gui=bold,italic]])
 
         -- DiffText
-        vim.cmd([[highlight DiffText guibg=#F0FFFF]])
+        vim.cmd([[highlight DiffText guibg=#F4F4F4]])
         vim.cmd([[highlight DiffChange guibg=none]])
         vim.cmd([[highlight diffChanged guibg=none]])
         -- vim.cmd([[highlight BufferCurrentSign guifg=#0db9d7 guibg=none]])

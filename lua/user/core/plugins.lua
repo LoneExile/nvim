@@ -33,6 +33,7 @@ local pluginTable = {
   { 'windwp/nvim-autopairs', requires = { 'nvim-treesitter/nvim-treesitter' } },
   { 'RRethy/vim-illuminate', requires = { 'nvim-treesitter/nvim-treesitter' } }, -- NOTE: no need to HL word?
   -- { 'David-Kunz/markid' }, -- highlight variable to use same color
+  { 'axelvc/template-string.nvim' },
 
   -- optimization
   { 'lewis6991/impatient.nvim' },

@@ -14,6 +14,7 @@ require('user.editor.coding.toggleterm').setup()
 require('user.editor.tool.spectre')
 require('user.editor.tool.indentOmatic')
 require('user.editor.tool.illuminate')
+require('user.editor.tool.templateString')
 
 -- telescope
 require('user.editor.tool.telescope')

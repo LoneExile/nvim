@@ -18,8 +18,11 @@ local lsp_defaults = {
   capabilities = cmpLSP.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   on_attach = function(client, bufnr)
     vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
-    navic.attach(client, bufnr)
-    vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+    -- TODO: add list exclude
+    if client.name ~= 'tailwindcss' then
+      navic.attach(client, bufnr)
+      vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+    end
 
     -- add_lsp_buffer_keybindings(bufnr)
 

@@ -20,6 +20,7 @@ local servers = {
   -- 'deno',
   -- 'eslint-lsp',
   -- 'emmet-ls',
+  'tailwindcss',
 
   'sumneko_lua', -- Lua
   'pyright', -- python

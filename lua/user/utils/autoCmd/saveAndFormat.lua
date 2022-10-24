@@ -11,6 +11,6 @@ vim.api.nvim_create_user_command('SaveNFormat', function()
 end, {})
 
 vim.api.nvim_create_user_command('FormatCurrentBuf', function()
-  -- vim.lsp.buf.format()
-  require('user.utils.format').format()
+  vim.lsp.buf.format()
+  -- require('user.utils.format').format()
 end, {})

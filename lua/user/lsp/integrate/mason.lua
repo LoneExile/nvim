@@ -44,6 +44,7 @@ mason_tool.setup({
     'yaml-language-server',
     'json-lsp',
     'typescript-language-server', -- Tsserver
+    'tailwindcss-language-server',
     'html-lsp',
     'css-lsp',
     'vetur-vls',

@@ -113,6 +113,12 @@ local pluginTable = {
   { 'declancm/cinnamon.nvim' },
   { 'theprimeagen/harpoon' },
   { 'chentoast/marks.nvim' }, -- NOTE: am i really use mark?
+  -- {
+  --   'cbochs/portal.nvim',
+  --   config = function()
+  --     require('portal').setup({})
+  --   end,
+  -- },
 
   --git
   { 'lewis6991/gitsigns.nvim' },
@@ -325,15 +331,16 @@ local pluginTable = {
 
   -- {
   --   'folke/noice.nvim',
-  --   event = 'VimEnter',
   --   config = function()
   --     require('noice').setup()
   --   end,
   --   requires = {
   --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
   --     'MunifTanjim/nui.nvim',
+  --     -- OPTIONAL:
+  --     --   `nvim-notify` is only needed, if you want to use the notification view.
+  --     --   If not available, we use `mini` as the fallback
   --     'rcarriga/nvim-notify',
-  --     'hrsh7th/nvim-cmp',
   --   },
   -- },
 }

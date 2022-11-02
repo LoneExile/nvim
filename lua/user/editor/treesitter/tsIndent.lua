@@ -31,6 +31,7 @@ local opts = {
     'mason',
     'neo-tree',
     'packer',
+    'noice',
   },
   buftype_exclude = { 'terminal' },
   bufname_exclude = { 'config.lua' },

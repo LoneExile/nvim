@@ -26,8 +26,8 @@ local servers = {
   'pyright', -- python
   'jsonls', -- json
 
-  'csharp_ls', -- c#
-  -- 'omnisharp', -- c#
+  -- 'csharp_ls', -- c#
+  'omnisharp', -- c#
 
   -- 'rust_analyzer', -- rust
   -- 'lemminx', -- xml

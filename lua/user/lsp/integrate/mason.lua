@@ -34,7 +34,8 @@ mason_tool.setup({
     -- LSP
     'lua-language-server',
     'bash-language-server',
-    'csharp-language-server', -- C#
+    -- 'csharp-language-server', -- C#
+    'omnisharp',
     -- 'clangd', -- C++
     'dockerfile-language-server',
     'marksman', -- Markdown

@@ -6,6 +6,7 @@ end
 local code_actions = null_ls.builtins.code_actions
 
 local codeAction = {
+  require("typescript.extensions.null-ls.code-actions"),
   code_actions.eslint_d.with({
     filetypes = {
       'javascript',

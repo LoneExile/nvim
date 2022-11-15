@@ -5,8 +5,15 @@ if not status_ok then
 end
 local code_actions = null_ls.builtins.code_actions
 
+-- require('typescript.extensions.null-ls.code-actions')
+local status, ts_utils = pcall(require, 'typescript.extensions.null-ls.code-actions')
+if not status then
+  vim.notify('ts_utils' .. ' not found!')
+  return
+end
+
 local codeAction = {
-  require("typescript.extensions.null-ls.code-actions"),
+  ts_utils,
   code_actions.eslint_d.with({
     filetypes = {
       'javascript',

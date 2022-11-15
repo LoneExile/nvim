@@ -35,6 +35,8 @@ dragon-drop glow ttf-jetbrains-mono xsel
 via [brew](https://brew.sh/)
 
 ```bash
+xcode-select --install
+  
 brew install bat btop docker fd fzf cmake gcc git jq lazygit nnn ripgrep\
 tmux tree tree-sitter wget gdu gnupg unzip glow
 

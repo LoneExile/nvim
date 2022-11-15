@@ -1,7 +1,7 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
-local hopMap = '<cmd>lua require"hop".hint_char1({ direction = require"hop.hint".'
 
+-- local hopMap = '<cmd>lua require"hop".hint_char1({ direction = require"hop.hint".'
 -- keymap('', 'f', hopMap .. 'HintDirection.AFTER_CURSOR, current_line_only = true })<cr>', opts)
 -- keymap('', 'F', hopMap .. 'HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>', opts)
 -- keymap('', 't', hopMap .. 'HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>', opts)

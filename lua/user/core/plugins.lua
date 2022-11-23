@@ -4,7 +4,7 @@ local pluginTable = {
   { 'nvim-lua/plenary.nvim' },
   { 'nvim-lua/popup.nvim' },
   -- { 'kyazdani42/nvim-web-devicons' },
-  {'nvim-tree/nvim-web-devicons'},
+  { 'nvim-tree/nvim-web-devicons' },
   -- { 'folke/which-key.nvim' },
   { 'LoneExile/which-key.nvim' }, -- NOTE: use hydra and my brain instead
   {
@@ -75,6 +75,7 @@ local pluginTable = {
     end,
   },
   { 'folke/todo-comments.nvim' },
+  { 'gaoDean/autolist.nvim' },
 
   -- code
   {

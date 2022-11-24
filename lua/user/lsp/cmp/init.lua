@@ -82,7 +82,7 @@ local cmp_config = {
     -- { name = 'calc' },
     -- { name = 'emoji' },
     -- { name = 'treesitter' },
-    -- { name = 'crates' },
+    { name = 'crates' },
     -- { name = 'tmux' },
   },
   mapping = keymaps,

@@ -146,23 +146,24 @@ local pluginTable = {
   { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
   { 'jose-elias-alvarez/typescript.nvim' },
   { 'folke/lua-dev.nvim' },
-  -- {
-  --   'simrat39/rust-tools.nvim',
-  --   ft = { 'rust' },
-  --   config = function()
-  --     require('user.lsp.settings.rust')
-  --   end,
-  --   requires = {
-  --     {
-  --       'saecki/crates.nvim',
-  --       tag = 'v0.3.0',
-  --       requires = { 'nvim-lua/plenary.nvim' },
-  --       config = function()
-  --         require('crates').setup()
-  --       end,
-  --     },
-  --   },
-  -- },
+  {
+    'simrat39/rust-tools.nvim',
+    ft = { 'rust' },
+    config = function()
+      require('user.lsp.settings.rust')
+    end,
+    requires = {
+      {
+        'saecki/crates.nvim',
+        event = { 'BufRead Cargo.toml' },
+        -- tag = 'v0.3.0',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function()
+          require('crates').setup()
+        end,
+      },
+    },
+  },
 
   -- Autocompletion
   {

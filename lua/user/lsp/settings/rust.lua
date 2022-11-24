@@ -2,12 +2,16 @@ local status, rt = pcall(require, 'rust-tools')
 if not status then
   return
 end
--- require('rust-tools/executors')
+
 local _, rt_e = pcall(require, 'rust-tools/executors')
+
 rt.setup({
   tools = {
-    executor = rt_e.termopen, -- can be quickfix or termopen
+    executor = rt_e.termopen,
     reload_workspace_from_cargo_toml = true,
+    runnables = {
+      use_telescope = true,
+    },
     inlay_hints = {
       auto = true,
       only_current_line = false,
@@ -21,28 +25,15 @@ rt.setup({
       highlight = 'Comment',
     },
     hover_actions = {
-      border = {
-        { '╭', 'FloatBorder' },
-        { '─', 'FloatBorder' },
-        { '╮', 'FloatBorder' },
-        { '│', 'FloatBorder' },
-        { '╯', 'FloatBorder' },
-        { '─', 'FloatBorder' },
-        { '╰', 'FloatBorder' },
-        { '│', 'FloatBorder' },
-      },
-      auto_focus = true,
+      border = 'rounded',
     },
+    on_initialized = function()
+      vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter', 'CursorHold', 'InsertLeave' }, {
+        pattern = { '*.rs' },
+        callback = function()
+          local _, _ = pcall(vim.lsp.codelens.refresh)
+        end,
+      })
+    end,
   },
-  -- server = {
-  --   on_init = require('lvim.lsp').common_on_init,
-  --   on_attach = function(client, bufnr)
-  --     require('lvim.lsp').common_on_attach(client, bufnr)
-  --     local rt = require('rust-tools')
-  --     -- Hover actions
-  --     vim.keymap.set('n', '<C-space>', rt.hover_actions.hover_actions, { buffer = bufnr })
-  --     -- Code action groups
-  --     vim.keymap.set('n', '<leader>lA', rt.code_action_group.code_action_group, { buffer = bufnr })
-  --   end,
-  -- },
 })

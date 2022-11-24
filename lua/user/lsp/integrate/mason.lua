@@ -54,6 +54,7 @@ mason_tool.setup({
     -- DAP
     'netcoredbg', -- C#
     'js-debug-adapter', -- JavaScript, TypeScript
+    'codelldb', -- Rust
 
     -- FORMATTER
     'stylua',

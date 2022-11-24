@@ -69,7 +69,7 @@ end
 
 dashboard.section.footer.val = {
   '',
-  '            Apinant U-suwantim',
+  '                 LoneExile',
   '',
   info(),
 }

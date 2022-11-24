@@ -29,7 +29,7 @@ local servers = {
   -- 'csharp_ls', -- c#
   'omnisharp', -- c#
 
-  -- 'rust_analyzer', -- rust
+  'rust_analyzer', -- rust
   -- 'lemminx', -- xml
 }
 

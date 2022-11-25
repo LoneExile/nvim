@@ -84,9 +84,9 @@ if TRANPARENT then
         vim.cmd([[highlight MatchWordCur guifg=none gui=bold]])
 
         -- Illuminated
-        vim.cmd([[highlight IlluminatedWordText guibg=#1b1f27]])
-        vim.cmd([[highlight IlluminatedWordRead guibg=#1b1f27]])
-        vim.cmd([[highlight IlluminatedWordWrite guibg=#1b1f27]])
+        vim.cmd([[highlight IlluminatedWordText guibg=none gui=bold]])
+        vim.cmd([[highlight IlluminatedWordRead guibg=none gui=bold]])
+        vim.cmd([[highlight IlluminatedWordWrite guibg=none gui=bold]])
 
         -- Notify
         vim.cmd([[highlight NotifyINFOBody guifg=#c0caf5 guibg=none]])

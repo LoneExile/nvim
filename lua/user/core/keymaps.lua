@@ -133,7 +133,6 @@ function M.clear(keymaps)
       -- some plugins may override default bindings that the user hasn't manually overriden
       if default[mode][key] ~= nil or (default[translated_mode] ~= nil and default[translated_mode][key] ~= nil) then
         pcall(vim.api.nvim_del_keymap, translated_mode, key)
-        -- pcall(vim.keymap.del, translated_mode, key)
       end
     end
   end

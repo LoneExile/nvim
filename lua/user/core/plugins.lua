@@ -366,6 +366,7 @@ return pluginTable
 -- simrat39/symbols-outline.nvim
 -- weilbith/nvim-code-action-menu
 -- andythigpen/nvim-coverage
+-- danielvolchek/tailiscope.nvim -- tailwind cheatsheet
 
 -----------------------------------------------------------------------------------------------
 

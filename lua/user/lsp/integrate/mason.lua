@@ -81,11 +81,11 @@ mason_tool.setup({
   start_delay = 3000, -- 3 second delay
 })
 
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'MasonToolsUpdateCompleted',
-  callback = function()
-    vim.schedule(function()
-      print('mason-tool-installer has finished')
-    end)
-  end,
-})
+-- vim.api.nvim_create_autocmd('User', {
+--   pattern = 'MasonToolsUpdateCompleted',
+--   callback = function()
+--     vim.schedule(function()
+--       print('mason-tool-installer has finished')
+--     end)
+--   end,
+-- })

@@ -31,6 +31,8 @@ local servers = {
 
   'rust_analyzer', -- rust
   -- 'lemminx', -- xml
+
+  -- 'sqls', -- sql
 }
 
 for _, server in ipairs(servers) do

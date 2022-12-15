@@ -49,6 +49,11 @@ local diagnosticsTable = {
   diagnostics.actionlint.with({
     filetype = { 'yaml' },
   }),
+
+  -- diagnostics.sqlfluff.with({
+  --   filetype = { 'sql' },
+  --   extra_args = { '--dialect', 'postgres' },
+  -- }),
 }
 
 return diagnosticsTable

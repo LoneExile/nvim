@@ -65,7 +65,7 @@ mason_tool.setup({
     'csharpier',
     'markdownlint',
     'yamlfmt',
-    'sql_formatter',
+    'sql-formatter',
 
     -- CODE ACTION
     'eslint_d',

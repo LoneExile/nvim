@@ -65,6 +65,7 @@ mason_tool.setup({
     'csharpier',
     'markdownlint',
     'yamlfmt',
+    'sql_formatter',
 
     -- CODE ACTION
     'eslint_d',
@@ -74,6 +75,7 @@ mason_tool.setup({
     'luacheck',
     'flake8',
     'actionlint',
+    -- 'sqlfluff',
   },
 
   auto_update = false,

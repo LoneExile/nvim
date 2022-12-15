@@ -59,6 +59,9 @@ local format = {
     filetypes = { 'markdown' },
     extra_args = { '--fix' },
   }),
+  formatting.sql_formatter.with({
+    filetypes = { 'sql' },
+  }),
 }
 
 -- return M

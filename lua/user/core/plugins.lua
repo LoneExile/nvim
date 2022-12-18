@@ -194,7 +194,7 @@ local pluginTable = {
     event = { 'VimEnter' },
     config = function()
       vim.schedule(function()
-        require('user.lsp.cmp.copilot').setup()
+        require('user.lsp.ai.copilot').setup()
       end)
     end,
   },
@@ -202,8 +202,24 @@ local pluginTable = {
     'zbirenbaum/copilot-cmp',
     after = { 'copilot.lua' },
     config = function()
-      require('user.lsp.cmp.copilot').cmpSetup()
+      require('user.lsp.ai.copilot').cmpSetup()
     end,
+  },
+
+  {
+    'jackMort/ChatGPT.nvim',
+    config = function()
+      -- vim.cmd("let $OPENAI_API_KEY=''")
+      print(vim.env.OPENAI_API_KEY)
+      if vim.env.OPENAI_API_KEY ~= nil then
+        require('chatgpt').setup({})
+      end
+    end,
+    requires = {
+      'MunifTanjim/nui.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
   },
 
   -- debugger

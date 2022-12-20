@@ -54,6 +54,9 @@ local format = {
     command = 'dotnet-csharpier',
     extra_args = { '--write-stdout' },
   }),
+  -- formatting.clang_format.with({
+  --   filetypes = { 'cs' },
+  -- }),
 
   formatting.markdownlint.with({
     filetypes = { 'markdown' },

@@ -3,4 +3,5 @@ plugin/packer_compiled.lua
 install.sh
 nvim.log
 startup.log
+env.lua
 

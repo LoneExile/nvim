@@ -50,6 +50,7 @@ mason_tool.setup({
     'css-lsp',
     'vetur-vls',
     -- 'emmet-ls', -- emmet
+    'astro-language-server',
 
     -- DAP
     'netcoredbg', -- C#

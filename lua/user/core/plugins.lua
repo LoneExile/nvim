@@ -209,11 +209,7 @@ local pluginTable = {
   {
     'jackMort/ChatGPT.nvim',
     config = function()
-      -- vim.cmd("let $OPENAI_API_KEY=''")
-      print(vim.env.OPENAI_API_KEY)
-      if vim.env.OPENAI_API_KEY ~= nil then
-        require('chatgpt').setup({})
-      end
+      require('user.lsp.ai.chatGPT')
     end,
     requires = {
       'MunifTanjim/nui.nvim',

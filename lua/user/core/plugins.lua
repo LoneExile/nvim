@@ -209,12 +209,23 @@ local pluginTable = {
   {
     'jackMort/ChatGPT.nvim',
     config = function()
-      require('user.lsp.ai.chatGPT')
+      require('user.lsp.ai.chatGPT').setupGPT()
     end,
     requires = {
       'MunifTanjim/nui.nvim',
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
+    },
+  },
+
+  {
+    'dense-analysis/neural',
+    config = function()
+      require('user.lsp.ai.chatGPT').setupNeural()
+    end,
+    requires = {
+      'MunifTanjim/nui.nvim',
+      'ElPiloto/significant.nvim',
     },
   },
 

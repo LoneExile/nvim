@@ -174,7 +174,7 @@ function M.setup()
       name = 'Plugin',
       c = {
         '<cmd>Lazy clean<cr>',
-        'Compile',
+        'Clean',
       },
       s = { '<cmd>Lazy sync<cr>', 'Sync' },
       u = {

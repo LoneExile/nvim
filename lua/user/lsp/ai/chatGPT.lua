@@ -10,23 +10,22 @@ end
 
 -------------------------------------------------------------------------
 
-local status_GPT, chatgpt = pcall(require, 'chatgpt')
-if not status_GPT then
-  return
-end
-
 M.setupGPT = function()
+  local status_GPT, chatgpt = pcall(require, 'chatgpt')
+  if not status_GPT then
+    return
+  end
+
   chatgpt.setup({})
 end
 
 -------------------------------------------------------------------------
 
-local status_neural, neural = pcall(require, 'neural')
-if not status_neural then
-  return
-end
-
 M.setupNeural = function()
+  local status_neural, neural = pcall(require, 'neural')
+  if not status_neural then
+    return
+  end
   neural.setup({
     mappings = {
       swift = '<C-n>', -- Context completion
@@ -37,6 +36,6 @@ M.setupNeural = function()
     },
   })
 end
--------------------------------------------------------------------------
+---------------------------------------------------------------------------
 
 return M

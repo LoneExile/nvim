@@ -170,86 +170,30 @@ function M.setup()
       'No Highlight',
     },
     t = { name = 'terminal' },
-    -- b = {
-    --   name = 'Buffers',
-    --   x = {
-    --     "<cmd>echo expand('%:p')<cr>",
-    --     'Path',
-    --   },
-    --   j = {
-    --     '<cmd>BufferLinePick<cr>',
-    --     'Jump',
-    --   },
-    --   s = {
-    --     '<cmd>Telescope buffers<cr>',
-    --     'find',
-    --   },
-    --   p = {
-    --     '<cmd>BufferLineCyclePrev<cr>',
-    --     'Previous',
-    --   },
-    --   -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" },
-    --   e = {
-    --     '<cmd>BufferLinePickClose<cr>',
-    --     'Pick which buffer to close',
-    --   },
-    --   h = {
-    --     '<cmd>BufferLineCloseLeft<cr>',
-    --     'Close all to the left',
-    --   },
-    --   l = {
-    --     '<cmd>BufferLineCloseRight<cr>',
-    --     'Close all to the right',
-    --   },
-    --   D = {
-    --     '<cmd>BufferLineSortByDirectory<cr>',
-    --     'Sort by directory',
-    --   },
-    --   L = {
-    --     '<cmd>BufferLineSortByExtension<cr>',
-    --     'Sort by language',
-    --   },
-    -- },
     p = {
-      name = 'Packer',
+      name = 'Plugin',
       c = {
-        '<cmd>PackerCompile<cr>',
+        '<cmd>Lazy clean<cr>',
         'Compile',
       },
-      i = {
-        '<cmd>PackerInstall<cr>',
-        'Install',
-      },
-      s = { '<cmd>PackerSync<cr>', 'Sync' },
-      S = {
-        '<cmd>PackerStatus<cr>',
-        'Status',
-      },
+      s = { '<cmd>Lazy sync<cr>', 'Sync' },
       u = {
-        '<cmd>PackerUpdate<cr>',
+        '<cmd>Lazy update<cr>',
         'Update',
       },
+      l = {
+        '<cmd>Lazy<cr>',
+        'Lazy',
+      },
+      L = {
+        '<cmd>Lazy log<cr>',
+        'Log',
+      },
+      r ={
+        '<cmd>Lazy resore<cr>',
+        'Restore',
+      }
     },
-    -- h = {
-    --   name = "Harpoon",
-    --   h = {
-    --     "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
-    --     "Harpoon",
-    --   },
-    --   s = {
-    --     "<cmd>lua require('harpoon.mark').add_file()<cr>",
-    --     "Add File",
-    --   },
-    --   a = {
-    --     "<cmd>OpenHarpoonAll<cr>",
-    --     "Open all",
-    --   },
-    --   k = {
-    --     "<cmd>lua require('harpoon.ui').nav_prev()<cr>",
-    --     "Previous",
-    --   },
-    --   j = { "<cmd>lua require('harpoon.ui').nav_next() <cr>", "Next" },
-    -- },
     g = {
       name = 'Git',
       S = { '<cmd>lua require "gitsigns".stage_buffer()<cr>', 'Stage Buffer' },
@@ -488,14 +432,6 @@ function M.setup()
         g = { '<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>', 'Git' },
         r = { '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>', 'Files' },
       },
-      -- s = {
-      --   name = '+Session',
-      --   l = { '<cmd>SessionManager load_last_session<cr>', 'Load last session' },
-      --   s = { '<cmd>SessionManager save_current_session<cr>', 'Save session' },
-      --   d = { '<cmd>SessionManager delete_session<cr>', 'Delete session' },
-      --   L = { '<cmd>SessionManager load_session<cr>', 'Load session' },
-      --   c = { '<cmd>SessionManager load_current_dir_session<cr>', 'Load current dir' },
-      -- },
       c = {
         name = '+Color picker',
         p = {

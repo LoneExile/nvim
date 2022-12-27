@@ -1,23 +1,36 @@
-local pluginTable = {
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    '--single-branch',
+    'https://github.com/folke/lazy.nvim.git',
+    lazypath,
+  })
+end
+vim.opt.runtimepath:prepend(lazypath)
+
+-----------------------------------------------------
+
+local plugins = {
   -- base
-  { 'wbthomason/packer.nvim' },
   { 'nvim-lua/plenary.nvim' },
   { 'nvim-lua/popup.nvim' },
-  -- { 'kyazdani42/nvim-web-devicons' },
   { 'nvim-tree/nvim-web-devicons' },
-  -- { 'folke/which-key.nvim' },
-  { 'LoneExile/which-key.nvim' }, -- NOTE: use hydra and my brain instead
-  {
-    'glacambre/firenvim',
-    run = function()
-      vim.fn['firenvim#install'](0)
-    end,
-  },
+  { 'folke/which-key.nvim' },
+  -- { 'LoneExile/which-key.nvim' }, -- NOTE: use hydra and my brain instead
+  -- {
+  --   'glacambre/firenvim',
+  --   build = function()
+  --     vim.fn['firenvim#install'](0)
+  --   end,
+  -- },
 
   -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    run = function()
+    build = function()
       pcall(vim.cmd, 'TSUpdate')
     end,
   },
@@ -30,16 +43,16 @@ local pluginTable = {
   { 'numToStr/Comment.nvim', event = 'VimEnter' },
   { 'lukas-reineke/indent-blankline.nvim', event = 'VimEnter' },
   { 'andymass/vim-matchup' },
-  { 'm-demare/hlargs.nvim', requires = { 'nvim-treesitter/nvim-treesitter' } },
-  { 'windwp/nvim-autopairs', requires = { 'nvim-treesitter/nvim-treesitter' } },
-  { 'RRethy/vim-illuminate', requires = { 'nvim-treesitter/nvim-treesitter' } }, -- NOTE: no need to HL word?
+  { 'm-demare/hlargs.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter' } },
+  { 'windwp/nvim-autopairs', dependencies = { 'nvim-treesitter/nvim-treesitter' } },
+  { 'RRethy/vim-illuminate', dependencies = { 'nvim-treesitter/nvim-treesitter' } }, -- NOTE: no need to HL word?
   -- { 'David-Kunz/markid' }, -- highlight variable to use same color
   { 'axelvc/template-string.nvim' },
 
-  -- optimization
+  -- lazyimization
   { 'lewis6991/impatient.nvim' },
   { 'antoinemadec/FixCursorHold.nvim' },
-  { 'dstein64/vim-startuptime', opt = true, cmd = 'StartupTime' },
+  { 'dstein64/vim-startuptime', lazy = true, cmd = 'StartupTime' },
   -- { 'nathom/filetype.nvim' },
 
   ---- editor
@@ -54,13 +67,13 @@ local pluginTable = {
 
   -- telescope
   { 'nvim-telescope/telescope.nvim' },
-  { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   -- { "nvim-telescope/telescope-ui-select.nvim" },
 
   -- productivity
   {
     'folke/zen-mode.nvim',
-    opt = true,
+    lazy = true,
     cmd = 'ZenMode',
     config = function()
       require('user.ui.productivity.zen')
@@ -68,7 +81,7 @@ local pluginTable = {
   },
   {
     'folke/twilight.nvim',
-    opt = true,
+    lazy = true,
     cmd = 'Twilight',
     config = function()
       require('user.ui.productivity.twilight')
@@ -80,7 +93,7 @@ local pluginTable = {
   -- code
   {
     'AckslD/swenv.nvim',
-    opt = true,
+    lazy = true,
     ft = { 'python' },
     config = function()
       require('user.editor.coding.swenv')
@@ -89,18 +102,18 @@ local pluginTable = {
   { 'theprimeagen/refactoring.nvim' },
   {
     '0x100101/lab.nvim',
-    run = 'cd js && npm ci',
-    opt = true,
+    build = 'cd js && npm ci',
+    lazy = true,
     ft = { 'javascript', 'typescript', 'lua', 'python' },
     config = function()
       require('user.editor.coding.lab')
     end,
   },
-  { 'michaelb/sniprun', run = 'bash ./install.sh' },
-  { 'metakirby5/codi.vim', opt = true, cmd = 'Codi' }, -- NOTE: buggy
+  { 'michaelb/sniprun', build = 'bash ./install.sh' },
+  { 'metakirby5/codi.vim', lazy = true, cmd = 'Codi' }, -- NOTE: buggy
   {
     'ray-x/web-tools.nvim',
-    opt = true,
+    lazy = true,
     cmd = { 'BrowserOpen', 'Browserstop', 'BrowserRestart' },
     filetypes = { 'html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
     config = function()
@@ -126,7 +139,7 @@ local pluginTable = {
   { 'lewis6991/gitsigns.nvim' },
   {
     'sindrets/diffview.nvim',
-    opt = true,
+    lazy = true,
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
     config = function()
       require('user.editor.git.diffView')
@@ -152,12 +165,12 @@ local pluginTable = {
     config = function()
       require('user.lsp.settings.rust')
     end,
-    requires = {
+    dependencies = {
       {
         'saecki/crates.nvim',
         event = { 'BufRead Cargo.toml' },
         -- tag = 'v0.3.0',
-        requires = { 'nvim-lua/plenary.nvim' },
+        dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
           require('crates').setup()
         end,
@@ -168,13 +181,13 @@ local pluginTable = {
   -- Autocompletion
   {
     'hrsh7th/nvim-cmp',
-    requires = {
-      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+    dependencies = {
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
-      { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' },
-      { 'jcha0713/cmp-tw2css', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lua' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'jcha0713/cmp-tw2css' },
     },
   },
 
@@ -200,7 +213,7 @@ local pluginTable = {
   },
   {
     'zbirenbaum/copilot-cmp',
-    after = { 'copilot.lua' },
+    dependencies = { 'copilot.lua' },
     config = function()
       require('user.lsp.ai.copilot').cmpSetup()
     end,
@@ -211,7 +224,7 @@ local pluginTable = {
     config = function()
       require('user.lsp.ai.chatGPT').setupGPT()
     end,
-    requires = {
+    dependencies = {
       'MunifTanjim/nui.nvim',
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
@@ -223,7 +236,7 @@ local pluginTable = {
     config = function()
       require('user.lsp.ai.chatGPT').setupNeural()
     end,
-    requires = {
+    dependencies = {
       'MunifTanjim/nui.nvim',
       'ElPiloto/significant.nvim',
     },
@@ -231,10 +244,10 @@ local pluginTable = {
 
   -- debugger
   { 'mfussenegger/nvim-dap' },
-  { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } },
+  { 'rcarriga/nvim-dap-ui', dependencies = { 'mfussenegger/nvim-dap' } },
   {
     'theHamsta/nvim-dap-virtual-text',
-    requires = { 'mfussenegger/nvim-dap' },
+    dependencies = { 'mfussenegger/nvim-dap' },
     config = function()
       require('nvim-dap-virtual-text').setup({})
     end,
@@ -242,7 +255,7 @@ local pluginTable = {
   -- { "nvim-telescope/telescope-dap.nvim" },
   {
     'mfussenegger/nvim-dap-python',
-    requires = { 'mfussenegger/nvim-dap' },
+    dependencies = { 'mfussenegger/nvim-dap' },
     ft = { 'python' },
     config = function()
       require('dap-python').setup('~/.pyenv/shims/python')
@@ -251,14 +264,14 @@ local pluginTable = {
   {
     'mxsdev/nvim-dap-vscode-js',
     -- ft = { 'typescript', 'javascript' },
-    requires = {
+    dependencies = {
       { 'mfussenegger/nvim-dap' },
     },
   },
   {
     'leoluz/nvim-dap-go',
     ft = { 'go' },
-    run = 'go install github.com/go-delve/delve/cmd/dlv@latest',
+    build = 'go install github.com/go-delve/delve/cmd/dlv@latest',
     config = function()
       require('dap-go').setup()
     end,
@@ -281,7 +294,7 @@ local pluginTable = {
     end,
     -- branch = 'v2.x',
     branch = 'main',
-    requires = { { 'MunifTanjim/nui.nvim' }, { 's1n7ax/nvim-window-picker' } },
+    dependencies = { { 'MunifTanjim/nui.nvim' }, { 's1n7ax/nvim-window-picker' } },
   },
   {
     'nvim-lualine/lualine.nvim',
@@ -299,7 +312,7 @@ local pluginTable = {
   {
     'anuvyklack/windows.nvim',
     event = 'WinEnter',
-    requires = {
+    dependencies = {
       'anuvyklack/middleclass',
       'anuvyklack/animation.nvim',
     },
@@ -315,89 +328,11 @@ local pluginTable = {
   -- { "glepnir/zephyr-nvim" },
   -- { 'lunarvim/darkplus.nvim' },
   -- { "LunarVim/onedarker.nvim" },
-
-  -----------------------------------------------------------------------------------------------
-  -- experimental
-
-  -- {'smjonas/live-command.nvim'}
-
-  -- {
-  --   'Dax89/ide.nvim',
-  --   config = function()
-  --     require('ide').setup({
-  --       ignore_filetypes = {},
-  --       root_patterns = { '.git/' },
-  --       shadow_build = false,
-  --       auto_create = true,
-  --       debug = false,
-  --       build_dir = 'build',
-  --       project_file = 'project.nvide',
-  --       mappings = {},
-  --       quickfix = {
-  --         pos = 'bel',
-  --       },
-  --       integrations = {
-  --         dap = {
-  --           enable = false,
-  --         },
-  --         dapui = {
-  --           enable = false,
-  --         },
-  --       },
-  --     })
-  --   end,
-  --   requires = {
-  --     { 'nvim-lua/plenary.nvim' },
-  --     { 'rcarriga/nvim-notify' }, -- Notifications Popup (Optional)
-  --     { 'stevearc/dressing.nvim' }, -- Improved UI (Optional)
-  --     { 'mfussenegger/nvim-dap' }, -- DAP Support (Optional)
-  --     { 'rcarriga/nvim-dap-ui' }, -- DAP-UI Support (Optional)
-  --   },
-  -- },
-
-  -- {
-  --   'folke/noice.nvim',
-  --   config = function()
-  --     require('noice').setup()
-  --   end,
-  --   requires = {
-  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --     'MunifTanjim/nui.nvim',
-  --     -- OPTIONAL:
-  --     --   `nvim-notify` is only needed, if you want to use the notification view.
-  --     --   If not available, we use `mini` as the fallback
-  --     'rcarriga/nvim-notify',
-  --   },
-  -- },
 }
 
-return pluginTable
+local status, lazy = pcall(require, 'lazy')
+if not status then
+  return
+end
 
------------------------------------------------------------------------------------------------
-
--- check it out later
--- anuvyklack/windows.nvim -- cool
--- edluffy/hologram.nvim
--- samodostal/image.nvim
--- jbyuki/instant.nvim
--- j-hui/fidget.nvim, -- show loading lsp
--- AckslD/nvim-neoclip.lua
--- mattn/emmet-vim
--- numToStr/FTerm.nvim
--- rmagatti/alternate-toggler
--- https://git.sr.ht/~whynothugo/lsp_lines.nvim
--- simrat39/symbols-outline.nvim
--- weilbith/nvim-code-action-menu
--- andythigpen/nvim-coverage
--- danielvolchek/tailiscope.nvim -- tailwind cheatsheet
-
------------------------------------------------------------------------------------------------
-
--- debugger
--- nvim-neotest/neotest
------------------------------------------------------------------------------------------------
-
--- look cool but not for me
--- { "matbme/JABS.nvim" },
-
------------------------------------------------------------------------------------------------
+lazy.setup(plugins)

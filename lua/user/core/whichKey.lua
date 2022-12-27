@@ -189,10 +189,10 @@ function M.setup()
         '<cmd>Lazy log<cr>',
         'Log',
       },
-      r ={
+      r = {
         '<cmd>Lazy resore<cr>',
         'Restore',
-      }
+      },
     },
     g = {
       name = 'Git',

@@ -60,7 +60,7 @@ dashboard.section.buttons.val = {
 }
 
 local function info()
-  local plugins = require("lazy").stats().count
+  local plugins = require('lazy').stats().count
   local v = vim.version()
   local datetime = os.date(' %d-%m-%Y   %H:%M:%S')
   local platform = vim.fn.has('win32') == 1 and '' or ''

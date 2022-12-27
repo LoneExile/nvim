@@ -2,7 +2,12 @@ vim.o.winwidth = 10
 vim.o.winminwidth = 10
 vim.o.equalalways = false
 
-require('windows').setup({
+local status, windows = pcall(require, "windows")
+if not status then
+  return
+end
+
+windows.setup({
   autowidth = {
     enable = true,
     winwidth = 5,

@@ -83,7 +83,7 @@ pip install pynvim # pgcli ueberzug
 ### on Arch or MacOS
 
 ```bash
-rm -rf ~/.cache/nvim/* ~/.local/share/nvim/site/* ~/.config/nvim/plugin/packer_compiled.lua
+rm -rf ~/.cache/nvim/* ~/.local/share/nvim/lazy/
 
 ```
 
@@ -94,7 +94,7 @@ rm -rf ~/.cache/nvim/* ~/.local/share/nvim/site/* ~/.config/nvim/plugin/packer_c
 - Improve key repeat
 
 ```bash
-# mac os need restart, Too fast !?
+# mac os need restart, Too fast !? or change it on keyboard setting
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
@@ -103,7 +103,5 @@ xset r rate 210 40
 ```
 
 `:'<,'>s/[word-to-remove]/[word-to-replace]` -> **search and replace**
-
-`<`(or `>`) + `i` (or `a`) + `p` (or `{},[], etc`) -> **indent +/-**
 
 `:w !sudo tee %` -> **write sudo**

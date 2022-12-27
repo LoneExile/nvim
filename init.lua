@@ -1,5 +1,5 @@
 -- check requirements
-require('user.core.packer')
+require('user.core.lazy')
 require('user.utils.requirements')
 
 ------------------------------------------------------------------

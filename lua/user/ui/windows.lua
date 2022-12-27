@@ -2,7 +2,7 @@ vim.o.winwidth = 10
 vim.o.winminwidth = 10
 vim.o.equalalways = false
 
-local status, windows = pcall(require, "windows")
+local status, windows = pcall(require, 'windows')
 if not status then
   return
 end

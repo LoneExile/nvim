@@ -41,7 +41,7 @@ M.setup = function()
     },
     copilot_node_command = 'node', -- Node version must be < 18
     -- plugin_manager_path = vim.fn.expand('$HOME') .. '/.local/share/nvim/site/pack/packer',
-    plugin_manager_path = vim.fn.stdpath('data') .. '/site/pack/packer',
+    plugin_manager_path = vim.fn.stdpath('data') .. '/lazy',
     server_opts_overrides = {},
   })
 

@@ -103,8 +103,7 @@ local plugins = {
   {
     '0x100101/lab.nvim',
     build = 'cd js && npm ci',
-    lazy = true,
-    filetypes = { 'javascript', 'typescript', 'lua', 'python' },
+    ft = { 'javascript', 'typescript', 'lua', 'python' },
     config = function()
       require('user.editor.coding.lab')
     end,
@@ -115,7 +114,7 @@ local plugins = {
     'ray-x/web-tools.nvim',
     lazy = true,
     cmd = { 'BrowserOpen', 'Browserstop', 'BrowserRestart' },
-    filetypes = { 'html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+    ft = { 'html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
     config = function()
       require('web-tools').setup()
     end,

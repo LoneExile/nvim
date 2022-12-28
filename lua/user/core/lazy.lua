@@ -104,7 +104,7 @@ local plugins = {
     '0x100101/lab.nvim',
     build = 'cd js && npm ci',
     lazy = true,
-    ft = { 'javascript', 'typescript', 'lua', 'python' },
+    filetypes = { 'javascript', 'typescript', 'lua', 'python' },
     config = function()
       require('user.editor.coding.lab')
     end,

@@ -1,5 +1,4 @@
 local M = {}
-vim.api.nvim_set_keymap('t', '<C-e>', '<C-\\><C-n>', { silent = true }) -- exit insert_mode in terminal
 
 M.terminal = {
   on_config_done = nil,

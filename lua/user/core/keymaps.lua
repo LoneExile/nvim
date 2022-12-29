@@ -8,6 +8,7 @@ vim.g.maplocalleader = ' '
 
 keymap('v', 'p', '"_dP', { noremap = true, silent = true }) -- copy paste not copy value that changing
 keymap('t', '<C-e>', '<C-\\><C-n>', { silent = true }) -- exit insert_mode in terminal
+vim.keymap.set('v', '<C-/>', '<esc>/\\%V') -- search within selection
 
 ----------------------------------------------------------
 local M = {}

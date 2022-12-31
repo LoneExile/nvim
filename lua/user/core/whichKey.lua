@@ -459,6 +459,12 @@ function M.setup()
     },
     x = {
       name = '+Execute',
+      a = {
+        name = '+AI',
+        c = { '<cmd>ChatGPT<cr>', 'ChatGPT' },
+        a = { '<cmd>ChatGPTActAs<cr>', 'ActAs' },
+        i = { '<cmd>ChatGPTEditWithInstructions<cr>', 'Instructions' },
+      },
       b = {
         name = '+Browser',
         s = { '<cmd>Browserstop<cr>', 'Stop' },
@@ -570,6 +576,10 @@ function M.setup()
   local vmappings = {
     x = {
       name = '+Code',
+      a = {
+        name = '+AI',
+        i = { '<cmd>ChatGPTEditWithInstructions<cr>', 'Instructions' },
+      },
       s = { name = 'SnipRun', c = { "<Esc><cmd>lua require'sniprun'.run('v')<cr>", 'Run' } },
       r = {
         name = 'refactor',

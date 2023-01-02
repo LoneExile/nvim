@@ -161,15 +161,11 @@ function M.setup()
       require('user.utils.bufKill'),
       'Close Buffer',
     },
-    ['f'] = {
-      require('telescope.builtin').find_files,
-      'Find File',
-    },
     ['H'] = {
       '<cmd>nohlsearch<CR>',
       'No Highlight',
     },
-    t = { name = 'terminal' },
+    t = { name = 'Terminal' },
     p = {
       name = 'Plugin',
       c = {
@@ -387,7 +383,7 @@ function M.setup()
       },
     },
     N = {
-      name = 'neovim',
+      name = 'Neovim',
       s = { '<cmd>StartupTime<cr>', 'Startup Time' },
       h = { '<cmd>checkhealth<cr>', 'Check Health' },
       c = { '<cmd>LuaCacheClear<cr>', 'Clear Cache' },

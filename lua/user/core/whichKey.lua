@@ -1,3 +1,4 @@
+---@diagnostic disable: duplicate-index, 314
 local M = {}
 
 local status_ok, whichkey = pcall(require, 'which-key')
@@ -155,14 +156,13 @@ function M.setup()
     },
     ['w'] = { '<cmd>SaveNFormat<CR>', 'Save', mode = { 'n' } },
     ['q'] = { "<cmd>lua require('user.utils.quit').smart_quit()<CR>", 'Quit', mode = { 'n' } },
-    ---@diagnostic disable-next-line: duplicate-index, 314
     ['/'] = {
       "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
       'Comment',
       mode = { 'n' },
     },
-    ---@diagnostic disable-next-line: duplicate-index
     ['/'] = {
+      -- :h comment.api
       '<Plug>(comment_toggle_linewise_visual)',
       'Comment toggle linewise (visual)',
       mode = { 'v' },

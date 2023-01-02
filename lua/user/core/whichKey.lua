@@ -158,7 +158,7 @@ function M.setup()
       'Comment',
     },
     ['c'] = {
-      require('user.utils.bufKill'),
+      "<cmd>lua require('user.utils.bufKill').buf_kill()<CR>",
       'Close Buffer',
     },
     ['H'] = {
@@ -330,12 +330,6 @@ function M.setup()
         "<cmd>lua require('spectre').open()<CR>",
         'Search/Replace Global',
       },
-      -- b = {
-      -- 	"<cmd>Telescope git_branches<cr>",
-      -- 	"Checkout branch",
-      -- },
-      -- b = { '<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>', 'Buffer Show' },
-      -- g = { "<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>", "Git" },
       c = {
         '<cmd>Telescope colorscheme<cr>',
         'Colorscheme',

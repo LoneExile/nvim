@@ -79,4 +79,4 @@ function M.buf_kill(kill_command, bufnr, force)
   end
 end
 
-return M.buf_kill
+return M

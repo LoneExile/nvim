@@ -13,6 +13,8 @@ local default_handler = function(server)
 end
 
 local configs = { default_handler }
+
+-- servers that list on this, will be use custom config ('user.lsp.servers.')
 local servers = {
 
   'tsserver',
@@ -31,7 +33,6 @@ local servers = {
 
   'rust_analyzer', -- rust
   -- 'lemminx', -- xml
-
   -- 'sqls', -- sql
 }
 

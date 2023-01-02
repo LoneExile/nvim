@@ -597,6 +597,21 @@ function M.setup()
 
   whichkey.setup(conf)
 
+  -- TODO: merge mappings and vmappings into one table
+  -- then split that merge table in to nmappings and vmappings
+  -- add a new key to the table to indicate if it's a visual mode mapping
+  -- then use the key to determine if it's a visual mode mapping
+  -- or a normal mode mapping
+  -- also check filetypes to determine if the mapping should be applied or not
+  -- eg:
+  -- ['c'] = {
+  -- require('user.utils.bufKill'),
+  -- 'Close Buffer',
+  -- mode = { 'n', 'v' },
+  -- include = { 'javascript', 'lua' },
+  -- exclude = { 'dashboard' },
+  -- },
+
   whichkey.register(mappings, opts)
   whichkey.register(vmappings, vopts)
   whichkey.register(m_mappings, m_opts)

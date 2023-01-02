@@ -80,7 +80,7 @@ mason_tool.setup({
   },
 
   auto_update = false,
-  run_on_start = true,
+  run_on_start = false,
   start_delay = 3000, -- 3 second delay
 })
 

@@ -8,14 +8,31 @@ end
 
 local M = {}
 
-vim.g.python_host_prog = '$HOME/.pyenv/shims/python'
-vim.g.python3_host_prog = '$HOME/.pyenv/versions/nvim/bin/python3'
-vim.opt.clipboard = 'unnamedplus' -- allows neovim to access the system clipboard
-
 M.CURRENTOS = vim.loop.os_uname().sysname
 M.TRANPARENT = true
 
+M.SETPYENV = function()
+  local python3 = io.popen('which python3')
+  if python3 then
+    vim.g.python3_host_prog = python3:read()
+    python3:close()
+  end
+
+  local python = io.popen('which python')
+  if python then
+    vim.g.python_host_prog = python:read()
+    python:close()
+  end
+end
+
+if M.CURRENTOS == 'Linux' then
+  M.SETPYENV()
+  M.TRANPARENT = true
+  vim.opt.clipboard = 'unnamedplus' -- allows neovim to access the system clipboard
+end
+
 if M.CURRENTOS == 'Darwin' then
+  M.SETPYENV()
   M.TRANPARENT = true
   vim.g.clipboard = {
     name = 'macOS-clipboard',

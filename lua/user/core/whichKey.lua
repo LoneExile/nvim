@@ -134,13 +134,14 @@ function M.setup()
     [';'] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', 'Harpoon UI' },
   }
 
-  local mappings = {
+  local mappings_all = {
     ['e'] = {
       '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>',
       -- function()
       -- 	vim.cmd("Neotree position=float toggle=true")
       -- end,
       'Explorer',
+      mode = { 'n' },
     },
     [';'] = {
       '<cmd>Alpha<CR>',
@@ -150,20 +151,32 @@ function M.setup()
       -- 	end
       -- end,
       'Dashboard',
+      mode = { 'n' },
     },
-    ['w'] = { '<cmd>SaveNFormat<CR>', 'Save' },
-    ['q'] = { "<cmd>lua require('user.utils.quit').smart_quit()<CR>", 'Quit' },
+    ['w'] = { '<cmd>SaveNFormat<CR>', 'Save', mode = { 'n' } },
+    ['q'] = { "<cmd>lua require('user.utils.quit').smart_quit()<CR>", 'Quit', mode = { 'n' } },
+    ---@diagnostic disable-next-line: duplicate-index, 314
     ['/'] = {
       "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
       'Comment',
+      mode = { 'n' },
     },
+    ---@diagnostic disable-next-line: duplicate-index
+    ['/'] = {
+      '<Plug>(comment_toggle_linewise_visual)',
+      'Comment toggle linewise (visual)',
+      mode = { 'v' },
+    },
+
     ['c'] = {
       "<cmd>lua require('user.utils.bufKill').buf_kill()<CR>",
       'Close Buffer',
+      mode = { 'n' },
     },
     ['H'] = {
       '<cmd>nohlsearch<CR>',
       'No Highlight',
+      mode = { 'n' },
     },
     t = { name = 'Terminal' },
     p = {
@@ -171,80 +184,97 @@ function M.setup()
       c = {
         '<cmd>Lazy clean<cr>',
         'Clean',
+        mode = { 'n' },
       },
-      s = { '<cmd>Lazy sync<cr>', 'Sync' },
+      s = { '<cmd>Lazy sync<cr>', 'Sync', mode = { 'n' } },
       u = {
         '<cmd>Lazy update<cr>',
         'Update',
+        mode = { 'n' },
       },
       l = {
         '<cmd>Lazy<cr>',
         'Lazy',
+        mode = { 'n' },
       },
       L = {
         '<cmd>Lazy log<cr>',
         'Log',
+        mode = { 'n' },
       },
       r = {
         '<cmd>Lazy resore<cr>',
         'Restore',
+        mode = { 'n' },
       },
     },
     g = {
       name = 'Git',
-      S = { '<cmd>lua require "gitsigns".stage_buffer()<cr>', 'Stage Buffer' },
+      S = { '<cmd>lua require "gitsigns".stage_buffer()<cr>', 'Stage Buffer', mode = { 'n' } },
       j = {
         "<cmd>lua require 'gitsigns'.next_hunk()<cr>",
         'Next Hunk',
+        mode = { 'n' },
       },
       k = {
         "<cmd>lua require 'gitsigns'.prev_hunk()<cr>",
         'Prev Hunk',
+        mode = { 'n' },
       },
       l = {
         "<cmd>lua require 'gitsigns'.blame_line()<cr>",
         'Blame',
+        mode = { 'n' },
       },
       p = {
         "<cmd>lua require 'gitsigns'.preview_hunk()<cr>",
         'Preview Hunk',
+        mode = { 'n' },
       },
       r = {
         "<cmd>lua require 'gitsigns'.reset_hunk()<cr>",
         'Reset Hunk',
+        mode = { 'n' },
       },
       R = {
         "<cmd>lua require 'gitsigns'.reset_buffer()<cr>",
         'Reset Buffer',
+        mode = { 'n' },
       },
       s = {
         "<cmd>lua require 'gitsigns'.stage_hunk()<cr>",
         'Stage Hunk',
+        mode = { 'n' },
       },
       u = {
         "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
         'Undo Stage Hunk',
+        mode = { 'n' },
       },
       f = {
         '<cmd>Telescope git_status<cr>',
         'Open changed file',
+        mode = { 'n' },
       },
       b = {
         '<cmd>Telescope git_branches<cr>',
         'Checkout branch',
+        mode = { 'n' },
       },
       c = {
         '<cmd>Telescope git_commits<cr>',
         'Checkout commit',
+        mode = { 'n' },
       },
       C = {
         '<cmd>Telescope git_bcommits<cr>',
         'Checkout commit(for current file)',
+        mode = { 'n' },
       },
       w = {
         name = 'Worktree',
-        a = { "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", 'Add' },
-        c = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", 'Checkout' },
+        a = { "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", 'Add', mode = { 'n' } },
+        c = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", 'Checkout', mode = { 'n' } },
       },
       d = {
         -- "<cmd>Gitsigns diffthis HEAD<cr>",
@@ -252,225 +282,279 @@ function M.setup()
         d = {
           '<cmd>DiffviewOpen<cr>',
           'Git Diff',
+          mode = { 'n' },
         },
         c = {
           '<cmd>DiffviewClose<cr>',
           'Diff Close',
+          mode = { 'n' },
         },
         f = {
           '<cmd>DiffviewToggleFiles<cr>',
           'Diff Toggle Files',
+          mode = { 'n' },
         },
         r = {
           '<cmd>DiffviewRefresh<cr>',
           'Diff Refresh',
+          mode = { 'n' },
         },
         h = {
           '<cmd>DiffviewFileHistory %<cr>',
           'History Current',
+          mode = { 'n' },
         },
         H = {
           '<cmd>DiffviewFileHistory<cr>',
           'Diff File History',
+          mode = { 'n' },
         },
       },
     },
     l = {
       name = 'LSP',
-      d = { '<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>', 'Buffer Diagnostics' },
-      w = { '<cmd>Telescope diagnostics<cr>', 'Diagnostics' },
+      d = { '<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>', 'Buffer Diagnostics', mode = { 'n' } },
+      w = { '<cmd>Telescope diagnostics<cr>', 'Diagnostics', mode = { 'n' } },
       r = {
         '<cmd>Lspsaga lsp_finder<cr>',
         'References',
+        mode = { 'n' },
       },
       o = {
         '<cmd>LSoutlineToggle<cr>',
         'Outline',
+        mode = { 'n' },
       },
       f = {
         -- require("user.utils.format").format,
         '<cmd>FormatCurrentBuf<CR>',
         'Format',
+        mode = { 'n' },
       },
       R = {
         '<cmd>Lspsaga rename<CR>',
         'Rename',
+        mode = { 'n' },
       },
-      a = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code Action' },
-      q = { vim.diagnostic.setloclist, 'Quickfix' },
-      i = { '<cmd>LspInfo<cr>', 'Info' },
-      I = { '<cmd>Mason<cr>', 'Mason Info' },
-      s = { '<cmd>Telescope lsp_document_symbols<cr>', 'Document Symbols' },
+      a = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code Action', mode = { 'n' } },
+      q = { vim.diagnostic.setloclist, 'Quickfix', mode = { 'n' } },
+      i = { '<cmd>LspInfo<cr>', 'Info', mode = { 'n' } },
+      I = { '<cmd>Mason<cr>', 'Mason Info', mode = { 'n' } },
+      s = { '<cmd>Telescope lsp_document_symbols<cr>', 'Document Symbols', mode = { 'n' } },
       S = {
         '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>',
         'Workspace Symbols',
+        mode = { 'n' },
       },
-      e = { '<cmd>Telescope quickfix<cr>', 'Telescope Quickfix' },
+      e = { '<cmd>Telescope quickfix<cr>', 'Telescope Quickfix', mode = { 'n' } },
     },
     s = {
       name = 'Search',
       b = {
         '<cmd>Telescope buffers<cr>',
         'find',
+        mode = { 'n' },
       },
       g = {
         '<cmd>Telescope git_status<cr>',
         'Open changed file',
+        mode = { 'n' },
       },
 
       n = {
         "<cmd>lua require('telescope').extensions.notify.notify(require('telescope.themes').get_dropdown({initial_mode = 'normal'}))<cr>",
         'Notifications',
+        mode = { 'n' },
       },
       s = {
         "<cmd>lua require('spectre').open_file_search()<CR>",
         'Search/Replace Buf',
+        mode = { 'n' },
       },
       S = {
         "<cmd>lua require('spectre').open()<CR>",
         'Search/Replace Global',
+        mode = { 'n' },
       },
       c = {
         '<cmd>Telescope colorscheme<cr>',
         'Colorscheme',
+        mode = { 'n' },
       },
       f = {
         '<cmd>Telescope find_files<cr>',
         'Find File',
+        mode = { 'n' },
       },
       h = {
         '<cmd>Telescope help_tags<cr>',
         'Find Help',
+        mode = { 'n' },
       },
       H = {
         '<cmd>Telescope highlights<cr>',
         'Find highlight groups',
+        mode = { 'n' },
       },
       M = {
         '<cmd>Telescope man_pages<cr>',
         'Man Pages',
+        mode = { 'n' },
       },
       r = {
         '<cmd>Telescope oldfiles<cr>',
         'Open Recent File',
+        mode = { 'n' },
       },
       R = {
         '<cmd>Telescope registers<cr>',
         'Registers',
+        mode = { 'n' },
       },
       t = {
         '<cmd>Telescope live_grep<cr>',
         'Text',
+        mode = { 'n' },
       },
-      T = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", 'Text (string)' },
+      T = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", 'Text (string)', mode = { 'n' } },
       k = {
         '<cmd>Telescope keymaps<cr>',
         'Keymaps',
+        mode = { 'n' },
       },
       C = {
         '<cmd>Telescope commands<cr>',
         'Commands',
+        mode = { 'n' },
       },
       p = {
         "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
         'Colorscheme with Preview',
+        mode = { 'n' },
       },
     },
     N = {
       name = 'Neovim',
-      s = { '<cmd>StartupTime<cr>', 'Startup Time' },
-      h = { '<cmd>checkhealth<cr>', 'Check Health' },
-      c = { '<cmd>LuaCacheClear<cr>', 'Clear Cache' },
+      s = { '<cmd>StartupTime<cr>', 'Startup Time', mode = { 'n' } },
+      h = { '<cmd>checkhealth<cr>', 'Check Health', mode = { 'n' } },
+      c = { '<cmd>LuaCacheClear<cr>', 'Clear Cache', mode = { 'n' } },
     },
     u = {
       name = '+Utility',
       w = {
         name = '+Windows',
-        m = { '<cmd>WindowsMaximize!<cr>', 'Maximize' },
-        e = { '<cmd>WindowsEqualize<cr>', 'Equal' },
-        t = { '<cmd>WindowsToggleAutowidth<cr>', 'Toggle' },
+        m = { '<cmd>WindowsMaximize!<cr>', 'Maximize', mode = { 'n' } },
+        e = { '<cmd>WindowsEqualize<cr>', 'Equal', mode = { 'n' } },
+        t = { '<cmd>WindowsToggleAutowidth<cr>', 'Toggle', mode = { 'n' } },
       },
       d = {
         name = 'Diff Buf',
-        a = { '<cmd>windo diffthis<cr>', 'Diff All' },
-        c = { '<cmd>diffoff!<cr>', 'Diff Off' },
-        t = { '<cmd>diffthis<cr>', 'Diff This' },
+        a = { '<cmd>windo diffthis<cr>', 'Diff All', mode = { 'n' } },
+        c = { '<cmd>diffoff!<cr>', 'Diff Off', mode = { 'n' } },
+        t = { '<cmd>diffthis<cr>', 'Diff This', mode = { 'n' } },
       },
-      z = { '<cmd>ZenMode<cr>', 'Zen' },
+      z = { '<cmd>ZenMode<cr>', 'Zen', mode = { 'n' } },
       h = {
         name = 'highlight',
         h = {
           '<cmd>IlluminateToggle<CR>',
           'Word',
+          mode = { 'n' },
         },
-        p = { '<cmd>Twilight<cr>', 'Paragraph' },
-        a = { '<cmd>lua require("hlargs").toggle()<cr>', 'Arguments' },
+        p = { '<cmd>Twilight<cr>', 'Paragraph', mode = { 'n' } },
+        a = { '<cmd>lua require("hlargs").toggle()<cr>', 'Arguments', mode = { 'n' } },
       },
-      t = { '<cmd>TodoTelescope<cr>', 'TODO' },
+      t = { '<cmd>TodoTelescope<cr>', 'TODO', mode = { 'n' } },
       m = {
         name = '+Mark',
-        a = { '<cmd>MarksToggleSigns<cr>', 'Toggle' },
-        b = { '<cmd>MarksListBuf<cr>', 'List' },
-        g = { '<cmd>MarksListGlobal<cr>', 'List All' },
-        d = { "<cmd>lua require'marks'.delete_buf()<cr>", 'Delete buf' },
-        j = { '<Plug>(Marks-next)', 'Next' },
-        k = { '<Plug>(Marks-prev)', 'Prev' },
+        a = { '<cmd>MarksToggleSigns<cr>', 'Toggle', mode = { 'n' } },
+        b = { '<cmd>MarksListBuf<cr>', 'List', mode = { 'n' } },
+        g = { '<cmd>MarksListGlobal<cr>', 'List All', mode = { 'n' } },
+        d = { "<cmd>lua require'marks'.delete_buf()<cr>", 'Delete buf', mode = { 'n' } },
+        j = { '<Plug>(Marks-next)', 'Next', mode = { 'n' } },
+        k = { '<Plug>(Marks-prev)', 'Prev', mode = { 'n' } },
       },
       n = {
         name = '+Neotree',
-        b = { '<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>', 'Buffer' },
-        g = { '<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>', 'Git' },
-        r = { '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>', 'Files' },
+        b = { '<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>', 'Buffer', mode = { 'n' } },
+        g = { '<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>', 'Git', mode = { 'n' } },
+        r = { '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>', 'Files', mode = { 'n' } },
       },
       c = {
         name = '+Color picker',
         p = {
           '<cmd>Colortils picker<cr>',
           'picker',
+          mode = { 'n' },
         },
         l = {
           '<cmd>Colortils lighten<cr>',
           'lighten',
+          mode = { 'n' },
         },
         d = {
           '<cmd>Colortils darken<cr>',
           'darken',
+          mode = { 'n' },
         },
         s = {
           '<cmd>Colortils greyscale<cr>',
           'greyscale',
+          mode = { 'n' },
         },
         g = {
           '<cmd>Colortils gradient<cr>',
           'gradient',
+          mode = { 'n' },
         },
-        L = { '<cmd>Colortils css list<cr>', 'List' },
+        L = { '<cmd>Colortils css list<cr>', 'List', mode = { 'n' } },
       },
     },
     x = {
       name = '+Execute',
       a = {
         name = '+AI',
-        c = { '<cmd>ChatGPT<cr>', 'ChatGPT' },
-        a = { '<cmd>ChatGPTActAs<cr>', 'ActAs' },
-        i = { '<cmd>ChatGPTEditWithInstructions<cr>', 'Instructions' },
+        c = { '<cmd>ChatGPT<cr>', 'ChatGPT', mode = { 'n' } },
+        a = { '<cmd>ChatGPTActAs<cr>', 'ActAs', mode = { 'n' } },
+        i = { '<cmd>ChatGPTEditWithInstructions<cr>', 'Instructions', mode = { 'n', 'v' } },
       },
       b = {
         name = '+Browser',
-        s = { '<cmd>Browserstop<cr>', 'Stop' },
-        o = { '<cmd>BrowserOpen<cr>', 'Open' },
-        r = { '<cmd>BrowserRestart<cr>', 'Restart' },
+        s = { '<cmd>Browserstop<cr>', 'Stop', mode = { 'n' } },
+        o = { '<cmd>BrowserOpen<cr>', 'Open', mode = { 'n' } },
+        r = { '<cmd>BrowserRestart<cr>', 'Restart', mode = { 'n' } },
       },
-      p = { "<cmd>lua require('swenv.api').pick_venv()<cr>", 'Pyenv' },
+      p = { "<cmd>lua require('swenv.api').pick_venv()<cr>", 'Pyenv', mode = { 'n' } },
       r = {
         name = 'Refactor',
-        b = { "<Cmd>lua require('refactoring').refactor('Extract Block')<cr>", 'Extract Block' },
+        b = { "<Cmd>lua require('refactoring').refactor('Extract Block')<cr>", 'Extract Block', mode = { 'n' } },
         B = {
           "<Cmd>lua require('refactoring').refactor('Extract Function To File')<cr>",
           'Extract Function To File',
+          mode = { 'n' },
         },
-        i = { "<Cmd>lua require('refactoring').refactor('Inline Variable')<cr>", 'Inline Local' },
-        s = { "<Cmd>lua require('refactoring').select_refactor()<CR>", 'Select Refactor' },
+        i = { "<Cmd>lua require('refactoring').refactor('Inline Variable')<cr>", 'Inline Local', mode = { 'n' } },
+        f = {
+          "<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>",
+          'Extract Function',
+          mode = { 'v' },
+        },
+        F = {
+          "<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
+          'Extract Function To File',
+          mode = { 'v' },
+        },
+        v = {
+          "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
+          'Extract Variable',
+          mode = { 'v' },
+        },
+        V = {
+          "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable To File')<CR>",
+          'Extract Variable To File',
+          mode = { 'v' },
+        },
+        s = { "<Cmd>lua require('refactoring').select_refactor()<CR>", 'Select Refactor', mode = { 'n', 'v' } },
       },
       c = {
         name = '+Code',
@@ -479,14 +563,17 @@ function M.setup()
           c = {
             '<cmd>Codi!!<cr>',
             'Codi Toggle',
+            mode = { 'n' },
           },
           e = {
             '<cmd>CodiExpand<cr>',
             'Expand',
+            mode = { 'n' },
           },
           s = {
             '<cmd>:CodiSelect<cr>',
             'Select',
+            mode = { 'n' },
           },
         },
         s = {
@@ -494,34 +581,40 @@ function M.setup()
           c = {
             "<cmd>lua require'sniprun'.run()<cr>",
             'Run',
+            mode = { 'n', 'v' },
           },
           r = {
             "<cmd>lua require'sniprun'.reset()<cr>",
             'Reset',
+            mode = { 'n' },
           },
           s = {
             "<cmd>lua require'sniprun.display'.close_all()<cr>",
             'Stop',
+            mode = { 'n' },
           },
           l = {
             "<cmd>lua require'sniprun.live_mode'.toggle()<cr>",
             'Live',
+            mode = { 'n' },
           },
           i = {
             "<cmd>lua require'sniprun'.info()<cr>",
             'Info',
+            mode = { 'n' },
           },
           m = {
             "<cmd>lua require'sniprun'.clear_repl()<cr>",
             'Memory Clear',
+            mode = { 'n' },
           },
         },
         l = {
           name = '+Lab',
-          r = { '<cmd>Lab code run<cr>', 'Run' },
-          s = { '<cmd>Lab code stop<cr>', 'Stop' },
-          p = { '<cmd>Lab code panel<cr>', 'Panel' },
-          c = { '<cmd>Lab code config<cr>', 'Config' },
+          r = { '<cmd>Lab code run<cr>', 'Run', mode = { 'n' } },
+          s = { '<cmd>Lab code stop<cr>', 'Stop', mode = { 'n' } },
+          p = { '<cmd>Lab code panel<cr>', 'Panel', mode = { 'n' } },
+          c = { '<cmd>Lab code config<cr>', 'Config', mode = { 'n' } },
         },
       },
     },
@@ -529,84 +622,105 @@ function M.setup()
       name = 'Debug',
       U = {
         name = 'UI',
-        T = { "lua require('dapui').toggle()<cr>", 'Toggle Dap UI' },
-        e = { "lua require('dapui').eval()<cr>", 'Evaluate Expression' },
+        T = { "lua require('dapui').toggle()<cr>", 'Toggle Dap UI', mode = { 'n' } },
+        e = { "lua require('dapui').eval()<cr>", 'Evaluate Expression', mode = { 'n' } },
         f = {
           "<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>",
           'UI Scopes',
+          mode = { 'n' },
         },
       },
-      v = { '<cmd>DapVirtualTextToggle<cr>', 'Toggle virtual text' },
-      T = { '<cmd>DapTerminate<cr>', 'Terminate' },
-      t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", 'Toggle Breakpoint' },
-      b = { "<cmd>lua require'dap'.step_back()<cr>", 'Step Back' },
+      v = { '<cmd>DapVirtualTextToggle<cr>', 'Toggle virtual text', mode = { 'n' } },
+      T = { '<cmd>DapTerminate<cr>', 'Terminate', mode = { 'n' } },
+      t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", 'Toggle Breakpoint', mode = { 'n' } },
+      b = { "<cmd>lua require'dap'.step_back()<cr>", 'Step Back', mode = { 'n' } },
       B = {
         "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
         'Breakpoint condition',
+        mode = { 'n' },
       },
       l = {
         "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>",
         'Log point',
+        mode = { 'n' },
       },
-      L = { "<Cmd>lua require'dap'.run_last()<CR>", 'Run last' },
-      c = { "<cmd>lua require'dap'.continue()<cr>", 'Continue' },
-      C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", 'Run To Cursor' },
-      d = { "<cmd>lua require'dap'.disconnect()<cr>", 'Disconnect' },
-      g = { "<cmd>lua require'dap'.session()<cr>", 'Get Session' },
-      i = { "<cmd>lua require'dap'.step_into()<cr>", 'Step Into' },
-      o = { "<cmd>lua require'dap'.step_over()<cr>", 'Step Over' },
-      u = { "<cmd>lua require'dap'.step_out()<cr>", 'Step Out' },
-      p = { "<cmd>lua require'dap'.pause()<cr>", 'Pause' },
-      r = { "<cmd>lua require'dap'.repl.toggle()<cr>", 'Toggle Repl' },
-      s = { "<cmd>lua require'dap'.continue()<cr>", 'Start' },
-      q = { "<cmd>lua require'dap'.close()<cr>", 'Quit' },
+      L = { "<Cmd>lua require'dap'.run_last()<CR>", 'Run last', mode = { 'n' } },
+      c = { "<cmd>lua require'dap'.continue()<cr>", 'Continue', mode = { 'n' } },
+      C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", 'Run To Cursor', mode = { 'n' } },
+      d = { "<cmd>lua require'dap'.disconnect()<cr>", 'Disconnect', mode = { 'n' } },
+      g = { "<cmd>lua require'dap'.session()<cr>", 'Get Session', mode = { 'n' } },
+      i = { "<cmd>lua require'dap'.step_into()<cr>", 'Step Into', mode = { 'n' } },
+      o = { "<cmd>lua require'dap'.step_over()<cr>", 'Step Over', mode = { 'n' } },
+      u = { "<cmd>lua require'dap'.step_out()<cr>", 'Step Out', mode = { 'n' } },
+      p = { "<cmd>lua require'dap'.pause()<cr>", 'Pause', mode = { 'n' } },
+      r = { "<cmd>lua require'dap'.repl.toggle()<cr>", 'Toggle Repl', mode = { 'n' } },
+      s = { "<cmd>lua require'dap'.continue()<cr>", 'Start', mode = { 'n' } },
+      q = { "<cmd>lua require'dap'.close()<cr>", 'Quit', mode = { 'n' } },
     },
   }
 
-  local vmappings = {
-    x = {
-      name = '+Code',
-      a = {
-        name = '+AI',
-        i = { '<cmd>ChatGPTEditWithInstructions<cr>', 'Instructions' },
-      },
-      s = { name = 'SnipRun', c = { "<Esc><cmd>lua require'sniprun'.run('v')<cr>", 'Run' } },
-      r = {
-        name = 'refactor',
-        f = { "<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>", 'Extract Function' },
-        F = {
-          "<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
-          'Extract Function To File',
-        },
-        v = { "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>", 'Extract Variable' },
-        V = {
-          "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable To File')<CR>",
-          'Extract Variable To File',
-        },
-        s = { "<Cmd>lua require('refactoring').select_refactor()<CR>", 'Select Refactor' },
-      },
-    },
-    ['/'] = { '<Plug>(comment_toggle_linewise_visual)', 'Comment toggle linewise (visual)' },
-  }
+  local split_mappings = function(maps)
+    local nmappings = {}
+    local vmappings = {}
+
+    local function checkMode(mapping, mode)
+      if #mapping == 0 then
+        return true
+      end
+      return vim.tbl_contains(mapping, mode)
+    end
+
+    local function reomoveNoisy(mapping, key)
+      local count = 0
+      for _ in pairs(mapping[key]) do
+        count = count + 1
+      end
+      if count == 1 then
+        mapping[key] = nil
+      end
+      return mapping
+    end
+
+    local function add_mapping(value, mode)
+      local map = {}
+      for key, mapping in pairs(value) do
+        if value.name then
+          map.name = value.name
+        end
+        if mapping.mode and checkMode(mapping.mode, mode) then
+          map[key] = mapping
+        elseif not mapping.mode and key ~= 'name' then
+          map[key] = add_mapping(mapping, mode)
+          map = reomoveNoisy(map, key)
+        end
+      end
+
+      return map
+    end
+
+    for k, v in pairs(maps) do
+      if v.mode then
+        if checkMode(v.mode, 'n') then
+          nmappings[k] = v
+        end
+        if checkMode(v.mode, 'v') then
+          vmappings[k] = v
+        end
+      else
+        vmappings[k] = add_mapping(v, 'v')
+        nmappings[k] = add_mapping(v, 'n')
+        vmappings = reomoveNoisy(vmappings, k)
+      end
+    end
+
+    return nmappings, vmappings
+  end
+
+  local nmappings, vmappings = split_mappings(mappings_all)
 
   whichkey.setup(conf)
 
-  -- TODO: merge mappings and vmappings into one table
-  -- then split that merge table in to nmappings and vmappings
-  -- add a new key to the table to indicate if it's a visual mode mapping
-  -- then use the key to determine if it's a visual mode mapping
-  -- or a normal mode mapping
-  -- also check filetypes to determine if the mapping should be applied or not
-  -- eg:
-  -- ['c'] = {
-  -- require('user.utils.bufKill'),
-  -- 'Close Buffer',
-  -- mode = { 'n', 'v' },
-  -- include = { 'javascript', 'lua' },
-  -- exclude = { 'dashboard' },
-  -- },
-
-  whichkey.register(mappings, opts)
+  whichkey.register(nmappings, opts)
   whichkey.register(vmappings, vopts)
   whichkey.register(m_mappings, m_opts)
 end

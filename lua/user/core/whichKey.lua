@@ -1,4 +1,4 @@
----@diagnostic disable: duplicate-index, 314
+---@diagnostic disable: duplicate-index
 local M = {}
 
 local status_ok, whichkey = pcall(require, 'which-key')

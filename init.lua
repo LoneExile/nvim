@@ -12,8 +12,6 @@ require('user.ui')
 
 ---------------------------------
 
--- TODO: remaps which-key when i change filetypes
-
--- TODO: fixed comment in react files (html section)
-
 -- FIX: startup time
+
+

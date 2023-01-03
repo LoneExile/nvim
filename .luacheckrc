@@ -8,5 +8,3 @@ globals = {
   'vim',
   'packer_plugins',
 }
-
-exclude_files = { './lua/user/core/whichKey.lua' }

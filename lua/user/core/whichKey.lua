@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-index
 local M = {}
 
 local status_ok, whichkey = pcall(require, 'which-key')
@@ -9,6 +8,7 @@ end
 -- https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
 local terminal = require('user.editor.coding.toggleterm').terminal
 
+-- TODO: check is command is available before mapping
 terminal.execs = {
   { 'lazygit', '<leader>gg', 'LazyGit', 'float' },
   { 'lazygit', '<leader>tg', 'LazyGit', 'float' },
@@ -157,15 +157,12 @@ function M.setup()
     ['w'] = { '<cmd>SaveNFormat<CR>', 'Save', mode = { 'n' } },
     ['q'] = { "<cmd>lua require('user.utils.quit').smart_quit()<CR>", 'Quit', mode = { 'n' } },
     ['/'] = {
-      "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
+      cmd = {
+        n = "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
+        v = '<Plug>(comment_toggle_linewise_visual)',
+      },
       'Comment',
-      mode = { 'n' },
-    },
-    ['/'] = {
-      -- :h comment.api
-      '<Plug>(comment_toggle_linewise_visual)',
-      'Comment toggle linewise (visual)',
-      mode = { 'v' },
+      mode = { 'n', 'v' },
     },
 
     ['c'] = {
@@ -663,14 +660,14 @@ function M.setup()
     local nmappings = {}
     local vmappings = {}
 
-    local function checkMode(mapping, mode)
+    local function check_mode(mapping, mode)
       if #mapping == 0 then
         return true
       end
       return vim.tbl_contains(mapping, mode)
     end
 
-    local function reomoveNoisy(mapping, key)
+    local function remove_noisy(mapping, key)
       local count = 0
       for _ in pairs(mapping[key]) do
         count = count + 1
@@ -684,14 +681,14 @@ function M.setup()
     local function add_mapping(value, mode)
       local map = {}
       for key, mapping in pairs(value) do
-        if value.name then
-          map.name = value.name
-        end
-        if mapping.mode and checkMode(mapping.mode, mode) then
+        if key == 'name' then
+          map.name = mapping
+        elseif mapping.mode and check_mode(mapping.mode, mode) then
           map[key] = mapping
+          map[key].mode = nil
         elseif not mapping.mode and key ~= 'name' then
           map[key] = add_mapping(mapping, mode)
-          map = reomoveNoisy(map, key)
+          map = remove_noisy(map, key)
         end
       end
 
@@ -699,17 +696,29 @@ function M.setup()
     end
 
     for k, v in pairs(maps) do
+      local copy_n = vim.deepcopy(v)
+      local copy_v = vim.deepcopy(v)
       if v.mode then
-        if checkMode(v.mode, 'n') then
-          nmappings[k] = v
+        if check_mode(copy_n.mode, 'n') then
+          nmappings[k] = copy_n
+          if nmappings[k].cmd and copy_n.cmd then
+            table.insert(nmappings[k], 1, copy_n.cmd.n)
+            nmappings[k]['cmd'] = nil
+          end
+          nmappings[k]['mode'] = nil
         end
-        if checkMode(v.mode, 'v') then
-          vmappings[k] = v
+        if check_mode(copy_v.mode, 'v') then
+          vmappings[k] = copy_v
+          if vmappings[k].cmd and copy_v.cmd then
+            table.insert(vmappings[k], 1, copy_v.cmd.v)
+            vmappings[k]['cmd'] = nil
+          end
+          vmappings[k]['mode'] = nil
         end
       else
-        vmappings[k] = add_mapping(v, 'v')
-        nmappings[k] = add_mapping(v, 'n')
-        vmappings = reomoveNoisy(vmappings, k)
+        vmappings[k] = add_mapping(copy_v, 'v')
+        nmappings[k] = add_mapping(copy_n, 'n')
+        vmappings = remove_noisy(vmappings, k)
       end
     end
 

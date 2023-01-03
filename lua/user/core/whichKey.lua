@@ -656,7 +656,7 @@ function M.setup()
     },
   }
 
-  local split_mappings = function(maps)
+  local split_mappings = function(maps, ft)
     local nmappings = {}
     local vmappings = {}
 
@@ -686,6 +686,19 @@ function M.setup()
         elseif mapping.mode and check_mode(mapping.mode, mode) then
           map[key] = mapping
           map[key].mode = nil
+
+          --
+          if map[key].ft then
+            if
+              (map[key].ft.exclude and vim.tbl_contains(map[key].ft.exclude, ft))
+              or (map[key].ft.only and #map[key].ft.only ~= 0 and not vim.tbl_contains(map[key].ft.only, ft))
+            then
+              map[key] = nil
+            else
+              map[key].ft = nil
+            end
+          end
+        --
         elseif not mapping.mode and key ~= 'name' then
           map[key] = add_mapping(mapping, mode)
           map = remove_noisy(map, key)
@@ -706,6 +719,23 @@ function M.setup()
             nmappings[k]['cmd'] = nil
           end
           nmappings[k]['mode'] = nil
+
+          --
+          if nmappings[k].ft then
+            if
+              (nmappings[k].ft.exclude and vim.tbl_contains(nmappings[k].ft.exclude, ft))
+              or (
+                nmappings[k].ft.only
+                and #nmappings[k].ft.only ~= 0
+                and not vim.tbl_contains(nmappings[k].ft.only, ft)
+              )
+            then
+              nmappings[k] = nil
+            else
+              nmappings[k].ft = nil
+            end
+          end
+          --
         end
         if check_mode(copy_v.mode, 'v') then
           vmappings[k] = copy_v
@@ -714,6 +744,23 @@ function M.setup()
             vmappings[k]['cmd'] = nil
           end
           vmappings[k]['mode'] = nil
+
+          --
+          if vmappings[k].ft then
+            if
+              (vmappings[k].ft.exclude and vim.tbl_contains(vmappings[k].ft.exclude, ft))
+              or (
+                vmappings[k].ft.only
+                and #vmappings[k].ft.only ~= 0
+                and not vim.tbl_contains(vmappings[k].ft.only, ft)
+              )
+            then
+              vmappings[k] = nil
+            else
+              vmappings[k].ft = nil
+            end
+          end
+          --
         end
       else
         vmappings[k] = add_mapping(copy_v, 'v')
@@ -732,6 +779,30 @@ function M.setup()
   whichkey.register(nmappings, opts)
   whichkey.register(vmappings, vopts)
   whichkey.register(m_mappings, m_opts)
+
+  -- NOTE: add feature to detect keymap by file type
+  -- ft = { only = { 'lua' }, exclude = { 'alpha' } },
+  -- ft = { exclude = { 'lua' } },
+  -- ft = { only = { 'lua' } },
+  -- ft = { exclude = {} }, -- exclude all? for what?
+  -- ft = { only = {} }, -- include all
+  -- ft = {}, -- include all
+  -- nil -- include all
+  -- TODO: use nvim_create_autocmd on enter/leave buffer to set keymap
+  -- TODO: check if that plugin is installed
+
+  -- local group = vim.api.nvim_create_augroup('whichkey', { clear = true })
+  -- local events = { 'BufEnter', 'BufWinEnter', 'CursorMoved' }
+  -- vim.api.nvim_create_autocmd(events, {
+  --   pattern = { '*' },
+  --   callback = function()
+  --     local fileType = vim.api.nvim_buf_get_option(0, 'filetype')
+  --     nmappings, vmappings = split_mappings(mappings_all, fileType)
+  --     whichkey.register(nmappings, opts)
+  --     whichkey.register(vmappings, vopts)
+  --   end,
+  --   group = group,
+  -- })
 end
 
 return M.setup()

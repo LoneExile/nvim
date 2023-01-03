@@ -13,5 +13,3 @@ require('user.ui')
 ---------------------------------
 
 -- FIX: startup time
-
-

@@ -167,14 +167,9 @@ function M.load(keymaps)
 end
 
 function M.load_defaults()
-  M.load(M.get_defaults())
-end
-
--- Get the default keymappings
-function M.get_defaults()
-  return defaults
+  M.load(defaults)
 end
 
 ------------------------------------------------------------------------------------
 
-return M
+return M.load_defaults()

@@ -1,21 +1,21 @@
 local M = {}
 
 M.opts = {
-  mode = 'n', -- Normal mode
+  mode = 'n',
   prefix = '<leader>',
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = true,
 }
 
 M.vopts = {
-  mode = 'v', -- VISUAL mode
+  mode = 'v',
   prefix = '<leader>',
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = true,
 }
 
 M.mappings = {
@@ -43,7 +43,11 @@ M.mappings = {
     mode = { 'n' },
     ft = { only = {}, exclude = { 'alpha', 'neo-tree' } },
   },
-  ['q'] = { "<cmd>lua require('user.utils.quit').smart_quit()<CR>", 'Quit', mode = { 'n' } },
+  ['q'] = {
+    "<cmd>lua require('user.utils.quit').smart_quit()<CR>",
+    'Quit',
+    mode = { 'n' },
+  },
   ['/'] = {
     cmd = {
       n = "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
@@ -96,7 +100,11 @@ M.mappings = {
   },
   g = {
     name = 'Git',
-    S = { '<cmd>lua require "gitsigns".stage_buffer()<cr>', 'Stage Buffer', mode = { 'n' } },
+    S = {
+      '<cmd>lua require "gitsigns".stage_buffer()<cr>',
+      'Stage Buffer',
+      mode = { 'n' },
+    },
     j = {
       "<cmd>lua require 'gitsigns'.next_hunk()<cr>",
       'Next Hunk',
@@ -159,8 +167,16 @@ M.mappings = {
     },
     w = {
       name = 'Worktree',
-      a = { "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", 'Add', mode = { 'n' } },
-      c = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", 'Checkout', mode = { 'n' } },
+      a = {
+        "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>",
+        'Add',
+        mode = { 'n' },
+      },
+      c = {
+        "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>",
+        'Checkout',
+        mode = { 'n' },
+      },
     },
     d = {
       -- "<cmd>Gitsigns diffthis HEAD<cr>",
@@ -199,8 +215,16 @@ M.mappings = {
   },
   l = {
     name = 'LSP',
-    d = { '<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>', 'Buffer Diagnostics', mode = { 'n' } },
-    w = { '<cmd>Telescope diagnostics<cr>', 'Diagnostics', mode = { 'n' } },
+    d = {
+      '<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>',
+      'Buffer Diagnostics',
+      mode = { 'n' },
+    },
+    w = {
+      '<cmd>Telescope diagnostics<cr>',
+      'Diagnostics',
+      mode = { 'n' },
+    },
     r = {
       '<cmd>Lspsaga lsp_finder<cr>',
       'References',
@@ -222,17 +246,41 @@ M.mappings = {
       'Rename',
       mode = { 'n' },
     },
-    a = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code Action', mode = { 'n' } },
-    q = { vim.diagnostic.setloclist, 'Quickfix', mode = { 'n' } },
-    i = { '<cmd>LspInfo<cr>', 'Info', mode = { 'n' } },
-    I = { '<cmd>Mason<cr>', 'Mason Info', mode = { 'n' } },
-    s = { '<cmd>Telescope lsp_document_symbols<cr>', 'Document Symbols', mode = { 'n' } },
+    a = {
+      '<cmd>lua vim.lsp.buf.code_action()<cr>',
+      'Code Action',
+      mode = { 'n' },
+    },
+    q = {
+      vim.diagnostic.setloclist,
+      'Quickfix',
+      mode = { 'n' },
+    },
+    i = {
+      '<cmd>LspInfo<cr>',
+      'Info',
+      mode = { 'n' },
+    },
+    I = {
+      '<cmd>Mason<cr>',
+      'Mason Info',
+      mode = { 'n' },
+    },
+    s = {
+      '<cmd>Telescope lsp_document_symbols<cr>',
+      'Document Symbols',
+      mode = { 'n' },
+    },
     S = {
       '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>',
       'Workspace Symbols',
       mode = { 'n' },
     },
-    e = { '<cmd>Telescope quickfix<cr>', 'Telescope Quickfix', mode = { 'n' } },
+    e = {
+      '<cmd>Telescope quickfix<cr>',
+      'Telescope Quickfix',
+      mode = { 'n' },
+    },
   },
   s = {
     name = 'Search',
@@ -302,7 +350,11 @@ M.mappings = {
       'Text',
       mode = { 'n' },
     },
-    T = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", 'Text (string)', mode = { 'n' } },
+    T = {
+      "<cmd>lua require('telescope.builtin').grep_string()<cr>",
+      'Text (string)',
+      mode = { 'n' },
+    },
     k = {
       '<cmd>Telescope keymaps<cr>',
       'Keymaps',
@@ -362,9 +414,21 @@ M.mappings = {
     },
     n = {
       name = '+Neotree',
-      b = { '<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>', 'Buffer', mode = { 'n' } },
-      g = { '<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>', 'Git', mode = { 'n' } },
-      r = { '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>', 'Files', mode = { 'n' } },
+      b = {
+        '<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>',
+        'Buffer',
+        mode = { 'n' },
+      },
+      g = {
+        '<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>',
+        'Git',
+        mode = { 'n' },
+      },
+      r = {
+        '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>',
+        'Files',
+        mode = { 'n' },
+      },
     },
     c = {
       name = '+Color picker',
@@ -413,13 +477,21 @@ M.mappings = {
     p = { "<cmd>lua require('swenv.api').pick_venv()<cr>", 'Pyenv', mode = { 'n' } },
     r = {
       name = 'Refactor',
-      b = { "<Cmd>lua require('refactoring').refactor('Extract Block')<cr>", 'Extract Block', mode = { 'n' } },
+      b = {
+        "<Cmd>lua require('refactoring').refactor('Extract Block')<cr>",
+        'Extract Block',
+        mode = { 'n' },
+      },
       B = {
         "<Cmd>lua require('refactoring').refactor('Extract Function To File')<cr>",
         'Extract Function To File',
         mode = { 'n' },
       },
-      i = { "<Cmd>lua require('refactoring').refactor('Inline Variable')<cr>", 'Inline Local', mode = { 'n' } },
+      i = {
+        "<Cmd>lua require('refactoring').refactor('Inline Variable')<cr>",
+        'Inline Local',
+        mode = { 'n' },
+      },
       f = {
         "<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>",
         'Extract Function',
@@ -440,7 +512,11 @@ M.mappings = {
         'Extract Variable To File',
         mode = { 'v' },
       },
-      s = { "<Cmd>lua require('refactoring').select_refactor()<CR>", 'Select Refactor', mode = { 'n', 'v' } },
+      s = {
+        "<Cmd>lua require('refactoring').select_refactor()<CR>",
+        'Select Refactor',
+        mode = { 'n', 'v' },
+      },
     },
     c = {
       name = '+Code',

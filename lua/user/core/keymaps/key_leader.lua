@@ -215,72 +215,64 @@ M.mappings = {
   },
   l = {
     name = 'LSP',
-    d = {
-      '<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>',
-      'Buffer Diagnostics',
-      mode = { 'n' },
-    },
-    w = {
-      '<cmd>Telescope diagnostics<cr>',
-      'Diagnostics',
-      mode = { 'n' },
-    },
-    r = {
-      '<cmd>Lspsaga lsp_finder<cr>',
-      'References',
-      mode = { 'n' },
-    },
-    o = {
-      '<cmd>LSoutlineToggle<cr>',
-      'Outline',
-      mode = { 'n' },
-    },
     f = {
-      -- require("user.utils.format").format,
       '<cmd>FormatCurrentBuf<CR>',
       'Format',
       mode = { 'n' },
     },
-    R = {
-      '<cmd>Lspsaga rename<CR>',
-      'Rename',
-      mode = { 'n' },
-    },
-    a = {
-      '<cmd>lua vim.lsp.buf.code_action()<cr>',
-      'Code Action',
-      mode = { 'n' },
-    },
-    q = {
+    d = {
       vim.diagnostic.setloclist,
-      'Quickfix',
+      'Diagnostics',
       mode = { 'n' },
+    },
+    D = {
+      '<cmd>Telescope diagnostics<CR>',
+      'Diagnostics',
+      mode = { 'n' },
+    },
+    r = {
+      '<cmd>Telescope lsp_references<cr>',
+      'References',
+      mode = { 'n' },
+    },
+    o = {
+      '<cmd>Lspsaga outline<cr>',
+      'Outline',
+      mode = { 'n' },
+    },
+    l = {
+      name = 'LSP',
+      r = {
+        '<cmd>LspRestart<cr>',
+        'Restart',
+        mode = { 'n' },
+      },
+      s = {
+        '<cmd>LspStop<cr>',
+        'Stop',
+        mode = { 'n' },
+      },
     },
     i = {
-      '<cmd>LspInfo<cr>',
-      'Info',
+      '<cmd>Lsp Info<cr>',
+      'LSP Info',
       mode = { 'n' },
     },
     I = {
       '<cmd>Mason<cr>',
-      'Mason Info',
+      'Mason',
       mode = { 'n' },
     },
-    s = {
-      '<cmd>Telescope lsp_document_symbols<cr>',
-      'Document Symbols',
-      mode = { 'n' },
-    },
-    S = {
-      '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>',
-      'Workspace Symbols',
-      mode = { 'n' },
-    },
-    e = {
-      '<cmd>Telescope quickfix<cr>',
-      'Telescope Quickfix',
-      mode = { 'n' },
-    },
+    -- s = {
+    --   '<cmd>Telescope lsp_document_symbols<cr>',
+    --   'Document Symbols',
+    --   mode = { 'n' },
+    -- },
+    -- S = {
+    --   '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>',
+    --   'Workspace Symbols',
+    --   mode = { 'n' },
+    -- },
   },
   s = {
     name = 'Search',

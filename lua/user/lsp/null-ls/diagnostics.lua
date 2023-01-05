@@ -8,6 +8,7 @@ local diagnostics = null_ls.builtins.diagnostics
 local diagnosticsTable = {
   diagnostics.markdownlint.with({
     filetypes = { 'markdown' },
+    extra_args = { '--stdin' },
   }),
   diagnostics.luacheck.with({
     filetype = { 'lua' },

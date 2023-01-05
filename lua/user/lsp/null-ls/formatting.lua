@@ -25,6 +25,11 @@ local format = {
     extra_filetypes = { 'toml' },
   }),
 
+  formatting.prettier.with({
+    filetypes = { 'markdown' },
+    extra_args = { '--print-width', '80', '--prose-wrap', 'always' },
+  }),
+
   formatting.yamlfmt.with({
     filetypes = { 'yaml' },
     extra_args = { '-' },
@@ -60,8 +65,12 @@ local format = {
 
   formatting.markdownlint.with({
     filetypes = { 'markdown' },
-    extra_args = { '--fix' },
+    extra_args = { '--fix', '$FILENAME' },
   }),
+  -- formatting.remark.with({
+  --   filetypes = { 'markdown' },
+  --   extra_args = { '--no-color', '--silent' },
+  -- }),
   formatting.sql_formatter.with({
     filetypes = { 'sql' },
   }),

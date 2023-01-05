@@ -67,6 +67,7 @@ local format = {
     filetypes = { 'markdown' },
     extra_args = { '--fix', '$FILENAME' },
   }),
+
   -- formatting.remark.with({
   --   filetypes = { 'markdown' },
   --   extra_args = { '--no-color', '--silent' },

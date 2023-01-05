@@ -8,8 +8,19 @@ local diagnostics = null_ls.builtins.diagnostics
 local diagnosticsTable = {
   diagnostics.markdownlint.with({
     filetypes = { 'markdown' },
+    -- MD025/single-title/single-h1: Multiple top level headings in the same document
+    extra_args = { '--stdin', '--disable', 'MD025' },
+  }),
+  -- write good is good though
+  -- diagnostics.write_good.with({
+  --   filetypes = { 'markdown' },
+  --   extra_args = { '--text=$TEXT', '--parse' },
+  -- }),
+  diagnostics.alex.with({
+    filetypes = { 'markdown' },
     extra_args = { '--stdin' },
   }),
+
   diagnostics.luacheck.with({
     filetype = { 'lua' },
     extra_args = { '--config', vim.fn.stdpath('config') .. '/.luacheckrc' },

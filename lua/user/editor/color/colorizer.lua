@@ -8,7 +8,7 @@ local config = {
   user_default_options = {
     RGB = true, -- #RGB hex codes
     RRGGBB = true, -- #RRGGBB hex codes
-    names = false, -- "Name" codes like Blue or blue
+    names = true, -- "Name" codes like Blue or blue
     RRGGBBAA = true, -- #RRGGBBAA hex codes
     AARRGGBB = true, -- 0xAARRGGBB hex codes
     rgb_fn = false, -- CSS rgb() and rgba() functions
@@ -19,7 +19,7 @@ local config = {
     mode = 'background', -- Set the display mode.
     -- Available methods are false / true / "normal" / "lsp" / "both"
     -- True is same as normal
-    tailwind = false, -- Enable tailwind colors
+    tailwind = true, -- Enable tailwind colors
     -- parsers can contain values used in |user_default_options|
     -- sass = { enable = false, parsers = { css } }, -- Enable sass colors
     virtualtext = '■',

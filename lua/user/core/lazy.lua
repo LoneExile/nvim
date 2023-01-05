@@ -34,7 +34,7 @@ local plugins = {
       pcall(vim.cmd, 'TSUpdate')
     end,
   },
-  { 'p00f/nvim-ts-rainbow', event = 'VimEnter' },
+  { 'mrjones2014/nvim-ts-rainbow', event = 'VimEnter' },
   { 'nvim-treesitter/nvim-treesitter-context', event = 'VimEnter' },
   { 'windwp/nvim-ts-autotag', event = 'VimEnter' },
   { 'RRethy/nvim-treesitter-textsubjects', event = 'VimEnter' },

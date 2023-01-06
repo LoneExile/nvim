@@ -56,6 +56,27 @@ local cmp_config = {
         vim_item.kind = ' '
         vim_item.kind_hl_group = 'CmpItemKindCopilot'
       end
+
+      -- get color highlight on tailwindcss
+      if vim_item.kind == kind['Color'] and entry.completion_item.documentation then
+        local blackOrWhiteFg = function(r, g, b)
+          return ((r * 0.299 + g * 0.587 + b * 0.114) > 186) and '#000000' or '#ffffff'
+        end
+        local _, _, r, g, b = string.find(entry.completion_item.documentation, '^rgb%((%d+), (%d+), (%d+)')
+        if r then
+          local color = string.format('%02x', r) .. string.format('%02x', g) .. string.format('%02x', b)
+          print(color)
+          local group = 'Tw_' .. color
+          if vim.fn.hlID(group) < 1 then
+            vim.api.nvim_set_hl(0, group, { fg = blackOrWhiteFg(r, g, b), bg = '#' .. color })
+          end
+
+          vim_item.kind = kind['Color']
+          -- vim_item.kind_hl_group = group -- get hl to icon
+          vim_item.abbr_hl_group = group
+        end
+      end
+
       vim_item.menu = setting.source_names[entry.source.name]
       vim_item.dup = setting.duplicates[entry.source.name] or setting.duplicates_default
       return vim_item

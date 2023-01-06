@@ -395,6 +395,7 @@ M.mappings = {
       b = { '<cmd>MarksListBuf<cr>', 'List', mode = { 'n' } },
       g = { '<cmd>MarksListGlobal<cr>', 'List All', mode = { 'n' } },
       d = { "<cmd>lua require'marks'.delete_buf()<cr>", 'Delete buf', mode = { 'n' } },
+      -- ':execute "normal \\<Plug>(Marks-next)"<CR>', -- e.g. for mapping
       j = { '<Plug>(Marks-next)', 'Next', mode = { 'n' } },
       k = { '<Plug>(Marks-prev)', 'Prev', mode = { 'n' } },
     },

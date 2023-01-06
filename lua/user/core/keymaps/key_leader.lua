@@ -29,11 +29,6 @@ M.mappings = {
   },
   [';'] = {
     '<cmd>Alpha<CR>',
-    -- function()
-    -- 	if ft ~= "neo-tree" then
-    -- 		vim.cmd("Alpha")
-    -- 	end
-    -- end,
     'Dashboard',
     mode = { 'n' },
   },
@@ -179,7 +174,6 @@ M.mappings = {
       },
     },
     d = {
-      -- "<cmd>Gitsigns diffthis HEAD<cr>",
       name = 'Git Diff',
       d = {
         '<cmd>DiffviewOpen<cr>',

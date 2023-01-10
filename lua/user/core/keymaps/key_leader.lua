@@ -248,7 +248,7 @@ M.mappings = {
       },
     },
     i = {
-      '<cmd>Lsp Info<cr>',
+      '<cmd>LspInfo<cr>',
       'LSP Info',
       mode = { 'n' },
     },

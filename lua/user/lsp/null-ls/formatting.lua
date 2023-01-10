@@ -41,7 +41,7 @@ local format = {
 
   formatting.stylua.with({
     filetypes = { 'lua' },
-    extra_args = { "-f", vim.fn.stdpath("config") .. "/resources/null-ls/.stylua.toml" },
+    extra_args = { '-f', vim.fn.stdpath('config') .. '/resources/null-ls/.stylua.toml' },
   }),
 
   formatting.black.with({

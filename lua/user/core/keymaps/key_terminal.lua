@@ -21,7 +21,7 @@ local linux = {
     'float',
   },
   {
-    'bash ' .. vim.fn.stdpath('config') .. '/scripts/cht/cht.sh',
+    'bash ' .. vim.fn.stdpath('config') .. '/resources/scripts/cht/cht.sh',
     '<leader>tc',
     'cheet sheet',
     'float',

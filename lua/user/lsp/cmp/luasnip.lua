@@ -19,9 +19,8 @@ luasnip.config.set_config({
     },
   },
 })
-require('luasnip.loaders.from_vscode').lazy_load()
 require('luasnip.loaders.from_vscode').lazy_load({
-  paths = { './snippets/' },
+  paths = { './resources/snippets/' },
 })
 
 -- <c-l> is selecting within a list of options.

@@ -23,7 +23,7 @@ local diagnosticsTable = {
 
   diagnostics.luacheck.with({
     filetype = { 'lua' },
-    extra_args = { '--config', vim.fn.stdpath('config') .. '/.luacheckrc' },
+    extra_args = { '--config', vim.fn.stdpath('config') .. '/resources/null-ls/.luacheckrc' },
   }),
   diagnostics.shellcheck.with({
     filetypes = { 'bash', 'csh', 'ksh', 'sh', 'zsh' },

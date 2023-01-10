@@ -3,20 +3,31 @@
 ![2022-11-23_15-38](https://user-images.githubusercontent.com/82561297/203920945-1148071e-baa5-45ab-9aa5-3d92086ab149.png)
 
 <!--toc:start-->
+
 - [nvim](#nvim)
   - [install dependencies](#install-dependencies)
-    - [OS](#os)
     - [General](#general)
-  - [Fixing thing](#fixing-thing)
-    - [on Arch or MacOS](#on-arch-or-macos)
-  - [My note](#my-note)
-<!--toc:end-->
+      - [- OS](#os)
+  - [Remove/uninstall plugin](#removeuninstall-plugin)
+  - [Improve key repeat](#improve-key-repeat)
+  - [TODO](#todo)
+  <!--toc:end-->
 
 ## install dependencies
 
 `node` `npm` `python3` `pip` `go` `rust` `cargo` `cmake` `git`
 
-### OS
+### General
+
+```bash
+npm install -g neovim pnpm
+pip install pynvim
+
+## also need
+# btop, lazygit, lazydocker, nnn
+```
+
+#### OS
 
 <details>
 <summary>Arch</summary>
@@ -38,7 +49,7 @@ via [brew](https://brew.sh/)
 
 ```bash
 xcode-select --install
-  
+
 brew install bat btop docker fd fzf cmake gcc git jq lazygit nnn ripgrep\
 tmux tree tree-sitter wget gdu gnupg unzip glow
 
@@ -67,41 +78,27 @@ lazygit JetBrainsMono-NF make mingw  sudo winget wget rust go luarocks
 
 </details>
 
----
+## Remove/uninstall plugin
 
-### General
-
-```bash
-npm install -g neovim pnpm # tree-sitter-cli
-pip install pynvim # pgcli ueberzug
-```
-
----
-
-## Fixing thing
-
-### on Arch or MacOS
+on Arch or MacOS
 
 ```bash
 rm -rf ~/.cache/nvim/* ~/.local/share/nvim/lazy/
-
 ```
 
----
-
-## My note
-
-- Improve key repeat
+## Improve key repeat
 
 ```bash
 # mac os need restart, Too fast !? or change it on keyboard setting
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
-linux
+# linux
 xset r rate 210 40
 ```
 
-`:'<,'>s/[word-to-remove]/[word-to-replace]` -> **search and replace**
+## TODO
 
-`:w !sudo tee %` -> **write sudo**
+1. fix startup time, restucture plugins by groups (lsps, treesitter, utils, etc)
+2. minimal config to run nvim, full config to run nvim
+3. whichkey better loading time when changing filetypes

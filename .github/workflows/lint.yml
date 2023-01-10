@@ -14,6 +14,7 @@ jobs:
         with:
           files: .
           annotate: warning
+          args: --config /resources/null-ls/.luacheckrc .
 
   format:
     name: Format
@@ -26,7 +27,7 @@ jobs:
         uses: JohnnyMorganz/stylua-action@v2.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: --color always --check .
+          args: --color always --check -f /resources/null-ls/.stylua.toml .
 #           ignore = {
 #     "011", -- A syntax error.
 #     "021", -- An invalid inline option.

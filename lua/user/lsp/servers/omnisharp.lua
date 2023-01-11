@@ -43,6 +43,8 @@ M.setup = function(lspconfig)
 
     filetypes = { 'cs', 'vb' },
     init_options = {},
+
+    -- https://github.com/OmniSharp/omnisharp-roslyn/issues/2483
     on_attach = function(client, _)
       client.server_capabilities.semanticTokensProvider.legend = {
         tokenModifiers = { 'static' },

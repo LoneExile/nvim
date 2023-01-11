@@ -5,6 +5,7 @@ require('user.utils.autoCmd.saveAndFormat')
 require('user.utils.autoCmd.autoRun')
 require('user.utils.autoCmd.yank')
 require('user.utils.autoCmd.lsp')
+-- require('user.utils.autoCmd.web-search')
 
 -- local function hl_search(blinktime)
 --   local ns = vim.api.nvim_create_namespace('search')

@@ -71,7 +71,7 @@ function M.setup()
           ['dd'] = actions.delete_buffer,
         },
       },
-      file_ignore_patterns = { 'node_modules', '.git', 'resources' },
+      file_ignore_patterns = {},
       path_display = { 'smart' },
       winblend = 0,
       border = {},

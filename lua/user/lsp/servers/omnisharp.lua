@@ -5,9 +5,9 @@ local omnisharp_path = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'pack
 M.setup = function(lspconfig)
   lspconfig.omnisharp.setup({
     cmd = { 'dotnet', omnisharp_path },
-
     -- Enables support for reading code style, naming convention and analyzer
     -- settings from .editorconfig.
+
     enable_editorconfig_support = true,
 
     -- If true, MSBuild project system will only load projects for files that
@@ -43,6 +43,78 @@ M.setup = function(lspconfig)
 
     filetypes = { 'cs', 'vb' },
     init_options = {},
+    on_attach = function(client, _)
+      client.server_capabilities.semanticTokensProvider.legend = {
+        tokenModifiers = { 'static' },
+        tokenTypes = {
+          'comment',
+          'excluded',
+          'identifier',
+          'keyword',
+          'keyword',
+          'number',
+          'operator',
+          'operator',
+          'preprocessor',
+          'string',
+          'whitespace',
+          'text',
+          'static',
+          'preprocessor',
+          'punctuation',
+          'string',
+          'string',
+          'class',
+          'delegate',
+          'enum',
+          'interface',
+          'module',
+          'struct',
+          'typeParameter',
+          'field',
+          'enumMember',
+          'constant',
+          'local',
+          'parameter',
+          'method',
+          'method',
+          'property',
+          'event',
+          'namespace',
+          'label',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'xml',
+          'regexp',
+          'regexp',
+          'regexp',
+          'regexp',
+          'regexp',
+          'regexp',
+          'regexp',
+          'regexp',
+          'regexp',
+        },
+      }
+    end,
   })
 end
 return M

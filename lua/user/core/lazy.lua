@@ -19,7 +19,7 @@ local plugins = {
   { 'nvim-lua/popup.nvim' },
   { 'nvim-tree/nvim-web-devicons' },
   { 'folke/which-key.nvim' },
-  -- { 'LoneExile/which-key.nvim' }, -- NOTE: use hydra and my brain instead
+  -- { 'LoneExile/which-key.nvim' },
   -- {
   --   'glacambre/firenvim',
   --   build = function()
@@ -30,6 +30,7 @@ local plugins = {
   -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
+    event = 'BufRead',
     build = function()
       pcall(vim.cmd, 'TSUpdate')
     end,
@@ -42,12 +43,12 @@ local plugins = {
   { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'VimEnter' }, -- movement around text objects
   { 'numToStr/Comment.nvim', event = 'VimEnter' },
   { 'lukas-reineke/indent-blankline.nvim', event = 'VimEnter' },
-  { 'andymass/vim-matchup' },
-  { 'm-demare/hlargs.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter' } },
-  { 'windwp/nvim-autopairs', dependencies = { 'nvim-treesitter/nvim-treesitter' } },
-  { 'RRethy/vim-illuminate', dependencies = { 'nvim-treesitter/nvim-treesitter' } }, -- NOTE: no need to HL word?
+  { 'andymass/vim-matchup', event = 'VimEnter' },
+  { 'm-demare/hlargs.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter' }, event = 'VimEnter' },
+  { 'windwp/nvim-autopairs', dependencies = { 'nvim-treesitter/nvim-treesitter' }, event = 'InsertEnter' },
+  { 'RRethy/vim-illuminate', dependencies = { 'nvim-treesitter/nvim-treesitter' }, event = 'VimEnter' }, -- NOTE: no need to HL word?
+  { 'axelvc/template-string.nvim', event = 'InsertEnter' },
   -- { 'David-Kunz/markid' }, -- highlight variable to use same color
-  { 'axelvc/template-string.nvim' },
 
   -- lazyimization
   { 'lewis6991/impatient.nvim' },
@@ -56,9 +57,9 @@ local plugins = {
   -- { 'nathom/filetype.nvim' },
 
   ---- editor
-  { 'tpope/vim-repeat' },
-  { 'wellle/targets.vim' }, -- textobject
-  { 'dhruvasagar/vim-open-url' },
+  { 'tpope/vim-repeat', event = 'VimEnter' },
+  { 'wellle/targets.vim', event = 'VimEnter' }, -- textobject
+  { 'dhruvasagar/vim-open-url', event = 'VimEnter' },
   {
     'iamcco/markdown-preview.nvim',
     ft = { 'markdown' },
@@ -68,7 +69,7 @@ local plugins = {
   },
 
   -- tool
-  { 'windwp/nvim-spectre' },
+  { 'windwp/nvim-spectre', lazy = true },
   { 'akinsho/toggleterm.nvim' },
   { 'darazaki/indent-o-matic' }, -- NOTE: what is this can do honestly
 
@@ -97,7 +98,6 @@ local plugins = {
   { 'folke/todo-comments.nvim' },
   {
     'LoneExile/autolist.nvim',
-    priority = 1,
     ft = { 'markdown', 'text', 'tex', 'plaintex' },
     config = function()
       require('user.editor.motion.autolist')
@@ -135,12 +135,12 @@ local plugins = {
   },
 
   --motion
-  { 'echasnovski/mini.nvim' },
-  { 'phaazon/hop.nvim' },
-  { 'nacro90/numb.nvim' },
-  { 'declancm/cinnamon.nvim' },
-  { 'theprimeagen/harpoon' },
-  { 'chentoast/marks.nvim' }, -- NOTE: am i really use mark?
+  { 'echasnovski/mini.nvim', event = 'BufRead' },
+  { 'phaazon/hop.nvim', event = 'BufRead' },
+  { 'nacro90/numb.nvim', event = 'BufRead' },
+  { 'declancm/cinnamon.nvim', event = 'BufRead' },
+  { 'theprimeagen/harpoon', lazy = true, event = 'BufRead' },
+  { 'chentoast/marks.nvim', event = 'BufRead' }, -- NOTE: am i really use mark?
   -- {
   --   'cbochs/portal.nvim',
   --   config = function()
@@ -149,7 +149,7 @@ local plugins = {
   -- },
 
   --git
-  { 'lewis6991/gitsigns.nvim' },
+  { 'lewis6991/gitsigns.nvim', event = { 'BufRead', 'BufNewFile' } },
   {
     'sindrets/diffview.nvim',
     lazy = true,
@@ -194,6 +194,7 @@ local plugins = {
   -- Autocompletion
   {
     'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
     dependencies = {
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
@@ -206,11 +207,12 @@ local plugins = {
 
   -- Snippets
   {
-    'L3MON4D3/LuaSnip', -- event = 'InsertCharPre',
+    'L3MON4D3/LuaSnip',
+    event = 'InsertCharPre',
   },
   -- { "rafamadriz/friendly-snippets" },
 
-  { 'glepnir/lspsaga.nvim', branch = 'main' },
+  { 'glepnir/lspsaga.nvim', branch = 'main', event = 'BufRead' },
   { 'SmiteshP/nvim-navic' },
   { 'j-hui/fidget.nvim' }, -- NOTE: Hmmmmm
   -- { 'lvimuser/lsp-inlayhints.nvim' }, -- TODO: not working

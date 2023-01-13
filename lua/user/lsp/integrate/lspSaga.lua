@@ -5,145 +5,126 @@ end
 
 ------------------------------------------------------------------------------------------
 local config = {
-  border_style = 'rounded',
-  finder_request_timeout = 15000,
-  finder_action_keys = {
-    open = 'o',
+  preview = {
+    lines_above = 0,
+    lines_below = 10,
+  },
+  scroll_preview = {
+    scroll_down = '<C-f>',
+    scroll_up = '<C-b>',
+  },
+  request_timeout = 2000,
+  finder = {
+    edit = { 'o', '<CR>' },
     vsplit = 's',
     split = 'i',
     tabe = 't',
-    quit = 'q',
-    scroll_down = '<C-f>',
-    scroll_up = '<C-d>', -- quit can be a table
+    quit = { 'q', '<ESC>' },
   },
-  code_action_keys = {
-    quit = 'q',
-    exec = '<CR>',
-  },
-  definition_action_keys = {
+  definition = {
+    -- edit = '<C-c>o',
+    -- vsplit = '<C-c>v',
+    -- split = '<C-c>i',
+    -- tabe = '<C-c>t',
     edit = '<C-w>oo',
     vsplit = '<C-w>ov',
     split = '<C-w>os',
     tabe = '<C-w>ot',
     quit = 'q',
+    close = '<Esc>',
   },
-  rename_action_quit = '<C-c>',
-  code_action_icon = '💡',
-  code_action_lightbulb = {
-    enable = true,
-    sign = false,
-    enable_in_insert = true,
-    sign_priority = 20,
-    virtual_text = false,
+  code_action = {
+    num_shortcut = true,
+    keys = {
+      quit = 'q',
+      exec = '<CR>',
+    },
+  },
+  lightbulb = {
+    enable = false,
+    enable_in_insert = false,
+    sign = true,
+    sign_priority = 40,
+    virtual_text = true,
+  },
+  diagnostic = {
+    twice_into = false,
+    show_code_action = true,
+    show_source = true,
+    keys = {
+      exec_action = 'o',
+      quit = 'q',
+    },
+  },
+  rename = {
+    quit = '<C-c>',
+    exec = '<CR>',
+    in_select = true,
+  },
+  outline = {
+    win_position = 'right',
+    win_with = '',
+    win_width = 30,
+    show_detail = true,
+    auto_preview = true,
+    auto_refresh = true,
+    auto_close = true,
+    custom_sort = nil,
+    keys = {
+      jump = 'o',
+      expand_collapse = 'u',
+      quit = 'q',
+    },
+  },
+  callhierarchy = {
+    show_detail = false,
+    keys = {
+      edit = 'e',
+      vsplit = 's',
+      split = 'i',
+      tabe = 't',
+      jump = 'o',
+      quit = 'q',
+      expand_collapse = 'u',
+    },
   },
   symbol_in_winbar = {
-    in_custom = false,
-    enable = false,
-    separator = '  ',
-    click_support = false,
-    -- show_file = false,
-    show_file = true,
-    file_formatter = ' ',
+    enable = true,
+    separator = ' ',
+    hide_keyword = true,
+    show_file = false,
+    folder_level = 2,
+  },
+  ui = {
+    theme = 'round',
+    -- border type can be single,double,rounded,solid,shadow.
+    border = 'rounded',
+    winblend = 0,
+    expand = '',
+    collapse = '',
+    preview = ' ',
+    code_action = '💡',
+    diagnostic = '🐞',
+    incoming = ' ',
+    outgoing = ' ',
+    colors = {
+      --float window normal bakcground color
+      normal_bg = 'none',
+      --title background color
+      title_bg = '#afd700',
+      red = '#e95678',
+      magenta = '#b33076',
+      orange = '#FF8700',
+      yellow = '#f7bb3b',
+      green = '#afd700',
+      cyan = '',
+      blue = '#61afef',
+      purple = '#CBA6F7',
+      white = '#d1d4cf',
+      black = '#1c1c19',
+    },
+    kind = {},
   },
 }
 
-lspsagaM.init_lsp_saga(config)
-
----------------------------------------------------------------------------------
--- -------------- winbar --------------------------------------------------------
--- local status, symbolwinbar = pcall(require, 'lspsaga.symbolwinbar')
--- if not status then
---   vim.notify('lspsaga.symbolwinbar' .. ' not found!')
---   return
--- end
---
--- local function get_file_name(include_path)
---   local file_name = symbolwinbar.get_file_name()
---   if vim.fn.bufname('%') == '' then
---     return ''
---   end
---   if include_path == false then
---     return file_name
---   end
---   -- Else if include path: ./lsp/saga.lua -> lsp > saga.lua
---   local sep = vim.loop.os_uname().sysname == 'Windows' and '\\' or '/'
---   local path_list = vim.split(string.gsub(vim.fn.expand('%:~:.:h'), '%%', ''), sep)
---   local file_path = ''
---   for _, cur in ipairs(path_list) do
---     file_path = (cur == '.' or cur == '~') and '' or file_path .. cur .. ' ' .. '%#LspSagaWinbarSep#>%*' .. ' %*'
---   end
---   return file_path .. file_name
--- end
---
--- local function config_winbar_or_statusline()
---   local exclude = {
---     ['terminal'] = true,
---     ['toggleterm'] = true,
---     ['prompt'] = true,
---     ['NvimTree'] = true,
---     ['help'] = true,
---   } -- Ignore float windows and exclude filetype
---   if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] then
---     vim.wo.winbar = ''
---   else
---     local ok, lspsaga = pcall(require, 'lspsaga.symbolwinbar')
---     local sym
---     if ok then
---       sym = lspsaga.get_symbol_node()
---     end
---     local win_val = ''
---     win_val = get_file_name(false) -- set to true to include path
---     if sym ~= nil then
---       win_val = win_val .. sym
---     end
---     vim.wo.winbar = win_val
---     -- if work in statusline
---     -- vim.wo.stl = win_val
---   end
--- end
---
--- local events = { 'BufEnter', 'BufWinEnter', 'CursorMoved' }
---
--- vim.api.nvim_create_autocmd(events, {
---   pattern = '*',
---   callback = function()
---     config_winbar_or_statusline()
---   end,
--- })
---
--- -- vim.api.nvim_create_autocmd("User", {
--- --   pattern = "LspsagaUpdateSymbol",
--- --   callback = function()
--- --     config_winbar_or_statusline()
--- --   end,
--- -- })
-
--------------------------------------------------------------------------------
--- local colors = {
---   fg = '#bbc2cf',
---   red = '#e95678',
---   orange = '#FF8700',
---   yellow = '#f7bb3b',
---   green = '#afd700',
---   cyan = '#36d0e0',
---   blue = '#61afef',
---   violet = '#CBA6F7',
---   teal = '#1abc9c',
--- }
---
--- -- local kind = require('lspsaga.lspkind')
--- local kind = require('user.lsp.integrate.kind')
--- local prefix = 'LspSagaWinbar'
--- local winbar_sep = 'LspSagaWinbarSep'
--- local group = vim.api.nvim_create_augroup('transparencyTheme', { clear = true })
--- vim.api.nvim_create_autocmd('ColorScheme', {
---   pattern = '*',
---   callback = function()
---     for _, v in pairs(kind) do
---       vim.api.nvim_set_hl(0, prefix .. v[1], { fg = v[3], italic = true })
---     end
---     vim.api.nvim_set_hl(0, winbar_sep, { fg = '#d16d9e' })
---     vim.api.nvim_set_hl(1, prefix .. 'File', { fg = colors.fg, bold = true, italic = true })
---   end,
---   group = group,
--- })
+lspsagaM.setup(config)

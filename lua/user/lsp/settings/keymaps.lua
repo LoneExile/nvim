@@ -1,5 +1,6 @@
 local M = {}
 
+-- TODO: if lspsaga not load use default
 local buffer_mappings = {
   normal_mode = {
     -- ['K'] = { '<cmd>Lspsaga hover_doc<CR>', 'Show hover' },
@@ -8,7 +9,8 @@ local buffer_mappings = {
     ['gs'] = { vim.lsp.buf.signature_help, 'show signature help' },
     ['gr'] = { '<cmd>Lspsaga lsp_finder<CR>', 'Goto references' },
     ['gR'] = { '<cmd>Lspsaga rename<CR>', 'rename' },
-    ['gq'] = { '<cmd>lua vim.lsp.buf.code_action()<CR>', 'Code action' },
+    -- ['gq'] = { '<cmd>lua vim.lsp.buf.code_action()<CR>', 'Code action' },
+    ['gq'] = { '<cmd>Lspsaga code_action<CR>', 'Code action' },
     ['gj'] = { '<cmd>Lspsaga diagnostic_jump_next<CR>', 'Next diagnostic' },
     ['gk'] = { '<cmd>Lspsaga diagnostic_jump_prev<CR>', 'Prev diagnostic' },
     ['gD'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration' },

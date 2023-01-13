@@ -1,5 +1,5 @@
-if vim.fn.has('nvim-0.7') ~= 1 then
-  print('Please upgrade your Neovim base installation.requires v0.8+')
+if vim.fn.has('nvim-0.8') ~= 1 then
+  print('Please upgrade your Neovim base installation.requires v0.9+')
   vim.wait(5000, function()
     return false
   end)

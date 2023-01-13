@@ -61,7 +61,7 @@ function M.setup()
   local location = 'user.core.keymaps.'
   local split_mappings = require(location .. 'utils').split_mappings
   local mappings = require(location .. 'key_leader').mappings
-  local m_mappings = require(location .. 'key_m').m_mppings
+  local m_mappings = require(location .. 'key_m').m_mappings
 
   local opts = require(location .. 'key_leader').opts
   local vopts = require(location .. 'key_leader').vopts

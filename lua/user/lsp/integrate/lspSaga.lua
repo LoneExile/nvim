@@ -13,7 +13,7 @@ local config = {
     scroll_down = '<C-f>',
     scroll_up = '<C-b>',
   },
-  request_timeout = 2000,
+  request_timeout = 20000,
   finder = {
     edit = { 'o', '<CR>' },
     vsplit = 's',
@@ -22,10 +22,6 @@ local config = {
     quit = { 'q', '<ESC>' },
   },
   definition = {
-    -- edit = '<C-c>o',
-    -- vsplit = '<C-c>v',
-    -- split = '<C-c>i',
-    -- tabe = '<C-c>t',
     edit = '<C-w>oo',
     vsplit = '<C-w>ov',
     split = '<C-w>os',

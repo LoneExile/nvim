@@ -14,7 +14,8 @@ local buffer_mappings = {
     ['gj'] = { '<cmd>Lspsaga diagnostic_jump_next<CR>', 'Next diagnostic' },
     ['gk'] = { '<cmd>Lspsaga diagnostic_jump_prev<CR>', 'Prev diagnostic' },
     ['gD'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration' },
-    ['gI'] = { '<cmd>Lspsaga goto_definition<cr>', 'Goto Implementation' },
+    -- ['gD'] = { '<cmd>Lspsaga goto_definition<cr>', 'Goto Implementation' },
+    ['gI'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation' },
     ['gl'] = {
       '<cmd>Lspsaga show_line_diagnostics<cr>',
       'Show line diagnostics',

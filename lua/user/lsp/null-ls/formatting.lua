@@ -75,6 +75,11 @@ local format = {
   formatting.sql_formatter.with({
     filetypes = { 'sql' },
   }),
+
+  -- https://github.com/darold/pgFormatter
+  formatting.pg_format.with({
+    filetypes = { 'sql', 'plpgsql' },
+  }),
 }
 
 -- return M

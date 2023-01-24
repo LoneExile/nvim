@@ -1,5 +1,7 @@
 # nvim
 
+**_This configuration is quite disorganized and riddled with bugs._**
+
 ![2022-11-23_15-38](https://user-images.githubusercontent.com/82561297/203920945-1148071e-baa5-45ab-9aa5-3d92086ab149.png)
 
 <!--toc:start-->
@@ -99,6 +101,6 @@ xset r rate 210 40
 
 ## TODO
 
-1. fix startup time, restucture plugins by groups (lsps, treesitter, utils, etc)
-2. minimal config to run nvim, full config to run nvim
-3. whichkey better loading time when changing filetypes
+- [ ] fix startup time, restucture plugins by groups (lsps, treesitter, utils)
+- [ ] minimal config to run nvim, full config to run nvim
+- [ ] whichkey better loading time when changing filetypes

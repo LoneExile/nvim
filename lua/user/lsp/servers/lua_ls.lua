@@ -8,7 +8,7 @@ lua_dev.setup({})
 
 local M = {}
 M.setup = function(lspconfig)
-  lspconfig.sumneko_lua.setup({
+  lspconfig.lua_ls.setup({
     filetypes = { 'lua' },
     settings = {
       Lua = {

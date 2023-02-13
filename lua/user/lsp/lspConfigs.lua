@@ -24,7 +24,7 @@ local servers = {
   -- 'emmet-ls',
   'tailwindcss',
 
-  'sumneko_lua', -- Lua
+  'lua_ls', -- Lua
   'pyright', -- python
   'jsonls', -- json
 

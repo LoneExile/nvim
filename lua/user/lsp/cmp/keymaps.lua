@@ -2,16 +2,14 @@ local M = {}
 
 local cmp_ok, cmp = pcall(require, 'cmp')
 if not cmp_ok then
-  vim.notify('cmp' .. ' not found!')
   return
 end
 
 local luasnip_ok, luasnip = pcall(require, 'luasnip')
 if not luasnip_ok then
-  vim.notify('luasnip' .. ' not found!')
   return
 end
-require('user.lsp.cmp.luasnip')
+require('user.lsp.cmp.luasnip').setup_luasnip(luasnip)
 
 --------------------------------------------------
 -- https://github.com/windwp/nvim-autopairs#you-need-to-add-mapping-cr-on-nvim-cmp-setupcheck-readmemd-on-nvim-cmp-repo

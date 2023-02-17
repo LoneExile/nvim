@@ -11,3 +11,5 @@ require('user.editor')
 require('user.ui')
 
 ---------------------------------
+vim.cmd([[PetsNewCustom cat red noom]])
+vim.cmd([[PetsNewCustom cat black per]])

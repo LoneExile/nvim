@@ -1,8 +1,6 @@
 local M = {}
 
-local colors = require('user.utils.colors')
-
-M.theme = function()
+M.theme = function(colors)
   return {
     inactive = {
       a = { fg = colors.blue, bg = colors.nobg, gui = 'bold' },

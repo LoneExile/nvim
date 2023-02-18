@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function(settings, location)
+M.setup = function(settings, _)
   return {
     'jackMort/ChatGPT.nvim',
     config = function()

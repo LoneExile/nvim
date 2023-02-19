@@ -34,6 +34,8 @@ M.setup = function(_, location)
       configs.setup({
         -- ensure_installed = 'all',
         ensure_installed = {
+          'markdown',
+          'markdown_inline',
           'javascript',
           'typescript',
           'vue',

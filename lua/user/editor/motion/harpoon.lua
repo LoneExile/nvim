@@ -1,8 +1,21 @@
 local M = {}
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_m_mappings = {
+    m = { '<cmd>lua require("harpoon.mark").add_file()<cr>', 'Harpoon' },
+    ['j'] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', 'Harpoon Next' },
+    ['k'] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', 'Harpoon Prev' },
+    s = { '<cmd>Telescope harpoon marks<cr>', 'Search Files' },
+    [';'] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', 'Harpoon UI' },
+  },
+}
 
 M.setup = function()
   return {
     'theprimeagen/harpoon',
+    enabled = M.enabled,
     lazy = true,
     event = 'BufRead',
     config = function()

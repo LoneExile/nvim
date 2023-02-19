@@ -29,7 +29,6 @@ M.setup = function(settings, location)
       local kind = settings.kind_icons
 
       local keymaps = require(location .. '.keymaps').keymaps(cmp, luasnip)
-      print('keymaps', vim.inspect(keymaps))
 
       ----- cmp config
       local setting = {

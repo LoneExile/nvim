@@ -2,28 +2,6 @@ local M = {}
 
 M.enabled = true
 
-M.wh_key = {
-  enabled = M.enabled,
-  wh_mappings = {
-    ['g'] = {
-      name = 'Git',
-      w = {
-        name = 'Worktree',
-        a = {
-          "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>",
-          'Add',
-          mode = { 'n' },
-        },
-        c = {
-          "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>",
-          'Checkout',
-          mode = { 'n' },
-        },
-      },
-    },
-  },
-}
-
 M.setup = function(_, location)
   return {
     'neovim/nvim-lspconfig',
@@ -37,7 +15,6 @@ M.setup = function(_, location)
 
       local lsp_settings = location .. '.settings'
       local lsp_defaults = require(lsp_settings .. '.defaults').setup(lsp_settings)
-      -- print(vim.inspect(lsp_defaults))
 
       lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
       require(lsp_settings .. '.diagnostic')
@@ -52,7 +29,7 @@ M.setup = function(_, location)
       -- servers that list on this, will be use custom config ('user.lsp.servers.')
       local servers = {
 
-        'tsserver',
+        -- 'tsserver', -- setup with 'jose-elias-alvarez/typescript.nvim'
         'vuels',
         -- 'deno',
         -- 'eslint-lsp',

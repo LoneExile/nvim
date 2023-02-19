@@ -1,9 +1,39 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    ['g'] = {
+      f = {
+        '<cmd>Telescope git_status<cr>',
+        'Open changed file',
+        mode = { 'n' },
+      },
+      b = {
+        '<cmd>Telescope git_branches<cr>',
+        'Checkout branch',
+        mode = { 'n' },
+      },
+      c = {
+        '<cmd>Telescope git_commits<cr>',
+        'Checkout commit',
+        mode = { 'n' },
+      },
+      C = {
+        '<cmd>Telescope git_bcommits<cr>',
+        'Checkout commit(for current file)',
+        mode = { 'n' },
+      },
+    },
+  },
+}
+
 M.setup = function()
   return {
     'nvim-telescope/telescope.nvim',
-
+    enabled = M.enabled,
     dependencies = {
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       --  "nvim-telescope/telescope-ui-select.nvim"

@@ -3,7 +3,7 @@ local M = {}
 M.setup = function()
   return {
     'nvchad/nvim-colorizer.lua',
-    configh = function()
+    config = function()
       local status_ok, colorizer = pcall(require, 'colorizer')
       if not status_ok then
         return

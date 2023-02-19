@@ -4,6 +4,7 @@ M.setup = function()
   return {
     'numToStr/Comment.nvim',
     event = 'VimEnter',
+    enabled = true,
     config = function()
       local status_ok, comment = pcall(require, 'Comment')
       if not status_ok then

@@ -1,4 +1,7 @@
-local _, lua_dev = pcall(require, 'neodev')
+local status, lua_dev = pcall(require, 'neodev')
+if not status then
+  return
+end
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')

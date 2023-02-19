@@ -1,8 +1,53 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    ['g'] = {
+      name = 'Git',
+      d = {
+        name = 'Git Diff',
+        d = {
+          '<cmd>DiffviewOpen<cr>',
+          'Git Diff',
+          mode = { 'n' },
+        },
+        c = {
+          '<cmd>DiffviewClose<cr>',
+          'Diff Close',
+          mode = { 'n' },
+        },
+        f = {
+          '<cmd>DiffviewToggleFiles<cr>',
+          'Diff Toggle Files',
+          mode = { 'n' },
+        },
+        r = {
+          '<cmd>DiffviewRefresh<cr>',
+          'Diff Refresh',
+          mode = { 'n' },
+        },
+        h = {
+          '<cmd>DiffviewFileHistory %<cr>',
+          'History Current',
+          mode = { 'n' },
+        },
+        H = {
+          '<cmd>DiffviewFileHistory<cr>',
+          'Diff File History',
+          mode = { 'n' },
+        },
+      },
+    },
+  },
+}
+
 M.setup = function()
   return {
     'sindrets/diffview.nvim',
+    enabled = M.enabled,
     lazy = true,
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
     config = function()

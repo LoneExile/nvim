@@ -1,8 +1,8 @@
 -- check requirements
 require('user.core')
+require('user.utils.requirements')
 
 -- require('user.core.lazy')
--- require('user.utils.requirements')
 
 -- ------------------------------------------------------------------
 -- require('user.utils.autoCmd')

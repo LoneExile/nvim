@@ -1,9 +1,25 @@
 local M = {}
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    ['e'] = {
+      '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>',
+      -- function()
+      -- 	vim.cmd("Neotree position=float toggle=true")
+      -- end,
+      'Explorer',
+      mode = { 'n' },
+    },
+  },
+}
 
 M.setup = function()
   return {
     'nvim-neo-tree/neo-tree.nvim',
     event = 'BufWinEnter',
+    enabled = M.enabled,
     config = function()
       vim.schedule(function()
         local status_ok, neoTree = pcall(require, 'neo-tree')

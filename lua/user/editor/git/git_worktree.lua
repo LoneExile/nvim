@@ -1,11 +1,33 @@
 local M = {}
+M.enabled = false
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    ['g'] = {
+      name = 'Git',
+      w = {
+        name = 'Worktree',
+        a = {
+          "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>",
+          'Add',
+          mode = { 'n' },
+        },
+        c = {
+          "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>",
+          'Checkout',
+          mode = { 'n' },
+        },
+      },
+    },
+  },
+}
 
 M.setup = function()
   return {
     'ThePrimeagen/git-worktree.nvim',
-    enabled = false,
+    enabled = M.enabled,
     lazy = true,
-    cmd = 'StartupTime',
     config = function()
       local status_ok, worktree = pcall(require, 'git-worktree')
       if status_ok then

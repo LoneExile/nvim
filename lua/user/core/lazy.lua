@@ -1,16 +1,18 @@
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+-- Error opening file: Vim(buffer):E823: Not an undo file: /home/bunlaikun/.local/state/nvim/undo/%home%bunlaikun%.config%nvim%lua%user%core%lazy.lua
+-- lazypath = vim.fn.substitute(lazypath, '%', '', 'g')
 
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     'git',
     'clone',
     '--filter=blob:none',
-    '--single-branch',
     'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
     lazypath,
   })
 end
-vim.opt.runtimepath:prepend(lazypath)
+vim.opt.rtp:prepend(lazypath)
 
 -----------------------------------------------------
 local root = 'user'
@@ -40,39 +42,44 @@ files = vim.tbl_filter(function(file)
     'core',
     'keymaps',
     -- 'servers',
+    'settings',
+    -- 'which-key',
   }
   return not vim.tbl_contains(list, folder_name)
 end, files)
 
 local plugins = {}
+-- print(vim.inspect(files))
 
 for _, file in ipairs(files) do
   local file_name = vim.fn.fnamemodify(file, ':t:r')
   local folder = vim.fn.fnamemodify(file, ':h')
   local folder_name = vim.fn.fnamemodify(folder, ':t')
+  local location
 
   if vim.fn.fnamemodify(folder, ':h') == config_location then
-    local location = 'user.' .. folder_name .. '.' .. file_name
+    location = 'user.' .. folder_name .. '.' .. file_name
     location = vim.fn.substitute(location, '.init', '', 'g')
     -- print('1: ', location)
-    table.insert(plugins, require(location).setup(settings, location))
   else
-    local location = vim.fn.matchstr(file, [[user/.*.lua]])
+    location = vim.fn.matchstr(file, [[user/.*.lua]])
     location = vim.fn.substitute(location, '/', '.', 'g')
     location = vim.fn.substitute(location, '.init', '', 'g')
     location = vim.fn.substitute(location, '.lua$', '', 'g')
     -- print('2:', location)
+  end
 
-    -----------------------------------------------------
-    local plugin_config = require(location).setup(settings, location)
-    -- print(vim.inspect(plugin_config))
-    -- print(plugin_config.test)
-    -----------------------------------------------------
+  local plugin_config = require(location) --.setup(settings, location)
+  table.insert(plugins, plugin_config.setup(settings, location))
 
-    table.insert(plugins, plugin_config)
+  if plugin_config.wh_key ~= nil and plugin_config.wh_key.enabled ~= false then
+    local wh_mappings = plugin_config.wh_key.wh_mappings
+    table.insert(settings.wh_mappings.mappings, wh_mappings)
   end
 end
 
+-- print(vim.inspect(settings.wh_mappings.mappings))
+-- table.insert(plugins, require('user.ui.which_key').setup(settings, 'user.ui.which_key'))
 -----------------------------------------------------
 
 -- local plugins = { -- base

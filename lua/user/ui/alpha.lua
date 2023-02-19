@@ -1,8 +1,21 @@
 local M = {}
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    [';'] = {
+      '<cmd>Alpha<CR>',
+      'Dashboard',
+      mode = { 'n' },
+    },
+  },
+}
 
 M.setup = function()
   return {
     'goolord/alpha-nvim',
+    enabled = M.enabled,
     config = function()
       local status_ok, alpha = pcall(require, 'alpha')
       if not status_ok then

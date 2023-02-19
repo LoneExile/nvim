@@ -48,9 +48,9 @@ M.setup = function(_, location)
       dap.defaults.fallback.terminal_win_cmd = '50vsplit new'
 
       location = vim.fn.substitute(location, '.dap.dap', '.dap', 'g')
-      -- require(location .. '.servers.node').setup(dap)
-      require(location .. '.servers.csharp').setup(dap)
-      require(location .. '.servers.rust').setup(dap)
+      require(location .. '.settings.node').setup(dap)
+      require(location .. '.settings.csharp').setup(dap)
+      require(location .. '.settings.rust').setup(dap)
     end,
   }
 end

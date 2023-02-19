@@ -1,6 +1,4 @@
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
--- Error opening file: Vim(buffer):E823: Not an undo file: /home/bunlaikun/.local/state/nvim/undo/%home%bunlaikun%.config%nvim%lua%user%core%lazy.lua
--- lazypath = vim.fn.substitute(lazypath, '%', '', 'g')
 
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -73,8 +71,14 @@ for _, file in ipairs(files) do
   table.insert(plugins, plugin_config.setup(settings, location))
 
   if plugin_config.wh_key ~= nil and plugin_config.wh_key.enabled ~= false then
-    local wh_mappings = plugin_config.wh_key.wh_mappings
-    table.insert(settings.wh_mappings.mappings, wh_mappings)
+    if plugin_config.wh_key.wh_mappings ~= nil then
+      local wh_mappings = plugin_config.wh_key.wh_mappings
+      table.insert(settings.wh_mappings.mappings, wh_mappings)
+    end
+    if plugin_config.wh_key.wh_m_mappings ~= nil then
+      local wh_mappings = plugin_config.wh_key.wh_m_mappings
+      table.insert(settings.wh_mappings.m_mappings, wh_mappings)
+    end
   end
 end
 
@@ -82,7 +86,6 @@ end
 -- table.insert(plugins, require('user.ui.which_key').setup(settings, 'user.ui.which_key'))
 -----------------------------------------------------
 
--- local plugins = { -- base
 --   { 'nvim-lua/plenary.nvim' },
 --   { 'nvim-lua/popup.nvim' },
 --   { 'nvim-tree/nvim-web-devicons' },

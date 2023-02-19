@@ -460,4 +460,5 @@ return {
       q = { "<cmd>lua require'dap'.close()<cr>", 'Quit', mode = { 'n' } },
     },
   },
+  m_mappings = {},
 }

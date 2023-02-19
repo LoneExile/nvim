@@ -6,7 +6,7 @@ M.setup = function(_, location)
   return {
     'neovim/nvim-lspconfig',
     enabled = M.enabled,
-    dependencies = { 'williamboman/mason.nvim', 'b0o/schemastore.nvim', 'SmiteshP/nvim-navic' },
+    dependencies = { 'williamboman/mason.nvim' },
     config = function()
       local status_ok, lspconfig = pcall(require, 'lspconfig')
       if not status_ok then
@@ -29,7 +29,7 @@ M.setup = function(_, location)
       -- servers that list on this, will be use custom config ('user.lsp.servers.')
       local servers = {
 
-        -- 'tsserver', -- setup with 'jose-elias-alvarez/typescript.nvim'
+        'tsserver', -- setup with 'jose-elias-alvarez/typescript.nvim'
         'vuels',
         -- 'deno',
         -- 'eslint-lsp',

@@ -42,6 +42,44 @@ M.terminal = {
   execs = {},
 }
 
+M.tool = function()
+  -- https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
+
+  -- TODO: check is command is available before mapping
+  M.terminal.execs = {
+    { 'lazygit', '<leader>gg', 'LazyGit', 'float' },
+    { 'lazygit', '<leader>tg', 'LazyGit', 'float' },
+  }
+
+  local linux = {
+    {
+      'nnn -er',
+      '<leader>tn',
+      'nnn',
+      'float',
+    },
+    {
+      'btop',
+      '<leader>tt',
+      'btop',
+      'float',
+    },
+    {
+      'bash ' .. vim.fn.stdpath('config') .. '/resources/scripts/cht/cht.sh',
+      '<leader>tc',
+      'cheet sheet',
+      'float',
+    },
+  }
+
+  local CURRENTOS = require('user.utils.requirements').CURRENTOS
+  if CURRENTOS == 'Linux' or CURRENTOS == 'Darwin' then
+    for _, v in ipairs(linux) do
+      table.insert(M.terminal.execs, v)
+    end
+  end
+end
+
 M.setup = function()
   return {
     'akinsho/toggleterm.nvim',
@@ -50,6 +88,7 @@ M.setup = function()
       if not status_ok_ui then
         return
       end
+      M.tool()
       terminal.setup(M.terminal)
 
       for i, exec in pairs(M.terminal.execs) do

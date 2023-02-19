@@ -1,4 +1,3 @@
-
 -- TODO: check files exist before  require
 local M = {
   config_location = vim.fn.stdpath('config') .. '/lua/user',

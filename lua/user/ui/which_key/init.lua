@@ -66,11 +66,11 @@ M.setup = function(settings, location)
       -- local mappings = require(location .. '.key_leader').mappings
       -- local m_mappings = require(location .. '.key_m').m_mappings
       local mappings = settings.wh_mappings.mappings
-      -- local m_mappings = settings.wh_mappings.m_mappings
+      local m_mappings = settings.wh_mappings.m_mappings
 
       local opts = require(location .. '.key_leader').opts
       local vopts = require(location .. '.key_leader').vopts
-      -- local m_opts = require(location .. '.key_m').m_opts
+      local m_opts = require(location .. '.key_m').m_opts
 
       local fileType = vim.api.nvim_buf_get_option(0, 'filetype')
       local nmappings, vmappings, _, _ = split_mappings(mappings, fileType)
@@ -80,7 +80,7 @@ M.setup = function(settings, location)
       which_key.register()
       which_key.register(nmappings, opts)
       which_key.register(vmappings, vopts)
-      -- which_key.register(m_mappings, m_opts)
+      which_key.register(m_mappings, m_opts)
     end,
   }
 end

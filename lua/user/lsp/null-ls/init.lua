@@ -21,6 +21,8 @@ M.setup = function(_, location)
         hover.printenv.with({
           filetypes = { 'bash', 'csh', 'ksh', 'sh', 'zsh' },
         }),
+        -- typescript.nvim
+        pcall(require, 'typescript.extensions.null-ls.code-actions'),
       }
 
       local formattingTable = require(location .. '.formatting')
@@ -35,7 +37,6 @@ M.setup = function(_, location)
       end
 
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
-
       null_ls.setup({
         -- on_attach = on_attach,
         sources = sources,

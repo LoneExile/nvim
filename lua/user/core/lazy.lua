@@ -47,7 +47,6 @@ files = vim.tbl_filter(function(file)
 end, files)
 
 local plugins = {}
--- print(vim.inspect(files))
 
 for _, file in ipairs(files) do
   local file_name = vim.fn.fnamemodify(file, ':t:r')

@@ -5,18 +5,13 @@ M.setup = function(settings, _)
     'jackMort/ChatGPT.nvim',
     cmd = { 'ChatGPT' },
     config = function()
+      require(settings.env_file)
       local status_GPT, chatgpt = pcall(require, 'chatgpt')
       if not status_GPT or vim.env.OPENAI_API_KEY == nil then
         return
       end
-      settings.env_file()
-      chatgpt.setup({})
+      chatgpt.setup()
     end,
-    dependencies = {
-      'MunifTanjim/nui.nvim',
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-    },
   }
 end
 

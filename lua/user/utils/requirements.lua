@@ -1,15 +1,13 @@
-if vim.fn.has('nvim-0.8') ~= 1 then
+if vim.fn.has('nvim-0.9') ~= 1 then
   print('Please upgrade your Neovim base installation.requires v0.9+')
   vim.wait(5000, function()
-    return false
+    vim.cmd('cquit')
   end)
-  vim.cmd('cquit')
 end
 
 local M = {}
 
 M.CURRENTOS = vim.loop.os_uname().sysname
-M.TRANPARENT = true
 
 M.SETPYENV = function()
   local python3 = io.popen('which python3')

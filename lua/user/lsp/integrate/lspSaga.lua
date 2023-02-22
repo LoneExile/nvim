@@ -1,9 +1,12 @@
 local M = {}
 
+M.enabled = true
+
 M.setup = function(_, _)
   return {
     'glepnir/lspsaga.nvim',
-    -- enabled = false,
+    enabled = M.enabled,
+    -- commit = '707c9399b1cbe063c6942604209674edf1b3cf2e',
     event = { 'BufRead' },
     dependencies = { 'neovim/nvim-lspconfig' },
     config = function()

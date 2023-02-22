@@ -1,8 +1,11 @@
 local M = {}
 
+M.enabled = true
+
 M.setup = function()
   return {
     'anuvyklack/windows.nvim',
+    enabled = M.enabled,
     event = 'WinEnter',
     dependencies = {
       'anuvyklack/middleclass',

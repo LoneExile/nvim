@@ -1,14 +1,16 @@
 local M = {}
+M.enabled = false
 
 M.setup = function(settings, _)
   return {
     'dense-analysis/neural',
+    enabled = M.enabled,
     config = function()
+      require(settings.env_file)
       local status_neural, neural = pcall(require, 'neural')
       if not status_neural or vim.env.OPENAI_API_KEY == nil then
         return
       end
-      settings.env_file()
       neural.setup({
         mappings = {
           swift = '<C-n>', -- Context completion

@@ -26,7 +26,7 @@ M.setup = function(_, location)
 
       local configs = { default_handler }
 
-      -- servers that list on this, will be use custom config ('user.lsp.servers.')
+      -- servers that list on this, will be use custom config
       local servers = {
 
         'tsserver', -- setup with 'jose-elias-alvarez/typescript.nvim'
@@ -55,6 +55,7 @@ M.setup = function(_, location)
         end
       end
 
+      ----------------------------------------------------------------------------------------
       -- See :help mason-lspconfig-dynamic-server-setup
       local status, masonLspConfig = pcall(require, 'mason-lspconfig')
       if not status then

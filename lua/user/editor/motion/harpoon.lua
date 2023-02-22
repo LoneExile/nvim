@@ -16,7 +16,6 @@ M.setup = function()
   return {
     'theprimeagen/harpoon',
     enabled = M.enabled,
-    lazy = true,
     event = 'BufRead',
     config = function()
       local status_ok, harpoon = pcall(require, 'harpoon')

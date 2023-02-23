@@ -112,13 +112,17 @@ M.setup = function()
             win_opts = {},
           },
         },
-        file_history_panel = {
-          log_options = { -- See ':h diffview-config-log_options'
-            single_file = {
-              diff_merges = 'combined',
-            },
-            multi_file = {
-              diff_merges = 'first-parent',
+        jile_history_panel = {
+          file_history_panel = {
+            log_options = {
+              git = {
+                single_file = {
+                  diff_merges = 'combined',
+                },
+                multi_file = {
+                  diff_merges = 'first-parent',
+                },
+              },
             },
           },
           win_config = { -- See ':h diffview-config-win_config'

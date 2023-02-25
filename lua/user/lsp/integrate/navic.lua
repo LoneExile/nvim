@@ -1,9 +1,11 @@
 local M = {}
 
+M.enabled = false
+
 M.setup = function(settings, _)
   return {
     'SmiteshP/nvim-navic',
-    enabled = true,
+    enabled = M.enabled,
     dependencies = { 'neovim/nvim-lspconfig' },
     config = function()
       local status_ok, navic = pcall(require, 'nvim-navic')

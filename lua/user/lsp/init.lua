@@ -27,7 +27,7 @@ M.setup = function(_, location)
       local configs = { default_handler }
 
       -- servers that list on this, will be use custom config
-      local servers = {
+      local servers_name = {
 
         'tsserver', -- setup with 'jose-elias-alvarez/typescript.nvim'
         'vuels',
@@ -49,7 +49,7 @@ M.setup = function(_, location)
       }
 
       --FIX: this load multiple times
-      for _, server in ipairs(servers) do
+      for _, server in ipairs(servers_name) do
         configs[server] = function()
           require(location .. '.servers.' .. server).setup(lspconfig)
         end

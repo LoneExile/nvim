@@ -97,7 +97,7 @@ M.setup = function(_, _)
           },
         },
         symbol_in_winbar = {
-          enable = true,
+          enable = false,
           separator = ' ',
           hide_keyword = true,
           show_file = false,

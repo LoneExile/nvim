@@ -1,7 +1,6 @@
 local M = {}
 
 M.enabled = false
-
 M.setup = function()
   return {
     's1n7ax/nvim-window-picker',
@@ -28,6 +27,11 @@ M.setup = function()
         other_win_hl_color = '#e35e4f',
       })
     end,
+
+    vim.keymap.set('n', '<leader>a', function()
+      local picked_window_id = require('window-picker').pick_window() or vim.api.nvim_get_current_win()
+      vim.api.nvim_set_current_win(picked_window_id)
+    end, { desc = 'Pick a window' }),
   }
 end
 

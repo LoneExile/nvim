@@ -14,7 +14,7 @@ M.setup = function(_, _)
         copilot.setup({
           panel = { -- no config options yet
             enabled = true,
-            auto_refresh = true,
+            auto_refresh = false,
             keymap = {
               -- jump_prev = '[[',
               -- jump_next = ']]',
@@ -24,8 +24,15 @@ M.setup = function(_, _)
             },
           },
           filetypes = {
-            alpha = false,
-            neo_tree = false,
+            yaml = true,
+            markdown = true,
+            help = false,
+            gitcommit = false,
+            gitrebase = false,
+            hgcommit = false,
+            svn = false,
+            cvs = true,
+            ['.'] = false,
           },
           suggestion = {
             enabled = true,

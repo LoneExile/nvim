@@ -31,7 +31,10 @@ M.setup = function()
   return {
     'giusgad/pets.nvim',
     enabled = M.enabled,
-    dependencies = { 'MunifTanjim/nui.nvim', 'edluffy/hologram.nvim', 'williamboman/mason.nvim' },
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      'edluffy/hologram.nvim',
+    },
     config = function()
       local status_ok, pets = pcall(require, 'pets')
       if not status_ok then

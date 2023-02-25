@@ -5,8 +5,8 @@ local colors = require(settings_path .. 'colors')
 
 local M = {
   config_location = vim.fn.stdpath('config') .. '/lua/user',
-  tranparent = true,
   theme = 'tokyonight-storm',
+  tranparent = true,
 
   ------------------------------------------------------------------
   env_file = 'user.utils.init_env',

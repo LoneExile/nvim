@@ -3,17 +3,13 @@ local M = {}
 M.setup = function()
   return {
     'jose-elias-alvarez/typescript.nvim',
-    dependencies = { 'SmiteshP/nvim-navic' },
+    -- dependencies = { 'SmiteshP/nvim-navic' },
     lazy = true,
     ft = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
 
     -- config = function()
     --   local status, typescript = pcall(require, 'typescript')
     --   if not status then
-    --     return
-    --   end
-    --   local status_ok, navic = pcall(require, 'nvim-navic')
-    --   if not status_ok then
     --     return
     --   end
     --   typescript.setup({
@@ -24,6 +20,10 @@ M.setup = function()
     --     },
     --     server = { -- pass options to lspconfig's setup method
     --       on_attach = function(client, bufnr)
+    --         local status_ok, navic = pcall(require, 'nvim-navic')
+    --         if not status_ok then
+    --           return
+    --         end
     --         navic.attach(client, bufnr)
     --         vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
     --       end,

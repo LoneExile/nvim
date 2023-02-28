@@ -5,6 +5,89 @@ M.enabled = true
 M.wh_key = {
   enabled = M.enabled,
   wh_mappings = {
+    ['s'] = {
+      name = 'Search',
+      b = {
+        '<cmd>Telescope buffers<cr>',
+        'find',
+        mode = { 'n' },
+      },
+      g = {
+        '<cmd>Telescope git_status<cr>',
+        'Open changed file',
+        mode = { 'n' },
+      },
+      n = {
+        "<cmd>lua require('telescope').extensions.notify.notify(require('telescope.themes').get_dropdown({initial_mode = 'normal'}))<cr>",
+        'Notifications',
+        mode = { 'n' },
+      },
+      c = {
+        '<cmd>Telescope colorscheme<cr>',
+        'Colorscheme',
+        mode = { 'n' },
+      },
+      f = {
+        '<cmd>Telescope find_files<cr>',
+        'Find File',
+        mode = { 'n' },
+      },
+      h = {
+        '<cmd>Telescope help_tags<cr>',
+        'Find Help',
+        mode = { 'n' },
+      },
+      H = {
+        '<cmd>Telescope highlights<cr>',
+        'Find highlight groups',
+        mode = { 'n' },
+      },
+      M = {
+        '<cmd>Telescope man_pages<cr>',
+        'Man Pages',
+        mode = { 'n' },
+      },
+      r = {
+        '<cmd>Telescope oldfiles<cr>',
+        'Open Recent File',
+        mode = { 'n' },
+      },
+      R = {
+        '<cmd>Telescope registers<cr>',
+        'Registers',
+        mode = { 'n' },
+      },
+      t = {
+        '<cmd>Telescope live_grep<cr>',
+        'Text',
+        mode = { 'n' },
+      },
+      T = {
+        "<cmd>lua require('telescope.builtin').grep_string()<cr>",
+        'Text (string)',
+        mode = { 'n' },
+      },
+      k = {
+        '<cmd>Telescope keymaps<cr>',
+        'Keymaps',
+        mode = { 'n' },
+      },
+      C = {
+        '<cmd>Telescope commands<cr>',
+        'Commands',
+        mode = { 'n' },
+      },
+      p = {
+        "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
+        'Colorscheme with Preview',
+        mode = { 'n' },
+      },
+      u = {
+        "<cmd>lua require('telescope').extensions.undo.undo()<cr>",
+        'Undo',
+        mode = { 'n' },
+      },
+    },
     ['g'] = {
       f = {
         '<cmd>Telescope git_status<cr>',
@@ -37,6 +120,8 @@ M.setup = function()
     dependencies = {
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       --  "nvim-telescope/telescope-ui-select.nvim"
+      'nvim-lua/plenary.nvim',
+      'debugloop/telescope-undo.nvim',
     },
     config = function()
       local status, telescope = pcall(require, 'telescope')
@@ -175,6 +260,9 @@ M.setup = function()
           -- ["ui-select"] = {
           -- 	require("telescope.themes").get_cursor({}),
           -- },
+          undo = {
+            -- telescope-undo.nvim config, see below
+          },
         },
       }
 
@@ -186,6 +274,7 @@ M.setup = function()
         -- telescope.load_extension('git_worktree')
         telescope.load_extension('refactoring')
         -- telescope.load_extension("ui-select")
+        require('telescope').load_extension('undo')
       end
     end,
   }

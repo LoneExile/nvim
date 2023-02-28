@@ -34,6 +34,8 @@ local options = {
   guifont = 'JetBrainsMono Nerd Font Mono:h12', -- the font used in graphical neovim applications
   whichwrap = 'h,l,<,>,[,],~',
   -- guicursor = 'n-v-c-i:block',
+  -- foldenable = true,
+  -- foldmethod = 'manual',
 }
 
 vim.opt.shortmess:append('c')

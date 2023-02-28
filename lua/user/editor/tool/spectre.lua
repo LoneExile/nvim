@@ -1,8 +1,29 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    ['s'] = {
+      name = 'Search',
+      s = {
+        "<cmd>lua require('spectre').open_file_search()<CR>",
+        'Search/Replace Buf',
+        mode = { 'n' },
+      },
+      S = {
+        "<cmd>lua require('spectre').open()<CR>",
+        'Search/Replace Global',
+        mode = { 'n' },
+      },
+    },
+  },
+}
 M.setup = function()
   return {
     'windwp/nvim-spectre',
+    enabled = M.enabled,
     lazy = true,
     config = function()
       local status_ok_code, spectre = pcall(require, 'spectre')

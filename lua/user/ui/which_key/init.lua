@@ -1,9 +1,11 @@
 local M = {}
+M.enabled = true
 
 M.setup = function(settings, location)
   return {
     'folke/which-key.nvim',
     priority = 0, -- load after all plugins
+    enabled = M.enabled,
     config = function()
       local status_ok, which_key = pcall(require, 'which-key')
       if not status_ok then

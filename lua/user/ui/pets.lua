@@ -1,5 +1,5 @@
 local M = {}
-M.enabled = true
+M.enabled = false
 
 M.wh_key = {
   enabled = M.enabled,

@@ -53,6 +53,8 @@ M.transparent = function()
     vim.cmd(string.format('highlight %s ctermbg=none guibg=none', name))
   end
 
+  -- TODO: use settings.color instead of hardcoding
+
   vim.cmd([[highlight TreesitterContext ctermbg=none guibg=none gui=bold]])
   vim.cmd([[highlight IndentBlanklineContextChar guifg=#61AFEF gui=nocombine]])
   vim.cmd([[highlight IndentBlanklineSpaceChar guifg=#5c6370 gui=nocombine]])

@@ -261,7 +261,13 @@ M.setup = function()
           -- 	require("telescope.themes").get_cursor({}),
           -- },
           undo = {
-            -- telescope-undo.nvim config, see below
+            mappings = {
+              i = {
+                ['<cr>'] = require('telescope-undo.actions').yank_additions,
+                ['<S-cr>'] = require('telescope-undo.actions').yank_deletions,
+                ['<C-cr>'] = require('telescope-undo.actions').restore,
+              },
+            },
           },
         },
       }

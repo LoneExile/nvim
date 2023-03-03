@@ -1,3 +1,5 @@
+**_WARNING: This configuration is quite disorganized and riddled with bugs._**
+
 `:'<,'>s/[word-to-remove]/[word-to-replace]` -> **search and replace**
 
 `:w !sudo tee %` -> **write sudo**

@@ -3,3 +3,5 @@
 `:w !sudo tee %` -> **write sudo**
 
 `Ctrl + a` -> **increment number**, `Ctrl + x` -> **decrement number**
+
+`echo &filetype` -> **check filetype**

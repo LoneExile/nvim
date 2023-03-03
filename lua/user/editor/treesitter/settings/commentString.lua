@@ -1,5 +1,6 @@
 local M = {}
 
+-- FIX: this should be in main config ts?
 local status_ok, commmentStr = pcall(require, 'ts_context_commentstring.internal')
 if not status_ok then
   vim.notify('Installing Treesitter... \nplesae restart nvim after install is complete')

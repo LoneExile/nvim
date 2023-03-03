@@ -4,6 +4,9 @@ M.setup = function()
   return {
     'numToStr/Comment.nvim',
     event = 'VimEnter',
+    dependencies = {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+    },
     enabled = true,
     config = function()
       local status_ok, comment = pcall(require, 'Comment')

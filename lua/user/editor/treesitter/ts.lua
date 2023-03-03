@@ -3,7 +3,6 @@ local M = {}
 M.setup = function(_, location)
   location = vim.fn.substitute(location, '.ts$', '', 'g')
   return {
-
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'JoosepAlviste/nvim-ts-context-commentstring',

@@ -11,8 +11,9 @@ M.wh_key = {
         p = {
           function()
             vim.cmd([[PetsKillAll]])
-            vim.cmd([[ PetsNewCustom cat black per ]])
-            vim.cmd([[ PetsNewCustom cat red noom ]])
+            -- gray beige
+            vim.cmd([[ PetsNewCustom dog gray per ]])
+            vim.cmd([[  PetsNewCustom dog brown noom ]])
           end,
           'Play',
           mode = { 'n', 'v' },
@@ -42,8 +43,8 @@ M.setup = function()
       end
       pets.setup()
       vim.cmd([[PetsKillAll]])
-      vim.cmd([[ PetsNewCustom cat black per ]])
-      vim.cmd([[ PetsNewCustom cat red noom ]])
+      vim.cmd([[ PetsNewCustom dog gray per ]])
+      vim.cmd([[ PetsNewCustom dog brown noom ]])
     end,
   }
 end

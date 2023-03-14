@@ -8,16 +8,17 @@ M.setup = function(_, location)
     enabled = M.enabled,
     dependencies = { 'williamboman/mason.nvim' },
     config = function()
+      local lsp_settings = location .. '.settings'
       local status_ok, lspconfig = pcall(require, 'lspconfig')
       if not status_ok then
         return
       end
 
-      local lsp_settings = location .. '.settings'
-      local lsp_defaults = require(lsp_settings .. '.defaults').setup(lsp_settings)
-
-      lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
+      require(lsp_settings .. '.keymaps').add_lsp_buffer_keybindings()
       require(lsp_settings .. '.diagnostic')
+
+      local lsp_defaults = require(lsp_settings .. '.defaults').setup()
+      lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
 
       local default_handler = function(server)
         -- See :help lspconfig-setup
@@ -26,7 +27,7 @@ M.setup = function(_, location)
 
       local configs = { default_handler }
 
-      -- servers that list on this, will be use custom config
+      -- servers that list on this, will be use custom config in subfolder
       local servers_name = {
 
         'tsserver', -- setup with 'jose-elias-alvarez/typescript.nvim'
@@ -67,3 +68,5 @@ M.setup = function(_, location)
 end
 
 return M
+
+-- reference: https://github.com/VonHeikemen/nvim-starter

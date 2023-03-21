@@ -7,6 +7,7 @@ M.setup = function(_, location)
     'neovim/nvim-lspconfig',
     enabled = M.enabled,
     dependencies = { 'williamboman/mason.nvim' },
+    -- event = { 'BufReadPre', 'InsertEnter' },
     config = function()
       local lsp_settings = location .. '.settings'
       local status_ok, lspconfig = pcall(require, 'lspconfig')

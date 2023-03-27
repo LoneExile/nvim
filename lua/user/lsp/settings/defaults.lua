@@ -11,10 +11,7 @@ M.setup = function()
       debounce_text_changes = 150,
     },
     capabilities = cmpLSP.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach = function(
-      client,
-      _ --[[ bufnr ]]
-    )
+    on_attach = function(client, _) -- bufnr
       -- NOTE: this create exec autocommands to trigger LspAttached to add keybindings
       -- vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
       -- add_lsp_buffer_keybindings(bufnr)

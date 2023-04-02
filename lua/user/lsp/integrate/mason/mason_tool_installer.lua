@@ -12,6 +12,8 @@ M.setup = function(_, _)
         return
       end
 
+      -- TODO: add if have X install X
+
       -- fix: https://cli.github.com/
       mason_tool.setup({
         ensure_installed = {
@@ -66,7 +68,7 @@ M.setup = function(_, _)
         },
 
         auto_update = false,
-        run_on_start = false,
+        run_on_start = true,
         start_delay = 3000, -- 3 second delay
       })
 

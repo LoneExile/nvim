@@ -62,6 +62,7 @@ M.setup = function(_, _)
           'flake8',
           'actionlint',
           -- 'sqlfluff',
+          'alex',
         },
 
         auto_update = false,

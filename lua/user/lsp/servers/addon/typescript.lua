@@ -1,10 +1,13 @@
 local M = {}
 
+M.enabled = true
+
 M.setup = function()
   return {
     'jose-elias-alvarez/typescript.nvim',
+    enabled = M.enabled,
     -- dependencies = { 'SmiteshP/nvim-navic' },
-    lazy = true,
+    -- lazy = true,
     ft = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
 
     -- config = function()

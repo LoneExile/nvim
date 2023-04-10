@@ -12,10 +12,7 @@ M.setup = function(_, location)
 
       local hover = null_ls.builtins.hover
 
-      -- typescript.nvim
-      local _, typescript = pcall(require, 'typescript.extensions.null-ls.code-actions')
       local sources = {
-
         -- hover
         hover.dictionary.with({
           -- filetypes = { "text", "markdown" },
@@ -23,7 +20,6 @@ M.setup = function(_, location)
         hover.printenv.with({
           filetypes = { 'bash', 'csh', 'ksh', 'sh', 'zsh' },
         }),
-        typescript,
       }
 
       local formattingTable = require(location .. '.formatting')

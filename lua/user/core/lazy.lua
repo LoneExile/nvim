@@ -72,11 +72,15 @@ for _, file in ipairs(files) do
   if plugin_config.wh_key ~= nil and plugin_config.wh_key.enabled ~= false then
     if plugin_config.wh_key.wh_mappings ~= nil then
       local wh_mappings = plugin_config.wh_key.wh_mappings
-      table.insert(settings.wh_mappings.mappings, wh_mappings)
+      for key, value in pairs(wh_mappings) do
+        settings.wh_mappings.mappings[key] = value
+      end
     end
     if plugin_config.wh_key.wh_m_mappings ~= nil then
       local wh_mappings = plugin_config.wh_key.wh_m_mappings
-      table.insert(settings.wh_mappings.m_mappings, wh_mappings)
+      for key, value in pairs(wh_mappings) do
+        settings.wh_mappings.m_mappings[key] = value
+      end
     end
   end
 end

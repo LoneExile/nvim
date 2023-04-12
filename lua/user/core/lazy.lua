@@ -73,13 +73,21 @@ for _, file in ipairs(files) do
     if plugin_config.wh_key.wh_mappings ~= nil then
       local wh_mappings = plugin_config.wh_key.wh_mappings
       for key, value in pairs(wh_mappings) do
-        settings.wh_mappings.mappings[key] = value
+        if settings.wh_mappings.mappings[key] == nil then
+          settings.wh_mappings.mappings[key] = value
+        else
+          settings.wh_mappings.mappings[key] = vim.tbl_extend('force', settings.wh_mappings.mappings[key], value)
+        end
       end
     end
     if plugin_config.wh_key.wh_m_mappings ~= nil then
       local wh_mappings = plugin_config.wh_key.wh_m_mappings
       for key, value in pairs(wh_mappings) do
-        settings.wh_mappings.m_mappings[key] = value
+        if settings.wh_mappings.m_mappings[key] == nil then
+          settings.wh_mappings.m_mappings[key] = value
+        else
+          settings.wh_mappings.m_mappings[key] = vim.tbl_extend('force', settings.wh_mappings.m_mappings[key], value)
+        end
       end
     end
   end

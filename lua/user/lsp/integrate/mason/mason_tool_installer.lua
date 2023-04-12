@@ -54,6 +54,7 @@ M.setup = function(_, _)
           'markdownlint',
           'yamlfmt',
           'sql-formatter',
+          'xmlformat',
 
           -- CODE ACTION
           'eslint_d',

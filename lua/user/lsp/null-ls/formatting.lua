@@ -80,6 +80,12 @@ local format = {
   formatting.pg_format.with({
     filetypes = { 'sql', 'plpgsql' },
   }),
+
+  formatting.xmlformat.with({
+    filetypes = { 'xml', 'svg' },
+    command = 'xmlformat',
+    extra_args = { '-' },
+  }),
 }
 
 -- return M

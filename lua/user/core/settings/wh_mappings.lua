@@ -11,15 +11,6 @@ return {
       'Quit',
       mode = { 'n' },
     },
-    ['/'] = {
-      cmd = {
-        n = "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
-        v = '<Plug>(comment_toggle_linewise_visual)',
-      },
-      'Comment',
-      mode = { 'n', 'v' },
-      ft = { only = {}, exclude = { 'alpha', 'neo-tree' } },
-    },
     ['c'] = {
       "<cmd>lua require('user.utils.bufKill').buf_kill()<CR>",
       'Close Buffer',

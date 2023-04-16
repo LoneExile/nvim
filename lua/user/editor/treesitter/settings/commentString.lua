@@ -22,6 +22,7 @@ M.configs = {
   },
   css = '// %s',
   typescript = { __default = '// %s', __multiline = '/* %s */' },
+  kdl = '// %s',
 }
 
 commmentStr.update_commentstring({

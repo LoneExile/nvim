@@ -15,11 +15,17 @@ M.wh_key = {
           vim.api.nvim_feedkeys(esc, 'nx', false)
           api.toggle.linewise.current()
         end,
-        v = function()
+        --[[ v = function()
           local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
           local api = require('Comment.api')
           vim.api.nvim_feedkeys(esc, 'nx', false)
           api.toggle.blockwise(vim.fn.visualmode())
+        end, ]]
+        v = function()
+          local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+          local api = require('Comment.api')
+          vim.api.nvim_feedkeys(esc, 'nx', false)
+          api.toggle.linewise.current()
         end,
       },
       'Comment',

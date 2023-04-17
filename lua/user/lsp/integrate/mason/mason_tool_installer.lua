@@ -21,8 +21,8 @@ M.setup = function(_, _)
           -- LSP
           'lua-language-server',
           'bash-language-server',
-          -- 'csharp-language-server', -- C#
-          'omnisharp',
+          'csharp-language-server', -- C#
+          -- 'omnisharp',
           -- 'clangd', -- C++
           'dockerfile-language-server',
           'marksman', -- Markdown

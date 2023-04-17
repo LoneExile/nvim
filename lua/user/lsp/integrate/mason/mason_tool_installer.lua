@@ -38,6 +38,7 @@ M.setup = function(_, _)
           'vetur-vls',
           -- 'emmet-ls', -- emmet
           'astro-language-server',
+          'yaml-language-server',
 
           -- DAP
           'netcoredbg', -- C#

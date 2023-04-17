@@ -41,6 +41,7 @@ M.setup = function(_, location)
         'lua_ls', -- Lua
         'pyright', -- python
         'jsonls', -- json
+        'yamlls', -- yaml
 
         'csharp_ls', -- c#
         -- 'omnisharp', -- c#

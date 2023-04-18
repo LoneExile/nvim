@@ -6,13 +6,34 @@ M.setup = function(_, location)
   return {
     'neovim/nvim-lspconfig',
     enabled = M.enabled,
-    -- event = { 'BufReadPre', 'InsertEnter' },
+    event = { 'BufReadPre', 'InsertEnter' },
+    dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
     config = function()
       local lsp_settings = location .. '.settings'
-      local status_ok, lspconfig = pcall(require, 'lspconfig')
-      if not status_ok then
+      local status_lsp, lspconfig = pcall(require, 'lspconfig')
+      if not status_lsp then
         return
       end
+
+      local status_mason, mason = pcall(require, 'mason')
+      if not status_mason then
+        return
+      end
+      mason.setup({
+        ui = {
+          border = 'rounded',
+        },
+      })
+
+      -- See :help mason-lspconfig-dynamic-server-setup
+      local status, mason_lspconfig = pcall(require, 'mason-lspconfig')
+      if not status then
+        return
+      end
+      mason_lspconfig.setup({
+        automatic_installation = false,
+        ensure_installed = {},
+      })
 
       require(lsp_settings .. '.keymaps').add_lsp_buffer_keybindings()
       require(lsp_settings .. '.diagnostic')
@@ -50,7 +71,7 @@ M.setup = function(_, location)
         -- 'sqls', -- sql
       }
 
-      --FIX: this load multiple times
+      --FIX: this load multiple times?
       for _, server in ipairs(servers_name) do
         configs[server] = function()
           require(location .. '.servers.' .. server).setup(lspconfig)
@@ -58,12 +79,7 @@ M.setup = function(_, location)
       end
 
       ----------------------------------------------------------------------------------------
-      -- See :help mason-lspconfig-dynamic-server-setup
-      local status, masonLspConfig = pcall(require, 'mason-lspconfig')
-      if not status then
-        return
-      end
-      masonLspConfig.setup_handlers(configs)
+      mason_lspconfig.setup_handlers(configs)
     end,
   }
 end

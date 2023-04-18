@@ -5,18 +5,6 @@ M.setup = function(_, _)
     'williamboman/mason.nvim',
     dependencies = { 'neovim/nvim-lspconfig' },
     event = { 'BufReadPre', 'InsertEnter' },
-    config = function()
-      local status_ok, mason = pcall(require, 'mason')
-      if not status_ok then
-        print('mason.nvim not installed')
-        return
-      end
-      mason.setup({
-        ui = {
-          border = 'rounded',
-        },
-      })
-    end,
   }
 end
 

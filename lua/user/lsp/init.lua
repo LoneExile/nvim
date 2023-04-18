@@ -6,7 +6,6 @@ M.setup = function(_, location)
   return {
     'neovim/nvim-lspconfig',
     enabled = M.enabled,
-    dependencies = { 'williamboman/mason.nvim' },
     -- event = { 'BufReadPre', 'InsertEnter' },
     config = function()
       local lsp_settings = location .. '.settings'

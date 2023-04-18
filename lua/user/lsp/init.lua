@@ -7,7 +7,18 @@ M.setup = function(_, location)
     'neovim/nvim-lspconfig',
     enabled = M.enabled,
     event = { 'BufReadPre', 'InsertEnter' },
-    dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      {
+        'SmiteshP/nvim-navbuddy',
+        dependencies = {
+          'SmiteshP/nvim-navic',
+          'MunifTanjim/nui.nvim',
+        },
+        opts = { lsp = { auto_attach = true } },
+      },
+    },
     config = function()
       local lsp_settings = location .. '.settings'
       local status_lsp, lspconfig = pcall(require, 'lspconfig')

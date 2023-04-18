@@ -42,6 +42,7 @@ M.setup = function(settings, location)
           margin = { 1, 0, 1, 0 },
           padding = { 0, 0, 0, 0 },
           winblend = 0,
+          zindex = 1000,
         },
         layout = {
           height = { min = 4, max = 20 },

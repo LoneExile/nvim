@@ -3,8 +3,8 @@ local M = {}
 M.setup = function(_, _)
   return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    -- enabled = false,
     dependencies = { 'williamboman/mason.nvim' },
+    event = { 'BufReadPre', 'InsertEnter' },
     config = function()
       local status_tool, mason_tool = pcall(require, 'mason-tool-installer')
       if not status_tool then
@@ -70,9 +70,12 @@ M.setup = function(_, _)
         },
 
         auto_update = false,
-        run_on_start = true,
+        run_on_start = false,
         start_delay = 3000, -- 3 second delay
       })
+
+      -- since we are lazy loading mason-tool-installer, we need to manually call the install function
+      vim.cmd('MasonToolsInstall')
 
       -- vim.api.nvim_create_autocmd('User', {
       --   pattern = 'MasonToolsUpdateCompleted',

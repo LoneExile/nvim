@@ -4,6 +4,7 @@ M.setup = function(_, _)
   return {
     'williamboman/mason.nvim',
     dependencies = { 'neovim/nvim-lspconfig' },
+    event = { 'BufReadPre', 'InsertEnter' },
     config = function()
       local status_ok, mason = pcall(require, 'mason')
       if not status_ok then

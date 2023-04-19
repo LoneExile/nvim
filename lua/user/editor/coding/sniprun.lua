@@ -1,9 +1,56 @@
 local M = {}
 
+M.enabled = false
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    x = {
+      name = '+Execute',
+      c = {
+        name = '+Code',
+        s = {
+          name = '+Sniprun',
+          c = {
+            "<cmd>lua require'sniprun'.run()<cr>",
+            'Run',
+            mode = { 'n', 'v' },
+          },
+          r = {
+            "<cmd>lua require'sniprun'.reset()<cr>",
+            'Reset',
+            mode = { 'n' },
+          },
+          s = {
+            "<cmd>lua require'sniprun.display'.close_all()<cr>",
+            'Stop',
+            mode = { 'n' },
+          },
+          l = {
+            "<cmd>lua require'sniprun.live_mode'.toggle()<cr>",
+            'Live',
+            mode = { 'n' },
+          },
+          i = {
+            "<cmd>lua require'sniprun'.info()<cr>",
+            'Info',
+            mode = { 'n' },
+          },
+          m = {
+            "<cmd>lua require'sniprun'.clear_repl()<cr>",
+            'Memory Clear',
+            mode = { 'n' },
+          },
+        },
+      },
+    },
+  },
+}
+
 M.setup = function()
   return {
     'michaelb/sniprun',
-    enabled = false,
+    enabled = M.enabled,
     build = 'bash ./install.sh',
     config = function()
       local status_ok, sniprun = pcall(require, 'sniprun')

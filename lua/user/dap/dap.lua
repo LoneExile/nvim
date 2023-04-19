@@ -1,8 +1,46 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    d = {
+      name = 'Debug',
+      v = { '<cmd>DapVirtualTextToggle<cr>', 'Toggle virtual text', mode = { 'n' } },
+      T = { '<cmd>DapTerminate<cr>', 'Terminate', mode = { 'n' } },
+      t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", 'Toggle Breakpoint', mode = { 'n' } },
+      b = { "<cmd>lua require'dap'.step_back()<cr>", 'Step Back', mode = { 'n' } },
+      B = {
+        "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
+        'Breakpoint condition',
+        mode = { 'n' },
+      },
+      l = {
+        "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>",
+        'Log point',
+        mode = { 'n' },
+      },
+      L = { "<Cmd>lua require'dap'.run_last()<CR>", 'Run last', mode = { 'n' } },
+      c = { "<cmd>lua require'dap'.continue()<cr>", 'Continue', mode = { 'n' } },
+      C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", 'Run To Cursor', mode = { 'n' } },
+      d = { "<cmd>lua require'dap'.disconnect()<cr>", 'Disconnect', mode = { 'n' } },
+      g = { "<cmd>lua require'dap'.session()<cr>", 'Get Session', mode = { 'n' } },
+      i = { "<cmd>lua require'dap'.step_into()<cr>", 'Step Into', mode = { 'n' } },
+      o = { "<cmd>lua require'dap'.step_over()<cr>", 'Step Over', mode = { 'n' } },
+      u = { "<cmd>lua require'dap'.step_out()<cr>", 'Step Out', mode = { 'n' } },
+      p = { "<cmd>lua require'dap'.pause()<cr>", 'Pause', mode = { 'n' } },
+      r = { "<cmd>lua require'dap'.repl.toggle()<cr>", 'Toggle Repl', mode = { 'n' } },
+      s = { "<cmd>lua require'dap'.continue()<cr>", 'Start', mode = { 'n' } },
+      q = { "<cmd>lua require'dap'.close()<cr>", 'Quit', mode = { 'n' } },
+    },
+  },
+}
+
 M.setup = function(_, location)
   return {
     'mfussenegger/nvim-dap',
+    enabled = M.enabled,
     config = function()
       -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
       local status_ok, dap = pcall(require, 'dap')

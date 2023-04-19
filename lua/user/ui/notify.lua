@@ -1,5 +1,20 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    ['s'] = {
+      name = 'Search',
+      n = {
+        "<cmd>lua require('telescope').extensions.notify.notify(require('telescope.themes').get_dropdown({initial_mode = 'normal'}))<cr>",
+        'Notifications',
+        mode = { 'n' },
+      },
+    },
+  },
+}
 M.setup = function(settings)
   return {
     'rcarriga/nvim-notify',
@@ -30,6 +45,11 @@ M.setup = function(settings)
         top_down = true,
       })
       vim.notify = require('notify')
+
+      local status, telescope = pcall(require, 'telescope')
+      if status then
+        telescope.load_extension('notify')
+      end
     end,
   }
 end

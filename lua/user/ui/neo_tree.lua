@@ -12,6 +12,27 @@ M.wh_key = {
       'Explorer',
       mode = { 'n' },
     },
+    u = {
+      name = '+Utility',
+      n = {
+        name = '+Neotree',
+        b = {
+          '<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>',
+          'Buffer',
+          mode = { 'n' },
+        },
+        g = {
+          '<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>',
+          'Git',
+          mode = { 'n' },
+        },
+        r = {
+          '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>',
+          'Files',
+          mode = { 'n' },
+        },
+      },
+    },
   },
 }
 

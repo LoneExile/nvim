@@ -1,8 +1,49 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    u = {
+      name = '+Utility',
+      c = {
+        name = '+Color picker',
+        p = {
+          '<cmd>Colortils picker<cr>',
+          'picker',
+          mode = { 'n' },
+        },
+        l = {
+          '<cmd>Colortils lighten<cr>',
+          'lighten',
+          mode = { 'n' },
+        },
+        d = {
+          '<cmd>Colortils darken<cr>',
+          'darken',
+          mode = { 'n' },
+        },
+        s = {
+          '<cmd>Colortils greyscale<cr>',
+          'greyscale',
+          mode = { 'n' },
+        },
+        g = {
+          '<cmd>Colortils gradient<cr>',
+          'gradient',
+          mode = { 'n' },
+        },
+        L = { '<cmd>Colortils css list<cr>', 'List', mode = { 'n' } },
+      },
+    },
+  },
+}
+
 M.setup = function()
   return {
     'max397574/colortils.nvim',
+    enabled = M.enabled,
     config = function()
       local status_ok_code, colortils = pcall(require, 'colortils')
       if not status_ok_code then

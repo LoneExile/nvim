@@ -2,6 +2,21 @@ local M = {}
 
 M.enabled = true
 
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    u = {
+      name = '+Utility',
+      w = {
+        name = '+Windows',
+        m = { '<cmd>WindowsMaximize!<cr>', 'Maximize', mode = { 'n' } },
+        e = { '<cmd>WindowsEqualize<cr>', 'Equal', mode = { 'n' } },
+        t = { '<cmd>WindowsToggleAutowidth<cr>', 'Toggle', mode = { 'n' } },
+      },
+    },
+  },
+}
+
 M.setup = function()
   return {
     'anuvyklack/windows.nvim',

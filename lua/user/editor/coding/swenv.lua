@@ -1,5 +1,16 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    x = {
+      name = '+Execute',
+      p = { "<cmd>lua require('swenv.api').pick_venv()<cr>", 'Pyenv', mode = { 'n' } },
+    },
+  },
+}
 M.setup = function()
   return {
     'AckslD/swenv.nvim',

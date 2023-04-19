@@ -44,6 +44,11 @@ M.setup = function()
         -- telescope
         datapath = vim.fn.stdpath('data'),
       })
+
+      local status, telescope = pcall(require, 'telescope')
+      if status then
+        telescope.load_extension('projects')
+      end
     end,
   }
 end

@@ -1,9 +1,30 @@
 local M = {}
 
+M.enabled = false
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    u = {
+      name = '+Utility',
+      m = {
+        name = '+Mark',
+        a = { '<cmd>MarksToggleSigns<cr>', 'Toggle', mode = { 'n' } },
+        b = { '<cmd>MarksListBuf<cr>', 'List', mode = { 'n' } },
+        g = { '<cmd>MarksListGlobal<cr>', 'List All', mode = { 'n' } },
+        d = { "<cmd>lua require'marks'.delete_buf()<cr>", 'Delete buf', mode = { 'n' } },
+        -- ':execute "normal \\<Plug>(Marks-next)"<CR>', -- e.g. for mapping
+        j = { '<Plug>(Marks-next)', 'Next', mode = { 'n' } },
+        k = { '<Plug>(Marks-prev)', 'Prev', mode = { 'n' } },
+      },
+    },
+  },
+}
+
 M.setup = function()
   return {
     'chentoast/marks.nvim',
-    enabled = false,
+    enabled = M.enabled,
     event = 'BufRead',
     config = function()
       local status_ok, mark = pcall(require, 'marks')

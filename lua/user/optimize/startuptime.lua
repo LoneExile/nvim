@@ -1,8 +1,21 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    N = {
+      name = 'Neovim',
+      s = { '<cmd>StartupTime<cr>', 'Startup Time', mode = { 'n' } },
+    },
+  },
+}
+
 M.setup = function()
   return {
     'dstein64/vim-startuptime',
+    enabled = M.enabled,
     lazy = true,
     cmd = 'StartupTime',
     config = function()

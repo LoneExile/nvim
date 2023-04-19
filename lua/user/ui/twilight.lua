@@ -1,8 +1,24 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    u = {
+      name = '+Utility',
+      h = {
+        name = 'highlight',
+        p = { '<cmd>Twilight<cr>', 'Paragraph', mode = { 'n' } },
+      },
+    },
+  },
+}
+
 M.setup = function()
   return {
     'folke/twilight.nvim',
+    enabled = M.enabled,
     lazy = true,
     cmd = 'Twilight',
     config = function()

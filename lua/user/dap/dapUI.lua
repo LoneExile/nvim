@@ -1,5 +1,26 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    d = {
+      name = 'Debug',
+      U = {
+        name = 'UI',
+        T = { "lua require('dapui').toggle()<cr>", 'Toggle Dap UI', mode = { 'n' } },
+        e = { "lua require('dapui').eval()<cr>", 'Evaluate Expression', mode = { 'n' } },
+        f = {
+          "<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>",
+          'UI Scopes',
+          mode = { 'n' },
+        },
+      },
+    },
+  },
+}
+
 M.setup = function(_, _)
   return {
     'rcarriga/nvim-dap-ui',

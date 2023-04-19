@@ -48,6 +48,7 @@ M.setup = function(_, location)
 
       require(lsp_settings .. '.keymaps').add_lsp_buffer_keybindings()
       require(lsp_settings .. '.diagnostic')
+      require(lsp_settings .. '.autocmd')
 
       local lsp_defaults = require(lsp_settings .. '.defaults').setup()
       lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)

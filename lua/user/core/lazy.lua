@@ -35,9 +35,10 @@ files = vim.tbl_filter(function(file)
   local folder = vim.fn.fnamemodify(file, ':h')
   local folder_name = vim.fn.fnamemodify(folder, ':t')
   local list = {
-    'utils',
-    'autoCmd',
     'core',
+    'autocmds',
+    'ftplugin',
+    'utils',
     'keymaps',
     -- 'servers',
     'settings',

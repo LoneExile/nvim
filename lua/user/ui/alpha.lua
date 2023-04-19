@@ -100,6 +100,19 @@ M.setup = function()
       dashboard.opts.opts.noautocmd = true
       vim.cmd([[lua vim.o.ls=0]]) -- disable statusline
       alpha.setup(dashboard.opts)
+
+      -------------------------------------------------------------------------------
+      local group = vim.api.nvim_create_augroup('autocmd_alpha', { clear = true })
+
+      vim.api.nvim_create_autocmd('FileType', {
+        group = group,
+        pattern = {
+          'alpha',
+        },
+        callback = function()
+          vim.cmd([[lua vim.o.ls=0]]) -- disable statusline
+        end,
+      })
     end,
   }
 end

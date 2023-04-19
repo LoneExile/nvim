@@ -1,4 +1,4 @@
-local group = vim.api.nvim_create_augroup('filetypes', { clear = true })
+local group = vim.api.nvim_create_augroup('autocmd_zsh', { clear = true })
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'zsh',
   callback = function()

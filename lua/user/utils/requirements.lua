@@ -1,8 +1,10 @@
 if vim.fn.has('nvim-0.9') ~= 1 then
-  print('Please upgrade your Neovim base installation.requires v0.9+')
-  vim.wait(5000, function()
-    vim.cmd('cquit')
-  end)
+  vim.api.nvim_echo({
+    { 'Please upgrade your Neovim base installation.requires v0.9+', 'ErrorMsg' },
+    { 'Press any key to continue', 'WarningMsg' },
+  }, true, {})
+  vim.fn.getchar()
+  vim.cmd([[quit]])
 end
 
 local M = {}

@@ -13,15 +13,15 @@ if not status then
 end
 
 M.configs = {
-  javascript = {
-    __default = '// %s',
-    jsx_element = '{/* %s */}',
-    jsx_fragment = '{/* %s */}',
-    jsx_attribute = '// %s',
-    comment = '// %s',
-  },
-  css = '// %s',
-  typescript = { __default = '// %s', __multiline = '/* %s */' },
+  -- javascript = {
+  --   __default = '// %s',
+  --   jsx_element = '{/* %s */}',
+  --   jsx_fragment = '{/* %s */}',
+  --   jsx_attribute = '// %s',
+  --   comment = '// %s',
+  -- },
+  -- css = '// %s',
+  -- typescript = { __default = '// %s', __multiline = '/* %s */' },
   kdl = '// %s',
 }
 

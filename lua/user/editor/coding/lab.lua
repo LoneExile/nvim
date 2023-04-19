@@ -1,8 +1,30 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    x = {
+      name = '+Execute',
+      c = {
+        name = '+Code',
+        l = {
+          name = '+Lab',
+          r = { '<cmd>Lab code run<cr>', 'Run', mode = { 'n' } },
+          s = { '<cmd>Lab code stop<cr>', 'Stop', mode = { 'n' } },
+          p = { '<cmd>Lab code panel<cr>', 'Panel', mode = { 'n' } },
+          c = { '<cmd>Lab code config<cr>', 'Config', mode = { 'n' } },
+        },
+      },
+    },
+  },
+}
+
 M.setup = function()
   return {
     '0x100101/lab.nvim',
+    enabled = M.enabled,
     build = 'cd js && npm ci',
     ft = { 'javascript', 'typescript', 'lua', 'python' },
     config = function()

@@ -32,6 +32,11 @@ M.setup = function()
       local status_ok, worktree = pcall(require, 'git-worktree')
       if status_ok then
         worktree.setup()
+
+        local status, telescope = pcall(require, 'telescope')
+        if status then
+          telescope.load_extension('git_worktree')
+        end
       end
     end,
   }

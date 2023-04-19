@@ -1,11 +1,43 @@
 local M = {}
 
+M.enabled = false
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    x = {
+      name = '+Execute',
+      c = {
+        name = '+Code',
+        c = {
+          name = '+Codi',
+          c = {
+            '<cmd>Codi!!<cr>',
+            'Codi Toggle',
+            mode = { 'n' },
+          },
+          e = {
+            '<cmd>CodiExpand<cr>',
+            'Expand',
+            mode = { 'n' },
+          },
+          s = {
+            '<cmd>:CodiSelect<cr>',
+            'Select',
+            mode = { 'n' },
+          },
+        },
+      },
+    },
+  },
+}
+
 M.setup = function()
   return {
     'metakirby5/codi.vim',
-    enabled = false,
-    lazy = true,
-    cmd = 'Codi',
+    enabled = M.enabled,
+    -- lazy = true,
+    -- cmd = 'Codi',
     config = function()
       vim.g['codi#virtual_text_prefix'] = '❯❯❯ '
       vim.g['codi#virtual_text_pos'] = 100

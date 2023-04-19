@@ -17,11 +17,6 @@ M.wh_key = {
         'Open changed file',
         mode = { 'n' },
       },
-      n = {
-        "<cmd>lua require('telescope').extensions.notify.notify(require('telescope.themes').get_dropdown({initial_mode = 'normal'}))<cr>",
-        'Notifications',
-        mode = { 'n' },
-      },
       c = {
         '<cmd>Telescope colorscheme<cr>',
         'Colorscheme',
@@ -275,12 +270,8 @@ M.setup = function()
       if status then
         telescope.setup(configsTelescope)
         telescope.load_extension('fzf')
-        telescope.load_extension('projects')
-        telescope.load_extension('notify')
-        -- telescope.load_extension('git_worktree')
-        telescope.load_extension('refactoring')
+        telescope.load_extension('undo')
         -- telescope.load_extension("ui-select")
-        require('telescope').load_extension('undo')
       end
     end,
   }

@@ -77,7 +77,7 @@ for _, file in ipairs(files) do
         if settings.wh_mappings.mappings[key] == nil then
           settings.wh_mappings.mappings[key] = value
         else
-          settings.wh_mappings.mappings[key] = vim.tbl_extend('force', settings.wh_mappings.mappings[key], value)
+          settings.wh_mappings.mappings[key] = vim.tbl_deep_extend('force', settings.wh_mappings.mappings[key], value)
         end
       end
     end
@@ -87,7 +87,8 @@ for _, file in ipairs(files) do
         if settings.wh_mappings.m_mappings[key] == nil then
           settings.wh_mappings.m_mappings[key] = value
         else
-          settings.wh_mappings.m_mappings[key] = vim.tbl_extend('force', settings.wh_mappings.m_mappings[key], value)
+          settings.wh_mappings.m_mappings[key] =
+            vim.tbl_deep_extend('force', settings.wh_mappings.m_mappings[key], value)
         end
       end
     end

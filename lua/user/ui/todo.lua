@@ -1,8 +1,21 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    u = {
+      name = '+Utility',
+      t = { '<cmd>TodoTelescope<cr>', 'TODO', mode = { 'n' } },
+    },
+  },
+}
+
 M.setup = function()
   return {
     'folke/todo-comments.nvim',
+    enabled = M.enabled,
     config = function()
       local status_ok, todo = pcall(require, 'todo-comments')
       if not status_ok then

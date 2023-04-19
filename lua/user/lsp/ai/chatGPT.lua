@@ -1,8 +1,26 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    x = {
+      name = '+Execute',
+      a = {
+        name = '+AI',
+        c = { '<cmd>ChatGPT<cr>', 'ChatGPT', mode = { 'n' } },
+        a = { '<cmd>ChatGPTActAs<cr>', 'ActAs', mode = { 'n' } },
+        i = { '<cmd>ChatGPTEditWithInstructions<cr>', 'Instructions', mode = { 'n', 'v' } },
+      },
+    },
+  },
+}
+
 M.setup = function(settings, _)
   return {
     'jackMort/ChatGPT.nvim',
+    enabled = M.enabled,
     cmd = { 'ChatGPT' },
     dependencies = {
       'MunifTanjim/nui.nvim',

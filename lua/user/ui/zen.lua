@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     u = {
       name = '+Utility',
@@ -15,7 +12,6 @@ M.wh_key = {
 M.setup = function()
   return {
     'folke/zen-mode.nvim',
-    enabled = M.enabled,
     lazy = true,
     cmd = 'ZenMode',
     config = function()

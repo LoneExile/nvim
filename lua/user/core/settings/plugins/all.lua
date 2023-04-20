@@ -1,5 +1,9 @@
 return {
+
+  -- CMP
   { 'hrsh7th/nvim-cmp', true },
+
+  -- Dap
   { 'mxsdev/nvim-dap-vscode-js', true },
   { 'leoluz/nvim-dap-go', true },
   { 'mfussenegger/nvim-dap-python', true },
@@ -7,6 +11,8 @@ return {
   { 'rcarriga/nvim-dap-ui', true },
   { 'theHamsta/nvim-dap-virtual-text', true },
   { 'nvim-telescope/telescope-dap.nvim', false },
+
+  -- Editor
   { 'metakirby5/codi.vim', false },
   { '0x100101/lab.nvim', true },
   { 'codethread/qmk.nvim', false },
@@ -17,9 +23,13 @@ return {
   { 'ray-x/web-tools.nvim', true },
   { 'nvchad/nvim-colorizer.lua', true },
   { 'max397574/colortils.nvim', true },
+
+  -- Git
   { 'sindrets/diffview.nvim', true },
   { 'ThePrimeagen/git-worktree.nvim', false },
   { 'lewis6991/gitsigns.nvim', true },
+
+  -- Motion
   { 'LoneExile/autolist.nvim', true },
   { 'theprimeagen/harpoon', true },
   { 'phaazon/hop.nvim', true },
@@ -28,6 +38,8 @@ return {
   { 'cbochs/portal.nvim', false },
   { 'declancm/cinnamon.nvim', true },
   { 'echasnovski/mini.nvim', true },
+
+  -- Tool
   { 'glacambre/firenvim', false },
   { 'RRethy/vim-illuminate', true },
   { 'darazaki/indent-o-matic', true },
@@ -38,6 +50,8 @@ return {
   { 'axelvc/template-string.nvim', true },
   { 'dhruvasagar/vim-open-url', true },
   { 'tpope/vim-repeat', true },
+
+  -- Treesitter
   { 'windwp/nvim-autopairs', true },
   { 'windwp/nvim-ts-autotag', true },
   { 'numToStr/Comment.nvim', true },
@@ -45,10 +59,14 @@ return {
   { 'nvim-treesitter/nvim-treesitter', true },
   { 'nvim-treesitter/nvim-treesitter-context', true },
   { 'lukas-reineke/indent-blankline.nvim', true },
+
+  -- AI
   { 'jackMort/ChatGPT.nvim', true },
   { 'zbirenbaum/copilot.lua', true },
   { 'zbirenbaum/copilot-cmp', true },
   { 'dense-analysis/neural', false },
+
+  -- LSP
   { 'neovim/nvim-lspconfig', true },
   { 'j-hui/fidget.nvim', true },
   { 'lvimuser/lsp-inlayhints.nvim', false },
@@ -64,10 +82,14 @@ return {
   { 'simrat39/rust-tools.nvim', true },
   { 'b0o/schemastore.nvim', true },
   { 'jose-elias-alvarez/typescript.nvim', true },
+
+  -- Optimize
   { 'antoinemadec/FixCursorHold.nvim', true },
   { 'nathom/filetype.nvim', false },
   { 'lewis6991/impatient.nvim', true },
   { 'dstein64/vim-startuptime', true },
+
+  -- UI
   { 'goolord/alpha-nvim', true },
   { 'folke/tokyonight.nvim', true },
   { 'stevearc/dressing.nvim', true },

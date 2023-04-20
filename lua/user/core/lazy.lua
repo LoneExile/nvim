@@ -40,6 +40,7 @@ files = vim.tbl_filter(function(file)
     'ftplugin',
     'plugins',
 
+    -- 'servers',
     'utils',
     'keymaps',
     'settings',
@@ -49,6 +50,15 @@ end, files)
 
 local plugins = {}
 
+local all_plugins = require('user.core.settings.plugins.all')
+-- local function is_element_in_table(element, t)
+--   for _, value in ipairs(t) do
+--     if value[1] == element then
+--       return true
+--     end
+--   end
+--   return false
+-- end
 for _, file in ipairs(files) do
   local file_name = vim.fn.fnamemodify(file, ':t:r')
   local folder = vim.fn.fnamemodify(file, ':h')
@@ -65,48 +75,51 @@ for _, file in ipairs(files) do
     location = vim.fn.substitute(location, '.lua$', '', 'g')
   end
 
-  local plugin_config = require(location) --.setup(settings, location)
-  table.insert(plugins, plugin_config.setup(settings, location))
+  local plugin_config = require(location)
+  local plugin = plugin_config.setup(settings, location)
+  if plugin ~= nil then
+    for i, p in ipairs(all_plugins) do
+      if p[1] == plugin[1] and p[2] == false then
+        plugin['enabled'] = false
+      elseif p[1] == plugin[1] and p[2] == true then
+        plugin['enabled'] = true
+        -- TODO: if plugin not in all_plugins (new plugin) then enable it by default
+        -- elseif not is_element_in_table(plugin[1], all_plugins) and plugin[1] ~= nil then
+        --   plugin['enabled'] = true
+      end
 
-  if plugin_config.wh_key ~= nil and plugin_config.wh_key.enabled ~= false then
-    if plugin_config.wh_key.wh_mappings ~= nil then
-      local wh_mappings = plugin_config.wh_key.wh_mappings
-      for key, value in pairs(wh_mappings) do
-        if settings.wh_mappings.mappings[key] == nil then
-          settings.wh_mappings.mappings[key] = value
-        else
-          settings.wh_mappings.mappings[key] = vim.tbl_deep_extend('force', settings.wh_mappings.mappings[key], value)
+      if plugin['enabled'] == true and p[1] == plugin[1] then
+        if plugin_config.wh_key ~= nil then -- and plugin_config.wh_key.enabled ~= false then
+          if plugin_config.wh_key.wh_mappings ~= nil then
+            local wh_mappings = plugin_config.wh_key.wh_mappings
+            for key, value in pairs(wh_mappings) do
+              if settings.wh_mappings.mappings[key] == nil then
+                settings.wh_mappings.mappings[key] = value
+              else
+                settings.wh_mappings.mappings[key] =
+                  vim.tbl_deep_extend('force', settings.wh_mappings.mappings[key], value)
+              end
+            end
+          end
+          if plugin_config.wh_key.wh_m_mappings ~= nil then
+            local wh_mappings = plugin_config.wh_key.wh_m_mappings
+            for key, value in pairs(wh_mappings) do
+              if settings.wh_mappings.m_mappings[key] == nil then
+                settings.wh_mappings.m_mappings[key] = value
+              else
+                settings.wh_mappings.m_mappings[key] =
+                  vim.tbl_deep_extend('force', settings.wh_mappings.m_mappings[key], value)
+              end
+            end
+          end
         end
+        break
       end
     end
-    if plugin_config.wh_key.wh_m_mappings ~= nil then
-      local wh_mappings = plugin_config.wh_key.wh_m_mappings
-      for key, value in pairs(wh_mappings) do
-        if settings.wh_mappings.m_mappings[key] == nil then
-          settings.wh_mappings.m_mappings[key] = value
-        else
-          settings.wh_mappings.m_mappings[key] =
-            vim.tbl_deep_extend('force', settings.wh_mappings.m_mappings[key], value)
-        end
-      end
-    end
+    table.insert(plugins, plugin)
   end
 end
 
-local all_plugins = require('user.core.settings.plugins.all')
-for _, plugin in ipairs(plugins) do
-  for _, p in ipairs(all_plugins) do
-    if p[1] == plugin[1] and p[2] == false then
-      plugin['enabled'] = false
-    end
-  end
-end
-
--- print(vim.inspect(plugins))
--- print(vim.inspect(result))
-
--- print(vim.inspect(settings.wh_mappings.mappings))
--- table.insert(plugins, require('user.ui.which_key').setup(settings, 'user.ui.which_key'))
 -----------------------------------------------------
 
 --   { 'nvim-lua/plenary.nvim' },

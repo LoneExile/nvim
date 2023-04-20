@@ -17,10 +17,11 @@ M.wh_key = {
   },
 }
 
-M.setup = function(settings, _)
+M.setup = function(_, _)
   return {
     'jackMort/ChatGPT.nvim',
     enabled = M.enabled,
+    event = 'VeryLazy',
     cmd = { 'ChatGPT' },
     dependencies = {
       'MunifTanjim/nui.nvim',
@@ -28,12 +29,39 @@ M.setup = function(settings, _)
       'nvim-telescope/telescope.nvim',
     },
     config = function()
-      require(settings.env_file)
+      require('user.utils.init_env')
       local status_GPT, chatgpt = pcall(require, 'chatgpt')
       if not status_GPT or vim.env.OPENAI_API_KEY == nil then
         return
       end
-      chatgpt.setup()
+      local config = {
+        edit_with_instructions = {
+          diff = false,
+          keymaps = {
+            accept = '<C-y>',
+            toggle_diff = '<C-d>',
+            toggle_settings = '<C-o>',
+            cycle_windows = '<Tab>',
+            use_output_as_input = '<C-i>',
+          },
+        },
+        chat = {
+          keymaps = {
+            close = { '<C-c>' },
+            yank_last = '<C-y>',
+            yank_last_code = '<C-k>',
+            scroll_up = '<C-u>',
+            scroll_down = '<C-d>',
+            toggle_settings = '<C-o>',
+            new_session = '<C-n>',
+            cycle_windows = '<Tab>',
+            select_session = '<Space>',
+            rename_session = 'r',
+            delete_session = 'd',
+          },
+        },
+      }
+      chatgpt.setup(config)
     end,
   }
 end

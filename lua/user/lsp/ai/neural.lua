@@ -1,12 +1,12 @@
 local M = {}
 M.enabled = false
 
-M.setup = function(settings, _)
+M.setup = function(_, _)
   return {
     'dense-analysis/neural',
     enabled = M.enabled,
     config = function()
-      require(settings.env_file)
+      require('user.utils.init_env')
       local status_neural, neural = pcall(require, 'neural')
       if not status_neural or vim.env.OPENAI_API_KEY == nil then
         return

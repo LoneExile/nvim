@@ -1,8 +1,24 @@
 local M = {}
 
+M.enabled = true
+
+M.wh_key = {
+  enabled = M.enabled,
+  wh_mappings = {
+    x = {
+      name = '+Execute',
+      a = {
+        name = '+AI',
+        p = { '<cmd>Copilot panel<cr>', 'Copilot', mode = { 'n' } },
+      },
+    },
+  },
+}
+
 M.setup = function(_, _)
   return {
     'zbirenbaum/copilot.lua',
+    enabled = M.enabled,
     event = { 'VimEnter' },
     config = function()
       local status_ok, copilot = pcall(require, 'copilot')
@@ -12,15 +28,24 @@ M.setup = function(_, _)
 
       vim.schedule(function()
         copilot.setup({
+          server_opts_overrides = {
+            trace = 'verbose',
+            settings = {
+              advanced = {
+                listCount = 5, -- #completions for panel
+                inlineSuggestCount = 3, -- #completions for getCompletions
+              },
+            },
+          },
           panel = { -- no config options yet
             enabled = true,
             auto_refresh = false,
             keymap = {
-              -- jump_prev = '[[',
-              -- jump_next = ']]',
-              -- accept = '<CR>',
-              -- refresh = 'gr',
-              -- open = '<M-CR>',
+              jump_prev = '<M-,>',
+              jump_next = '<M-.>',
+              accept = '<CR>',
+              refresh = 'gr',
+              open = '<M-CR>',
             },
           },
           filetypes = {
@@ -42,15 +67,14 @@ M.setup = function(_, _)
               accept = '<M-a>',
               accept_word = '<M-w>',
               accept_line = '<M-l>',
-              next = '<C-.>',
-              prev = '<C-,>',
+              next = '<M-.>',
+              prev = '<M-,>',
               dismiss = '<C-e>',
             },
           },
           copilot_node_command = 'node', -- Node version must be < 18
           -- plugin_manager_path = vim.fn.expand('$HOME') .. '/.local/share/nvim/site/pack/packer',
           plugin_manager_path = vim.fn.stdpath('data') .. '/lazy',
-          server_opts_overrides = {},
         })
 
         -- cmp.event:on('menu_opened', function()

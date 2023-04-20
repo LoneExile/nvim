@@ -9,7 +9,6 @@ local M = {
   tranparent = true,
 
   ------------------------------------------------------------------
-  env_file = 'user.utils.init_env',
   colors = colors,
   kindIcon = require(settings_path .. 'kind').kindIcon(colors),
   kind_icons = require(settings_path .. 'kind').kind_icons,

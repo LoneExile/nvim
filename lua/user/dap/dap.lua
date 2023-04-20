@@ -51,25 +51,21 @@ M.setup = function(_, location)
       local icons = {
         breakpoint = {
           text = '',
-          -- texthl = 'LspDiagnosticsSignError',
-          texthl = 'LspSagaDiagnosticError',
+          texthl = 'DiagnosticError',
           linehl = '',
           numhl = '',
         },
         breakpoint_rejected = {
           text = '',
-          -- texthl = 'LspDiagnosticsSignHint',
-          texthl = 'LspSagaDiagnosticHint',
+          texthl = 'DiagnosticHint',
           linehl = '',
           numhl = '',
         },
         stopped = {
           text = '',
-          -- texthl = 'LspDiagnosticsSignInformation',
-          -- numhl = 'LspDiagnosticsSignInformation',
-          texthl = 'LspSagaDiagnosticInfo',
+          texthl = 'DiagnosticInfo',
           linehl = 'DiagnosticUnderlineInfo',
-          numhl = 'LspSagaDiagnosticInfo',
+          numhl = 'DiagnosticInfo',
         },
         breakpoint_condition = {
           text = '',

@@ -81,7 +81,7 @@ for _, file in ipairs(files) do
   local plugin_config = require(location)
   local plugin = plugin_config.setup(settings, location)
   if plugin ~= nil then
-    for i, p in ipairs(all_plugins) do
+    for _, p in ipairs(all_plugins) do
       if p[1] == plugin[1] and p[2] == false then
         plugin['enabled'] = false
       elseif p[1] == plugin[1] and p[2] == true then

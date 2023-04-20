@@ -38,11 +38,11 @@ files = vim.tbl_filter(function(file)
     'core',
     'autocmds',
     'ftplugin',
+    'plugins',
+
     'utils',
     'keymaps',
-    -- 'servers',
     'settings',
-    -- 'which-key',
   }
   return not vim.tbl_contains(list, folder_name)
 end, files)
@@ -58,13 +58,11 @@ for _, file in ipairs(files) do
   if vim.fn.fnamemodify(folder, ':h') == config_location then
     location = 'user.' .. folder_name .. '.' .. file_name
     location = vim.fn.substitute(location, '.init', '', 'g')
-    -- print('1: ', location)
   else
     location = vim.fn.matchstr(file, [[user/.*.lua]])
     location = vim.fn.substitute(location, '/', '.', 'g')
     location = vim.fn.substitute(location, '.init', '', 'g')
     location = vim.fn.substitute(location, '.lua$', '', 'g')
-    -- print('2:', location)
   end
 
   local plugin_config = require(location) --.setup(settings, location)
@@ -94,6 +92,18 @@ for _, file in ipairs(files) do
     end
   end
 end
+
+local all_plugins = require('user.core.settings.plugins.all')
+for _, plugin in ipairs(plugins) do
+  for _, p in ipairs(all_plugins) do
+    if p[1] == plugin[1] and p[2] == false then
+      plugin['enabled'] = false
+    end
+  end
+end
+
+-- print(vim.inspect(plugins))
+-- print(vim.inspect(result))
 
 -- print(vim.inspect(settings.wh_mappings.mappings))
 -- table.insert(plugins, require('user.ui.which_key').setup(settings, 'user.ui.which_key'))

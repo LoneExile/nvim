@@ -35,15 +35,18 @@ files = vim.tbl_filter(function(file)
   local folder = vim.fn.fnamemodify(file, ':h')
   local folder_name = vim.fn.fnamemodify(folder, ':t')
   local list = {
+    -- NOTE: these folders are not loaded by lazy.nvim
+    -- order matters
     'core',
     'autocmds',
     'ftplugin',
     'plugins',
 
-    -- 'servers',
-    'utils',
-    'keymaps',
+    -- LSP
     'settings',
+    'servers',
+
+    'utils',
   }
   return not vim.tbl_contains(list, folder_name)
 end, files)

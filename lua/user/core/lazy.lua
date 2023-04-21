@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 local M = {}
 M.setup = function(root)
   local set_loc = '.core.settings'
-  local settings = require(root .. set_loc)
+  local settings = require(root .. set_loc).setup(root, set_loc)
 
   local config_location = vim.fn.stdpath('config') .. '/lua/' .. root
   local all_files = vim.fn.glob(config_location .. '/**/*.lua', true, true)

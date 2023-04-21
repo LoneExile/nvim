@@ -10,17 +10,33 @@ keymap('v', 'p', '"_dP', { noremap = true, silent = true }) -- copy paste not co
 keymap('t', '<C-e>', '<C-\\><C-n>', { silent = true }) -- exit insert_mode in terminal
 keymap('v', '<C-/>', '<esc>/\\%V', { noremap = true }) -- search within selection
 
+-- mapping for i that will indent properly on empty lines:
+vim.keymap.set('x', 'i', function()
+  if #vim.fn.getline('.') == 0 then
+    return [["_cc]]
+  else
+    return 'i'
+  end
+end, { expr = true })
+
+-- mapping for dd that doesn't yank an empty line into your default register
+vim.keymap.set('n', '_dd', function()
+  if vim.api.nvim_get_current_line():match('^%s*$') then
+    return '"_dd'
+  else
+    return 'dd'
+  end
+end, { expr = true })
+
 ----------------------------------------------------------
 local M = {}
 
-local generic_opts_any = { noremap = true, silent = true }
-
 local generic_opts = {
-  insert_mode = generic_opts_any,
-  normal_mode = generic_opts_any,
-  visual_mode = generic_opts_any,
-  visual_block_mode = generic_opts_any,
-  command_mode = generic_opts_any,
+  insert_mode = opts,
+  normal_mode = opts,
+  visual_mode = opts,
+  visual_block_mode = opts,
+  command_mode = opts,
   term_mode = { silent = true },
 }
 
@@ -126,21 +142,8 @@ if vim.fn.has('mac') == 1 then
   -- Log:debug("Activated mac keymappings")
 end
 
-function M.clear(keymaps)
-  local default = M.get_defaults()
-  for mode, mappings in pairs(keymaps) do
-    local translated_mode = mode_adapters[mode] and mode_adapters[mode] or mode
-    for key, _ in pairs(mappings) do
-      -- some plugins may override default bindings that the user hasn't manually overriden
-      if default[mode][key] ~= nil or (default[translated_mode] ~= nil and default[translated_mode][key] ~= nil) then
-        pcall(vim.api.nvim_del_keymap, translated_mode, key)
-      end
-    end
-  end
-end
-
 function M.set_keymaps(mode, key, val)
-  local opt = generic_opts[mode] or generic_opts_any
+  local opt = generic_opts[mode] or opts
   if type(val) == 'table' then
     opt = val[2]
     val = val[1]
@@ -166,10 +169,6 @@ function M.load(keymaps)
   end
 end
 
-function M.load_defaults()
-  M.load(defaults)
-end
-
 ------------------------------------------------------------------------------------
 
-return M.load_defaults()
+return M.load(defaults)

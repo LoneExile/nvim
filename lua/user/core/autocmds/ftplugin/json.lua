@@ -1,3 +1,5 @@
+-- When creating a new line with o, make sure there is a trailing comma on the current line
+
 local group = vim.api.nvim_create_augroup('autocmd_json', { clear = true })
 
 vim.api.nvim_create_autocmd('FileType', {

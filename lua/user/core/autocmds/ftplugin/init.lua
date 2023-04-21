@@ -1,4 +1,8 @@
-require('user.core.autocmds.ftplugin.zsh')
-require('user.core.autocmds.ftplugin.help')
-require('user.core.autocmds.ftplugin.close_with_q')
-require('user.core.autocmds.ftplugin.json')
+local M = {}
+
+M.setup = function(root, m)
+  local exclude = {}
+  m.setup_load(root, exclude)
+end
+
+return M

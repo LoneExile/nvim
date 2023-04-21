@@ -1,18 +1,20 @@
--- TODO: check files exist before  require
+local M = {}
 
-local settings_path = 'user.core.settings.'
-local colors = require(settings_path .. 'colors')
+M.setup = function(root, set_loc)
+  local settings_path = root .. set_loc .. '.'
+  local colors = require(settings_path .. 'colors')
+  local settings = {
+    root = root,
+    theme = 'tokyonight-storm',
+    tranparent = true,
 
-local M = {
-  config_location = vim.fn.stdpath('config') .. '/lua/user',
-  theme = 'tokyonight-storm',
-  tranparent = true,
-
-  ------------------------------------------------------------------
-  colors = colors,
-  kindIcon = require(settings_path .. 'kind').kindIcon(colors),
-  kind_icons = require(settings_path .. 'kind').kind_icons,
-  wh_mappings = require(settings_path .. 'wh_mappings'),
-}
+    ------------------------------------------------------------------
+    colors = colors,
+    kindIcon = require(settings_path .. 'kind').kindIcon(colors),
+    kind_icons = require(settings_path .. 'kind').kind_icons,
+    wh_mappings = require(settings_path .. 'wh_mappings').setup(root),
+  }
+  return settings
+end
 
 return M

@@ -22,10 +22,10 @@ M.load_config = function(modules)
   local path = M.get_current_script_path()
   local root = M.get_root_config(path)
   for _, module in ipairs(modules) do
-    print('Loading module: ' .. module)
+    -- print('Loading module: ' .. module)
     local loaded_module = require(root .. '.' .. module)
     local _, _ = pcall(function()
-      loaded_module.setup(root)
+      loaded_module.setup(root, M)
     end)
   end
 end
@@ -70,6 +70,15 @@ M.clean_path = function(files, exclude_list)
     end
   end
   return paths
+end
+
+M.setup_load = function(root, exclude)
+  local current_loc = M.get_current_script_path(3)
+  current_loc = vim.fn.fnamemodify(current_loc, ':h')
+  local files = M.get_files_in_dir(current_loc)
+  files = M.clean_path(files, exclude)
+
+  require(root).load_config(files)
 end
 
 return M

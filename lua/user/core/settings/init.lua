@@ -1,18 +1,24 @@
 local M = {}
 
 M.setup = function(root, set_loc)
-  local settings_path = root .. set_loc .. '.'
-  local colors = require(settings_path .. 'colors')
+  local set_path = root .. set_loc .. '.'
+  local colors = require(set_path .. 'colors')
+  local conf_loc = vim.fn.stdpath('config')
+
   local settings = {
     root = root,
-    theme = 'tokyonight-storm',
+    theme = { plugin = 'folke/tokyonight.nvim', color = 'tokyonight-storm' },
     tranparent = true,
+    conf_loc = conf_loc,
+
+    -- TODO: automatically find the resources folder
+    resources = conf_loc .. '/resources',
 
     ------------------------------------------------------------------
     colors = colors,
-    kindIcon = require(settings_path .. 'kind').kindIcon(colors),
-    kind_icons = require(settings_path .. 'kind').kind_icons,
-    wh_mappings = require(settings_path .. 'wh_mappings').setup(root),
+    kindIcon = require(set_path .. 'kind').kindIcon(colors),
+    kind_icons = require(set_path .. 'kind').kind_icons,
+    wh_mappings = require(set_path .. 'wh_mappings').setup(root),
   }
   return settings
 end

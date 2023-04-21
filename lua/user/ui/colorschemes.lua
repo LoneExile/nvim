@@ -1,10 +1,10 @@
 local M = {}
 M.setup = function(settings, _)
   return {
-    'folke/tokyonight.nvim',
+    settings.theme.plugin,
     priority = 1000,
     config = function()
-      pcall(vim.cmd, 'colorscheme ' .. settings.theme)
+      pcall(vim.cmd, 'colorscheme ' .. settings.theme.color)
 
       if settings.tranparent then
         M.transparent()

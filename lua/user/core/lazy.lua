@@ -17,8 +17,9 @@ local M = {}
 M.setup = function(root)
   local set_loc = '.core.settings'
   local settings = require(root .. set_loc).setup(root, set_loc)
+  local conf_loc = settings['conf_loc']
 
-  local config_location = vim.fn.stdpath('config') .. '/lua/' .. root
+  local config_location = conf_loc .. '/lua/' .. root
   local all_files = vim.fn.glob(config_location .. '/**/*.lua', true, true)
   local files = vim.tbl_filter(function(file)
     return not vim.endswith(file, 'lazy.lua') and not vim.startswith(file, '_')
@@ -38,7 +39,7 @@ M.setup = function(root)
     local folder_name = vim.fn.fnamemodify(folder, ':t')
     local list = {
       -- NOTE: these folders are not loaded by lazy.nvim
-      -- order matters
+      -- order matters?
 
       root,
       'core',
@@ -140,7 +141,7 @@ M.setup = function(root)
   end
 
   local opts = {
-    lockfile = vim.fn.stdpath('config') .. '/resources/lazy-lock.json',
+    lockfile = settings['resources'] .. '/lazy-lock.json',
   }
 
   lazy.setup(plugins, opts)

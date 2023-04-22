@@ -1,1 +1,1 @@
-require('user').setup()
+require('LoneExile').setup()

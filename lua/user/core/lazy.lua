@@ -1,25 +1,27 @@
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
------------------------------------------------------
 local M = {}
 M.setup = function(root)
   local set_loc = '.core.settings'
   local settings = require(root .. set_loc).setup(root, set_loc)
-  local conf_loc = settings['conf_loc']
 
-  local config_location = conf_loc .. '/lua/' .. root
+  -----------------------------------------------------
+  -----------------------------------------------------
+  local lazypath = settings.data_loc .. '/lazy/lazy.nvim'
+
+  if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+      'git',
+      'clone',
+      '--filter=blob:none',
+      'https://github.com/folke/lazy.nvim.git',
+      '--branch=stable', -- latest stable release
+      lazypath,
+    })
+  end
+  vim.opt.rtp:prepend(lazypath)
+  -----------------------------------------------------
+  -----------------------------------------------------
+
+  local config_location = settings.conf_loc .. '/lua/' .. root
   local all_files = vim.fn.glob(config_location .. '/**/*.lua', true, true)
   local files = vim.tbl_filter(function(file)
     return not vim.endswith(file, 'lazy.lua') and not vim.startswith(file, '_')

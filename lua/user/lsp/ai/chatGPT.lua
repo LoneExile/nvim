@@ -17,7 +17,7 @@ M.wh_key = {
   },
 }
 
-M.setup = function(_, _)
+M.setup = function(settings, _)
   return {
     'jackMort/ChatGPT.nvim',
     enabled = M.enabled,
@@ -29,7 +29,7 @@ M.setup = function(_, _)
       'nvim-telescope/telescope.nvim',
     },
     config = function()
-      require('user.utils.init_env')
+      require(settings.root .. '.utils.init_env')
       local status_GPT, chatgpt = pcall(require, 'chatgpt')
       if not status_GPT or vim.env.OPENAI_API_KEY == nil then
         return

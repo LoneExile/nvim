@@ -42,7 +42,7 @@ M.terminal = {
   execs = {},
 }
 
-M.tool = function()
+M.tool = function(settings)
   -- https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
 
   -- TODO: check is command is available before mapping
@@ -72,7 +72,7 @@ M.tool = function()
     },
   }
 
-  local CURRENTOS = require('user.utils.requirements').CURRENTOS
+  local CURRENTOS = require(settings.root .. '.utils.requirements').CURRENTOS
   if CURRENTOS == 'Linux' or CURRENTOS == 'Darwin' then
     for _, v in ipairs(linux) do
       table.insert(M.terminal.execs, v)
@@ -80,7 +80,7 @@ M.tool = function()
   end
 end
 
-M.setup = function()
+M.setup = function(settings, _)
   return {
     'akinsho/toggleterm.nvim',
     config = function()
@@ -88,7 +88,7 @@ M.setup = function()
       if not status_ok_ui then
         return
       end
-      M.tool()
+      M.tool(settings)
       terminal.setup(M.terminal)
 
       for i, exec in pairs(M.terminal.execs) do

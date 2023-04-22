@@ -2,7 +2,6 @@ local M = {}
 
 M.setup = function(settings, location)
   local conditions = require(location .. '.conditions')
-  -- local colors = require('user.utils.colors')
   local colors = settings.colors
 
   local function diff_source()

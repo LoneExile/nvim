@@ -12,7 +12,7 @@ M.wh_key = {
   },
 }
 
-M.setup = function()
+M.setup = function(settings, _)
   return {
     'goolord/alpha-nvim',
     enabled = M.enabled,
@@ -88,7 +88,7 @@ M.setup = function()
 
       dashboard.section.footer.val = {
         '',
-        '                 LoneExile',
+        '                 ' .. settings.root,
         '',
         info(),
       }

@@ -50,12 +50,12 @@ M.is_excluded = function(path, exclude_list)
   return false
 end
 
-M.clean_path = function(files, exclude_list)
+M.clean_path = function(files, exclude_list, root)
   local paths = {}
   local replacements = {
     { search = '/', replace = '.' },
     { search = '%.lua$', replace = '' },
-    { search = '^user%.', replace = '' },
+    { search = '^' .. root .. '%.', replace = '' },
   }
 
   for _, file in ipairs(files) do
@@ -76,7 +76,7 @@ M.setup_load = function(root, exclude)
   local current_loc = M.get_current_script_path(3)
   current_loc = vim.fn.fnamemodify(current_loc, ':h')
   local files = M.get_files_in_dir(current_loc)
-  files = M.clean_path(files, exclude)
+  files = M.clean_path(files, exclude, root)
 
   require(root).load_config(files)
 end

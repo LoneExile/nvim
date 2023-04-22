@@ -43,11 +43,3 @@ vim.opt.shortmess:append('c')
 for key, value in pairs(options) do
   vim.opt[key] = value
 end
-
--- Check health disabled check ruby and perl
-vim.g['loaded_ruby_provider'] = 0
-vim.g['loaded_perl_provider'] = 0
-
--- don't comment next line
-vim.cmd('autocmd BufEnter * set formatoptions-=cro')
-vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')

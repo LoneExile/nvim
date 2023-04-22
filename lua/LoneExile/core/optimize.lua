@@ -28,6 +28,9 @@ local disable_distribution_plugins = {
   compiler = 1, -- Compiler plugin support for different compilers and build systems
   bugreport = 1, -- Utility for generating Vim bug reports
   ftplugin = 1, -- FileType plugin support for filetype-specific settings and functions
+
+  perl_provider = 0, -- checkhealth disabled check perl
+  ruby_provider = 0, -- checkhealth disabled check ruby
 }
 
 for k, v in pairs(disable_distribution_plugins) do

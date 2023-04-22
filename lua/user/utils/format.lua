@@ -1,4 +1,3 @@
--- TODO move this to utils
 local M = {}
 function M.format(opts)
   opts = opts or {}

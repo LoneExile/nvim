@@ -28,7 +28,7 @@ M.setup = function(settings, location)
       local use_icons = true
       local kind = settings.kind_icons
 
-      local keymaps = require(location .. '.keymaps').keymaps(cmp, luasnip)
+      local keymaps = require(location .. '.keymaps').keymaps(cmp, luasnip, settings)
 
       ----- cmp config
       local setting = {

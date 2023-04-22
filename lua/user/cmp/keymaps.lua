@@ -2,7 +2,7 @@ local M = {}
 
 --------------------------------------------------
 
-M.keymaps = function(cmp, luasnip)
+M.keymaps = function(cmp, luasnip, _) -- settings
   --------------------------------------------------
   -- https://github.com/windwp/nvim-autopairs#you-need-to-add-mapping-cr-on-nvim-cmp-setupcheck-readmemd-on-nvim-cmp-repo
   local status_cmp, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
@@ -27,8 +27,8 @@ M.keymaps = function(cmp, luasnip)
     )
   end
   --------------------------------------------------
-  -- local jumpable = require('user.lsp.cmp.utils').jumpable
-  -- local has_words_before = require('user.lsp.cmp.utils').has_words_before
+  -- local jumpable = require(settings.root .. '.cmp.utils').jumpable
+  -- local has_words_before = require(settings.root .. '.cmp.utils').has_words_before
   local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
   -- local confirmOpts = {

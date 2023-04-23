@@ -1,10 +1,8 @@
 local M = {}
 
-M.enabled = false
 M.setup = function()
   return {
     's1n7ax/nvim-window-picker',
-    enabled = M.enabled,
     config = function()
       local status_ok, windowPicker = pcall(require, 'window-picker')
       if not status_ok then

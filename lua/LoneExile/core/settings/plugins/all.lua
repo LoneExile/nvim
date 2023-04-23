@@ -50,6 +50,7 @@ return {
   { 'axelvc/template-string.nvim', true },
   { 'dhruvasagar/vim-open-url', true },
   { 'tpope/vim-repeat', true },
+  { 'AckslD/muren.nvim', true },
 
   -- Treesitter
   { 'windwp/nvim-autopairs', true },

@@ -61,14 +61,6 @@ M.setup = function(root)
   local plugins = {}
 
   local all_plugins = require(root .. set_loc .. '.plugins.all')
-  -- local function is_element_in_table(element, t)
-  --   for _, value in ipairs(t) do
-  --     if value[1] == element then
-  --       return true
-  --     end
-  --   end
-  --   return false
-  -- end
 
   for _, file in ipairs(files) do
     local file_name = vim.fn.fnamemodify(file, ':t:r')
@@ -94,9 +86,8 @@ M.setup = function(root)
           plugin['enabled'] = false
         elseif p[1] == plugin[1] and p[2] == true then
           plugin['enabled'] = true
-          -- TODO: if plugin not in all_plugins (new plugin) then enable it by default
-          -- elseif not is_element_in_table(plugin[1], all_plugins) and plugin[1] ~= nil then
-          --   plugin['enabled'] = true
+        elseif plugin.enabled == nil then
+          plugin['enabled'] = false
         end
 
         if plugin['enabled'] == true and p[1] == plugin[1] then
@@ -127,7 +118,11 @@ M.setup = function(root)
           break
         end
       end
-      table.insert(plugins, plugin)
+
+      if plugin['enabled'] == true then
+        table.insert(plugins, plugin)
+      end
+      -- table.insert(plugins, plugin)
     end
   end
 

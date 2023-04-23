@@ -1,8 +1,6 @@
 local M = {}
-M.enabled = true
 
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     ['e'] = {
       '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>',
@@ -40,7 +38,14 @@ M.setup = function()
   return {
     'nvim-neo-tree/neo-tree.nvim',
     event = 'BufWinEnter',
-    enabled = M.enabled,
+    -- branch = 'v2.x',
+    branch = 'main',
+    dependencies = {
+      { 'MunifTanjim/nui.nvim' },
+      -- { 's1n7ax/nvim-window-picker' },
+      { 'nvim-tree/nvim-web-devicons' },
+      { 'nvim-lua/plenary.nvim' },
+    },
     config = function()
       vim.schedule(function()
         local status_ok, neoTree = pcall(require, 'neo-tree')
@@ -316,14 +321,6 @@ M.setup = function()
         })
       end)
     end,
-    -- branch = 'v2.x',
-    branch = 'main',
-    dependencies = {
-      { 'MunifTanjim/nui.nvim' },
-      { 's1n7ax/nvim-window-picker' },
-      { 'nvim-tree/nvim-web-devicons' },
-      { 'nvim-lua/plenary.nvim' },
-    },
   }
 end
 

@@ -10,14 +10,14 @@ M.setup = function(_, location)
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      {
-        'SmiteshP/nvim-navbuddy',
-        dependencies = {
-          'SmiteshP/nvim-navic',
-          'MunifTanjim/nui.nvim',
-        },
-        opts = { lsp = { auto_attach = true } },
-      },
+      -- {
+      --   'SmiteshP/nvim-navbuddy',
+      --   dependencies = {
+      --     'SmiteshP/nvim-navic',
+      --     'MunifTanjim/nui.nvim',
+      --   },
+      --   opts = { lsp = { auto_attach = true } },
+      -- },
     },
     config = function()
       local lsp_settings = location .. '.settings'

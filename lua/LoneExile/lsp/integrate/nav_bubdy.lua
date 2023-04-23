@@ -1,11 +1,8 @@
 local M = {}
 
-M.enabled = false
-
 M.setup = function(_, _)
   return {
     'SmiteshP/nvim-navbuddy',
-    enabled = M.enabled,
     dependencies = {
       'neovim/nvim-lspconfig',
       'SmiteshP/nvim-navic',

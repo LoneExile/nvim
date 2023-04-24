@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     d = {
       name = 'Debug',
@@ -40,7 +37,7 @@ M.wh_key = {
 M.setup = function(_, location)
   return {
     'mfussenegger/nvim-dap',
-    enabled = M.enabled,
+    event = { 'BufReadPre', 'InsertEnter' },
     config = function()
       -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
       local status_ok, dap = pcall(require, 'dap')

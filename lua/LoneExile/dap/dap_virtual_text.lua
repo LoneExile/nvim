@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     d = {
       name = 'Debug',
@@ -15,7 +12,7 @@ M.wh_key = {
 M.setup = function()
   return {
     'theHamsta/nvim-dap-virtual-text',
-    enabled = M.enabled,
+    event = { 'BufReadPre', 'InsertEnter' },
     dependencies = { 'mfussenegger/nvim-dap' },
     config = function()
       require('nvim-dap-virtual-text').setup({})

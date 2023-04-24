@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     d = {
       name = 'Debug',
@@ -25,6 +22,7 @@ M.setup = function(_, _)
   return {
     'rcarriga/nvim-dap-ui',
     dependencies = { 'mfussenegger/nvim-dap' },
+    event = { 'BufReadPre', 'InsertEnter' },
     config = function()
       local status_ok_ui, dapui = pcall(require, 'dapui')
       if not status_ok_ui then

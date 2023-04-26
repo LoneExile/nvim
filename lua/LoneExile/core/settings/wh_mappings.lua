@@ -19,7 +19,14 @@ M.setup = function(root)
         mode = { 'n' },
       },
       ['H'] = {
-        '<cmd>nohlsearch<CR>',
+        -- '<cmd>nohlsearch<CR>',
+        function()
+          vim.cmd('nohlsearch')
+          local status, hl_search = pcall(require, root .. '.utils.hl_search')
+          if status then
+            hl_search.clear_search_count()
+          end
+        end,
         'No Highlight',
         mode = { 'n' },
       },

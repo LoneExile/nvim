@@ -3,6 +3,7 @@ local M = {}
 M.setup = function()
   return {
     'nvchad/nvim-colorizer.lua',
+    event = { 'BufReadPre', 'InsertEnter' },
     config = function()
       local status_ok, colorizer = pcall(require, 'colorizer')
       if not status_ok then

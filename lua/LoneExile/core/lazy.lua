@@ -49,6 +49,8 @@ M.setup = function(root)
       'ftplugin',
       'plugins',
 
+      'dev',
+
       -- LSP
       'settings',
       'servers',
@@ -138,7 +140,11 @@ M.setup = function(root)
   end
 
   local opts = {
-    lockfile = settings['resources'] .. '/lazy-lock.json',
+    lockfile = settings.resources .. '/lazy-lock.json',
+    dev = {
+      path = settings.conf_loc .. '/lua/' .. root .. '/dev',
+      fallback = false, -- Fallback to git when local plugin doesn't exist
+    },
   }
 
   lazy.setup(plugins, opts)

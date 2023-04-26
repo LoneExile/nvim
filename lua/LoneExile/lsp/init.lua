@@ -7,6 +7,7 @@ M.setup = function(_, location)
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- {
       --   'SmiteshP/nvim-navbuddy',
       --   dependencies = {

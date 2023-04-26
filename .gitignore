@@ -5,5 +5,5 @@ nvim.log
 startup.log
 .env.lua
 
-lua/userold/*
+lua/*/dev/*.lua
 

@@ -28,10 +28,9 @@ M.setup = function(settings, location)
 
   ----------------------------------------------------------------------------
 
-  -- for lsp component
-  local null_ls_status_ok, null_ls = pcall(require, 'null-ls')
-  if not null_ls_status_ok then
-    print('null-ls not found')
+  -- for lsp component add null-ls
+  local status_ok, null_ls = pcall(require, 'null-ls')
+  if not status_ok then
     return
   end
 
@@ -135,7 +134,7 @@ M.setup = function(settings, location)
     lsp = {
       function(msg)
         msg = msg or 'LS Inactive'
-        local buf_clients = vim.lsp.buf_get_clients()
+        local buf_clients = vim.lsp.get_active_clients()
         if next(buf_clients) == nil then
           if type(msg) == 'boolean' or #msg == 0 then
             return 'LS Inactive'
@@ -153,7 +152,6 @@ M.setup = function(settings, location)
         end
 
         local supported_formatters = list_registered_formatters(vim.bo.filetype)
-        -- print(vim.inspect(supported_formatters))
         vim.list_extend(buf_client_names, supported_formatters, 1, #supported_formatters)
 
         local unique_client_names = vim.fn.uniq(buf_client_names)

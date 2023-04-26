@@ -1,5 +1,7 @@
-return function(blinktime)
-  local ns = vim.api.nvim_create_namespace('search')
+local M = {}
+local ns = vim.api.nvim_create_namespace('search')
+
+M.hl = function(blinktime)
   vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
   local search_pat = '\\c\\%#' .. vim.fn.getreg('/')
@@ -17,5 +19,8 @@ return function(blinktime)
   vim.cmd('redraw')
 end
 
--- nnoremap n nzz:lua require("functions").hl_search(0.3)<CR>
--- nnoremap N Nzz:lua require("functions").hl_search(0.3)<CR>
+function M.clear_search_count()
+  vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+end
+
+return M

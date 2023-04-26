@@ -42,8 +42,6 @@ end
 
 -- ---filter passed to vim.lsp.buf.format
 -- ---always selects null-ls if it's available and caches the value per buffer
--- ---@param client table client attached to a buffer
--- ---@return boolean if client matches
 function M.format_filter(client)
   local filetype = vim.bo.filetype
   local n = require('null-ls')

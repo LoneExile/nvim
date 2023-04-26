@@ -1,3 +1,5 @@
+local M = {}
+
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
@@ -5,31 +7,7 @@ local keymap = vim.api.nvim_set_keymap
 keymap('', '<Space>', '<Nop>', opts)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
-keymap('v', 'p', '"_dP', { noremap = true, silent = true }) -- copy paste not copy value that changing
-keymap('t', '<C-e>', '<C-\\><C-n>', { silent = true }) -- exit insert_mode in terminal
-keymap('v', '<C-/>', '<esc>/\\%V', { noremap = true }) -- search within selection
-
--- mapping for i that will indent properly on empty lines:
-vim.keymap.set('x', 'i', function()
-  if #vim.fn.getline('.') == 0 then
-    return [["_cc]]
-  else
-    return 'i'
-  end
-end, { expr = true })
-
--- mapping for dd that doesn't yank an empty line into your default register
-vim.keymap.set('n', '_dd', function()
-  if vim.api.nvim_get_current_line():match('^%s*$') then
-    return '"_dd'
-  else
-    return 'dd'
-  end
-end, { expr = true })
-
 ----------------------------------------------------------
-local M = {}
 
 local generic_opts = {
   insert_mode = opts,
@@ -169,6 +147,39 @@ function M.load(keymaps)
   end
 end
 
+M.setup = function(root, _)
+  M.load(defaults)
+
+  keymap('v', 'p', '"_dP', opts) -- copy paste not copy value that changing
+  keymap('t', '<C-e>', '<C-\\><C-n>', { silent = true }) -- exit insert_mode in terminal
+  keymap('v', '<C-/>', '<esc>/\\%V', { noremap = true }) -- search within selection
+
+  keymap('n', 'n', 'nzz:lua require("' .. root .. '.utils.hl_search").hl(0.01)<CR>', opts)
+  keymap('n', 'N', 'Nzz:lua require("' .. root .. '.utils.hl_search").hl(0.01)<CR>', opts)
+
+  -- mapping for i that will indent properly on empty lines:
+  vim.keymap.set('x', 'i', function()
+    if #vim.fn.getline('.') == 0 then
+      return [["_cc]]
+    else
+      return 'i'
+    end
+  end, { expr = true })
+
+  -- BUG: conflict with WhichKey, see `:verbose map dd`
+
+  -- -- mapping for dd that doesn't yank an empty line into your default register
+  -- function _G.dd_not_yank_empty_line()
+  --   local current_line = vim.api.nvim_get_current_line()
+  --   if current_line:match('^%s*$') then
+  --     vim.api.nvim_command('normal! "_dd')
+  --   else
+  --     vim.api.nvim_command('normal! dd')
+  --   end
+  -- end
+  -- vim.api.nvim_set_keymap('n', 'dd', ':lua _G.dd_not_yank_empty_line()<CR>', { noremap = true, silent = true })
+end
+
 ------------------------------------------------------------------------------------
 
-return M.load(defaults)
+return M

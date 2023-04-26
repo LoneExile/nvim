@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     ['s'] = {
       name = 'Search',
@@ -111,7 +108,6 @@ M.wh_key = {
 M.setup = function()
   return {
     'nvim-telescope/telescope.nvim',
-    enabled = M.enabled,
     dependencies = {
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       --  "nvim-telescope/telescope-ui-select.nvim"

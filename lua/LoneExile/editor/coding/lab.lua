@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     x = {
       name = '+Execute',
@@ -24,7 +21,6 @@ M.wh_key = {
 M.setup = function()
   return {
     '0x100101/lab.nvim',
-    enabled = M.enabled,
     build = 'cd js && npm ci',
     ft = { 'javascript', 'typescript', 'lua', 'python' },
     config = function()

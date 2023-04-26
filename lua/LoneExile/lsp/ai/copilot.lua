@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     x = {
       name = '+Execute',
@@ -18,7 +15,6 @@ M.wh_key = {
 M.setup = function(settings, _)
   return {
     'zbirenbaum/copilot.lua',
-    enabled = M.enabled,
     event = { 'VimEnter' },
     config = function()
       local status_ok, copilot = pcall(require, 'copilot')

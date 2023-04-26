@@ -10,6 +10,11 @@ M.wh_key = {
       'Explorer',
       mode = { 'n' },
     },
+    ['b'] = {
+      '<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>',
+      'Buffer',
+      mode = { 'n' },
+    },
     u = {
       name = '+Utility',
       n = {

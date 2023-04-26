@@ -1,8 +1,6 @@
 local M = {}
-M.enabled = true
 
 M.wh_key = {
-  enabled = M.enabled,
   wh_m_mappings = {
     m = { '<cmd>lua require("harpoon.mark").add_file()<cr>', 'Harpoon' },
     ['j'] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', 'Harpoon Next' },
@@ -15,7 +13,6 @@ M.wh_key = {
 M.setup = function()
   return {
     'theprimeagen/harpoon',
-    enabled = M.enabled,
     event = 'BufRead',
     config = function()
       local status_ok, harpoon = pcall(require, 'harpoon')

@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = false
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     x = {
       name = '+Execute',
@@ -50,7 +47,6 @@ M.wh_key = {
 M.setup = function()
   return {
     'michaelb/sniprun',
-    enabled = M.enabled,
     build = 'bash ./install.sh',
     config = function()
       local status_ok, sniprun = pcall(require, 'sniprun')

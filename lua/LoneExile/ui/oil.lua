@@ -1,12 +1,8 @@
 local M = {}
 
-M.enabled = false
-
 M.setup = function()
   return {
     'stevearc/oil.nvim',
-    enabled = M.enabled,
-    lazy = true,
     config = function()
       local status_ok_code, spectre = pcall(require, 'oil')
       if not status_ok_code then

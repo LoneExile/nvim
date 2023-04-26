@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     x = {
       name = '+Execute',
@@ -20,7 +17,6 @@ M.wh_key = {
 M.setup = function(settings, _)
   return {
     'jackMort/ChatGPT.nvim',
-    enabled = M.enabled,
     event = 'VeryLazy',
     cmd = { 'ChatGPT' },
     dependencies = {

@@ -1,10 +1,8 @@
 local M = {}
-M.enabled = false
 
 M.setup = function(settings, _)
   return {
     'dense-analysis/neural',
-    enabled = M.enabled,
     config = function()
       require(settings.root .. '.utils.init_env')
       local status_neural, neural = pcall(require, 'neural')

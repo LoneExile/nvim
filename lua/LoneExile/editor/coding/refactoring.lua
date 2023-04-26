@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = false
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     x = {
       name = '+Execute',
@@ -57,7 +54,6 @@ M.wh_key = {
 M.setup = function()
   return {
     'theprimeagen/refactoring.nvim',
-    enabled = M.enabled,
     config = function()
       local status_ok_ui, refactoring = pcall(require, 'refactoring')
       if not status_ok_ui then

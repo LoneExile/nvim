@@ -1,8 +1,6 @@
 local M = {}
-M.enabled = true
 
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     ['g'] = {
       name = 'Git',
@@ -58,7 +56,6 @@ M.wh_key = {
 M.setup = function()
   return {
     'lewis6991/gitsigns.nvim',
-    enabled = M.enabled,
     event = { 'BufRead', 'BufNewFile' },
     config = function()
       local status_ok_ui, gitsigns = pcall(require, 'gitsigns')

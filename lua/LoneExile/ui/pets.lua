@@ -1,8 +1,6 @@
 local M = {}
-M.enabled = false
 
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     ['u'] = {
       name = '+Utility',
@@ -31,7 +29,6 @@ M.wh_key = {
 M.setup = function()
   return {
     'giusgad/pets.nvim',
-    enabled = M.enabled,
     dependencies = {
       'MunifTanjim/nui.nvim',
       'edluffy/hologram.nvim',

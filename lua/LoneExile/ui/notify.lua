@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     ['s'] = {
       name = 'Search',

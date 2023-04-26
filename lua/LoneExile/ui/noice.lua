@@ -1,11 +1,8 @@
 local M = {}
 
-M.enabled = false
-
 M.setup = function()
   return {
     'folke/noice.nvim',
-    enabled = M.enabled,
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       'MunifTanjim/nui.nvim',

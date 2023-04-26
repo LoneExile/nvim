@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     ['g'] = {
       name = 'Git',
@@ -47,7 +44,6 @@ M.wh_key = {
 M.setup = function()
   return {
     'sindrets/diffview.nvim',
-    enabled = M.enabled,
     lazy = true,
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
     config = function()

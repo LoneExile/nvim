@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     u = {
       name = '+Utility',
@@ -22,7 +19,6 @@ M.wh_key = {
 M.setup = function()
   return {
     'RRethy/vim-illuminate',
-    enabled = M.enabled,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     event = 'VimEnter',
     config = function()

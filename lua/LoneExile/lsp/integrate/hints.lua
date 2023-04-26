@@ -3,7 +3,6 @@ local M = {}
 M.setup = function()
   return {
     'lvimuser/lsp-inlayhints.nvim',
-    enabled = false,
     config = function()
       local status_ok, inlay_hints = pcall(require, 'lsp-inlayhints')
       if not status_ok then

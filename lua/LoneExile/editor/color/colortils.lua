@@ -40,7 +40,6 @@ M.wh_key = {
 M.setup = function()
   return {
     'max397574/colortils.nvim',
-    enabled = M.enabled,
     config = function()
       local status_ok_code, colortils = pcall(require, 'colortils')
       if not status_ok_code then

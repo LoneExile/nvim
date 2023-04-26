@@ -1,8 +1,6 @@
 local M = {}
-M.enabled = false
 
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     ['g'] = {
       name = 'Git',
@@ -26,7 +24,6 @@ M.wh_key = {
 M.setup = function()
   return {
     'ThePrimeagen/git-worktree.nvim',
-    enabled = M.enabled,
     lazy = true,
     config = function()
       local status_ok, worktree = pcall(require, 'git-worktree')

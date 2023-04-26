@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = false
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     u = {
       name = '+Utility',
@@ -24,7 +21,6 @@ M.wh_key = {
 M.setup = function()
   return {
     'chentoast/marks.nvim',
-    enabled = M.enabled,
     event = 'BufRead',
     config = function()
       local status_ok, mark = pcall(require, 'marks')

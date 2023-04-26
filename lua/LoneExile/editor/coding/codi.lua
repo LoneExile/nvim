@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = false
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     x = {
       name = '+Execute',

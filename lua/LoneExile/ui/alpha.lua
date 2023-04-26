@@ -70,8 +70,7 @@ M.setup = function(settings, _)
         dashboard.button('e', '  New file', ':ene <BAR> startinsert <CR>'),
         dashboard.button('p', '  Find project', ':Telescope projects <CR>'),
         dashboard.button('r', '  Recently used files', ':Telescope oldfiles <CR>'),
-        -- TODO: add PATH for windows
-        dashboard.button('c', '  Configuration', ':e ~/.config/nvim/init.lua <CR>'),
+        dashboard.button('c', '  Configuration', ':e' .. settings.conf_loc .. '/init.lua <CR>'),
         dashboard.button('q', '  Quit Neovim', ':qa<CR>'),
       }
 
@@ -95,21 +94,21 @@ M.setup = function(settings, _)
       dashboard.section.buttons.opts.hl = 'Keyword'
 
       dashboard.opts.opts.noautocmd = true
-      vim.cmd([[lua vim.o.ls=0]]) -- disable statusline
+      -- vim.cmd([[lua vim.o.ls=0]]) -- disable statusline
       alpha.setup(dashboard.opts)
 
       -------------------------------------------------------------------------------
-      local group = vim.api.nvim_create_augroup('autocmd_alpha', { clear = true })
+      -- local group = vim.api.nvim_create_augroup('autocmd_alpha', { clear = true })
 
-      vim.api.nvim_create_autocmd('FileType', {
-        group = group,
-        pattern = {
-          'alpha',
-        },
-        callback = function()
-          vim.cmd([[lua vim.o.ls=0]]) -- disable statusline
-        end,
-      })
+      -- vim.api.nvim_create_autocmd('FileType', {
+      --   group = group,
+      --   pattern = {
+      --     'alpha',
+      --   },
+      --   callback = function()
+      --     vim.cmd([[lua vim.o.ls=0]]) -- disable statusline
+      --   end,
+      -- })
     end,
   }
 end

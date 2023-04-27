@@ -46,11 +46,18 @@ M.setup = function(settings, location)
     end
     return registered
   end
-  --
   local list_registered_formatters = function(filetype)
     local registered_providers = list_registered_providers_names(filetype)
-    local method = null_ls.methods.FORMATTING
-    return registered_providers[method] or {}
+    local method_formatting = null_ls.methods.FORMATTING
+    local method_diagnostics = null_ls.methods.DIAGNOSTICS
+    local registered_formatters = {}
+    for _, formatter in ipairs(registered_providers[method_formatting]) do
+      table.insert(registered_formatters, formatter)
+    end
+    for _, diagnostic in ipairs(registered_providers[method_diagnostics]) do
+      table.insert(registered_formatters, diagnostic)
+    end
+    return registered_formatters
   end
 
   -----------------------------------------------------------------------------------------

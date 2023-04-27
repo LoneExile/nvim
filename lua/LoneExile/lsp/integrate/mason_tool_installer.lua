@@ -65,7 +65,8 @@ M.setup = function(_, _)
 
           -- DIAGNOSTICS
           'luacheck',
-          'flake8',
+          -- 'flake8', -- Python
+          'ruff', -- Python
           'actionlint',
           -- 'sqlfluff',
           'alex',

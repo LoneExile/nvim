@@ -41,6 +41,7 @@ return {
 
   -- Tool
   { 'glacambre/firenvim', false },
+  { 'ibhagwan/fzf-lua', false },
   { 'RRethy/vim-illuminate', true },
   { 'darazaki/indent-o-matic', true },
   { 'iamcco/markdown-preview.nvim', true },

@@ -17,8 +17,7 @@ M.wh_key = {
 M.setup = function(settings, _)
   return {
     'jackMort/ChatGPT.nvim',
-    event = 'VeryLazy',
-    cmd = { 'ChatGPT' },
+    cmd = { 'ChatGPT', 'ChatGPTActAs', 'ChatGPTEditWithInstructions' },
     dependencies = {
       'MunifTanjim/nui.nvim',
       'nvim-lua/plenary.nvim',

@@ -33,6 +33,7 @@ local disable_distribution_plugins = {
   ruby_provider = 0, -- checkhealth disabled check ruby
 }
 
+-- TODO: should move this to lazy.nvim, look like it's not working
 for k, v in pairs(disable_distribution_plugins) do
   vim.g['loaded_' .. k] = v
 end

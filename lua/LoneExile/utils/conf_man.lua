@@ -18,6 +18,8 @@ M.get_current_file_path = function()
   return file_path
 end
 
+M.root = M.get_root_config(M.get_current_script_path())
+
 M.load_config = function(modules)
   local path = M.get_current_script_path()
   local root = M.get_root_config(path)
@@ -80,5 +82,46 @@ M.setup_load = function(root, exclude)
 
   require(root).load_config(files)
 end
+
+--------------------------------------------------------------------
+---- Plugins ----
+M.get_runtimepath_list = function()
+  local runtimepath = vim.o.runtimepath
+  local path_list = {}
+
+  for path in runtimepath:gmatch('[^,]+') do
+    table.insert(path_list, path)
+  end
+
+  return path_list
+end
+
+M.get_lazy_plugins = function(data_loc)
+  data_loc = data_loc or vim.fn.stdpath('data')
+  local paths = M.get_runtimepath_list()
+  local lazy_plugins = {}
+
+  for _, path in ipairs(paths) do
+    if path:match('^' .. data_loc .. '/lazy') then
+      local plugin_name = path:gsub(data_loc .. '/lazy/', '')
+      table.insert(lazy_plugins, plugin_name)
+    end
+  end
+  -- print(vim.inspect(lazy_plugins))
+  return lazy_plugins
+end
+
+M.is_plugin_loaded = function(data_loc, plugin_name)
+  local lazy_plugins = M.get_lazy_plugins(data_loc)
+
+  for _, name in ipairs(lazy_plugins) do
+    if name == plugin_name then
+      return true
+    end
+  end
+
+  return false
+end
+--------------------------------------------------------------------
 
 return M

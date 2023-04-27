@@ -1,8 +1,8 @@
 local M = {}
 
-M.setup = function(settings, location)
-  local conditions = require(location .. '.conditions')
-  local colors = settings.colors
+M.setup = function(s, loc)
+  local conditions = require(loc .. '.conditions')
+  local colors = s.colors
 
   local function diff_source()
     local gitsigns = vim.b.gitsigns_status_dict
@@ -29,33 +29,34 @@ M.setup = function(settings, location)
   ----------------------------------------------------------------------------
 
   -- for lsp component add null-ls
-  local status_ok, null_ls = pcall(require, 'null-ls')
-  if not status_ok then
-    return
-  end
-
-  local list_registered_providers_names = function(filetype)
-    local _, s = pcall(require, 'null-ls.sources')
-    local available_sources = s.get_available(filetype)
-    local registered = {}
-    for _, source in ipairs(available_sources) do
-      for method in pairs(source.methods) do
-        registered[method] = registered[method] or {}
-        table.insert(registered[method], source.name)
-      end
-    end
-    return registered
-  end
+  -- WARN: this may be slow
   local list_registered_formatters = function(filetype)
-    local registered_providers = list_registered_providers_names(filetype)
-    local method_formatting = null_ls.methods.FORMATTING
-    local method_diagnostics = null_ls.methods.DIAGNOSTICS
     local registered_formatters = {}
-    for _, formatter in ipairs(registered_providers[method_formatting]) do
-      table.insert(registered_formatters, formatter)
-    end
-    for _, diagnostic in ipairs(registered_providers[method_diagnostics]) do
-      table.insert(registered_formatters, diagnostic)
+    if s.utils.is_plugin_loaded(s.data_loc, 'null-ls.nvim') then
+      local status_ok, null_ls = pcall(require, 'null-ls')
+      if not status_ok then
+        return
+      end
+
+      local sources = require('null-ls.sources')
+      local available_sources = sources.get_available(filetype)
+      local registered_providers = {}
+      for _, source in ipairs(available_sources) do
+        for method in pairs(source.methods) do
+          registered_providers[method] = registered_providers[method] or {}
+          table.insert(registered_providers[method], source.name)
+        end
+      end
+
+      -- local registered_providers = registered
+      local method_formatting = null_ls.methods.FORMATTING
+      local method_diagnostics = null_ls.methods.DIAGNOSTICS
+      for _, formatter in ipairs(registered_providers[method_formatting]) do
+        table.insert(registered_formatters, formatter)
+      end
+      for _, diagnostic in ipairs(registered_providers[method_diagnostics]) do
+        table.insert(registered_formatters, diagnostic)
+      end
     end
     return registered_formatters
   end
@@ -159,7 +160,10 @@ M.setup = function(settings, location)
         end
 
         local supported_formatters = list_registered_formatters(vim.bo.filetype)
-        vim.list_extend(buf_client_names, supported_formatters, 1, #supported_formatters)
+        -- vim.list_extend(buf_client_names, supported_formatters, 1, #supported_formatters)
+        if supported_formatters then
+          vim.list_extend(buf_client_names, supported_formatters)
+        end
 
         local unique_client_names = vim.fn.uniq(buf_client_names)
         return '[' .. table.concat(unique_client_names, ', ') .. ']'

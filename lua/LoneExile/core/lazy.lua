@@ -1,7 +1,8 @@
 local M = {}
-M.setup = function(root)
+M.setup = function(root, m)
   local set_loc = '.core.settings'
   local settings = require(root .. set_loc).setup(root, set_loc)
+  settings.utils = m
 
   -----------------------------------------------------
   -----------------------------------------------------

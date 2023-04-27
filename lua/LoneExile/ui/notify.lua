@@ -12,7 +12,7 @@ M.wh_key = {
     },
   },
 }
-M.setup = function(settings)
+M.setup = function(s, _)
   return {
     'rcarriga/nvim-notify',
     config = function()
@@ -21,7 +21,7 @@ M.setup = function(settings)
         return
       end
       local background = 'Normal'
-      if settings.tranparent then
+      if s.tranparent then
         background = '#000000'
       end
       notify.setup({
@@ -42,11 +42,6 @@ M.setup = function(settings)
         top_down = true,
       })
       vim.notify = require('notify')
-
-      local status, telescope = pcall(require, 'telescope')
-      if status then
-        telescope.load_extension('notify')
-      end
     end,
   }
 end

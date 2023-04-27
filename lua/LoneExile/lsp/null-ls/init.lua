@@ -3,6 +3,7 @@ local M = {}
 M.setup = function(_, location)
   return {
     'jose-elias-alvarez/null-ls.nvim',
+    event = { 'BufReadPre', 'InsertEnter' },
     -- enabled = false,
     config = function()
       local status_ok, null_ls = pcall(require, 'null-ls')

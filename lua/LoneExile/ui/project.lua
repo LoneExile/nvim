@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+M.setup = function(s, _)
   return {
     'ahmedkhalf/project.nvim',
     config = function()
@@ -44,11 +44,6 @@ M.setup = function()
         -- telescope
         datapath = vim.fn.stdpath('data'),
       })
-
-      local status, telescope = pcall(require, 'telescope')
-      if status then
-        telescope.load_extension('projects')
-      end
     end,
   }
 end

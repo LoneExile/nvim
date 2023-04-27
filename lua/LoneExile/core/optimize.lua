@@ -13,6 +13,8 @@ local disable_distribution_plugins = {
   ['2html_plugin'] = 1, -- Converts the current buffer to an HTML file with syntax highlighting
   logiPat = 1, -- Search utility using logical patterns
   rrhelper = 1, -- Plugin for recording and replaying keystrokes
+
+  -- :Explorer
   netrw = 1, -- Network-oriented reading, writing, and browsing
   netrwPlugin = 1, -- Extended network-oriented reading, writing, and browsing
   netrwSettings = 1, -- Settings for the netrw plugin
@@ -37,3 +39,16 @@ local disable_distribution_plugins = {
 for k, v in pairs(disable_distribution_plugins) do
   vim.g['loaded_' .. k] = v
 end
+
+-- -- :Explorer
+-- vim.g.netrw_banner = 0 -- disable that anoying Netrw banner, show press `I`
+-- vim.g.netrw_browser_split = 4 -- open in a prior window
+-- vim.g.netrw_altv = 1 -- open splits to the right
+-- vim.g.netrw_liststyle = 3 -- treeview
+-- vim.g.netrw_keepdir = 0 -- Keep the current directory and the browsing directory synced.
+-- vim.g.netrw_winsize = 30 -- Change the size of the Netrw window when it creates a split.
+-- vim.g.netrw_localcopydircmd = 'cp -r' -- Change the copy command.
+-- vim.g.netrw_list_hide = [[\(^\|\s\s\)\zs\.\S\+]] -- hide dotfiles
+
+-- Highlight marked files in the same way search matches are.
+-- hi! link netrwMarkFile Search

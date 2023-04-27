@@ -32,10 +32,17 @@ local diagnosticsTable = {
     filetypes = { 'bash', 'csh', 'ksh', 'sh', 'zsh' },
     extra_args = { '--severity', 'warning' },
   }),
-  diagnostics.flake8.with({
+
+  -- diagnostics.flake8.with({
+  --   filetypes = { 'python' },
+  --   extra_args = { '--max-line-length', '90' },
+  -- }),
+
+  diagnostics.ruff.with({
     filetypes = { 'python' },
-    extra_args = { '--max-line-length', '90' },
+    extra_args = { '-n', '-e', '--stdin-filename', '$FILENAME', '-' },
   }),
+
   -- diagnostics.eslint_d.with({
   --   filetypes = {
   --     'javascript',

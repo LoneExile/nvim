@@ -15,6 +15,13 @@ M.wh_key = {
       'Buffer',
       mode = { 'n' },
     },
+    g = {
+      ['n'] = {
+        '<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>',
+        'Neogit',
+        mode = { 'n' },
+      },
+    },
     u = {
       name = '+Utility',
       n = {

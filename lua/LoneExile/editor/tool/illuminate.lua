@@ -20,7 +20,7 @@ M.setup = function()
   return {
     'RRethy/vim-illuminate',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    event = 'VimEnter',
+    cmd = { 'IlluminateToggle' },
     config = function()
       local status_ok, illuminate = pcall(require, 'illuminate')
       if not status_ok then

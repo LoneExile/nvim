@@ -27,6 +27,17 @@ return {
       [24] = { 'Event', ' ', colors.violet },
       [25] = { 'Operator', ' ', colors.green },
       [26] = { 'TypeParameter', ' ', colors.green },
+      [27] = { 'cmp-tw2css', ' ', colors.green },
+      [28] = { 'Copilot', ' ', colors.green },
+      [29] = { 'Color', ' ', colors.green },
+      [30] = { 'Folder', ' ', colors.green },
+      [31] = { 'Keyword', ' ', colors.green },
+      [32] = { 'Reference', ' ', colors.green },
+      [33] = { 'Snippet', ' ', colors.green },
+      [34] = { 'Text', ' ', colors.green },
+      [35] = { 'Unit', '塞', colors.green },
+      [36] = { 'Value', ' ', colors.green },
+
       -- ccls
       [252] = { 'TypeAlias', ' ', colors.green },
       [253] = { 'Parameter', ' ', colors.blue },

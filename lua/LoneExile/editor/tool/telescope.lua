@@ -39,9 +39,14 @@ M.wh_key = {
         'Man Pages',
         mode = { 'n' },
       },
-      r = {
+      o = {
         '<cmd>Telescope oldfiles<cr>',
         'Open Recent File',
+        mode = { 'n' },
+      },
+      r = {
+        '<cmd>Telescope resume<cr>',
+        'Resume',
         mode = { 'n' },
       },
       R = {

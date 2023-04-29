@@ -1,14 +1,5 @@
 local M = {}
 
-M.convert_kind_icons = function(kindIcon)
-  local kind_icons = {}
-
-  for _, value in ipairs(kindIcon) do
-    kind_icons[value[1]] = value[2]
-  end
-  return kind_icons
-end
-
 M.setup = function(settings, location)
   return {
     'hrsh7th/nvim-cmp',
@@ -35,7 +26,7 @@ M.setup = function(settings, location)
       require(location .. '.luasnip').setup_luasnip(luasnip)
 
       local use_icons = true
-      local kind = M.convert_kind_icons(settings.kindIcon)
+      local kind = settings.utils.convert_kind_icons(settings.kindIcon)
 
       local keymaps = require(location .. '.keymaps').keymaps(cmp, luasnip, settings)
 

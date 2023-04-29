@@ -74,9 +74,14 @@ M.wh_key = {
         'Commands',
         mode = { 'n' },
       },
-      p = {
+      P = {
         "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
         'Colorscheme with Preview',
+        mode = { 'n' },
+      },
+      p = {
+        '<cmd>Telescope pickers<cr>',
+        'Projects',
         mode = { 'n' },
       },
       u = {
@@ -130,6 +135,9 @@ M.setup = function()
       local _, previewers = pcall(require, 'telescope.previewers')
       local configsTelescope = {
         defaults = {
+          cache_picker = {
+            num_pickers = 100,
+          },
           file_previewer = previewers.vim_buffer_cat.new,
           grep_previewer = previewers.vim_buffer_vimgrep.new,
           qflist_previewer = previewers.vim_buffer_qflist.new,

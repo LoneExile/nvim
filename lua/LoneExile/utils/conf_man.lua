@@ -34,6 +34,7 @@ end
 
 M.setup = function()
   M.load_config(M.core)
+  require(M.root .. '.utils.requirements')
 end
 
 M.core = { 'core' }

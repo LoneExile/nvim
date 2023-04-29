@@ -43,7 +43,7 @@ return {
   { 'glacambre/firenvim', false },
   { 'ibhagwan/fzf-lua', false },
   { 'RRethy/vim-illuminate', true },
-  { 'darazaki/indent-o-matic', true },
+  { 'darazaki/indent-o-matic', false },
   { 'iamcco/markdown-preview.nvim', true },
   { 'windwp/nvim-spectre', true },
   { 'wellle/targets.vim', true },
@@ -52,6 +52,7 @@ return {
   { 'dhruvasagar/vim-open-url', true },
   { 'tpope/vim-repeat', true },
   { 'AckslD/muren.nvim', true },
+  { 'nmac427/guess-indent.nvim', true },
 
   -- Treesitter
   { 'windwp/nvim-autopairs', true },

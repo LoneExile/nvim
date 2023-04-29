@@ -1,11 +1,34 @@
 local M = {}
 
+M.wh_key = {
+  wh_mappings = {
+    g = {
+      g = {
+        "<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'lazygit', hidden = true }):toggle()<CR>",
+        'LazyGit',
+        mode = { 'n' },
+      },
+    },
+  },
+}
+
+-- https://github.com/akinsho/toggleterm.nvim#setup
+---@diagnostic disable-next-line: undefined-field
+vim.api.nvim_exec(
+  [[
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+]],
+  false
+)
+
 M.terminal = {
   on_config_done = nil,
   -- size can be a number or function which is passed the current terminal
   size = 20,
-  -- open_mapping = [[<c-\>]],
-  open_mapping = [[<c-t>]],
+  -- open_mapping = [[<c-t>]],
   hide_numbers = true, -- hide the number column in toggleterm buffers
   shade_filetypes = {},
   shade_terminals = true,
@@ -42,87 +65,18 @@ M.terminal = {
   execs = {},
 }
 
-M.tool = function(settings)
-  -- https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
-
-  -- TODO: check is command is available before mapping
-  M.terminal.execs = {
-    { 'lazygit', '<leader>gg', 'LazyGit', 'float' },
-    { 'lazygit', '<leader>tg', 'LazyGit', 'float' },
-  }
-
-  local linux = {
-    {
-      'nnn -er',
-      '<leader>tn',
-      'nnn',
-      'float',
-    },
-    {
-      'btop',
-      '<leader>tt',
-      'btop',
-      'float',
-    },
-    {
-      'bash ' .. vim.fn.stdpath('config') .. '/resources/scripts/cht/cht.sh',
-      '<leader>tc',
-      'cheet sheet',
-      'float',
-    },
-  }
-
-  local CURRENTOS = require(settings.root .. '.utils.requirements').CURRENTOS
-  if CURRENTOS == 'Linux' or CURRENTOS == 'Darwin' then
-    for _, v in ipairs(linux) do
-      table.insert(M.terminal.execs, v)
-    end
-  end
-end
-
-M.setup = function(settings, _)
+M.setup = function(_, _) -- settings
   return {
     'akinsho/toggleterm.nvim',
+    cmd = 'ToggleTerm',
     config = function()
       local status_ok_ui, terminal = pcall(require, 'toggleterm')
       if not status_ok_ui then
         return
       end
-      M.tool(settings)
       terminal.setup(M.terminal)
-
-      for i, exec in pairs(M.terminal.execs) do
-        local opts = {
-          cmd = exec[1],
-          keymap = exec[2],
-          label = exec[3],
-          count = i + 100,
-          direction = exec[4] or M.terminal.direction,
-          size = M.terminal.size,
-        }
-
-        M.add_exec(opts)
-      end
     end,
   }
-end
-
-M.add_exec = function(opts)
-  local binary = opts.cmd:match('(%S+)')
-  if vim.fn.executable(binary) ~= 1 then
-    print('Executable not found: ' .. binary)
-    return
-  end
-
-  vim.keymap.set({ 'n', 't' }, opts.keymap, function()
-    M._exec_toggle({ cmd = opts.cmd, count = opts.count, direction = opts.direction })
-  end, { desc = opts.label, noremap = true, silent = true })
-end
-
-M._exec_toggle = function(opts)
-  local Terminal = require('toggleterm.terminal').Terminal
-  local term = Terminal:new({ cmd = opts.cmd, count = opts.count, direction = opts.direction })
-  term:toggle(M.terminal.size, opts.direction)
 end
 
 return M

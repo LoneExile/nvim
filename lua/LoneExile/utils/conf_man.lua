@@ -124,4 +124,13 @@ M.is_plugin_loaded = function(data_loc, plugin_name)
 end
 --------------------------------------------------------------------
 
+M.convert_kind_icons = function(kindIcon)
+  local kind_icons = {}
+
+  for _, value in ipairs(kindIcon) do
+    kind_icons[value[1]] = value[2]
+  end
+  return kind_icons
+end
+
 return M

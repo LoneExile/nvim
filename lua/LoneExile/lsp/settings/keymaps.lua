@@ -26,6 +26,7 @@ local buffer_mappings = {
   normal_mode = {
     ['K'] = { '<cmd>Lspsaga hover_doc<CR>', 'Show hover' },
     ['gd'] = { '<cmd>Lspsaga peek_definition<CR>', 'Goto Definition' },
+    ['gp'] = { '<cmd>Lspsaga peek_type_definition<CR>', 'Peek type definition' },
     ['gs'] = { vim.lsp.buf.signature_help, 'show signature help' },
     ['gr'] = { '<cmd>Lspsaga lsp_finder<CR>', 'Goto references' },
     ['gR'] = { '<cmd>Lspsaga rename<CR>', 'rename' },

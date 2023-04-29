@@ -19,6 +19,7 @@ local format = {
       'scss',
       'lua',
       'vue',
+      'yaml',
     },
     extra_args = { '--no-semi', '--single-quote', '--no-bracket-spacing' },
     disabled_filetypes = { 'lua', 'python' },

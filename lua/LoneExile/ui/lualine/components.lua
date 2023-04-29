@@ -30,14 +30,14 @@ M.setup = function(s, loc)
 
   -- for lsp component add null-ls
   -- WARN: this may be slow
-  local list_registered_formatters = function(filetype)
-    local registered_formatters = {}
+
+  local list_registered = function(filetype, buf_client_names)
     if s.utils.is_plugin_loaded(s.data_loc, 'null-ls.nvim') then
       local status_ok, null_ls = pcall(require, 'null-ls')
       if not status_ok then
         return
       end
-
+      local registered_formatters = {}
       local sources = require('null-ls.sources')
       local available_sources = sources.get_available(filetype)
       local registered_providers = {}
@@ -48,17 +48,19 @@ M.setup = function(s, loc)
         end
       end
 
-      -- local registered_providers = registered
       local method_formatting = null_ls.methods.FORMATTING
       local method_diagnostics = null_ls.methods.DIAGNOSTICS
-      for _, formatter in ipairs(registered_providers[method_formatting]) do
-        table.insert(registered_formatters, formatter)
+      registered_formatters[method_formatting] = registered_providers[method_formatting] or {}
+      registered_formatters[method_diagnostics] = registered_providers[method_diagnostics] or {}
+
+      for _, provider in pairs(registered_formatters[method_formatting]) do
+        table.insert(buf_client_names, provider)
       end
-      for _, diagnostic in ipairs(registered_providers[method_diagnostics]) do
-        table.insert(registered_formatters, diagnostic)
+      for _, provider in pairs(registered_formatters[method_diagnostics]) do
+        table.insert(buf_client_names, provider)
       end
     end
-    return registered_formatters
+    return buf_client_names
   end
 
   -----------------------------------------------------------------------------------------
@@ -107,6 +109,41 @@ M.setup = function(s, loc)
       },
       cond = nil,
     },
+    lsp = {
+      function(msg)
+        msg = msg or 'LS Inactive'
+        local buf_clients = vim.lsp.get_active_clients()
+        if next(buf_clients) == nil then
+          if type(msg) == 'boolean' or #msg == 0 then
+            return 'LS Inactive'
+          end
+          return msg
+        end
+        local buf_ft = vim.bo.filetype
+        local buf_client_names = {}
+
+        for _, client in pairs(buf_clients) do
+          if client.name ~= 'null-ls' then
+            table.insert(buf_client_names, client.name)
+          end
+        end
+
+        buf_client_names = list_registered(buf_ft, buf_client_names) or {}
+        for i, name in ipairs(buf_client_names) do
+          if name == 'copilot' then
+            table.remove(buf_client_names, i)
+            break
+          end
+        end
+
+        local unique_client_names = vim.fn.uniq(buf_client_names)
+        local copilot_icon = ' ' --s.utils.convert_kind_icons(s.kindIcon).Copilot
+        msg = copilot_icon .. '[' .. table.concat(unique_client_names, ', ') .. ']'
+        return msg
+      end,
+      color = { fg = colors.teal, gui = 'bold' },
+      cond = conditions.hide_in_width,
+    },
     python_env = {
       function()
         local utils = env_cleanup
@@ -137,38 +174,6 @@ M.setup = function(s, loc)
         local ts = vim.treesitter.highlighter.active[buf]
         return { fg = ts and not vim.tbl_isempty(ts) and colors.green or colors.red }
       end,
-      cond = conditions.hide_in_width,
-    },
-    lsp = {
-      function(msg)
-        msg = msg or 'LS Inactive'
-        local buf_clients = vim.lsp.get_active_clients()
-        if next(buf_clients) == nil then
-          if type(msg) == 'boolean' or #msg == 0 then
-            return 'LS Inactive'
-          end
-          return msg
-        end
-        -- local buf_ft = vim.bo.filetype
-        local buf_client_names = {}
-
-        -- add client
-        for _, client in pairs(buf_clients) do
-          if client.name ~= 'null-ls' then
-            table.insert(buf_client_names, client.name)
-          end
-        end
-
-        local supported_formatters = list_registered_formatters(vim.bo.filetype)
-        -- vim.list_extend(buf_client_names, supported_formatters, 1, #supported_formatters)
-        if supported_formatters then
-          vim.list_extend(buf_client_names, supported_formatters)
-        end
-
-        local unique_client_names = vim.fn.uniq(buf_client_names)
-        return '[' .. table.concat(unique_client_names, ', ') .. ']'
-      end,
-      color = { fg = colors.yellow, gui = 'bold' },
       cond = conditions.hide_in_width,
     },
     location = { 'location', cond = conditions.hide_in_width, color = {} },

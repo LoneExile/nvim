@@ -34,19 +34,7 @@ end
 if M.CURRENTOS == 'Darwin' then
   M.SETPYENV()
   M.TRANPARENT = true
-  -- vim.opt.clipboard = {
-  --   name = 'macOS-clipboard',
-  --   copy = {
-  --     ['+'] = 'pbcopy',
-  --     ['*'] = 'pbcopy',
-  --   },
-  --   paste = {
-  --     ['+'] = 'pbpaste',
-  --     ['*'] = 'pbpaste',
-  --   },
-  --   cache_enabled = 0,
-  -- }
-  vim.opt.clipboard = 'unnamed'
+  vim.opt.clipboard = 'unnamedplus'
 end
 
 if M.CURRENTOS == 'windows' or M.CURRENTOS == 'windows_nt' then

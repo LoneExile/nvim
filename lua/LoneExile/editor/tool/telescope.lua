@@ -60,7 +60,7 @@ M.wh_key = {
         mode = { 'n' },
       },
       T = {
-        "<cmd>lua require('telescope.builtin').grep_string()<cr>",
+        '<cmd>Telescope grep_string<cr>',
         'Text (string)',
         mode = { 'n' },
       },
@@ -118,6 +118,7 @@ M.wh_key = {
 M.setup = function()
   return {
     'nvim-telescope/telescope.nvim',
+    cmd = 'Telescope',
     dependencies = {
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       --  "nvim-telescope/telescope-ui-select.nvim"

@@ -9,7 +9,7 @@ M.setup = function()
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      'rcarriga/nvim-notify',
+      -- 'rcarriga/nvim-notify',
     },
     config = function()
       local status_ok, noice = pcall(require, 'noice')
@@ -21,6 +21,10 @@ M.setup = function()
 
       noice.setup({
         lsp = {
+          progress = {
+            -- NOTE: use fidget instead
+            enabled = false,
+          },
 
           -- use LSPsaga for hover and signature help
           signature = { enabled = false },
@@ -46,6 +50,9 @@ M.setup = function()
           win_options = {
             winblend = 0,
           },
+        },
+        notify = {
+          enabled = false,
         },
       })
     end,

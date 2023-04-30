@@ -3,7 +3,8 @@ local M = {}
 M.setup = function(s, _)
   return {
     'ahmedkhalf/project.nvim',
-    -- ft = { 'alpha' },
+    -- ft = { 'alpha', 'TelescopePrompt' },
+    -- cmd = { 'Telescope' },
     config = function()
       local status_ok, project = pcall(require, 'project_nvim')
       if not status_ok then

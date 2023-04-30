@@ -24,6 +24,7 @@ M.setup = function(s, _)
       if s.tranparent then
         background = '#000000'
       end
+
       notify.setup({
         background_colour = background,
         fps = 30,
@@ -38,7 +39,7 @@ M.setup = function(s, _)
         minimum_width = 30,
         render = 'default',
         stages = 'fade_in_slide_out',
-        timeout = 1000,
+        timeout = 500,
         top_down = true,
       })
       vim.notify = require('notify')

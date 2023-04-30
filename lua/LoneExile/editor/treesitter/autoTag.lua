@@ -3,7 +3,7 @@ local M = {}
 M.setup = function()
   return {
     'windwp/nvim-ts-autotag',
-    event = 'VimEnter',
+    event = 'BufRead',
     config = function()
       local status_ok, autotag = pcall(require, 'nvim-ts-autotag')
       if not status_ok then

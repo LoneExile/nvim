@@ -3,8 +3,11 @@ local M = {}
 M.setup = function(settings, location)
   return {
     'folke/which-key.nvim',
+    keys = { '<leader>' },
     priority = 0, -- load after all plugins
     config = function()
+      -- vim.o.timeout = true
+      -- vim.o.timeoutlen = 300
       local status_ok, which_key = pcall(require, 'which-key')
       if not status_ok then
         return

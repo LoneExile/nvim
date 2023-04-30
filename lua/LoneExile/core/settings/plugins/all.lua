@@ -20,7 +20,7 @@ return {
   { 'michaelb/sniprun', false },
   { 'AckslD/swenv.nvim', true },
   { 'akinsho/toggleterm.nvim', true },
-  { 'ray-x/web-tools.nvim', true },
+  { 'ray-x/web-tools.nvim', false },
   { 'nvchad/nvim-colorizer.lua', true },
   { 'max397574/colortils.nvim', true },
 
@@ -53,6 +53,9 @@ return {
   { 'tpope/vim-repeat', true },
   { 'AckslD/muren.nvim', true },
   { 'nmac427/guess-indent.nvim', true },
+  -- NOTE: no need impatient.nvim anymore
+  -- https://github.com/folke/lazy.nvim/issues/21#issuecomment-1359545487
+  { 'dstein64/vim-startuptime', true },
 
   -- Treesitter
   { 'windwp/nvim-autopairs', true },
@@ -85,12 +88,6 @@ return {
   { 'simrat39/rust-tools.nvim', true },
   { 'b0o/schemastore.nvim', true },
   { 'jose-elias-alvarez/typescript.nvim', true },
-
-  -- Optimize
-  { 'antoinemadec/FixCursorHold.nvim', true },
-  { 'nathom/filetype.nvim', false },
-  { 'lewis6991/impatient.nvim', true },
-  { 'dstein64/vim-startuptime', true },
 
   -- UI
   { 'goolord/alpha-nvim', true },

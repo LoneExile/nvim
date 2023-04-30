@@ -12,6 +12,7 @@ M.wh_key = {
 M.setup = function()
   return {
     'folke/todo-comments.nvim',
+    event = { 'BufReadPre', 'InsertEnter' },
     config = function()
       local status_ok, todo = pcall(require, 'todo-comments')
       if not status_ok then

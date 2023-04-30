@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     ['/'] = {
       cmd = {
@@ -33,11 +30,10 @@ M.wh_key = {
 M.setup = function()
   return {
     'numToStr/Comment.nvim',
-    event = 'VimEnter',
+    event = 'BufRead',
     dependencies = {
       'JoosepAlviste/nvim-ts-context-commentstring',
     },
-    enabled = M.enabled,
     config = function()
       local status_ok, comment = pcall(require, 'Comment')
       if not status_ok then

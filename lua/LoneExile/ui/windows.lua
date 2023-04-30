@@ -21,7 +21,8 @@ M.setup = function()
   return {
     'anuvyklack/windows.nvim',
     enabled = M.enabled,
-    event = 'WinEnter',
+    -- event = 'WinEnter',
+    cmd = { 'WindowsMaximize', 'WindowsEqualize', 'WindowsToggleAutowidth', 'Neotree' },
     dependencies = {
       'anuvyklack/middleclass',
       'anuvyklack/animation.nvim',

@@ -1,7 +1,8 @@
 local options = {
   showtabline = 0, -- always show tabs
   backup = false, -- creates a backup file
-  cmdheight = 1, -- more space in the neovim command line for displaying messages
+  -- NOTE: cmdheight is have set again in lualine config file
+  cmdheight = 0, -- more space in the neovim command line for displaying messages
   completeopt = { 'menuone', 'noselect' }, -- mostly just for cmp
   conceallevel = 0, -- so that `` is visible in markdown files
   -- fileencoding = 'utf-8', -- the encoding written to a file
@@ -43,3 +44,7 @@ vim.opt.shortmess:append('c')
 for key, value in pairs(options) do
   vim.opt[key] = value
 end
+
+-- https://neovim.discourse.group/t/introducing-filetype-lua-and-a-call-for-help/1806
+vim.g.do_filetype_lua = true
+vim.g.did_load_filetypes = false

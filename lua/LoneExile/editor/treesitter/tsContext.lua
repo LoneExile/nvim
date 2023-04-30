@@ -3,7 +3,7 @@ local M = {}
 M.setup = function()
   return {
     'nvim-treesitter/nvim-treesitter-context',
-    event = 'VimEnter',
+    event = 'BufRead',
     config = function()
       local status_ok, TSContext = pcall(require, 'treesitter-context')
       if not status_ok then

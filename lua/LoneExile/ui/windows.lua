@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     u = {
       name = '+Utility',
@@ -20,8 +17,7 @@ M.wh_key = {
 M.setup = function()
   return {
     'anuvyklack/windows.nvim',
-    enabled = M.enabled,
-    -- event = 'WinEnter',
+    event = 'BufRead',
     cmd = { 'WindowsMaximize', 'WindowsEqualize', 'WindowsToggleAutowidth', 'Neotree' },
     dependencies = {
       'anuvyklack/middleclass',

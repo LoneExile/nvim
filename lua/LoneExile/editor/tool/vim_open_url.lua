@@ -8,6 +8,7 @@ M.setup = function()
     'dhruvasagar/vim-open-url',
     keys = {
       'g',
+      '<leader>',
     },
   }
 end

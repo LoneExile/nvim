@@ -51,6 +51,8 @@ M.setup = function()
     'nvim-neo-tree/neo-tree.nvim',
     -- event = 'BufWinEnter',
     cmd = { 'Neotree' },
+    keys = { '<leader>' },
+    event = 'BufRead',
     -- branch = 'v2.x',
     branch = 'main',
     dependencies = {

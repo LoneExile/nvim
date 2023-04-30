@@ -3,6 +3,7 @@ local M = {}
 M.setup = function()
   return {
     'nmac427/guess-indent.nvim',
+    event = 'BufRead',
     config = function()
       local status_ok, guess_indent = pcall(require, 'guess-indent')
       if not status_ok then

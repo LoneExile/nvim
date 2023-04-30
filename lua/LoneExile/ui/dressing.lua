@@ -3,6 +3,8 @@ local M = {}
 M.setup = function()
   return {
     'stevearc/dressing.nvim',
+    event = 'BufRead',
+    lazy = true,
     config = function()
       local status_ok, dressing = pcall(require, 'dressing')
       if not status_ok then

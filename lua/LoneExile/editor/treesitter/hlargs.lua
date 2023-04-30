@@ -1,9 +1,6 @@
 local M = {}
 
-M.enabled = true
-
 M.wh_key = {
-  enabled = M.enabled,
   wh_mappings = {
     u = {
       name = '+Utility',
@@ -18,9 +15,8 @@ M.wh_key = {
 M.setup = function()
   return {
     'm-demare/hlargs.nvim',
-    enabled = M.enabled,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    event = 'VimEnter',
+    event = 'BufRead',
     config = function()
       local status, hlargs = pcall(require, 'hlargs')
       if not status then

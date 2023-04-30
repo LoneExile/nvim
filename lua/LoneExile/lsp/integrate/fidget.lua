@@ -3,6 +3,7 @@ local M = {}
 M.setup = function(_, _)
   return {
     'j-hui/fidget.nvim',
+    event = 'BufRead',
     -- enabled = false,
     config = function()
       local status_ok, fidget = pcall(require, 'fidget')

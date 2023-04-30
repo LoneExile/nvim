@@ -3,7 +3,7 @@ local M = {}
 M.setup = function()
   return {
     'tpope/vim-repeat',
-    event = 'VimEnter',
+    event = 'BufRead',
   }
 end
 

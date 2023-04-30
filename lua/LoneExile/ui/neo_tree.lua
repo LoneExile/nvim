@@ -49,7 +49,8 @@ M.wh_key = {
 M.setup = function()
   return {
     'nvim-neo-tree/neo-tree.nvim',
-    event = 'BufWinEnter',
+    -- event = 'BufWinEnter',
+    cmd = { 'Neotree' },
     -- branch = 'v2.x',
     branch = 'main',
     dependencies = {

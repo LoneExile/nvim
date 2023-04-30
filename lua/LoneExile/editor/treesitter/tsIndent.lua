@@ -3,7 +3,7 @@ local M = {}
 M.setup = function()
   return {
     'lukas-reineke/indent-blankline.nvim',
-    event = 'VimEnter',
+    event = 'BufRead',
     config = function()
       local status_ok_code, indent_blankline = pcall(require, 'indent_blankline')
       if not status_ok_code then

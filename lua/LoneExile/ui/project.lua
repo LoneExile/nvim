@@ -1,8 +1,9 @@
 local M = {}
 
-M.setup = function(_, _)
+M.setup = function(s, _)
   return {
     'ahmedkhalf/project.nvim',
+    -- ft = { 'alpha' },
     config = function()
       local status_ok, project = pcall(require, 'project_nvim')
       if not status_ok then
@@ -42,7 +43,7 @@ M.setup = function(_, _)
 
         -- Path where project.nvim will store the project history for use in
         -- telescope
-        datapath = vim.fn.stdpath('data'),
+        datapath = s.data_loc, --vim.fn.stdpath('data'),
       })
     end,
   }

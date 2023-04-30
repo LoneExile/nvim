@@ -3,6 +3,7 @@ local M = {}
 M.setup = function(_, _)
   return {
     'zbirenbaum/copilot-cmp',
+    event = { 'BufReadPre', 'InsertEnter' },
     dependencies = { 'copilot.lua' },
     config = function()
       local status, cmp = pcall(require, 'copilot_cmp')

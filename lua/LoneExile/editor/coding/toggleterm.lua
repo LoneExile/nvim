@@ -1,28 +1,60 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    g = {
-      g = {
-        "<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'lazygit', hidden = true }):toggle()<CR>",
-        'LazyGit',
-        mode = { 'n' },
-      },
-    },
-  },
+-- M.wh_key = {
+--   wh_mappings = {
+--     g = {
+--       g = {
+--         "<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'lazygit', hidden = true }):toggle()<CR>",
+--         'LazyGit',
+--         mode = { 'n' },
+--       },
+--     },
+--   },
+-- }
+
+local lazygit = {
+  cmd = 'lazygit',
+  keymap = '<leader>gg',
+  label = 'LazyGit',
+  count = 1 + 100,
+  direction = 'float' or M.terminal.direction,
+  size = M.terminal.size,
 }
 
--- https://github.com/akinsho/toggleterm.nvim#setup
----@diagnostic disable-next-line: undefined-field
-vim.api.nvim_exec(
-  [[
-autocmd TermEnter term://*toggleterm#*
-      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
-nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
-inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
-]],
-  false
-)
+M.setup = function(_, _) -- settings
+  return {
+    'akinsho/toggleterm.nvim',
+    cmd = 'ToggleTerm',
+    keys = { '<leader>', '<c-t>' },
+    event = 'BufRead',
+    config = function()
+      local status_ok_ui, terminal = pcall(require, 'toggleterm')
+      if not status_ok_ui then
+        return
+      end
+      terminal.setup(M.terminal)
+      M.add_exec(lazygit)
+    end,
+  }
+end
+
+M.add_exec = function(opts)
+  local binary = opts.cmd:match('(%S+)')
+  if vim.fn.executable(binary) ~= 1 then
+    print('Executable not found: ' .. binary)
+    return
+  end
+
+  vim.keymap.set({ 'n', 't' }, opts.keymap, function()
+    M._exec_toggle({ cmd = opts.cmd, count = opts.count, direction = opts.direction })
+  end, { desc = opts.label, noremap = true, silent = true })
+end
+
+M._exec_toggle = function(opts)
+  local Terminal = require('toggleterm.terminal').Terminal
+  local term = Terminal:new({ cmd = opts.cmd, count = opts.count, direction = opts.direction })
+  term:toggle(M.terminal.size, opts.direction)
+end
 
 M.terminal = {
   on_config_done = nil,
@@ -64,19 +96,5 @@ M.terminal = {
   },
   execs = {},
 }
-
-M.setup = function(_, _) -- settings
-  return {
-    'akinsho/toggleterm.nvim',
-    cmd = 'ToggleTerm',
-    config = function()
-      local status_ok_ui, terminal = pcall(require, 'toggleterm')
-      if not status_ok_ui then
-        return
-      end
-      terminal.setup(M.terminal)
-    end,
-  }
-end
 
 return M

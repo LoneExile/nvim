@@ -16,7 +16,10 @@ M.setup_luasnip = function(luasnip)
     },
   })
   require('luasnip.loaders.from_vscode').lazy_load({
-    paths = { './resources/snippets/' },
+    -- NOTE: You can also easily load your own custom vscode style snippets
+    -- by passing the path to the custom snippet-directory to the load function
+
+    -- paths = { './resources/snippets/' },
   })
 
   -- <c-l> is selecting within a list of options.

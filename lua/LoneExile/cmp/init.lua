@@ -10,7 +10,7 @@ M.setup = function(settings, location)
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lua' },
       { 'saadparwaiz1/cmp_luasnip', dependencies = { 'L3MON4D3/LuaSnip', event = 'InsertCharPre' } },
-      -- { "rafamadriz/friendly-snippets" },
+      { 'rafamadriz/friendly-snippets' },
       { 'jcha0713/cmp-tw2css' },
       { 'windwp/nvim-autopairs', dependencies = { 'nvim-treesitter/nvim-treesitter' }, event = 'InsertEnter' },
     },

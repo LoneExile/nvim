@@ -56,7 +56,7 @@ M.setup = function()
     branch = 'main',
     dependencies = {
       { 'MunifTanjim/nui.nvim' },
-      -- { 's1n7ax/nvim-window-picker' },
+      { 's1n7ax/nvim-window-picker' },
       { 'nvim-tree/nvim-web-devicons' },
       { 'nvim-lua/plenary.nvim' },
     },

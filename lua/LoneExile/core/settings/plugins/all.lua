@@ -103,7 +103,7 @@ return {
   { 'folke/todo-comments.nvim', true },
   { 'folke/twilight.nvim', true },
   { 'folke/which-key.nvim', true },
-  { 's1n7ax/nvim-window-picker', false },
+  { 's1n7ax/nvim-window-picker', true },
   { 'anuvyklack/windows.nvim', true },
   { 'folke/zen-mode.nvim', true },
 }

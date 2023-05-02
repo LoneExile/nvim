@@ -1,8 +1,10 @@
 local M = {}
 
-M.setup = function()
+M.setup = function(s, _)
   return {
     's1n7ax/nvim-window-picker',
+    cmd = { 'Neotree' },
+    keys = { '<leader>' },
     config = function()
       local status_ok, windowPicker = pcall(require, 'window-picker')
       if not status_ok then
@@ -22,7 +24,7 @@ M.setup = function()
             buftype = { 'terminal' },
           },
         },
-        other_win_hl_color = '#e35e4f',
+        other_win_hl_color = s.colors.darkblue,
       })
 
       vim.keymap.set('n', '<leader>a', function()

@@ -2,8 +2,8 @@ local M = {}
 
 M.wh_key = {
   wh_mappings = {
+    m = { '<cmd>WindowsMaximize!<cr>', 'Maximize', mode = { 'n' } },
     u = {
-      name = '+Utility',
       w = {
         name = '+Windows',
         m = { '<cmd>WindowsMaximize!<cr>', 'Maximize', mode = { 'n' } },

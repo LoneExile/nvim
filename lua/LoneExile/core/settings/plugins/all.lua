@@ -65,6 +65,7 @@ return {
   { 'nvim-treesitter/nvim-treesitter', true },
   { 'nvim-treesitter/nvim-treesitter-context', true },
   { 'lukas-reineke/indent-blankline.nvim', true },
+  { 'Wansmer/treesj', true },
 
   -- AI
   { 'jackMort/ChatGPT.nvim', true },

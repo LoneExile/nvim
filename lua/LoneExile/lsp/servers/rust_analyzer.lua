@@ -16,8 +16,7 @@ M.setup = function(lspconfig)
       },
     },
     root_dir = function(fname)
-      return lspconfig.util.root_pattern('Cargo.toml', 'rust-project.json', '.git')(fname)
-        or lspconfig.util.path.dirname(fname)
+      return lspconfig.util.root_pattern('Cargo.toml', 'rust-project.json', '.git')(fname) or lspconfig.util.path.dirname(fname)
     end,
   })
 end

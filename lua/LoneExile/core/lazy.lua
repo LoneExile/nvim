@@ -101,8 +101,7 @@ M.setup = function(root, m)
                 if settings.wh_mappings.mappings[key] == nil then
                   settings.wh_mappings.mappings[key] = value
                 else
-                  settings.wh_mappings.mappings[key] =
-                    vim.tbl_deep_extend('force', settings.wh_mappings.mappings[key], value)
+                  settings.wh_mappings.mappings[key] = vim.tbl_deep_extend('force', settings.wh_mappings.mappings[key], value)
                 end
               end
             end
@@ -112,8 +111,7 @@ M.setup = function(root, m)
                 if settings.wh_mappings.m_mappings[key] == nil then
                   settings.wh_mappings.m_mappings[key] = value
                 else
-                  settings.wh_mappings.m_mappings[key] =
-                    vim.tbl_deep_extend('force', settings.wh_mappings.m_mappings[key], value)
+                  settings.wh_mappings.m_mappings[key] = vim.tbl_deep_extend('force', settings.wh_mappings.m_mappings[key], value)
                 end
               end
             end

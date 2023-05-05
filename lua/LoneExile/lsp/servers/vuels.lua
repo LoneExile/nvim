@@ -6,8 +6,7 @@ M.setup = function(lspconfig)
     cmd = { 'vls' },
     filetypes = { 'vue' },
     root_dir = function(fname)
-      return lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname)
-        or lspconfig.util.path.dirname(fname)
+      return lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname) or lspconfig.util.path.dirname(fname)
     end,
     init_options = {
       config = {

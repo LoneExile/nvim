@@ -1,5 +1,14 @@
 local M = {}
 
+M.wh_key = {
+  wh_mappings = {
+    l = {
+      name = 'LSP',
+      o = { '<cmd>Lspsaga outline<cr>', 'Outline', mode = { 'n' } },
+    },
+  },
+}
+
 M.setup = function(_, _)
   return {
     'glepnir/lspsaga.nvim',

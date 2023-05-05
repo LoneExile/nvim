@@ -3,8 +3,13 @@ local M = {}
 M.setup = function(_, _)
   return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    dependencies = { 'williamboman/mason.nvim' },
     event = { 'BufReadPre', 'InsertEnter' },
+    cmd = { 'MasonToolsInstall' },
+    dependencies = {
+      'neovim/nvim-lspconfig',
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+    },
     config = function()
       local status_tool, mason_tool = pcall(require, 'mason-tool-installer')
       if not status_tool then

@@ -1,13 +1,31 @@
 local M = {}
 
+M.wh_key = {
+  wh_mappings = {
+    l = {
+      name = 'LSP',
+      f = { '<cmd>FormatCurrentBuf<CR>', 'Format', mode = { 'n' } },
+      d = { vim.diagnostic.setloclist, 'Diagnostics', mode = { 'n' } },
+      l = {
+        name = 'LSP',
+        r = { '<cmd>LspRestart<cr>', 'Restart', mode = { 'n' } },
+        s = { '<cmd>LspStop<cr>', 'Stop', mode = { 'n' } },
+      },
+      i = { '<cmd>LspInfo<cr>', 'LSP Info', mode = { 'n' } },
+      I = { '<cmd>Mason<cr>', 'Mason', mode = { 'n' } },
+    },
+  },
+}
+
 M.setup = function(_, location)
   return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'InsertEnter' },
+    cmd = { 'LspInfo', 'LspRestart', 'LspStop', 'Mason' },
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      -- 'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- {
       --   'SmiteshP/nvim-navbuddy',
       --   dependencies = {
@@ -43,6 +61,8 @@ M.setup = function(_, location)
         automatic_installation = false,
         ensure_installed = {},
       })
+
+      vim.cmd('MasonToolsInstall')
 
       require(lsp_settings .. '.keymaps').add_lsp_buffer_keybindings()
       require(lsp_settings .. '.diagnostic')

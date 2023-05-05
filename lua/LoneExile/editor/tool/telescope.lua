@@ -2,6 +2,29 @@ local M = {}
 
 M.wh_key = {
   wh_mappings = {
+    l = {
+      D = {
+        '<cmd>Telescope diagnostics<CR>',
+        'Diagnostics',
+        mode = { 'n' },
+      },
+      r = {
+        '<cmd>Telescope lsp_references<cr>',
+        'References',
+        mode = { 'n' },
+      },
+      -- s = {
+      --   '<cmd>Telescope lsp_document_symbols<cr>',
+      --   'Document Symbols',
+      --   mode = { 'n' },
+      -- },
+      -- S = {
+      --   '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>',
+      --   'Workspace Symbols',
+      --   mode = { 'n' },
+      -- },
+    },
+
     ['s'] = {
       name = 'Search',
       b = {

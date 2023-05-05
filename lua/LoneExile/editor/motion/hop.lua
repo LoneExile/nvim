@@ -4,6 +4,7 @@ M.setup = function()
   return {
     'phaazon/hop.nvim',
     event = 'BufRead',
+    keys = { 'g' },
     config = function()
       local keymap = vim.api.nvim_set_keymap
       local opts = { noremap = true, silent = true }

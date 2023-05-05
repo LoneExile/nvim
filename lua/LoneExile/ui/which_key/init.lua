@@ -3,7 +3,7 @@ local M = {}
 M.setup = function(settings, location)
   return {
     'folke/which-key.nvim',
-    keys = { '<leader>' },
+    keys = { '<leader>', 'g' },
     -- event = 'BufRead',
     priority = 0, -- load after all plugins
     config = function()

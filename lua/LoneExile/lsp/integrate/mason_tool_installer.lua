@@ -83,7 +83,7 @@ M.setup = function(_, _)
       })
 
       -- since we are lazy loading mason-tool-installer, we need to manually call the install function
-      -- vim.cmd('MasonToolsInstall')
+      vim.cmd('MasonToolsInstall')
 
       -- vim.api.nvim_create_autocmd('User', {
       --   pattern = 'MasonToolsUpdateCompleted',

@@ -8,7 +8,6 @@ local options = {
   -- fileencoding = 'utf-8', -- the encoding written to a file
   hlsearch = true, -- highlight all matches on previous search pattern
   ignorecase = true, -- ignore case in search patterns
-  mouse = 'a', -- allow the mouse to be used in neovim
   pumheight = 10, -- pop up menu height
   showmode = false, -- we don't need to see things like -- INSERT -- anymore
   smartcase = true, -- smart case
@@ -48,3 +47,5 @@ end
 -- https://neovim.discourse.group/t/introducing-filetype-lua-and-a-call-for-help/1806
 vim.g.do_filetype_lua = true
 vim.g.did_load_filetypes = false
+
+vim.opt.mouse = nil -- disable mouse

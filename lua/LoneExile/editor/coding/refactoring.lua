@@ -54,6 +54,12 @@ M.wh_key = {
 M.setup = function()
   return {
     'theprimeagen/refactoring.nvim',
+    dependencies = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-treesitter/nvim-treesitter' },
+    },
+
+    ft = { 'go', 'javascript', 'lua', 'python', 'typescript' },
     config = function()
       local status_ok_ui, refactoring = pcall(require, 'refactoring')
       if not status_ok_ui then

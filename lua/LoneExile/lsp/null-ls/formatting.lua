@@ -87,6 +87,19 @@ local format = {
     command = 'xmlformat',
     extra_args = { '-' },
   }),
+
+  formatting.golines.with({
+    extra_args = {
+      '--max-len=120',
+      '--base-formatter=gofumpt',
+    },
+  }),
+
+  formatting.goimports.with({
+    command = 'goimports',
+    extra_args = { '-srcdir', '$DIRNAME' },
+    filetypes = { 'go' },
+  }),
 }
 
 -- return M

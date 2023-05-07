@@ -76,6 +76,13 @@ local diagnosticsTable = {
   --   filetype = { 'sql' },
   --   extra_args = { '--dialect', 'postgres' },
   -- }),
+
+  diagnostics.golangci_lint.with({
+    filetype = { 'go' },
+    extra_args = { 'run', '--fix=false', '--out-format=json', '--path-prefix', '$ROOT' },
+    command = 'golangci-lint',
+    method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+  }),
 }
 
 return diagnosticsTable

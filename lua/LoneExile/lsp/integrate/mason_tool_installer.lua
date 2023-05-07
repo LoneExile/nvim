@@ -63,10 +63,13 @@ M.setup = function(_, _)
           'yamlfmt',
           'sql-formatter',
           'xmlformatter',
+          'golines', -- Go
+          'goimports', -- Go
 
           -- CODE ACTION
           'eslint_d',
           'shellcheck',
+          'impl', -- Go
 
           -- DIAGNOSTICS
           'luacheck',
@@ -75,6 +78,7 @@ M.setup = function(_, _)
           'actionlint',
           -- 'sqlfluff',
           'alex',
+          'golangci-lint', -- Go
         },
 
         auto_update = false,

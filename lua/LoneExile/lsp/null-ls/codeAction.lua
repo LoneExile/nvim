@@ -29,9 +29,12 @@ local codeAction = {
   code_actions.shellcheck.with({
     extra_args = { '--severity', 'warning' },
   }),
-  -- code_actions.refactoring.with({
-  -- 	filetype = { "go", "javascript", "lua", "python", "typescript" },
-  -- }),
+  code_actions.impl.with({
+    filetypes = { 'go' },
+  }),
+  code_actions.refactoring.with({
+    filetype = { 'go', 'javascript', 'lua', 'python', 'typescript' },
+  }),
 
   -- code_actions.gitsigns.with({
   -- 	-- disabled_filetypes = { "lua" },

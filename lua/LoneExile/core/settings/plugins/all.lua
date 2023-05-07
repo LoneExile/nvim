@@ -16,7 +16,7 @@ return {
   { 'metakirby5/codi.vim', false },
   { '0x100101/lab.nvim', true },
   { 'codethread/qmk.nvim', false },
-  { 'theprimeagen/refactoring.nvim', false },
+  { 'theprimeagen/refactoring.nvim', true },
   { 'michaelb/sniprun', false },
   { 'AckslD/swenv.nvim', true },
   { 'akinsho/toggleterm.nvim', true },

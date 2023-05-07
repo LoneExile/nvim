@@ -22,6 +22,7 @@ M.setup = function(_, location)
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'InsertEnter' },
     cmd = { 'LspInfo', 'LspRestart', 'LspStop', 'Mason' },
+    keys = { '<leader>', 'g' },
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',

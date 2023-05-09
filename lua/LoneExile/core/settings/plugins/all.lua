@@ -40,7 +40,6 @@ return {
   { 'echasnovski/mini.nvim', true },
 
   -- Tool
-  { 'glacambre/firenvim', false },
   { 'ibhagwan/fzf-lua', false },
   { 'RRethy/vim-illuminate', true },
   { 'darazaki/indent-o-matic', false },
@@ -56,6 +55,10 @@ return {
   -- NOTE: no need impatient.nvim anymore
   -- https://github.com/folke/lazy.nvim/issues/21#issuecomment-1359545487
   { 'dstein64/vim-startuptime', true },
+
+  -- Other
+  { 'glacambre/firenvim', false },
+  { 'epwalsh/obsidian.nvim', true },
 
   -- Treesitter
   { 'windwp/nvim-autopairs', true },

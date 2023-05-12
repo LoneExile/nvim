@@ -5,6 +5,7 @@ M.setup = function(settings, location)
     'folke/which-key.nvim',
     keys = { '<leader>', 'g' },
     -- event = 'BufRead',
+    -- cmd = { 'WhichKey' },
     priority = 0, -- load after all plugins
     config = function()
       -- vim.o.timeout = true
@@ -56,7 +57,7 @@ M.setup = function(settings, location)
         ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
         show_help = false,
         triggers = 'auto',
-        -- triggers = {"<leader>"} -- or specify a list manually
+        -- triggers = { '<leader>', 'g', 'm' }, -- or specify a list manually
         triggers_blacklist = {
           i = { 'j', 'k' },
           v = { 'j', 'k' },
@@ -72,10 +73,13 @@ M.setup = function(settings, location)
       -- local m_mappings = require(location .. '.key_m').m_mappings
       local mappings = settings.wh_mappings.mappings
       local m_mappings = settings.wh_mappings.m_mappings
+      local g_mappings = settings.wh_mappings.g_mappings
 
       local opts = require(location .. '.key_leader').opts
       local vopts = require(location .. '.key_leader').vopts
       local m_opts = require(location .. '.key_m').m_opts
+
+      local g_opts = require(location .. '.key_g').g_opts
 
       local fileType = vim.api.nvim_buf_get_option(0, 'filetype')
       local nmappings, vmappings, _, _ = split_mappings(mappings, fileType)
@@ -86,6 +90,7 @@ M.setup = function(settings, location)
       which_key.register(nmappings, opts)
       which_key.register(vmappings, vopts)
       which_key.register(m_mappings, m_opts)
+      which_key.register(g_mappings, g_opts)
     end,
   }
 end

@@ -55,6 +55,7 @@ M.setup = function(root)
       },
     },
     m_mappings = {},
+    g_mappings = {},
   }
 end
 return M

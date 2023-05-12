@@ -1,5 +1,9 @@
 local M = {}
 
+-- Show hover
+vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { noremap = true, silent = true })
+
 M.wh_key = {
   wh_mappings = {
     l = {
@@ -14,6 +18,34 @@ M.wh_key = {
       i = { '<cmd>LspInfo<cr>', 'LSP Info', mode = { 'n' } },
       I = { '<cmd>Mason<cr>', 'Mason', mode = { 'n' } },
     },
+  },
+  wh_g_mappings = {
+    ['d'] = { '<cmd>Lspsaga peek_definition<CR>', 'Goto Definition', mode = { 'n' } },
+    ['p'] = { '<cmd>Lspsaga peek_type_definition<CR>', 'Peek type definition', mode = { 'n' } },
+    ['s'] = { vim.lsp.buf.signature_help, 'show signature help', mode = { 'n' } },
+    ['r'] = { '<cmd>Lspsaga lsp_finder<CR>', 'Goto references', mode = { 'n' } },
+    ['R'] = { '<cmd>Lspsaga rename<CR>', 'rename', mode = { 'n' } },
+    ['q'] = { '<cmd>Lspsaga code_action<CR>', 'Code action', mode = { 'n', 'v' } },
+    ['j'] = { '<cmd>Lspsaga diagnostic_jump_next<CR>', 'Next diagnostic', mode = { 'n' } },
+    ['k'] = { '<cmd>Lspsaga diagnostic_jump_prev<CR>', 'Prev diagnostic', mode = { 'n' } },
+    ['D'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration', mode = { 'n' } },
+    ['o'] = { '<cmd>Lspsaga goto_definition<cr>', 'Goto Implementation', mode = { 'n' } },
+    ['I'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation', mode = { 'n' } },
+    ['l'] = { '<cmd>Lspsaga show_line_diagnostics<cr>', 'Show line diagnostics', mode = { 'n' } },
+
+    -- -- w/o lsp-saga, TODO add function to check if lspsaga is not active
+    -- ['d'] = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Goto Definition' },
+    -- ['s'] = { vim.lsp.buf.signature_help, 'show signature help' },
+    -- ['r'] = { '<cmd>lua vim.lsp.buf.references()<cr>', 'Goto references' },
+    -- ['R'] = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'rename' },
+    -- ['q'] = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code action' },
+    -- ['j'] = { '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Next diagnostic' },
+    -- ['k'] = { '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Prev diagnostic' },
+    -- ['D'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration' },
+    -- ['o'] = { '<cmd>lua vim.lsp.buf.type_definition()<cr>', 'Goto Implementation' },
+    -- ['I'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation' },
+    -- ['l'] = { '<cmd>lua vim.diagnostic.open_float()<cr>', 'Show line diagnostics' },
+    -- ['f'] = { '<cmd>lua vim.lsp.buf.formatting()<cr>', 'Format' },
   },
 }
 
@@ -63,7 +95,7 @@ M.setup = function(_, location)
         ensure_installed = {},
       })
 
-      require(lsp_settings .. '.keymaps').add_lsp_buffer_keybindings()
+      -- require(lsp_settings .. '.keymaps').add_lsp_buffer_keybindings()
       require(lsp_settings .. '.diagnostic')
       require(lsp_settings .. '.autocmd')
 

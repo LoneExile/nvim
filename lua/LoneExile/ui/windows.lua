@@ -43,7 +43,18 @@ M.setup = function()
         },
         ignore = {
           buftype = { 'quickfix' },
-          filetype = { 'neo-tree', 'lspsagaoutline', 'spectre_panel', 'DiffviewFiles' },
+          filetype = {
+            'neo-tree',
+            'lspsagaoutline',
+            'spectre_panel',
+            'DiffviewFiles',
+            'dap-repl',
+            'dapui_console',
+            'dapui_watches',
+            'dapui_stacks',
+            'dapui_breakpoints',
+            'dapui_scopes',
+          },
         },
         animation = {
           enable = true,

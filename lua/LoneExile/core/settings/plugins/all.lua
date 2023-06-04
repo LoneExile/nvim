@@ -110,4 +110,5 @@ return {
   { 's1n7ax/nvim-window-picker', true },
   { 'anuvyklack/windows.nvim', true },
   { 'folke/zen-mode.nvim', true },
+  { 'Pocco81/true-zen.nvim', true },
 }

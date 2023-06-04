@@ -2,8 +2,8 @@ local M = {}
 
 M.wh_key = {
   wh_mappings = {
-    u = {
-      name = '+Utility',
+    z = {
+      name = '+Zen',
       z = { '<cmd>ZenMode<cr>', 'Zen', mode = { 'n' } },
     },
   },

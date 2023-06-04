@@ -44,6 +44,7 @@ M.setup = function()
         ignore = {
           buftype = { 'quickfix' },
           filetype = {
+            'toggleterm',
             'neo-tree',
             'lspsagaoutline',
             'spectre_panel',

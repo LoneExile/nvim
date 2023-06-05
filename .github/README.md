@@ -1,6 +1,6 @@
 # nvim
 
-> top bar TMUX
+> top bar [TMUX](https://github.com/LoneExile/dotfiles/blob/main/.tmux.conf)
 
 ![2023-04-29_17-11](https://user-images.githubusercontent.com/82561297/235297373-37da0035-7280-42b6-81c8-92911c0b92c5.png)
 ![2023-04-29_17-04](https://user-images.githubusercontent.com/82561297/235297100-d2535c59-0299-4e52-8d51-acdf4b72e056.png)

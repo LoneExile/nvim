@@ -12,8 +12,8 @@
 
 By default, `.config/nvim/init.lua` should be set up like this:
 
-```
-luarequire('<YOUR_CONFIG_NAME>').setup({
+```lua
+require('<YOUR_CONFIG_NAME>').setup({
   plugin = 'minimal',
 })
 

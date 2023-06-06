@@ -43,7 +43,6 @@ return {
   { 'ibhagwan/fzf-lua', false },
   { 'RRethy/vim-illuminate', true },
   { 'darazaki/indent-o-matic', false },
-  { 'iamcco/markdown-preview.nvim', true },
   { 'windwp/nvim-spectre', true },
   { 'wellle/targets.vim', true },
   { 'nvim-telescope/telescope.nvim', true },
@@ -59,6 +58,8 @@ return {
   -- Other
   { 'glacambre/firenvim', false },
   { 'epwalsh/obsidian.nvim', true },
+  { 'iamcco/markdown-preview.nvim', true },
+  { 'lukas-reineke/headlines.nvim', false },
 
   -- Treesitter
   { 'windwp/nvim-autopairs', true },
@@ -97,6 +98,7 @@ return {
   { 'goolord/alpha-nvim', true },
   { 'folke/tokyonight.nvim', true },
   { 'stevearc/dressing.nvim', true },
+  { 'folke/edgy.nvim', true },
   { 'nvim-lualine/lualine.nvim', true },
   { 'nvim-neo-tree/neo-tree.nvim', true },
   { 'folke/noice.nvim', false },

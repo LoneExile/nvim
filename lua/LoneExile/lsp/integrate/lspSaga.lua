@@ -7,6 +7,20 @@ M.wh_key = {
       o = { '<cmd>Lspsaga outline<cr>', 'Outline', mode = { 'n' } },
     },
   },
+  wh_g_mappings = {
+    ['d'] = { '<cmd>Lspsaga peek_definition<CR>', 'Goto Definition', mode = { 'n' } },
+    ['p'] = { '<cmd>Lspsaga peek_type_definition<CR>', 'Peek type definition', mode = { 'n' } },
+    ['s'] = { vim.lsp.buf.signature_help, 'show signature help', mode = { 'n' } },
+    ['r'] = { '<cmd>Lspsaga lsp_finder<CR>', 'Goto references', mode = { 'n' } },
+    ['R'] = { '<cmd>Lspsaga rename<CR>', 'rename', mode = { 'n' } },
+    ['q'] = { '<cmd>Lspsaga code_action<CR>', 'Code action', mode = { 'n', 'v' } },
+    ['j'] = { '<cmd>Lspsaga diagnostic_jump_next<CR>', 'Next diagnostic', mode = { 'n' } },
+    ['k'] = { '<cmd>Lspsaga diagnostic_jump_prev<CR>', 'Prev diagnostic', mode = { 'n' } },
+    ['D'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration', mode = { 'n' } },
+    ['o'] = { '<cmd>Lspsaga goto_definition<cr>', 'Goto Implementation', mode = { 'n' } },
+    ['I'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation', mode = { 'n' } },
+    ['l'] = { '<cmd>Lspsaga show_line_diagnostics<cr>', 'Show line diagnostics', mode = { 'n' } },
+  },
 }
 
 M.setup = function(_, _)
@@ -15,6 +29,9 @@ M.setup = function(_, _)
     -- commit = '707c9399b1cbe063c6942604209674edf1b3cf2e',
     event = { 'BufRead' },
     dependencies = { 'neovim/nvim-lspconfig' },
+    keys = {
+      { 'K', '<cmd>Lspsaga hover_doc<CR>', desc = 'Hover' },
+    },
     config = function()
       local status_ok, lspsagaM = pcall(require, 'lspsaga')
       if not status_ok then

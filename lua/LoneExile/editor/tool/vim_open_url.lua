@@ -6,8 +6,9 @@ local M = {}
 M.setup = function()
   return {
     'dhruvasagar/vim-open-url',
+    event = 'BufRead',
     keys = {
-      'g',
+      -- 'g', -- BUG: this makes the which_key `g` not load properly
       '<leader>',
     },
   }

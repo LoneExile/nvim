@@ -85,7 +85,6 @@ M.setup = function(_, location)
         ensure_installed = {},
       })
 
-      -- require(lsp_settings .. '.keymaps').add_lsp_buffer_keybindings()
       require(lsp_settings .. '.diagnostic')
       require(lsp_settings .. '.autocmd')
 

@@ -4,6 +4,9 @@ M.setup = function(root, m)
   local settings = require(root .. set_loc).setup(root, set_loc)
   settings.utils = m
 
+  -- TODO: merge opts with settings
+  M.opts = m.opts or {}
+
   -----------------------------------------------------
   -----------------------------------------------------
   local lazypath = settings.data_loc .. '/lazy/lazy.nvim'
@@ -63,7 +66,7 @@ M.setup = function(root, m)
 
   local plugins = {}
 
-  local all_plugins = require(root .. set_loc .. '.plugins.all')
+  local all_plugins = require(root .. set_loc .. '.plugins.' .. M.opts.plugin)
 
   for _, file in ipairs(files) do
     local file_name = vim.fn.fnamemodify(file, ':t:r')

@@ -8,7 +8,9 @@ local M = {}
 M.setup = function()
   return {
     'folke/edgy.nvim',
-    event = 'VeryLazy',
+    dependencies = { 'nvim-neo-tree/neo-tree.nvim' },
+    cmd = { 'Neotree' },
+    keys = { '<leader>' },
     opts = {
       animate = {
         enabled = false,

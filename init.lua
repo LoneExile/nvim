@@ -1,1 +1,3 @@
-require('LoneExile').setup()
+require('LoneExile').setup({
+  plugin = 'minimal',
+})

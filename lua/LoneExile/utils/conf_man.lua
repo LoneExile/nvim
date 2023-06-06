@@ -32,7 +32,8 @@ M.load_config = function(modules)
   end
 end
 
-M.setup = function()
+M.setup = function(opts)
+  M.opts = opts or {}
   M.load_config(M.core)
   require(M.root .. '.utils.requirements')
 end

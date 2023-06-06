@@ -210,7 +210,7 @@ M.setup = function()
             --  }
             --}
             ['m'] = 'move', -- takes text input for destination, also accepts the optional config.show_path option like "add".
-            -- ['q'] = 'close_window',
+            ['q'] = 'close_window',
             ['R'] = 'refresh',
             ['?'] = 'show_help',
             ['<'] = 'prev_source',
@@ -222,7 +222,11 @@ M.setup = function()
         filesystem = {
           components = {
             harpoon_index = function(config, node)
-              local Marked = require('harpoon.mark')
+              local harpoon, Marked = pcall(require, 'harpoon.mark')
+              if not harpoon then
+                return {}
+              end
+              -- local Marked = require('harpoon.mark')
               local path = node:get_id()
               local succuss, index = pcall(Marked.get_index_of, path)
               if succuss and index and index > 0 then

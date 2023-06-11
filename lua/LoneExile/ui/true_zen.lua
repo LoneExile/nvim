@@ -2,6 +2,7 @@ local M = {}
 
 M.wh_key = {
   wh_mappings = {
+    f = { '<cmd>TZFocus<cr>', 'Focus', mode = { 'n' } },
     z = {
       name = '+Zen',
       -- n = { '<cmd>TZNarrow<cr>', 'Narrow', mode = { 'n' } },

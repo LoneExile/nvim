@@ -30,7 +30,6 @@ M.setup = function(root)
         'No Highlight',
         mode = { 'n' },
       },
-      t = { name = 'Terminal' },
       p = {
         name = 'Plugin',
         c = { '<cmd>Lazy clean<cr>', 'Clean', mode = { 'n' } },

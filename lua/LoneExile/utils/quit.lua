@@ -12,7 +12,7 @@ function M.smart_quit()
       end
     end)
   else
-    vim.cmd('q!')
+    vim.cmd('confirm q')
   end
 end
 

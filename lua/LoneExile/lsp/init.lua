@@ -119,6 +119,7 @@ M.setup = function(_, location)
         'rust_analyzer', -- rust
         -- 'lemminx', -- xml
         -- 'sqls', -- sql
+        'golangci_lint_ls', -- Go
       }
 
       --FIX: this load multiple times?

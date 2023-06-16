@@ -23,6 +23,9 @@ return {
   { 'ray-x/web-tools.nvim', false },
   { 'nvchad/nvim-colorizer.lua', true },
   { 'max397574/colortils.nvim', true },
+  { 'nvim-neotest/neotest', true },
+
+  { 'olexsmir/gopher.nvim', true },
 
   -- Git
   { 'sindrets/diffview.nvim', true },
@@ -98,7 +101,7 @@ return {
   { 'goolord/alpha-nvim', true },
   { 'folke/tokyonight.nvim', true },
   { 'stevearc/dressing.nvim', true },
-  { 'folke/edgy.nvim', true },
+  { 'folke/edgy.nvim', false },
   { 'nvim-lualine/lualine.nvim', true },
   { 'nvim-neo-tree/neo-tree.nvim', true },
   { 'folke/noice.nvim', false },

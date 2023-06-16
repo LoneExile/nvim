@@ -45,6 +45,7 @@ M.setup = function(_, _)
           'astro-language-server',
           'yaml-language-server',
           'gopls', -- Go
+          'golangci-lint-langserver', -- Go
 
           -- DAP
           'netcoredbg', -- C#
@@ -79,6 +80,8 @@ M.setup = function(_, _)
           -- 'sqlfluff',
           'alex',
           'golangci-lint', -- Go
+          'gomodifytags', -- Go
+          'gotests', -- Go
         },
 
         auto_update = false,

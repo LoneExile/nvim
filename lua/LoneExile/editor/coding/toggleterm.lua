@@ -2,7 +2,7 @@ local M = {}
 
 M.wh_key = {
   wh_mappings = {
-    t = { name = 'Terminal' },
+    -- t = { name = 'Terminal' },
     -- g = {
     --   g = {
     --     "<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'lazygit', hidden = true }):toggle()<CR>",

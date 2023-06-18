@@ -26,7 +26,7 @@ M.setup = function(_, _)
           -- LSP
           'lua-language-server',
           'bash-language-server',
-          'csharp-language-server', -- C#
+          -- 'csharp-language-server', -- C#
           -- 'omnisharp',
           -- 'clangd', -- C++
           'dockerfile-language-server',
@@ -48,7 +48,7 @@ M.setup = function(_, _)
           'golangci-lint-langserver', -- Go
 
           -- DAP
-          'netcoredbg', -- C#
+          -- 'netcoredbg', -- C#
           'js-debug-adapter', -- JavaScript, TypeScript
           'codelldb', -- Rust
           'delve', -- Go

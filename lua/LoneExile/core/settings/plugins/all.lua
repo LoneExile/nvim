@@ -92,10 +92,13 @@ return {
   { 'SmiteshP/nvim-navbuddy', false },
   { 'SmiteshP/nvim-navic', false },
   { 'jose-elias-alvarez/null-ls.nvim', true },
+
   { 'folke/lua-dev.nvim', true },
   { 'simrat39/rust-tools.nvim', true },
   { 'b0o/schemastore.nvim', true },
   { 'jose-elias-alvarez/typescript.nvim', true },
+  { 'ray-x/go.nvim', false },
+  { 'laytan/tailwind-sorter.nvim', false },
 
   -- UI
   { 'goolord/alpha-nvim', true },

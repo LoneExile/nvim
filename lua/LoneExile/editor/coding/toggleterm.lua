@@ -83,7 +83,7 @@ end
 M.add_exec = function(opts)
   local binary = opts.cmd:match('(%S+)')
   if vim.fn.executable(binary) ~= 1 then
-    print('Executable not found: ' .. binary)
+    -- print('Executable not found: ' .. binary)
     return
   end
 

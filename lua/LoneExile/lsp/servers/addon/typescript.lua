@@ -1,7 +1,5 @@
 local M = {}
 
-M.enabled = true
-
 M.setup = function()
   return {
     'jose-elias-alvarez/typescript.nvim',

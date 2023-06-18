@@ -5,16 +5,13 @@ return {
 
   -- LSP
   { 'neovim/nvim-lspconfig', true },
-  { 'j-hui/fidget.nvim', false },
-  { 'glepnir/lspsaga.nvim', true },
+  -- { 'j-hui/fidget.nvim', false },
+  -- { 'glepnir/lspsaga.nvim', true },
   { 'williamboman/mason.nvim', true },
   { 'williamboman/mason-lspconfig.nvim', true },
-  { 'WhoIsSethDaniel/mason-tool-installer.nvim', true },
-  { 'jose-elias-alvarez/null-ls.nvim', true },
+  -- { 'WhoIsSethDaniel/mason-tool-installer.nvim', true },
+  -- { 'jose-elias-alvarez/null-ls.nvim', true },
   { 'folke/lua-dev.nvim', true },
-  { 'simrat39/rust-tools.nvim', true },
-  { 'b0o/schemastore.nvim', true },
-  { 'jose-elias-alvarez/typescript.nvim', true },
 
   -- Editor
   { 'akinsho/toggleterm.nvim', true },

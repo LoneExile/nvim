@@ -4,8 +4,8 @@ M.setup = function(root, m)
   local settings = require(root .. set_loc).setup(root, set_loc)
   settings.utils = m
 
-  -- TODO: merge opts with settings
   M.opts = m.opts or {}
+  settings = vim.tbl_extend('force', settings, M.opts)
 
   -----------------------------------------------------
   -----------------------------------------------------

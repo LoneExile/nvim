@@ -51,7 +51,7 @@ configuration will automatically load based on the name you've set.
 
 ### note
 
-- You can remove all directory except `core`, `utils` and `init.lua` (I guess🤔)
+- You can remove all directory except `core` and `utils` (I guess🤔)
 - If you feel slow, you can remove config file that not have been list in
   `core/settings/plugins/<YOUR_PLUGINS_LIST>`.
 - If you want to add new plugin, you can look my other config file. all magic
@@ -59,4 +59,4 @@ configuration will automatically load based on the name you've set.
 
 ## TODO
 
-- [ ] refactor
+- [ ] refactor how to load config

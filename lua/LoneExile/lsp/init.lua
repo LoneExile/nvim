@@ -104,7 +104,7 @@ M.setup = function(_, location)
         'tsserver', -- setup with 'jose-elias-alvarez/typescript.nvim'
         'vuels',
         -- 'deno',
-        -- 'eslint-lsp',
+        -- 'eslint',
         -- 'emmet-ls',
         'tailwindcss',
 

@@ -105,7 +105,7 @@ M.setup = function(_, location)
         'vuels',
         -- 'deno',
         -- 'eslint',
-        -- 'emmet-ls',
+        'emmet_ls',
         'tailwindcss',
 
         'lua_ls', -- Lua

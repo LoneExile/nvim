@@ -8,6 +8,8 @@
 
 `echo &filetype` -> **check filetype**
 
+`Ctrl + z` -> **suspend nvim**, `fg` -> **resume nvim**
+
 ---
 
 Counting time elapsed in Lua

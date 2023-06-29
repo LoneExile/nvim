@@ -1,5 +1,7 @@
 local M = {}
 
+-- TODO: checkout this plugin: 'pmizio/typescript-tools.nvim',
+
 M.setup = function()
   return {
     'jose-elias-alvarez/typescript.nvim',

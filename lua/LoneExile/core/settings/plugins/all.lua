@@ -78,7 +78,6 @@ return {
   { 'jackMort/ChatGPT.nvim', true },
   { 'zbirenbaum/copilot.lua', true },
   { 'zbirenbaum/copilot-cmp', true },
-  { 'dense-analysis/neural', false },
 
   -- LSP
   { 'neovim/nvim-lspconfig', true },
@@ -107,10 +106,10 @@ return {
   { 'folke/edgy.nvim', false },
   { 'nvim-lualine/lualine.nvim', true },
   { 'nvim-neo-tree/neo-tree.nvim', true },
+  { 'nvim-tree/nvim-tree.lua', false },
   { 'folke/noice.nvim', false },
   { 'rcarriga/nvim-notify', true },
   { 'stevearc/oil.nvim', false },
-  { 'giusgad/pets.nvim', false },
   { 'ahmedkhalf/project.nvim', true },
   { 'folke/todo-comments.nvim', true },
   { 'folke/twilight.nvim', true },

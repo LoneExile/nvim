@@ -3,7 +3,7 @@ local M = {}
 M.wh_key = {
   wh_mappings = {
     ['e'] = {
-      '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>',
+      '<cmd>Neotree action=focus source=filesystem position=float toggle=true<CR>',
       -- function()
       -- 	vim.cmd("Neotree position=float toggle=true")
       -- end,
@@ -11,13 +11,13 @@ M.wh_key = {
       mode = { 'n' },
     },
     ['b'] = {
-      '<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>',
+      '<cmd>Neotree action=focus source=buffers position=float toggle=true<CR>',
       'Buffer',
       mode = { 'n' },
     },
     g = {
       ['n'] = {
-        '<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>',
+        '<cmd>Neotree action=focus source=git_status position=float toggle=true<CR>',
         'Neogit',
         mode = { 'n' },
       },
@@ -27,17 +27,17 @@ M.wh_key = {
       n = {
         name = '+Neotree',
         b = {
-          '<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>',
+          '<cmd>Neotree action=focus source=buffers position=float toggle=true<CR>',
           'Buffer',
           mode = { 'n' },
         },
         g = {
-          '<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>',
+          '<cmd>Neotree action=focus source=git_status position=float toggle=true<CR>',
           'Git',
           mode = { 'n' },
         },
         r = {
-          '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>',
+          '<cmd>Neotree action=focus source=filesystem position=float toggle=true<CR>',
           'Files',
           mode = { 'n' },
         },

@@ -10,6 +10,10 @@
 
 `Ctrl + z` -> **suspend nvim**, `fg` -> **resume nvim**
 
+`:set ft=html` **set current buffer to something else**
+
+`:set ls=0` **hide laststatus**
+
 ---
 
 Counting time elapsed in Lua

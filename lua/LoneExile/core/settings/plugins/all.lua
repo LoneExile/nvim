@@ -59,7 +59,7 @@ return {
   { 'dstein64/vim-startuptime', true },
 
   -- Other
-  { 'glacambre/firenvim', false },
+  { 'glacambre/firenvim', true },
   { 'epwalsh/obsidian.nvim', true },
   { 'iamcco/markdown-preview.nvim', true },
   { 'lukas-reineke/headlines.nvim', false },

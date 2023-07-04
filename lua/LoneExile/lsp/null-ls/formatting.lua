@@ -100,6 +100,11 @@ local format = {
     extra_args = { '-srcdir', '$DIRNAME' },
     filetypes = { 'go' },
   }),
+
+  formatting.clang_format.with({
+    command = 'clang-format',
+    filetypes = { 'c', 'cpp', 'cs', 'java', 'cuda', 'proto' },
+  }),
 }
 
 -- return M

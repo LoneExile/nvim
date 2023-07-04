@@ -82,6 +82,11 @@ M.setup = function(_, _)
           'golangci-lint', -- Go
           'gomodifytags', -- Go
           'gotests', -- Go
+
+          --- c++
+          -- 'clangd' -- lsp
+          -- 'cpplint', -- diagnostics
+          -- 'clang-format', -- formatter
         },
 
         auto_update = false,

@@ -57,6 +57,25 @@ M.setup = function(_, location)
         ignore_install = { '' },
         highlight = {
           enable = true,
+          -- disable = function(lang, bufnr)
+          --   -- disable treesitter for large files by file size
+          --   local max_filesize = 2000 * 1024 -- 2 MB
+          --   local js_max_filesize = 2000 * 1024 -- 2 MB
+          --   local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+          --   if ok and stats and (stats.size > max_filesize or lang == 'js' and stats.size > js_max_filesize) then
+          --     return true
+          --   end
+
+          --   -- disable treesitter for large files by line count
+          --   local is_line_count = vim.api.nvim_buf_line_count(bufnr) > 5000
+          --   local disabled_fts = { 'javascript', 'typescript' }
+          --   for _, ft in ipairs(disabled_fts) do
+          --     if lang == ft and is_line_count then
+          --       return true
+          --     end
+          --   end
+          -- end,
+
           disable = { '' },
           additional_vim_regex_highlighting = false,
         },

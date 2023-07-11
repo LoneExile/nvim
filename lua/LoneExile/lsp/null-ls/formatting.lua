@@ -21,7 +21,7 @@ local format = {
       'vue',
       'yaml',
     },
-    extra_args = { '--no-semi', '--single-quote', '--no-bracket-spacing' },
+    extra_args = { '--no-semi', '--single-quote', '--no-bracket-spacing', '--print-width', '120', '--prose-wrap', 'always' },
     disabled_filetypes = { 'lua', 'python' },
     extra_filetypes = { 'toml' },
   }),
@@ -101,10 +101,10 @@ local format = {
     filetypes = { 'go' },
   }),
 
-  formatting.clang_format.with({
-    command = 'clang-format',
-    filetypes = { 'c', 'cpp', 'cs', 'java', 'cuda', 'proto' },
-  }),
+  -- formatting.clang_format.with({
+  --   command = 'clang-format',
+  --   filetypes = { 'c', 'cpp', 'cs', 'java', 'cuda', 'proto' },
+  -- }),
 }
 
 -- return M

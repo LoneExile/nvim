@@ -85,11 +85,11 @@ local diagnosticsTable = {
   --   method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
   -- }),
 
-  diagnostics.cpplint.with({
-    filetype = { 'c', 'cpp' },
-    command = 'cpplint',
-    extra_args = { '$FILENAME' },
-  }),
+  -- diagnostics.cpplint.with({
+  --   filetype = { 'c', 'cpp' },
+  --   command = 'cpplint',
+  --   extra_args = { '$FILENAME' },
+  -- }),
 }
 
 return diagnosticsTable

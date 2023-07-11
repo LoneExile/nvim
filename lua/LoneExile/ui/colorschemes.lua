@@ -68,6 +68,7 @@ M.transparent = function()
   vim.cmd([[highlight NeoTreeGitModified guifg=#c678dd]])
   vim.cmd([[highlight NeoTreeGitConflict gui=bold guifg=#e46876]])
   vim.cmd([[highlight NeoTreeGitUntracked guifg=#c678dd]])
+  vim.cmd([[highlight NeoTreeTabActiveMod ctermbg=none guibg=none guifg=#61afef ]])
 
   -- PanelHeading bufferline
   vim.cmd([[highlight PanelHeading ctermbg=none guibg=none gui=bold,italic guifg=#777777]])

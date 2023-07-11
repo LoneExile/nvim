@@ -157,10 +157,11 @@ M.setup = function(root, m)
 
   local opts = {
     lockfile = settings.resources .. '/lazy-lock.json',
-    dev = {
-      path = settings.conf_loc .. '/lua/' .. root .. '/dev',
-      fallback = false, -- Fallback to git when local plugin doesn't exist
-    },
+    -- TODO: currently not working
+    -- dev = {
+    --   path = settings.conf_loc .. '/lua/' .. root .. '/dev/',
+    --   fallback = false, -- Fallback to git when local plugin doesn't exist
+    -- },
     performance = {
       rtp = {
         disabled_plugins = {

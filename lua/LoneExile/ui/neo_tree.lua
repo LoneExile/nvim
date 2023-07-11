@@ -46,7 +46,7 @@ M.wh_key = {
   },
 }
 
-M.setup = function()
+M.setup = function(_, _)
   return {
     'nvim-neo-tree/neo-tree.nvim',
     cmd = { 'Neotree' },
@@ -86,15 +86,16 @@ M.setup = function()
         },
         use_default_mappings = false,
         source_selector = {
-          winbar = false, -- toggle to show selector on winbar
-          statusline = false, -- toggle to show selector on statusline
-          show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path of the top visible node when scrolled down.
-          sources = { -- falls back to source_name if nil
-            filesystem = '  Files ',
-            buffers = '  Buffs ',
-            git_status = '  Git ',
-            diagnostics = ' 裂Diagnostics ',
-          },
+          winbar = true, -- toggle to show selector on winbar
+          -- statusline = false, -- toggle to show selector on statusline
+          -- show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path of the top visible node when scrolled down.
+          -- sources = { -- falls back to source_name if nil
+          --   filesystem = '  Files ',
+          --   buffers = '  Buffs ',
+          --   git_status = '  Git ',
+          --   diagnostics = ' 裂Diagnostics ',
+          -- },
+          highlight_tab_active = 'NeoTreeTabActivemod',
         },
         close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
         popup_border_style = 'rounded',
@@ -285,7 +286,7 @@ M.setup = function()
               --"thumbs.db"
             },
           },
-          follow_current_file = true, -- This will find and focus the file in the active buffer every
+          follow_current_file = { enable = true }, -- This will find and focus the file in the active buffer every
           -- time the current file is changed while the tree is open.
           group_empty_dirs = false, -- when true, empty folders will be grouped together
           hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree
@@ -310,7 +311,7 @@ M.setup = function()
           },
         },
         buffers = {
-          follow_current_file = true, -- This will find and focus the file in the active buffer every
+          follow_current_file = { enable = true }, -- This will find and focus the file in the active buffer every
           -- time the current file is changed while the tree is open.
           group_empty_dirs = true, -- when true, empty folders will be grouped together
           show_unloaded = true,

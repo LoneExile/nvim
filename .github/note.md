@@ -14,6 +14,10 @@
 
 `:set ls=0` **hide laststatus**
 
+`:m0` **move current line to line 0**
+
+`:'<,'>norm @q` **run macro q on selected lines (V-LINE Mode)**
+
 ---
 
 Counting time elapsed in Lua

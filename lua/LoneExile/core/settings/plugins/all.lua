@@ -57,6 +57,7 @@ return {
   -- NOTE: no need impatient.nvim anymore
   -- https://github.com/folke/lazy.nvim/issues/21#issuecomment-1359545487
   { 'dstein64/vim-startuptime', true },
+  { 'tomiis4/Hypersonic.nvim', false },
 
   -- Other
   { 'glacambre/firenvim', true },

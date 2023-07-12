@@ -1,4 +1,8 @@
-**_WARNING: This configuration is quite disorganized and riddled with bugs._**
+# Note
+
+some note about nvim, in case I forget it
+
+## CMD and snippet
 
 `:'<,'>s/[word-to-remove]/[word-to-replace]` -> **search and replace**
 
@@ -20,7 +24,7 @@
 
 ---
 
-Counting time elapsed in Lua
+- Counting time elapsed in Lua
 
 ```lua
 local function some_function()
@@ -34,5 +38,27 @@ local end_time = os.clock()
 local elapsed_time_seconds = end_time - start_time
 local elapsed_time_milliseconds = elapsed_time_seconds * 1000
 print("The function took " .. elapsed_time_milliseconds .. " milliseconds to run.")
+
+```
+
+- log to file
+
+```lua
+local inputAsString = vim.inspect(input)
+
+-- Get the path to the Neovim configuration directory
+local configDir = vim.fn.stdpath('config')
+
+-- Create a file path
+local filePath = configDir .. "/output.txt"
+
+-- Open a file in write mode
+local file = io.open(filePath, "w")
+
+-- Write the string to the file
+file:write(inputAsString)
+
+-- Close the file
+file:close()
 
 ```

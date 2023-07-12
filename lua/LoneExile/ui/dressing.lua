@@ -12,6 +12,8 @@ M.setup = function()
       end
       dressing.setup({
         input = {
+          winhighlight = 'DressingInputBG',
+
           -- Set to false to disable the vim.ui.input implementation
           enabled = true,
 

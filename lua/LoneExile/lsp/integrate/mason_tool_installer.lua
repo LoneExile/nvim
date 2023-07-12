@@ -52,6 +52,7 @@ M.setup = function(_, _)
           'js-debug-adapter', -- JavaScript, TypeScript
           'codelldb', -- Rust
           'delve', -- Go
+          'go-debug-adapter', -- Go
 
           -- FORMATTER
           'stylua',

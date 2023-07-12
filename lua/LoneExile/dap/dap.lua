@@ -82,6 +82,7 @@ M.setup = function(_, location)
       require(location .. '.settings.node').setup(dap)
       require(location .. '.settings.csharp').setup(dap)
       require(location .. '.settings.rust').setup(dap)
+      -- require(location .. '.settings.go').setup(dap)
     end,
   }
 end

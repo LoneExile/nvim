@@ -102,6 +102,7 @@ M.setup = function(_, _)
         enable_git_status = true,
         enable_diagnostics = true,
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
+        enable_normal_mode_for_inputs = true,
         sort_function = nil, -- use a custom function for sorting files and directories in the tree
         -- sort_function = function (a,b)
         --       if a.type == b.type then

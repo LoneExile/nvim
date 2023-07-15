@@ -42,7 +42,7 @@ M.setup = function()
           },
         },
         ignore = {
-          buftype = { 'quickfix' },
+          buftype = { 'quickfix', 'nofile' },
           filetype = {
             'toggleterm',
             'neo-tree',
@@ -55,6 +55,7 @@ M.setup = function()
             'dapui_stacks',
             'dapui_breakpoints',
             'dapui_scopes',
+            'neotest-summary',
           },
         },
         animation = {

@@ -68,6 +68,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "9ab9b0b894b2388a9dbcdee5f00ce72e25d85bf9" },
   "nvim-window-picker": { "branch": "main", "commit": "6e9875711b9d5cefcf77cc6e30dcce53135b9cc5" },
   "obsidian.nvim": { "branch": "main", "commit": "0077ae7cb2fcf22d118da4f2a00ac3153e0c6aae" },
+  "oil.nvim": { "branch": "master", "commit": "c080379a4de5cfdeccefc39d0d694865ff81c33c" },
   "plenary.nvim": { "branch": "master", "commit": "bda256fab0eb66a15e8190937e417e6a14ee5d72" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "refactoring.nvim": { "branch": "master", "commit": "56b747d1be0aa5cecddf85e6f3ca2aed6797edef" },

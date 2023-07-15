@@ -111,7 +111,7 @@ return {
   { 'nvim-tree/nvim-tree.lua', false },
   { 'folke/noice.nvim', false },
   { 'rcarriga/nvim-notify', true },
-  { 'stevearc/oil.nvim', false },
+  { 'stevearc/oil.nvim', true },
   { 'ahmedkhalf/project.nvim', true },
   { 'folke/todo-comments.nvim', true },
   { 'folke/twilight.nvim', true },

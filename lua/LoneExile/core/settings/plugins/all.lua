@@ -24,6 +24,7 @@ return {
   { 'nvchad/nvim-colorizer.lua', true },
   { 'max397574/colortils.nvim', true },
   { 'nvim-neotest/neotest', true },
+  { 'andythigpen/nvim-coverage', true },
 
   { 'olexsmir/gopher.nvim', true },
 

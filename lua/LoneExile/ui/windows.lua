@@ -47,6 +47,7 @@ M.setup = function()
             'toggleterm',
             'neo-tree',
             'lspsagaoutline',
+            'sagaoutline',
             'spectre_panel',
             'DiffviewFiles',
             'dap-repl',

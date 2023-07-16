@@ -11,15 +11,15 @@ M.wh_key = {
     ['d'] = { '<cmd>Lspsaga peek_definition<CR>', 'Goto Definition', mode = { 'n' } },
     ['p'] = { '<cmd>Lspsaga peek_type_definition<CR>', 'Peek type definition', mode = { 'n' } },
     ['s'] = { vim.lsp.buf.signature_help, 'show signature help', mode = { 'n' } },
-    ['r'] = { '<cmd>Lspsaga lsp_finder<CR>', 'Goto references', mode = { 'n' } },
+    ['r'] = { '<cmd>Lspsaga finder<CR>', 'Goto references', mode = { 'n' } },
     ['R'] = { '<cmd>Lspsaga rename<CR>', 'rename', mode = { 'n' } },
     ['q'] = { '<cmd>Lspsaga code_action<CR>', 'Code action', mode = { 'n', 'v' } },
     ['j'] = { '<cmd>Lspsaga diagnostic_jump_next<CR>', 'Next diagnostic', mode = { 'n' } },
     ['k'] = { '<cmd>Lspsaga diagnostic_jump_prev<CR>', 'Prev diagnostic', mode = { 'n' } },
-    ['D'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration', mode = { 'n' } },
     ['o'] = { '<cmd>Lspsaga goto_definition<cr>', 'Goto Implementation', mode = { 'n' } },
-    ['I'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation', mode = { 'n' } },
     ['l'] = { '<cmd>Lspsaga show_line_diagnostics<cr>', 'Show line diagnostics', mode = { 'n' } },
+    ['D'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration', mode = { 'n' } },
+    ['I'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation', mode = { 'n' } },
   },
 }
 
@@ -56,14 +56,14 @@ M.setup = function(_, _)
           tabe = 't',
           quit = { 'q', '<ESC>' },
         },
-        definition = {
-          edit = '<space>oo',
-          vsplit = '<space>ov',
-          split = '<space>os',
-          tabe = '<space>ot',
-          quit = 'q',
-          close = '<Esc>',
-        },
+        -- definition = {
+        --   edit = '<space>oo',
+        --   vsplit = '<space>ov',
+        --   split = '<space>os',
+        --   tabe = '<space>ot',
+        --   quit = 'q',
+        --   close = '<Esc>',
+        -- },
         code_action = {
           num_shortcut = true,
           keys = {

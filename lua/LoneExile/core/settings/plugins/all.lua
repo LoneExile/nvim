@@ -79,7 +79,7 @@ return {
   -- AI
   { 'jackMort/ChatGPT.nvim', true },
   { 'zbirenbaum/copilot.lua', true },
-  { 'zbirenbaum/copilot-cmp', true },
+  { 'zbirenbaum/copilot-cmp', false },
 
   -- LSP
   { 'neovim/nvim-lspconfig', true },

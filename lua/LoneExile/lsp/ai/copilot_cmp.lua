@@ -3,7 +3,7 @@ local M = {}
 M.setup = function(_, _)
   return {
     'zbirenbaum/copilot-cmp',
-    event = { 'BufReadPre', 'InsertEnter' },
+    event = { 'InsertEnter', 'LspAttach' },
     dependencies = { 'copilot.lua' },
     config = function()
       local status, cmp = pcall(require, 'copilot_cmp')
@@ -11,6 +11,8 @@ M.setup = function(_, _)
         return
       end
       cmp.setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
         method = 'getCompletionsCycling',
         force_autofmt = true,
         formatters = {

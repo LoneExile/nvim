@@ -53,6 +53,7 @@ M.setup = function(_, _)
           'codelldb', -- Rust
           'delve', -- Go
           'go-debug-adapter', -- Go
+          'debugpy', -- Python
 
           -- FORMATTER
           'stylua',

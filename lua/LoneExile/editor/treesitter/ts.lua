@@ -7,7 +7,6 @@ M.setup = function(_, location)
     dependencies = {
       'JoosepAlviste/nvim-ts-context-commentstring',
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'mrjones2014/nvim-ts-rainbow',
       'RRethy/nvim-treesitter-textsubjects',
       'andymass/vim-matchup',
     },
@@ -88,27 +87,6 @@ M.setup = function(_, location)
           config = commentConfig,
         },
 
-        -- **nvim-ts-rainbow**
-        rainbow = {
-          enable = true,
-          -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-          extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-          max_file_lines = nil, -- Do not enable for files with more than n lines, int
-          -- termcolors = {} -- table of colour name strings
-          colors = {
-            '#68a0b0',
-            '#946EaD',
-            '#c7aA6D',
-            'Gold',
-            'Orchid',
-            'DodgerBlue',
-            'Cornsilk',
-            'Salmon',
-            'LawnGreen',
-          },
-          disable = { 'html' },
-        },
-
         -- ** textobjects **
         textobjects = tsTextObjects,
 
@@ -132,7 +110,6 @@ M.setup = function(_, location)
           disable = { 'c', 'ruby' }, -- optional, list of language that will be disabled
           -- [options]
         },
-
         -- ** markid ** better highlight (currently suck!?)
         -- markid = { enable = false },
       })

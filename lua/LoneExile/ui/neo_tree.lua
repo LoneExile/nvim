@@ -75,15 +75,15 @@ M.setup = function(_, _)
       -- vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
 
       neoTree.setup({
-        event_handlers = {
-          {
-            event = 'file_opened',
-            handler = function(--[[ file_path ]])
-              --auto close
-              require('neo-tree').close_all()
-            end,
-          },
-        },
+        -- event_handlers = {
+        --   {
+        --     event = 'file_opened',
+        --     handler = function(--[[ file_path ]])
+        --       --auto close
+        --       require('neo-tree').close_all()
+        --     end,
+        --   },
+        -- },
         use_default_mappings = false,
         source_selector = {
           winbar = true, -- toggle to show selector on winbar
@@ -177,7 +177,7 @@ M.setup = function(_, _)
             -- },
             ['<2-LeftMouse>'] = 'open',
             ['<cr>'] = 'open',
-            ['<esc>'] = 'revert_preview',
+            -- ['<esc>'] = 'revert_preview',
             ['P'] = { 'toggle_preview', config = { use_float = true } },
             ['S'] = 'open_split',
             ['s'] = 'open_vsplit',
@@ -288,6 +288,8 @@ M.setup = function(_, _)
             },
           },
           follow_current_file = { enable = true }, -- This will find and focus the file in the active buffer every
+          -- follow_current_file = true,
+
           -- time the current file is changed while the tree is open.
           group_empty_dirs = false, -- when true, empty folders will be grouped together
           hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree

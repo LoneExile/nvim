@@ -75,6 +75,7 @@ return {
   { 'nvim-treesitter/nvim-treesitter-context', true },
   { 'lukas-reineke/indent-blankline.nvim', true },
   { 'Wansmer/treesj', true },
+  { 'HiPhish/rainbow-delimiters.nvim', true },
 
   -- AI
   { 'jackMort/ChatGPT.nvim', true },

@@ -4,11 +4,15 @@ some note about nvim, in case I forget it
 
 ## CMD and snippet
 
-`:'<,'>s/[word-to-remove]/[word-to-replace]/g` -> **search and replace (`/g` is global)**
+### Neovim
+
+`:'<,'>s/[word-to-remove]/[word-to-replace]/g` -> **search and replace (`/g` is
+global)**
 
 `:g/[word-to-remove]/d` -> **delete all lines that contain [word-to-remove]**
 
-`:g!/^[word-to-remove]/d` -> **delete all lines that don't start with [word-to-remove]**
+`:g!/^[word-to-remove]/d` -> **delete all lines that don't start with
+[word-to-remove]**
 
 `:w !sudo tee %` -> **write sudo**
 
@@ -71,15 +75,43 @@ file:close()
 
 ---
 
-`:%s/[word-to-remove]/[word-to-replace]/g` -> **search and replace in whole file**
+`:%s/[word-to-remove]/[word-to-replace]/g` -> **search and replace in whole
+file**
 
-`:%s/[word-to-remove]/[word-to-replace]/gc` -> **search and replace in whole file with confirmation**
+`:%s/[word-to-remove]/[word-to-replace]/gc` -> **search and replace in whole
+file with confirmation**
 
-`:%s/[word-to-remove]/[word-to-replace]/gci` -> **search and replace in whole file with confirmation and ignore case**
+`:%s/[word-to-remove]/[word-to-replace]/gci` -> **search and replace in whole
+file with confirmation and ignore case**
 
-`:%s/[word-to-remove]/[word-to-replace]/gcI` -> **search and replace in whole file with confirmation and ignore case and case sensitive**
+`:%s/[word-to-remove]/[word-to-replace]/gcI` -> **search and replace in whole
+file with confirmation and ignore case and case sensitive**
 
-`:%s/[word-to-remove]/[word-to-replace]/gcIe` -> **search and replace in whole file with confirmation and ignore case and case sensitive and whole word**
+`:%s/[word-to-remove]/[word-to-replace]/gcIe` -> **search and replace in whole
+file with confirmation and ignore case and case sensitive and whole word**
 
-`:%s/[word-to-remove]/[word-to-replace]/gcIew` -> **search and replace in whole file with confirmation and ignore case and case sensitive and whole word and match whole word**
+`:%s/[word-to-remove]/[word-to-replace]/gcIew` -> **search and replace in whole
+file with confirmation and ignore case and case sensitive and whole word and
+match whole word**
 
+### Tmux
+
+`Ctrl + b` -> **prefix**
+
+`prefix + s` -> **show all session**
+
+`prefix + d` -> **detach session**
+
+`prefix + w` -> **show all window**
+
+`prefix + :` -> **command mode**
+
+`:new -s mysession` -> **create new session**
+
+`prefix + q` -> **show pane number**
+
+`prefix + ctrl +  [arrow key]` -> **resize pane**
+
+`prefix + %` -> **split vertically (or `|`)**
+
+`prefix + "` -> **split horizontally (or `-`)**

@@ -28,7 +28,8 @@ M.setup = function()
         end,
         -- Path passed to `get_venvs`.
         -- TODO: add PATH for windows
-        venvs_path = vim.fn.expand('~/.pyenv/versions'),
+        -- TODO: dinamically get the path e.g. pyenv, asdf, etc
+        venvs_path = vim.fn.expand('~/.asdf/installs/python'), -- ~/.pyenv/versions
         -- Something to do after setting an environment
         post_set_venv = function()
           vim.cmd('LspRestart')

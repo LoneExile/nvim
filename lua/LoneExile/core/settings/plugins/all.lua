@@ -4,7 +4,6 @@ return {
   { 'hrsh7th/nvim-cmp', true },
 
   -- Dap
-  { 'mxsdev/nvim-dap-vscode-js', true },
   { 'leoluz/nvim-dap-go', true },
   { 'mfussenegger/nvim-dap-python', true },
   { 'mfussenegger/nvim-dap', true },

@@ -75,26 +75,24 @@ M.setup = function(_, _)
       -- vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
 
       neoTree.setup({
-        -- event_handlers = {
-        --   {
-        --     event = 'file_opened',
-        --     handler = function(--[[ file_path ]])
-        --       --auto close
-        --       require('neo-tree').close_all()
-        --     end,
-        --   },
-        -- },
+        event_handlers = {
+          {
+            event = 'file_opened',
+            handler = function(_)
+              vim.cmd('Neotree close')
+            end,
+          },
+        },
         use_default_mappings = false,
         source_selector = {
           winbar = true, -- toggle to show selector on winbar
-          -- statusline = false, -- toggle to show selector on statusline
-          -- show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path of the top visible node when scrolled down.
-          -- sources = { -- falls back to source_name if nil
-          --   filesystem = '  Files ',
-          --   buffers = '  Buffs ',
-          --   git_status = '  Git ',
-          --   diagnostics = ' 裂Diagnostics ',
-          -- },
+          statusline = false, -- toggle to show selector on statusline
+          sources = {
+            { source = 'filesystem' },
+            { source = 'buffers' },
+            { source = 'git_status' },
+            -- { source = 'document_symbols' },
+          },
           highlight_tab_active = 'NeoTreeTabActivemod',
         },
         close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
@@ -146,21 +144,6 @@ M.setup = function(_, _)
             trailing_slash = false,
             use_git_status_colors = true,
             highlight = 'NeoTreeFileName',
-          },
-          git_status = {
-            symbols = {
-              -- Change type
-              added = '', -- or "✚", but this is redundant info if you use git_status_colors on the name
-              modified = '', -- or "", but this is redundant info if you use git_status_colors on the name
-              deleted = '✖', -- this can only be used in the git_status source
-              renamed = '', -- this can only be used in the git_status source
-              -- Status type
-              untracked = ' ',
-              ignored = ' ',
-              unstaged = ' ',
-              staged = ' ',
-              conflict = ' ',
-            },
           },
         },
         window = {
@@ -287,8 +270,11 @@ M.setup = function(_, _)
               --"thumbs.db"
             },
           },
-          follow_current_file = { enable = true }, -- This will find and focus the file in the active buffer every
-          -- follow_current_file = true,
+          follow_current_file = {
+            enabled = true, -- This will find and focus the file in the active buffer every time
+            --               -- the current file is changed while the tree is open.
+            leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+          },
 
           -- time the current file is changed while the tree is open.
           group_empty_dirs = false, -- when true, empty folders will be grouped together

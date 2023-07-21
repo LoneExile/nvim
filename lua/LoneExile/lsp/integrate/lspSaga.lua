@@ -26,7 +26,7 @@ M.wh_key = {
 M.setup = function(_, _)
   return {
     'glepnir/lspsaga.nvim',
-    -- commit = '707c9399b1cbe063c6942604209674edf1b3cf2e',
+    -- commit = '06a131f8ed5eab8c8aaa9b20586ceca6be707b7a',
     event = { 'BufRead' },
     dependencies = { 'neovim/nvim-lspconfig' },
     keys = {

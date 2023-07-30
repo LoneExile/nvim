@@ -55,11 +55,11 @@ local format = {
     extra_args = { '$FILENAME' },
   }),
 
-  formatting.csharpier.with({
-    filetypes = { 'cs' },
-    command = 'dotnet-csharpier',
-    extra_args = { '--write-stdout' },
-  }),
+  -- formatting.csharpier.with({
+  --   filetypes = { 'cs' },
+  --   command = 'dotnet-csharpier',
+  --   extra_args = { '--write-stdout' },
+  -- }),
   -- formatting.clang_format.with({
   --   filetypes = { 'cs' },
   -- }),

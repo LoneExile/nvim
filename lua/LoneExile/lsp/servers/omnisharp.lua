@@ -1,6 +1,6 @@
 local M = {}
 
-local omnisharp_path = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'packages/omnisharp/OmniSharp.dll'
+local omnisharp_path = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'packages/omnisharp/libexec/OmniSharp.dll'
 
 M.setup = function(lspconfig)
   lspconfig.omnisharp.setup({
@@ -23,7 +23,7 @@ M.setup = function(lspconfig)
 
     -- Specifies whether 'using' directives should be grouped and sorted during
     -- document formatting.
-    organize_imports_on_format = false,
+    organize_imports_on_format = true,
 
     -- Enables support for showing unimported types and unimported extension
     -- methods in completion lists. When committed, the appropriate using
@@ -45,16 +45,6 @@ M.setup = function(lspconfig)
     init_options = {},
 
     -- https://github.com/OmniSharp/omnisharp-roslyn/issues/2483
-    on_attach = function(client, _)
-      local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
-      for i, v in ipairs(tokenModifiers) do
-        tokenModifiers[i] = v:gsub(' ', '_')
-      end
-      local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
-      for i, v in ipairs(tokenTypes) do
-        tokenTypes[i] = v:gsub(' ', '_')
-      end
-    end,
   })
 end
 return M

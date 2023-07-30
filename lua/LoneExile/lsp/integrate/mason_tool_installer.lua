@@ -61,7 +61,7 @@ M.setup = function(_, _)
           'prettier',
           'black',
           'beautysh',
-          'csharpier',
+          -- 'csharpier', -- C#
           'markdownlint',
           'yamlfmt',
           'sql-formatter',

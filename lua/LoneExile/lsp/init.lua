@@ -113,8 +113,8 @@ M.setup = function(_, location)
         'jsonls', -- json
         'yamlls', -- yaml
 
-        'csharp_ls', -- c#
-        -- 'omnisharp', -- c#
+        -- 'csharp_ls', -- c#
+        'omnisharp', -- c#
 
         'rust_analyzer', -- rust
         -- 'lemminx', -- xml

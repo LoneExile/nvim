@@ -6,7 +6,7 @@ M.wh_key = {
       name = '+Execute',
       a = {
         name = '+AI',
-        p = { '<cmd>Copilot panel<cr>', 'Copilot', mode = { 'n' } },
+        p = { '<cmd>Copilot panel<cr>', 'Copilot panel', mode = { 'n' } },
       },
     },
   },
@@ -63,6 +63,7 @@ M.setup = function(settings, _)
               accept = '<M-a>',
               accept_word = '<M-w>',
               accept_line = '<M-l>',
+              -- accept_line = "<D-'>",
               next = '<M-.>',
               prev = '<M-,>',
               dismiss = '<C-e>',

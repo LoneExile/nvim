@@ -116,7 +116,11 @@ M.transparent = function()
   vim.cmd([[highlight NotifyTRACEBody guifg=#c0caf5 guibg=none]])
   vim.cmd([[highlight NotifyTRACEBorder guifg=#48416a guibg=none]])
 
+  -- Dressing
   vim.cmd([[highlight DressingInputBG ctermbg=none guibg=none gui=bold]])
+
+  -- Trouble
+  vim.cmd([[highlight TroubleNormal ctermbg=none guibg=none]])
 end
 
 return M

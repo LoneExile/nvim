@@ -86,6 +86,7 @@ return {
   { 'j-hui/fidget.nvim', true },
   { 'lvimuser/lsp-inlayhints.nvim', false },
   { 'glepnir/lspsaga.nvim', true },
+  { 'folke/trouble.nvim', true },
   { 'VidocqH/lsp-lens.nvim', false },
   { 'williamboman/mason.nvim', true },
   { 'williamboman/mason-lspconfig.nvim', true },

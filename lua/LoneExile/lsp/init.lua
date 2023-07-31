@@ -9,7 +9,7 @@ M.wh_key = {
     l = {
       name = 'LSP',
       f = { '<cmd>FormatCurrentBuf<CR>', 'Format', mode = { 'n' } },
-      d = { vim.diagnostic.setloclist, 'Diagnostics', mode = { 'n' } },
+      -- d = { vim.diagnostic.setloclist, 'Diagnostics', mode = { 'n' } },
       l = {
         name = 'LSP',
         r = { '<cmd>LspRestart<cr>', 'Restart', mode = { 'n' } },

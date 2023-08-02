@@ -10,6 +10,11 @@ function M.setup(dap)
     command = DEBUGGER_LOCATION,
     args = { '--interpreter=vscode' },
   }
+  dap.adapters.netcoredbg = {
+    type = 'executable',
+    command = DEBUGGER_LOCATION,
+    args = { '--interpreter=vscode' },
+  }
 
   -- Configuration
   dap.configurations.cs = {

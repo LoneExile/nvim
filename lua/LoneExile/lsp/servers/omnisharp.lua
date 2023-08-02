@@ -3,7 +3,10 @@ local M = {}
 local omnisharp_path = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'packages/omnisharp/libexec/OmniSharp.dll'
 
 M.setup = function(lspconfig)
+  local handler = require('omnisharp_extended').handler
   lspconfig.omnisharp.setup({
+    handlers = { ['textDocument/definition'] = handler },
+
     cmd = { 'dotnet', omnisharp_path },
     -- Enables support for reading code style, naming convention and analyzer
     -- settings from .editorconfig.

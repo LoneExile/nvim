@@ -101,6 +101,7 @@ return {
   { 'jose-elias-alvarez/typescript.nvim', true },
   { 'ray-x/go.nvim', false },
   { 'laytan/tailwind-sorter.nvim', false },
+  { 'MaximilianLloyd/tw-values.nvim', true },
   { 'Hoffs/omnisharp-extended-lsp.nvim', true },
 
   -- UI

@@ -115,3 +115,48 @@ match whole word**
 `prefix + %` -> **split vertically (or `|`)**
 
 `prefix + "` -> **split horizontally (or `-`)**
+
+---
+
+#### Vimgrep
+
+`:vim[grep][!] /{pattern}/[g][j][f] {file}` **vim grep**
+
+`{file}` **'%' for current file, '\*' for all files in current directory, '**'
+for all files in current directory and subdirectories\*\*
+
+`[g]` **global flag, search all lines**
+
+`[j]` **jump flag, jump to first match**
+
+`[f]` **file flag, list files with matches**
+
+`:copen` **open quickfix window**
+
+`:ccl[ose]` **close quickfix window**
+
+`:cn[ext]` **go to next error**
+
+`:cp[revious]` **go to previous error**
+
+`:cfirst` **go to first error**
+
+`:clast` **go to last error**
+
+`:cnewer {file}` **list newer errors**
+
+`:colder {file}` **list older errors**
+
+`:cfile {file}` **list errors for {file}**
+
+`:cgetfile {nr}` **list errors for {nr}**
+
+`:cgetbuffer {nr}` **list errors for {nr}**
+
+`:caddfile {file}` **add errors for {file}**
+
+`:caddbuffer {nr}` **add errors for {nr}**
+
+`:cfdo[!] {cmd}` **execute {cmd} for all errors**
+
+`:cdo[!] {cmd}` \*\*execute {cmd} for current err

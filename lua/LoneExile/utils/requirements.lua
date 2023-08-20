@@ -10,6 +10,7 @@ end
 local M = {}
 
 M.CURRENTOS = vim.loop.os_uname().sysname
+M.ISWSL = vim.fn.has('wsl') == 1 -- os.getenv('WSL_DISTRO_NAME') ~= nil
 
 M.SETPYENV = function()
   local python3 = io.popen('which python3')
@@ -25,19 +26,47 @@ M.SETPYENV = function()
   end
 end
 
-if M.CURRENTOS == 'Linux' then
+--BUG: clipboard not working
+-- vim.g.clipboard = {
+--   name = 'WslClipboard',
+--   copy = {
+--     ['+'] = 'clip.exe',
+--     ['*'] = 'clip.exe',
+--   },
+--   paste = {
+--     ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--     ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--   },
+--   cache_enabled = 0,
+-- }
+
+--NOTE: https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
+
+if M.CURRENTOS == 'Linux' and M.ISWSL then
   M.SETPYENV()
   M.TRANPARENT = true
-  vim.opt.clipboard = 'unnamedplus' -- allows neovim to access the system clipboard
-end
-
-if M.CURRENTOS == 'Darwin' then
+  vim.g.clipboard = {
+    name = 'wsl',
+    copy = {
+      ['+'] = 'win32yank.exe -i --crlf',
+      ['*'] = 'win32yank.exe -i --crlf',
+    },
+    paste = {
+      ['+'] = 'win32yank.exe -o --lf',
+      ['*'] = 'win32yank.exe -o --lf',
+    },
+    cache_enabled = 0,
+  }
+  vim.opt.clipboard = 'unnamedplus'
+elseif M.CURRENTOS == 'Linux' then
   M.SETPYENV()
   M.TRANPARENT = true
   vim.opt.clipboard = 'unnamedplus'
-end
-
-if M.CURRENTOS == 'windows' or M.CURRENTOS == 'windows_nt' then
+elseif M.CURRENTOS == 'Darwin' then
+  M.SETPYENV()
+  M.TRANPARENT = true
+  vim.opt.clipboard = 'unnamedplus'
+elseif M.CURRENTOS == 'windows' or M.CURRENTOS == 'windows_nt' then
   M.TRANPARENT = false
   vim.g.clipboard = {
     name = 'win32yank',

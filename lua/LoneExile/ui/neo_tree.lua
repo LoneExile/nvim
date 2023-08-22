@@ -68,14 +68,14 @@ M.setup = function(_, _)
       end
 
       neoTree.setup({
-        event_handlers = {
-          {
-            event = 'file_opened',
-            handler = function(_)
-              vim.cmd('Neotree close')
-            end,
-          },
-        },
+        -- event_handlers = {
+        --   {
+        --     event = 'file_opened',
+        --     handler = function(_)
+        --       vim.cmd('Neotree close')
+        --     end,
+        --   },
+        -- },
         use_default_mappings = false,
         source_selector = {
           winbar = true, -- toggle to show selector on winbar

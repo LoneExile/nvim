@@ -47,7 +47,7 @@ M.setup = function(_, location)
 
       local icons = {
         breakpoint = {
-          text = '',
+          text = ' ',
           texthl = 'DiagnosticError',
           linehl = '',
           numhl = '',

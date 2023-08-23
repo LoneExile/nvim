@@ -53,7 +53,7 @@ M.setup = function(_, location)
           numhl = '',
         },
         breakpoint_rejected = {
-          text = '',
+          text = '󰃤 ',
           texthl = 'DiagnosticHint',
           linehl = '',
           numhl = '',
@@ -65,7 +65,7 @@ M.setup = function(_, location)
           numhl = 'DiagnosticInfo',
         },
         breakpoint_condition = {
-          text = '',
+          text = '󰨾 ',
           texthl = 'LspSagaDiagnosticBorder',
           linehl = '',
           numhl = '',

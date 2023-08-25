@@ -26,37 +26,35 @@ M.SETPYENV = function()
   end
 end
 
---BUG: clipboard not working
--- vim.g.clipboard = {
---   name = 'WslClipboard',
---   copy = {
---     ['+'] = 'clip.exe',
---     ['*'] = 'clip.exe',
---   },
---   paste = {
---     ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
---     ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
---   },
---   cache_enabled = 0,
--- }
-
 --NOTE: https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
 
 if M.CURRENTOS == 'Linux' and M.ISWSL then
   M.SETPYENV()
   M.TRANPARENT = true
   vim.g.clipboard = {
-    name = 'wsl',
+    name = 'WslClipboard',
     copy = {
-      ['+'] = 'win32yank.exe -i --crlf',
-      ['*'] = 'win32yank.exe -i --crlf',
+      ['+'] = 'clip.exe',
+      ['*'] = 'clip.exe',
     },
     paste = {
-      ['+'] = 'win32yank.exe -o --lf',
-      ['*'] = 'win32yank.exe -o --lf',
+      ['+'] = 'pwsh.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'pwsh.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
     },
     cache_enabled = 0,
   }
+  -- vim.g.clipboard = {
+  --   name = 'wsl',
+  --   copy = {
+  --     ['+'] = 'win32yank.exe -i --crlf',
+  --     ['*'] = 'win32yank.exe -i --crlf',
+  --   },
+  --   paste = {
+  --     ['+'] = 'win32yank.exe -o --lf',
+  --     ['*'] = 'win32yank.exe -o --lf',
+  --   },
+  --   cache_enabled = 0,
+  -- }
   vim.opt.clipboard = 'unnamedplus'
 elseif M.CURRENTOS == 'Linux' then
   M.SETPYENV()

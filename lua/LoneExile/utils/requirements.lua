@@ -27,6 +27,7 @@ M.SETPYENV = function()
 end
 
 --NOTE: https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
+-- sudo ln -s "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe" "/usr /local/bin/powershell.exe"
 
 if M.CURRENTOS == 'Linux' and M.ISWSL then
   M.SETPYENV()
@@ -38,8 +39,8 @@ if M.CURRENTOS == 'Linux' and M.ISWSL then
       ['*'] = 'clip.exe',
     },
     paste = {
-      ['+'] = 'pwsh.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      ['*'] = 'pwsh.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
     },
     cache_enabled = 0,
   }

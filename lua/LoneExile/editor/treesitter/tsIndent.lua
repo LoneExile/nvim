@@ -3,6 +3,7 @@ local M = {}
 M.setup = function()
   return {
     'lukas-reineke/indent-blankline.nvim',
+    commit = '9637670896b68805430e2f72cf5d16be5b97a22a',
     event = 'BufRead',
     config = function()
       local status_ok_code, indent_blankline = pcall(require, 'indent_blankline')

@@ -128,13 +128,13 @@ M.setup = function(s, loc)
           end
         end
 
-        buf_client_names = list_registered(buf_ft, buf_client_names) or {}
-        for i, name in ipairs(buf_client_names) do
-          if name == 'copilot' then
-            table.remove(buf_client_names, i)
-            break
-          end
-        end
+        -- buf_client_names = list_registered(buf_ft, buf_client_names) or {}
+        -- for i, name in ipairs(buf_client_names) do
+        --   if name == 'copilot' then
+        --     table.remove(buf_client_names, i)
+        --     break
+        --   end
+        -- end
 
         local unique_client_names = vim.fn.uniq(buf_client_names)
         local copilot_icon = ' ' --s.utils.convert_kind_icons(s.kindIcon).Copilot

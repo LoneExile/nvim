@@ -10,7 +10,7 @@ local diagnosticsTable = {
     filetypes = { 'markdown' },
     extra_args = {
       '--stdin',
-      'c',
+      '-c',
       vim.fn.stdpath('config') .. '/resources/null-ls/.markdownlint.json',
     },
   }),

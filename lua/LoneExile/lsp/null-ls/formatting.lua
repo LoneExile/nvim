@@ -17,19 +17,17 @@ local format = {
       'html',
       'css',
       'scss',
-      'lua',
       'vue',
-      'yaml',
     },
     extra_args = { '--no-semi', '--single-quote', '--no-bracket-spacing', '--print-width', '120', '--prose-wrap', 'always' },
     disabled_filetypes = { 'lua', 'python' },
     extra_filetypes = { 'toml' },
   }),
 
-  formatting.prettier.with({
-    filetypes = { 'markdown' },
-    extra_args = { '--print-width', '80', '--prose-wrap', 'always' },
-  }),
+  -- formatting.prettier.with({
+  --   filetypes = { 'markdown' },
+  --   extra_args = { '--print-width', '80', '--prose-wrap', 'always' },
+  -- }),
 
   formatting.yamlfmt.with({
     filetypes = { 'yaml' },

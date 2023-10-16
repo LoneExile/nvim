@@ -36,6 +36,7 @@ local options = {
   -- guicursor = 'n-v-c-i:block',
   -- foldenable = true,
   -- foldmethod = 'manual',
+  mouse = '',
 }
 
 vim.opt.shortmess:append('c')

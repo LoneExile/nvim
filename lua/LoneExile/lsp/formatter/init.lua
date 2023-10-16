@@ -36,13 +36,37 @@ M.setup = function(setting, location)
       conform.setup({
         formatters_by_ft = {
           lua = { 'stylua' },
+
           -- Conform will run multiple formatters sequentially
           python = { 'isort', 'black' },
+
           -- Use a sub-list to run only the first available formatter
           javascript = { { 'prettierd', 'prettier' } },
+          typescript = { { 'prettierd', 'prettier' } },
+          typescriptreact = { { 'prettierd', 'prettier' } },
+          javascriptreact = { { 'prettierd', 'prettier' } },
+          vue = { { 'prettierd', 'prettier' } },
+          html = { { 'prettierd', 'prettier' } },
+          css = { { 'prettierd', 'prettier' } },
+          scss = { { 'prettierd', 'prettier' } },
 
           yaml = { 'yamlfmt' },
           json = { 'jq' },
+
+          bash = { 'beautysh' },
+          csh = { 'beautysh' },
+          ksh = { 'beautysh' },
+          sh = { 'beautysh' },
+          zsh = { 'beautysh' },
+
+          markdown = { 'markdownlint' },
+
+          sql = { { 'pg_format', 'sql_formatter' } },
+          plpgsql = { { 'pg_format', 'sql_formatter' } },
+
+          xml = { 'xmlformat' },
+          svg = { 'xmlformat' },
+          go = { 'gofmt', 'goimports', 'golines' },
 
           ['*'] = { 'codespell' },
           ['_'] = { 'trim_whitespace' },

@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function(setting, location)
+M.setup = function(setting, _)
   return {
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'InsertEnter' },
@@ -31,39 +31,13 @@ M.setup = function(setting, location)
         '--stdin',
       }
 
-      local status, linters = pcall(require, 'lint.linters')
-      if not status then
-        return
-      end
-
-      linters.alex = {
-        cmd = 'alex',
-        stdin = false,
-        args = { '--stdin' },
-        stream = 'stdout',
-        ignore_exitcode = true,
-        parser = function(output)
-          local diagnostics = {}
-          for line in output:gmatch('[^\r\n]+') do
-            local _, _, line_nr, col_start, col_end, msg = line:find('(%d+):(%d+)-(%d+): (.*)')
-            table.insert(diagnostics, {
-              source = 'alex',
-              range = {
-                ['start'] = { line = tonumber(line_nr) - 1, character = tonumber(col_start) - 1 },
-                ['end'] = { line = tonumber(line_nr) - 1, character = tonumber(col_end) },
-              },
-              message = msg,
-              severity = vim.lsp.protocol.DiagnosticSeverity.Warning,
-            })
-          end
-          return diagnostics
-        end,
-      }
-
       lint.linters_by_ft = {
-        -- alex
-        -- refactoring
 
+        -- # linters
+        -- alex
+
+        -- # code_actions
+        -- ## Go ##
         -- impl
         -- gomodifytags
 
@@ -75,7 +49,7 @@ M.setup = function(setting, location)
 
         go = { 'golangcilint' },
 
-        markdown = { 'markdownlint', 'alex' },
+        markdown = { 'markdownlint' },
         lua = { 'luacheck' },
 
         python = { 'ruff' },
@@ -85,10 +59,15 @@ M.setup = function(setting, location)
         sh = { 'shellcheck' },
         bash = { 'shellcheck' },
         csh = { 'shellcheck' },
+
+        groovy = { 'npm-groovy-lint' },
       }
 
-      local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
+      for ft, _ in pairs(lint.linters_by_ft) do
+        table.insert(lint.linters_by_ft[ft], 'codespell')
+      end
 
+      local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
         group = lint_augroup,
         callback = function()

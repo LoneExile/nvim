@@ -12,10 +12,10 @@ M.setup = function(setting, location)
 
       local configLoc = setting.conf_loc .. '/resources/null-ls/'
 
-      local luacheck = require('lint').linters.luacheck
+      local luacheck = lint.linters.luacheck
       luacheck.args = { '--config', configLoc .. '.luacheckrc' }
 
-      local shellcheck = require('lint').linters.shellcheck
+      local shellcheck = lint.linters.shellcheck
       shellcheck.args = {
         '--severity',
         'warning',
@@ -24,15 +24,58 @@ M.setup = function(setting, location)
         '-',
       }
 
-      local markdownlint = require('lint').linters.markdownlint
+      local markdownlint = lint.linters.markdownlint
       markdownlint.args = {
         '--config',
         configLoc .. '.markdownlint.json',
         '--stdin',
       }
 
+      local status, linters = pcall(require, 'lint.linters')
+      if not status then
+        return
+      end
+
+      linters.alex = {
+        cmd = 'alex',
+        stdin = false,
+        args = { '--stdin' },
+        stream = 'stdout',
+        ignore_exitcode = true,
+        parser = function(output)
+          local diagnostics = {}
+          for line in output:gmatch('[^\r\n]+') do
+            local _, _, line_nr, col_start, col_end, msg = line:find('(%d+):(%d+)-(%d+): (.*)')
+            table.insert(diagnostics, {
+              source = 'alex',
+              range = {
+                ['start'] = { line = tonumber(line_nr) - 1, character = tonumber(col_start) - 1 },
+                ['end'] = { line = tonumber(line_nr) - 1, character = tonumber(col_end) },
+              },
+              message = msg,
+              severity = vim.lsp.protocol.DiagnosticSeverity.Warning,
+            })
+          end
+          return diagnostics
+        end,
+      }
+
       lint.linters_by_ft = {
-        markdown = { 'markdownlint' },
+        -- alex
+        -- refactoring
+
+        -- impl
+        -- gomodifytags
+
+        javascript = { 'eslint_d' },
+        javascriptreact = { 'eslint_d' },
+        typescript = { 'eslint_d' },
+        typescriptreact = { 'eslint_d' },
+        vue = { 'eslint_d' },
+
+        go = { 'golangcilint' },
+
+        markdown = { 'markdownlint', 'alex' },
         lua = { 'luacheck' },
 
         python = { 'ruff' },

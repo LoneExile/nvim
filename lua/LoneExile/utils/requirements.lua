@@ -28,6 +28,7 @@ end
 
 --NOTE: https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
 -- sudo ln -s "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe" "/usr /local/bin/powershell.exe"
+-- sudo ln -s "/mnt/c/Windows/System32/clip.exe" "/usr/local/bin/clip.exe"
 
 if M.CURRENTOS == 'Linux' and M.ISWSL then
   M.SETPYENV()

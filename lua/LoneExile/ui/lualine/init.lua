@@ -40,6 +40,7 @@ M.setup = function(settings, location)
               components.diff,
               components.branch,
               components.filetype,
+              components.python_env,
             },
             lualine_z = { 'progress' },
           },

@@ -9,7 +9,7 @@ M.setup = function(root, set_loc)
   local settings = {
     root = root,
     theme = { plugin = 'folke/tokyonight.nvim', color = 'tokyonight-storm' },
-    tranparent = true,
+    transparent = true,
     conf_loc = conf_loc,
     data_loc = data_loc,
 

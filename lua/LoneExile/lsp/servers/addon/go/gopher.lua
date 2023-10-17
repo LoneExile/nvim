@@ -29,6 +29,7 @@ M.setup = function()
           gotests = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'bin/gotests',
           impl = 'impl',
           iferr = 'iferr',
+          dlv = 'dlv',
         },
       })
     end,

@@ -10,7 +10,6 @@ return {
   { 'williamboman/mason.nvim', true },
   { 'williamboman/mason-lspconfig.nvim', true },
   -- { 'WhoIsSethDaniel/mason-tool-installer.nvim', true },
-  -- { 'jose-elias-alvarez/null-ls.nvim', true },
   { 'folke/lua-dev.nvim', true },
 
   -- Editor

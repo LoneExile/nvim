@@ -6,7 +6,7 @@ M.setup = function(settings, _)
     config = function()
       pcall(vim.cmd, 'colorscheme ' .. settings.theme.color)
 
-      if settings.tranparent then
+      if settings.transparent then
         M.transparent()
       end
     end,

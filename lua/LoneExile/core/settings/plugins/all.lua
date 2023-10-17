@@ -93,7 +93,6 @@ return {
   { 'WhoIsSethDaniel/mason-tool-installer.nvim', true },
   { 'SmiteshP/nvim-navbuddy',                    false },
   { 'SmiteshP/nvim-navic',                       false },
-  -- { 'jose-elias-alvarez/null-ls.nvim', true },
   { 'stevearc/conform.nvim',                     true },
   { 'mfussenegger/nvim-lint',                    true },
 

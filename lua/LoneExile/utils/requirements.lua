@@ -32,7 +32,7 @@ end
 
 if M.CURRENTOS == 'Linux' and M.ISWSL then
   M.SETPYENV()
-  M.TRANPARENT = true
+  M.TRANSPARENT = true
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
@@ -60,14 +60,14 @@ if M.CURRENTOS == 'Linux' and M.ISWSL then
   vim.opt.clipboard = 'unnamedplus'
 elseif M.CURRENTOS == 'Linux' then
   M.SETPYENV()
-  M.TRANPARENT = true
+  M.TRANSPARENT = true
   vim.opt.clipboard = 'unnamedplus'
 elseif M.CURRENTOS == 'Darwin' then
   M.SETPYENV()
-  M.TRANPARENT = true
+  M.TRANSPARENT = true
   vim.opt.clipboard = 'unnamedplus'
 elseif M.CURRENTOS == 'windows' or M.CURRENTOS == 'windows_nt' then
-  M.TRANPARENT = false
+  M.TRANSPARENT = false
   vim.g.clipboard = {
     name = 'win32yank',
     copy = {

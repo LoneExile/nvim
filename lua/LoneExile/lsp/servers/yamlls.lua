@@ -9,10 +9,13 @@ M.setup = function(lspconfig)
   lspconfig.yamlls.setup({
     settings = {
       yaml = {
+        schemaStore = {
+          enable = false,
+          url = '',
+        },
         schemas = schemastore.yaml.schemas(),
       },
     },
   })
 end
-
 return M

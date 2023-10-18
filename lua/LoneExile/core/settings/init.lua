@@ -19,7 +19,6 @@ M.setup = function(root, set_loc)
     ------------------------------------------------------------------
     colors = colors,
     kindIcon = require(set_path .. 'kind').kindIcon(colors),
-    -- kind_icons = require(set_path .. 'kind').kind_icons,
     wh_mappings = require(set_path .. 'wh_mappings').setup(root),
   }
   return settings

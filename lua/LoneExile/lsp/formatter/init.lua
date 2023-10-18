@@ -68,7 +68,7 @@ M.setup = function(setting, _)
           svg = { 'xmlformat' },
           go = { 'gofmt', 'goimports', 'golines' },
 
-          ['*'] = { 'codespell' },
+          -- ['*'] = { 'codespell' },
           ['_'] = { 'trim_whitespace' },
         },
 

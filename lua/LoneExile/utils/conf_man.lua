@@ -136,4 +136,25 @@ M.convert_kind_icons = function(kindIcon)
   return kind_icons
 end
 
+-- e.g. setup_mappings(['<leader>'],wh_key.wh_mappings,'')
+M.setup_mappings = function(keyset, mappings, prefix)
+  prefix = prefix or '' -- initialize prefix to an empty string if not provided
+  for key, mapping in pairs(mappings) do
+    if type(mapping) == 'table' and mapping[1] then
+      -- This is a mapping table with a mapping definition
+      local lhs = keyset .. prefix .. key
+      local rhs = mapping[1]
+      local desc = mapping[2]
+      local modes = mapping.mode or { 'n' } -- default to 'n' if mode isn't specified
+      local options = { noremap = true, silent = true, desc = desc }
+      for _, mode in ipairs(modes) do
+        vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+      end
+    elseif type(mapping) == 'table' then
+      -- This is a nested table, recurse with the updated prefix
+      M.setup_mappings(mapping, prefix .. key)
+    end
+  end
+end
+
 return M

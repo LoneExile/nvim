@@ -37,7 +37,7 @@ M.setup = function(root)
         u = { '<cmd>Lazy update<cr>', 'Update', mode = { 'n' } },
         l = { '<cmd>Lazy<cr>', 'Lazy', mode = { 'n' } },
         L = { '<cmd>Lazy log<cr>', 'Log', mode = { 'n' } },
-        r = { '<cmd>Lazy resore<cr>', 'Restore', mode = { 'n' } },
+        r = { '<cmd>Lazy restore<cr>', 'Restore', mode = { 'n' } },
       },
       N = {
         name = 'Neovim',

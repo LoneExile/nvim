@@ -1,5 +1,7 @@
 return {
 
+  -- stylua: ignore start/end
+
   -- CMP
   { 'hrsh7th/nvim-cmp',                          true },
 

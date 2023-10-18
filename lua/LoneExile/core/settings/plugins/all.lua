@@ -1,4 +1,4 @@
--- stylua: ignore start/end
+-- stylua: ignore
 
 return {
   -- CMP

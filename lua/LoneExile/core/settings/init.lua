@@ -9,7 +9,7 @@ M.setup = function(root, set_loc)
   local settings = {
     root = root,
     theme = { plugin = 'folke/tokyonight.nvim', color = 'tokyonight-storm' },
-    tranparent = true,
+    transparent = true,
     conf_loc = conf_loc,
     data_loc = data_loc,
 
@@ -19,7 +19,6 @@ M.setup = function(root, set_loc)
     ------------------------------------------------------------------
     colors = colors,
     kindIcon = require(set_path .. 'kind').kindIcon(colors),
-    -- kind_icons = require(set_path .. 'kind').kind_icons,
     wh_mappings = require(set_path .. 'wh_mappings').setup(root),
   }
   return settings

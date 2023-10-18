@@ -56,18 +56,22 @@ M.setup = function(_, _)
           'debugpy', -- Python
 
           -- FORMATTER
-          'stylua',
-          'jq',
+          'stylua', -- Lua
+          'jq', -- JSON
           'prettier',
-          'black',
+          'prettierd',
+          'black', -- Python
+          'isort', -- Python
           'beautysh',
           -- 'csharpier', -- C#
-          'markdownlint',
+          'markdownlint', -- Markdown
+          -- 'vale', -- Markdown
           'yamlfmt',
           'sql-formatter',
           'xmlformatter',
           'golines', -- Go
           'goimports', -- Go
+          'codespell',
 
           -- CODE ACTION
           'eslint_d',

@@ -21,7 +21,7 @@ M.setup = function(s, _)
         return
       end
       local background = 'Normal'
-      if s.tranparent then
+      if s.transparent then
         background = '#000000'
       end
 

@@ -65,6 +65,7 @@ M.setup = function(_, _)
         --   close = '<Esc>',
         -- },
         code_action = {
+          extend_gitsigns = true,
           num_shortcut = true,
           keys = {
             quit = 'q',
@@ -139,7 +140,7 @@ M.setup = function(_, _)
           incoming = ' ',
           outgoing = ' ',
           colors = {
-            --float window normal bakcground color
+            --float window normal background color
             normal_bg = 'none',
             --title background color
             title_bg = '#afd700',

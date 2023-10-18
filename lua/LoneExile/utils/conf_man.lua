@@ -109,7 +109,6 @@ M.get_lazy_plugins = function(data_loc)
       table.insert(lazy_plugins, plugin_name)
     end
   end
-  -- print(vim.inspect(lazy_plugins))
   return lazy_plugins
 end
 
@@ -118,10 +117,12 @@ M.is_plugin_loaded = function(data_loc, plugin_name)
 
   for _, name in ipairs(lazy_plugins) do
     if name == plugin_name then
+      -- print('Plugin ' .. plugin_name .. ' is loaded')
       return true
     end
   end
 
+  -- print('Plugin ' .. plugin_name .. ' is not loaded')
   return false
 end
 --------------------------------------------------------------------

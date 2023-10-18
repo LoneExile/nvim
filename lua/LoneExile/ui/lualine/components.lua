@@ -28,43 +28,6 @@ M.setup = function(s, loc)
 
   ----------------------------------------------------------------------------
 
-  -- for lsp component add null-ls
-  -- WARN: this may be slow
-
-  local list_registered = function(filetype, buf_client_names)
-    if s.utils.is_plugin_loaded(s.data_loc, 'null-ls.nvim') then
-      local status_ok, null_ls = pcall(require, 'null-ls')
-      if not status_ok then
-        return
-      end
-      local registered_formatters = {}
-      local sources = require('null-ls.sources')
-      local available_sources = sources.get_available(filetype)
-      local registered_providers = {}
-      for _, source in ipairs(available_sources) do
-        for method in pairs(source.methods) do
-          registered_providers[method] = registered_providers[method] or {}
-          table.insert(registered_providers[method], source.name)
-        end
-      end
-
-      local method_formatting = null_ls.methods.FORMATTING
-      local method_diagnostics = null_ls.methods.DIAGNOSTICS
-      registered_formatters[method_formatting] = registered_providers[method_formatting] or {}
-      registered_formatters[method_diagnostics] = registered_providers[method_diagnostics] or {}
-
-      for _, provider in pairs(registered_formatters[method_formatting]) do
-        table.insert(buf_client_names, provider)
-      end
-      for _, provider in pairs(registered_formatters[method_diagnostics]) do
-        table.insert(buf_client_names, provider)
-      end
-    end
-    return buf_client_names
-  end
-
-  -----------------------------------------------------------------------------------------
-
   return {
     mode = {
       function()
@@ -95,7 +58,7 @@ M.setup = function(s, loc)
         modified = '[+]', -- Text to show when the file is modified.
         readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
         unnamed = '[No Name]', -- Text to show for unnamed buffers.
-        newfile = '[New]', -- Text to show for new created file before first writting
+        newfile = '[New]', -- Text to show for new created file before first writing
       },
     },
     diff = {
@@ -112,14 +75,14 @@ M.setup = function(s, loc)
     lsp = {
       function(msg)
         msg = msg or 'LS Inactive'
-        local buf_clients = vim.lsp.get_active_clients()
+        local buf_clients = vim.lsp.get_clients()
         if next(buf_clients) == nil then
           if type(msg) == 'boolean' or #msg == 0 then
             return 'LS Inactive'
           end
           return msg
         end
-        local buf_ft = vim.bo.filetype
+        -- local buf_ft = vim.bo.filetype
         local buf_client_names = {}
 
         for _, client in pairs(buf_clients) do
@@ -128,7 +91,7 @@ M.setup = function(s, loc)
           end
         end
 
-        buf_client_names = list_registered(buf_ft, buf_client_names) or {}
+        -- buf_client_names = list_registered(buf_ft, buf_client_names) or {}
         for i, name in ipairs(buf_client_names) do
           if name == 'copilot' then
             table.remove(buf_client_names, i)
@@ -138,6 +101,7 @@ M.setup = function(s, loc)
 
         local unique_client_names = vim.fn.uniq(buf_client_names)
         local copilot_icon = ' ' --s.utils.convert_kind_icons(s.kindIcon).Copilot
+        ---@diagnostic disable-next-line: param-type-mismatch
         msg = copilot_icon .. '[' .. table.concat(unique_client_names, ', ') .. ']'
         return msg
       end,
@@ -146,11 +110,11 @@ M.setup = function(s, loc)
     },
     python_env = {
       function()
-        local utils = env_cleanup
+        -- local utils = env_cleanup
         if vim.bo.filetype == 'python' then
           local venv = os.getenv('CONDA_DEFAULT_ENV') or os.getenv('VIRTUAL_ENV')
           if venv then
-            return string.format('  (%s)', utils.env_cleanup(venv))
+            return string.format('  (%s)', env_cleanup(venv))
           end
         end
         return ''

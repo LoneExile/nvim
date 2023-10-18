@@ -1,21 +1,18 @@
 local M = {}
 
-M.setup = function(root, _)
-  -- vim.lua.buf.format({async = true})
-
+M.setup = function(_, m)
   vim.api.nvim_create_user_command('SaveNFormat', function()
-    -- vim.lsp.buf.format({
-    --   filter = function(client)
-    --     return client.name == 'null-ls'
-    --   end,
-    -- })
-    require(root .. '.utils.format').format()
+    if m.is_plugin_loaded(nil, 'conform.nvim') then
+      vim.cmd('Format')
+    else
+      vim.lsp.buf.format()
+    end
+
     vim.cmd('w!')
   end, {})
 
   vim.api.nvim_create_user_command('FormatCurrentBuf', function()
     vim.lsp.buf.format()
-    -- require(root .. '.utils.format').format()
   end, {})
 end
 

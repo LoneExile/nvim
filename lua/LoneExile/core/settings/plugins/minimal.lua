@@ -14,7 +14,7 @@ return {
   { 'folke/lua-dev.nvim',                        true },
 
   -- Editor
-  { 'akinsho/toggleterm.nvim',                   true },
+  -- { 'akinsho/toggleterm.nvim',                   true },
 
   -- Tool
   { 'nvim-telescope/telescope.nvim',             true },
@@ -29,7 +29,7 @@ return {
   { 'goolord/alpha-nvim',                        true },
   { 'folke/tokyonight.nvim',                     true },
   { 'nvim-lualine/lualine.nvim',                 true },
-  { 'nvim-neo-tree/neo-tree.nvim',               true },
+  -- { 'nvim-neo-tree/neo-tree.nvim',               true },
   { 'rcarriga/nvim-notify',                      true },
   { 'folke/which-key.nvim',                      true },
 }

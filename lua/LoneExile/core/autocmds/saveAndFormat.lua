@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function(root, _)
+M.setup = function(_, _)
   vim.api.nvim_create_user_command('SaveNFormat', function()
     vim.cmd('Format')
     vim.cmd('w!')

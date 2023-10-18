@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function(setting, location)
+M.setup = function(setting, _)
   return {
     'stevearc/conform.nvim',
     event = { 'BufReadPre', 'InsertEnter' },

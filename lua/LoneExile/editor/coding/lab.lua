@@ -22,6 +22,7 @@ M.setup = function()
   return {
     '0x100101/lab.nvim',
     build = 'cd js && npm ci',
+    cmd = { 'Lab' },
     ft = { 'javascript', 'typescript', 'lua', 'python' },
     config = function()
       local status_ok, lab = pcall(require, 'lab')

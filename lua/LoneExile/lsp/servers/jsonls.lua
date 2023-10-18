@@ -9,6 +9,7 @@ M.setup = function(lspconfig)
     settings = {
       json = {
         schemas = schemastore.json.schemas(),
+        validate = { enable = true },
       },
     },
   })

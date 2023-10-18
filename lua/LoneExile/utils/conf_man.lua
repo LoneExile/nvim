@@ -78,7 +78,7 @@ end
 
 M.setup_load = function(root, exclude)
   local current_loc = M.get_current_script_path(3)
-  current_loc = vim.fn.fnamemodify(current_loc, ':h')
+  current_loc = vim.fn.fnamemodify(current_loc, ':h') or ''
   local files = M.get_files_in_dir(current_loc)
   files = M.clean_path(files, exclude, root)
 

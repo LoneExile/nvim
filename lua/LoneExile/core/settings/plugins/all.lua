@@ -1,7 +1,6 @@
+-- stylua: ignore start/end
+
 return {
-
-  -- stylua: ignore start/end
-
   -- CMP
   { 'hrsh7th/nvim-cmp',                          true },
 
@@ -127,5 +126,3 @@ return {
   { 'folke/zen-mode.nvim',                       true },
   { 'Pocco81/true-zen.nvim',                     true },
 }
-
-

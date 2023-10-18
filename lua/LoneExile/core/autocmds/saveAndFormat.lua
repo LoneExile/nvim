@@ -1,8 +1,13 @@
 local M = {}
 
-M.setup = function(_, _)
+M.setup = function(_, m)
   vim.api.nvim_create_user_command('SaveNFormat', function()
-    vim.cmd('Format')
+    if m.is_plugin_loaded(nil, 'conform.nvim') then
+      vim.cmd('Format')
+    else
+      vim.lsp.buf.format()
+    end
+
     vim.cmd('w!')
   end, {})
 

@@ -13,9 +13,9 @@ M.setup = function(root)
         'Quit',
         mode = { 'n' },
       },
-      ['c'] = {
+      ['k'] = {
         "<cmd>lua require('" .. root .. ".utils.bufKill').buf_kill()<CR>",
-        'Close Buffer',
+        'Kill Buffer',
         mode = { 'n' },
       },
       ['H'] = {

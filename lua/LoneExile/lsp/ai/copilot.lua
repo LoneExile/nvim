@@ -3,11 +3,7 @@ local M = {}
 M.wh_key = {
   wh_mappings = {
     x = {
-      name = '+Execute',
-      a = {
-        name = '+AI',
-        p = { '<cmd>Copilot panel<cr>', 'Copilot panel', mode = { 'n' } },
-      },
+      p = { '<cmd>Copilot panel<cr>', 'Copilot panel', mode = { 'n' } },
     },
   },
 }

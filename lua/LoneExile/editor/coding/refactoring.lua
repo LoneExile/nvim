@@ -4,7 +4,7 @@ M.wh_key = {
   wh_mappings = {
     r = {
       "<Cmd>lua require('refactoring').select_refactor()<CR>",
-      'Select Refactor',
+      'Refactor',
       mode = { 'n', 'v' },
 
       -- name = 'Refactor',

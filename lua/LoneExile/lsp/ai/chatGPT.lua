@@ -2,27 +2,24 @@ local M = {}
 
 M.wh_key = {
   wh_mappings = {
-    x = {
-      name = '+Execute',
-      a = {
-        name = '+AI',
-        c = { '<cmd>ChatGPT<cr>', 'ChatGPT', mode = { 'n' } },
-        a = { '<cmd>ChatGPTActAs<cr>', 'GPTActAs', mode = { 'n' } },
-        i = { '<cmd>ChatGPTEditWithInstructions<cr>', 'GPTInstructions', mode = { 'n', 'v' } },
-        r = {
-          name = '+ChatGPTRun',
-          g = { '<cmd>ChatGPTRun grammar_correction<cr>', 'Grammar', mode = { 'n', 'v' } },
-          T = { '<cmd>ChatGPTRun translate<cr>', 'Translate', mode = { 'n', 'v' } },
-          k = { '<cmd>ChatGPTRun keywords<cr>', 'Keywords', mode = { 'n', 'v' } },
-          d = { '<cmd>ChatGPTRun docstring<cr>', 'Docstring', mode = { 'n', 'v' } },
-          t = { '<cmd>ChatGPTRun add_tests<cr>', 'AddTests', mode = { 'n', 'v' } },
-          o = { '<cmd>ChatGPTRun optimize_code<cr>', 'OptimizeCode', mode = { 'n', 'v' } },
-          s = { '<cmd>ChatGPTRun summarize<cr>', 'Summarize', mode = { 'n', 'v' } },
-          f = { '<cmd>ChatGPTRun fix_bugs<cr>', 'FixBugs', mode = { 'n', 'v' } },
-          e = { '<cmd>ChatGPTRun explain_code<cr>', 'ExplainCode', mode = { 'n', 'v' } },
-          -- r = { '<cmd>ChatGPTRun roxygen_edit<cr>', 'RoxygenEdit', mode = { 'n', 'v' } },
-          c = { '<cmd>ChatGPTRun code_readability_analysis<cr>', 'CodeReadabilityAnalysis', mode = { 'n', 'v' } },
-        },
+    c = {
+      name = '+ChatGPT',
+      c = { '<cmd>ChatGPT<cr>', 'ChatGPT', mode = { 'n' } },
+      a = { '<cmd>ChatGPTActAs<cr>', 'GPTActAs', mode = { 'n' } },
+      i = { '<cmd>ChatGPTEditWithInstructions<cr>', 'GPTInstructions', mode = { 'n', 'v' } },
+      r = {
+        name = '+ChatGPTRun',
+        g = { '<cmd>ChatGPTRun grammar_correction<cr>', 'Grammar', mode = { 'n', 'v' } },
+        T = { '<cmd>ChatGPTRun translate<cr>', 'Translate', mode = { 'n', 'v' } },
+        k = { '<cmd>ChatGPTRun keywords<cr>', 'Keywords', mode = { 'n', 'v' } },
+        d = { '<cmd>ChatGPTRun docstring<cr>', 'Docstring', mode = { 'n', 'v' } },
+        t = { '<cmd>ChatGPTRun add_tests<cr>', 'AddTests', mode = { 'n', 'v' } },
+        o = { '<cmd>ChatGPTRun optimize_code<cr>', 'OptimizeCode', mode = { 'n', 'v' } },
+        s = { '<cmd>ChatGPTRun summarize<cr>', 'Summarize', mode = { 'n', 'v' } },
+        f = { '<cmd>ChatGPTRun fix_bugs<cr>', 'FixBugs', mode = { 'n', 'v' } },
+        e = { '<cmd>ChatGPTRun explain_code<cr>', 'ExplainCode', mode = { 'n', 'v' } },
+        -- r = { '<cmd>ChatGPTRun roxygen_edit<cr>', 'RoxygenEdit', mode = { 'n', 'v' } },
+        c = { '<cmd>ChatGPTRun code_readability_analysis<cr>', 'CodeReadabilityAnalysis', mode = { 'n', 'v' } },
       },
     },
   },
@@ -53,6 +50,26 @@ M.setup = function(settings, _)
             cycle_windows = '<Tab>',
             use_output_as_input = '<C-i>',
           },
+        },
+        popup_layout = {
+          default = 'right',
+        },
+        popup_window = {
+          border = {
+            highlight = 'FloatBorder',
+            style = 'rounded',
+            text = {
+              top = ' Teddy ',
+            },
+          },
+        },
+        openai_params = {
+          -- model = 'gpt-3.5-turbo',
+          model = 'gpt-4',
+        },
+        openai_edit_params = {
+          -- model = "gpt-3.5-turbo",
+          model = 'gpt-4',
         },
         chat = {
           keymaps = {

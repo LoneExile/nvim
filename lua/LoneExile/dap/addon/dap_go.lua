@@ -3,7 +3,8 @@ local M = {}
 M.setup = function()
   return {
     'leoluz/nvim-dap-go',
-    ft = { 'go' },
+    -- ft = { 'go' },
+    lazy = true,
     dependencies = {
       'mfussenegger/nvim-dap',
     },

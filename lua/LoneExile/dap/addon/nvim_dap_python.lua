@@ -5,6 +5,7 @@ M.setup = function(s, _)
     'mfussenegger/nvim-dap-python',
     dependencies = { 'mfussenegger/nvim-dap' },
     ft = { 'python' },
+    lazy = true,
     config = function()
       local debug_adapter = vim.fn.glob(s.data_loc .. '/mason/') .. 'packages/debugpy/venv/bin/python3'
       require('dap-python').setup(debug_adapter)

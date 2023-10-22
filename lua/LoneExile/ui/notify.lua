@@ -25,6 +25,7 @@ M.setup = function(s, _)
         background = '#000000'
       end
 
+      ---@diagnostic disable-next-line: missing-fields
       notify.setup({
         background_colour = background,
         fps = 30,

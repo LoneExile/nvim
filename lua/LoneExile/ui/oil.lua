@@ -2,6 +2,13 @@ local M = {}
 
 M.wh_key = {
   wh_mappings = {
+    e = {
+      function()
+        vim.cmd('Oil --float')
+      end,
+      'Explorer',
+      mode = { 'n' },
+    },
     u = {
       name = '+Utility',
       o = {
@@ -20,9 +27,9 @@ vim.keymap.set(
   '-',
   -- require('oil').open
   function()
-    vim.cmd('Oil --float')
+    vim.cmd('Oil')
   end,
-  { desc = 'Open parent directory' }
+  { desc = 'Oil' }
 )
 
 M.setup = function()
@@ -39,8 +46,8 @@ M.setup = function()
         keymaps = {
           ['g?'] = 'actions.show_help',
           ['<CR>'] = 'actions.select',
-          ['<C-s>'] = 'actions.select_vsplit',
-          ['<C-h>'] = 'actions.select_split',
+          ['<C-v>'] = 'actions.select_vsplit',
+          ['<C-s>'] = 'actions.select_split',
           ['<C-t>'] = 'actions.select_tab',
           ['<C-p>'] = 'actions.preview',
           ['<C-c>'] = 'actions.close',
@@ -65,6 +72,9 @@ M.setup = function()
           override = function(conf)
             return conf
           end,
+        },
+        view_options = {
+          show_hidden = true,
         },
         -- Configuration for the floating progress window
         progress = {

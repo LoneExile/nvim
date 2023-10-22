@@ -30,7 +30,7 @@ M.wh_key = {
 M.setup = function()
   return {
     'numToStr/Comment.nvim',
-    event = 'BufRead',
+    event = { 'BufReadPre', 'InsertEnter' },
     dependencies = {
       'JoosepAlviste/nvim-ts-context-commentstring',
     },

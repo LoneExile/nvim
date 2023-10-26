@@ -3,7 +3,7 @@ local M = {}
 M.setup = function(settings, location)
   return {
     'folke/which-key.nvim',
-    keys = { '<leader>', 'g' },
+    keys = { '<leader>', 'g', 'V' },
     -- event = 'BufRead',
     -- cmd = { 'WhichKey' },
     -- priority = 1000,

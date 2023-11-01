@@ -50,6 +50,7 @@ M.setup = function(setting, _)
           css = { { 'prettierd', 'prettier' } },
           scss = { { 'prettierd', 'prettier' } },
 
+          -- $HOME/.config/yamlfmt/.yamlfmt
           yaml = { 'yamlfmt' },
           json = { 'jq' },
 

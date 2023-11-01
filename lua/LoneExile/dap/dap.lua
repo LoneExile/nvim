@@ -37,8 +37,8 @@ M.wh_key = {
 M.setup = function(_, location)
   return {
     'mfussenegger/nvim-dap',
-    -- event = { 'BufReadPre', 'InsertEnter' },
     lazy = true,
+    cmd = { 'DapToggleBreakpoint', 'DapContinue' },
     config = function()
       -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
       local status_ok, dap = pcall(require, 'dap')

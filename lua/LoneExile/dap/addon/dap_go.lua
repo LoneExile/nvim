@@ -3,8 +3,7 @@ local M = {}
 M.setup = function()
   return {
     'leoluz/nvim-dap-go',
-    -- ft = { 'go' },
-    lazy = true,
+    cmd = { 'DapToggleBreakpoint', 'DapContinue' },
     dependencies = {
       'mfussenegger/nvim-dap',
     },

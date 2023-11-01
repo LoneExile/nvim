@@ -306,6 +306,8 @@ M.setup = function()
         telescope.load_extension('undo')
         -- telescope.load_extension("ui-select")
       end
+
+      vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>Telescope find_files<cr>', { noremap = true, silent = true, desc = 'Find Files' })
     end,
   }
 end

@@ -27,7 +27,7 @@ M.setup = function(_, _)
           'lua-language-server',
           'bash-language-server',
           -- 'csharp-language-server', -- C#
-          -- 'omnisharp',
+          'omnisharp',
           -- 'clangd', -- C++
           'dockerfile-language-server',
           'marksman', -- Markdown
@@ -48,7 +48,7 @@ M.setup = function(_, _)
           'golangci-lint-langserver', -- Go
 
           -- DAP
-          -- 'netcoredbg', -- C#
+          'netcoredbg', -- C#
           'js-debug-adapter', -- JavaScript, TypeScript
           'codelldb', -- Rust
           'delve', -- Go

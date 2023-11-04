@@ -9,7 +9,8 @@ M.wh_key = {
   },
 }
 
-M.setup = function()
+M.setup = function(settings, _)
+  -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   return {
     'theHamsta/nvim-dap-virtual-text',
     lazy = true,

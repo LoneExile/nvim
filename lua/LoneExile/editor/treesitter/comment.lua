@@ -1,33 +1,33 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    ['/'] = {
-      cmd = {
-        -- n = "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
-        -- v = '<Plug>(comment_toggle_linewise_visual)',
-        n = function()
-          local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
-          local api = require('Comment.api')
-          vim.api.nvim_feedkeys(esc, 'nx', false)
-          api.toggle.linewise.current()
-        end,
-        --[[ v = function()
-          local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
-          local api = require('Comment.api')
-          vim.api.nvim_feedkeys(esc, 'nx', false)
-          api.toggle.blockwise(vim.fn.visualmode())
-        end, ]]
-        v = '<Plug>(comment_toggle_linewise_visual)',
-      },
-      'Comment',
-      mode = { 'n', 'v' },
-      ft = { only = {}, exclude = { 'alpha', 'neo-tree' } },
-    },
-  },
-}
+-- M.wh_key = {
+--   wh_mappings = {
+--     ['/'] = {
+--       cmd = {
+--         -- n = "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
+--         -- v = '<Plug>(comment_toggle_linewise_visual)',
+--         n = function()
+--           local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+--           local api = require('Comment.api')
+--           vim.api.nvim_feedkeys(esc, 'nx', false)
+--           api.toggle.linewise.current()
+--         end,
+--         --[[ v = function()
+--           local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+--           local api = require('Comment.api')
+--           vim.api.nvim_feedkeys(esc, 'nx', false)
+--           api.toggle.blockwise(vim.fn.visualmode())
+--         end, ]]
+--         v = '<Plug>(comment_toggle_linewise_visual)',
+--       },
+--       'Comment',
+--       mode = { 'n', 'v' },
+--       ft = { only = {}, exclude = { 'alpha', 'neo-tree' } },
+--     },
+--   },
+-- }
 
-M.setup = function()
+M.setup = function(_, _)
   return {
     'numToStr/Comment.nvim',
     event = { 'BufReadPre', 'InsertEnter' },

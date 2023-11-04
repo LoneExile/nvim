@@ -34,7 +34,8 @@ M.wh_key = {
   },
 }
 
-M.setup = function(_, location)
+M.setup = function(settings, location)
+  -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   return {
     'mfussenegger/nvim-dap',
     lazy = true,

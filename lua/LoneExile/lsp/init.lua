@@ -10,13 +10,10 @@ M.wh_key = {
       name = 'LSP',
       f = { '<cmd>FormatCurrentBuf<CR>', 'Format', mode = { 'n' } },
       -- d = { vim.diagnostic.setloclist, 'Diagnostics', mode = { 'n' } },
-      l = {
-        name = 'LSP',
-        r = { '<cmd>LspRestart<cr>', 'Restart', mode = { 'n' } },
-        s = { '<cmd>LspStop<cr>', 'Stop', mode = { 'n' } },
-      },
-      i = { '<cmd>LspInfo<cr>', 'LSP Info', mode = { 'n' } },
+      x = { '<cmd>LspInfo<cr>', 'LSP Info', mode = { 'n' } },
       I = { '<cmd>Mason<cr>', 'Mason', mode = { 'n' } },
+      R = { '<cmd>LspRestart<cr>', 'Restart', mode = { 'n' } },
+      z = { '<cmd>LspStop<cr>', 'Stop', mode = { 'n' } },
     },
   },
   wh_g_mappings = {

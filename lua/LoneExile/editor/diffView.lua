@@ -4,16 +4,13 @@ M.wh_key = {
   wh_mappings = {
     ['g'] = {
       name = 'Git',
-      d = {
-        name = 'Git Diff',
-        d = { '<cmd>DiffviewOpen<cr>', 'Git Diff', mode = { 'n' } },
-        q = { '<cmd>DiffviewClose<cr>', 'Diff Quit', mode = { 'n' } },
-        -- f = { '<cmd>DiffviewToggleFiles<cr>', 'Diff Toggle Files', mode = { 'n' } },
-        -- r = { '<cmd>DiffviewRefresh<cr>', 'Diff Refresh', mode = { 'n' } },
-        h = { '<cmd>DiffviewFileHistory %<cr>', 'History Current', mode = { 'n' } },
-        H = { '<cmd>DiffviewFileHistory<cr>', 'Diff File History', mode = { 'n' } },
-        c = { name = 'Conflict' },
-      },
+      d = { '<cmd>DiffviewOpen<cr>', 'Git Diff', mode = { 'n' } },
+      q = { '<cmd>DiffviewClose<cr>', 'Diff Quit', mode = { 'n' } },
+      -- f = { '<cmd>DiffviewToggleFiles<cr>', 'Diff Toggle Files', mode = { 'n' } },
+      -- r = { '<cmd>DiffviewRefresh<cr>', 'Diff Refresh', mode = { 'n' } },
+      h = { '<cmd>DiffviewFileHistory %<cr>', 'History Current', mode = { 'n' } },
+      H = { '<cmd>DiffviewFileHistory<cr>', 'Diff History', mode = { 'n' } },
+      c = { name = 'Conflict' },
     },
   },
 }

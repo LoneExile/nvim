@@ -19,20 +19,6 @@ M.setup = function()
       if client.name == 'eslint' then
         client.server_capabilities.documentFormattingProvider = true
       end
-
-      -----------------------------------------------------------------------------------
-      local status_ok, navic = pcall(require, 'nvim-navic')
-      if not status_ok then
-        return
-      end
-      navic.attach(client, bufnr)
-      vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-
-      local status_navbuddy, navbuddy = pcall(require, 'nvim-nvim-navbuddy')
-      if status_navbuddy then
-        navbuddy.attach(client, bufnr)
-      end
-      -----------------------------------------------------------------------------------
     end,
   }
 end

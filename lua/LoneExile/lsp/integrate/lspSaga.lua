@@ -1,12 +1,12 @@
 local M = {}
 
 M.wh_key = {
-  wh_mappings = {
-    l = {
-      name = 'LSP',
-      o = { '<cmd>Lspsaga outline<cr>', 'Outline', mode = { 'n' } },
-    },
-  },
+  -- wh_mappings = {
+  --   l = {
+  --     name = 'LSP',
+  --     o = { '<cmd>Lspsaga outline<cr>', 'Outline', mode = { 'n' } },
+  --   },
+  -- },
   wh_g_mappings = {
     ['d'] = { '<cmd>Lspsaga peek_definition<CR>', 'Goto Definition', mode = { 'n' } },
     ['p'] = { '<cmd>Lspsaga peek_type_definition<CR>', 'Peek type definition', mode = { 'n' } },
@@ -65,7 +65,7 @@ M.setup = function(_, _)
         --   close = '<Esc>',
         -- },
         code_action = {
-          extend_gitsigns = true,
+          extend_gitsigns = false,
           num_shortcut = true,
           keys = {
             quit = 'q',

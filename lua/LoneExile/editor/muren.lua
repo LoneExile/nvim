@@ -3,18 +3,18 @@ local M = {}
 M.wh_key = {
   wh_mappings = {
     ['s'] = {
-      S = {
-        m = {
-          '<cmd>MurenToggle<CR>',
-          'Muren',
-          mode = { 'n' },
-        },
-        u = {
-          '<cmd>MurenUnique<CR>',
-          'Muren Unique',
-          mode = { 'n' },
-        },
+      -- s = {
+      s = {
+        '<cmd>MurenToggle<CR>',
+        'Muren',
+        mode = { 'n' },
       },
+      -- u = {
+      --   '<cmd>MurenUnique<CR>',
+      --   'Muren Unique',
+      --   mode = { 'n' },
+      -- },
+      -- },
     },
   },
 }

@@ -5,7 +5,7 @@ M.wh_key = {
     ['s'] = {
       name = 'Search',
       n = {
-        "<cmd>lua require('telescope').extensions.notify.notify(require('telescope.themes').get_dropdown({initial_mode = 'normal'}))<cr>",
+        '<cmd>Notifications<cr>',
         'Notifications',
         mode = { 'n' },
       },

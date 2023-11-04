@@ -136,23 +136,34 @@ M.convert_kind_icons = function(kindIcon)
   return kind_icons
 end
 
--- e.g. setup_mappings(['<leader>'],wh_key.wh_mappings,'')
-M.setup_mappings = function(keyset, mappings, prefix)
+M.mapping_types = function(mode, lhs, rhs, rhs_type, desc)
+  if rhs_type == 'function' then
+    vim.api.nvim_set_keymap(mode, lhs, '', { noremap = true, silent = true, callback = rhs, desc = desc })
+  elseif rhs_type == 'string' then
+    vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
+  end
+end
+
+M.setup_mappings = function(keyset, mappings, _, prefix)
   prefix = prefix or '' -- initialize prefix to an empty string if not provided
+  local _ = _
   for key, mapping in pairs(mappings) do
+    -- if mapping.name then
+    --   vim.api.nvim_set_keymap('n', keyset .. prefix .. key, _, { desc = mapping.name })
+    -- end
     if type(mapping) == 'table' and mapping[1] then
       -- This is a mapping table with a mapping definition
       local lhs = keyset .. prefix .. key
       local rhs = mapping[1]
+      local rhs_type = type(rhs)
       local desc = mapping[2]
       local modes = mapping.mode or { 'n' } -- default to 'n' if mode isn't specified
-      local options = { noremap = true, silent = true, desc = desc }
       for _, mode in ipairs(modes) do
-        vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+        M.mapping_types(mode, lhs, rhs, rhs_type, desc)
       end
     elseif type(mapping) == 'table' then
       -- This is a nested table, recurse with the updated prefix
-      M.setup_mappings(mapping, prefix .. key)
+      M.setup_mappings(keyset, mapping, _, prefix .. key)
     end
   end
 end

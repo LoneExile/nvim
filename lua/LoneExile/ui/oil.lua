@@ -9,16 +9,6 @@ M.wh_key = {
       'Explorer',
       mode = { 'n' },
     },
-    u = {
-      name = '+Utility',
-      o = {
-        function()
-          vim.cmd('Oil --float')
-        end,
-        'Oil',
-        mode = { 'n' },
-      },
-    },
   },
 }
 
@@ -32,12 +22,13 @@ vim.keymap.set(
   { desc = 'Oil' }
 )
 
-M.setup = function()
+M.setup = function(settings, _)
+  -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   return {
     'stevearc/oil.nvim',
     cmd = { 'Oil' },
     config = function()
-      local status_ok_code, spectre = pcall(require, 'oil')
+      local status_ok_code, oil = pcall(require, 'oil')
       if not status_ok_code then
         return
       end
@@ -84,7 +75,7 @@ M.setup = function()
         },
       }
 
-      spectre.setup(config)
+      oil.setup(config)
     end,
   }
 end

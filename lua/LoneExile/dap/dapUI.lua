@@ -18,12 +18,12 @@ M.wh_key = {
   },
 }
 
-M.setup = function(_, _)
+M.setup = function(settings, _)
+  -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   return {
     'rcarriga/nvim-dap-ui',
     dependencies = { 'mfussenegger/nvim-dap' },
     lazy = true,
-    event = { 'BufReadPre', 'InsertEnter' },
     config = function()
       local status_ok_ui, dapui = pcall(require, 'dapui')
       if not status_ok_ui then

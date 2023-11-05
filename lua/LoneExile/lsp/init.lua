@@ -16,20 +16,20 @@ M.wh_key = {
       z = { '<cmd>LspStop<cr>', 'Stop', mode = { 'n' } },
     },
   },
-  wh_g_mappings = {
-    ['d'] = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Goto Definition' },
-    ['s'] = { vim.lsp.buf.signature_help, 'show signature help' },
-    ['r'] = { '<cmd>lua vim.lsp.buf.references()<cr>', 'Goto references' },
-    ['R'] = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'rename' },
-    ['q'] = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code action' },
-    ['j'] = { '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Next diagnostic' },
-    ['k'] = { '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Prev diagnostic' },
-    ['D'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration' },
-    ['o'] = { '<cmd>lua vim.lsp.buf.type_definition()<cr>', 'Goto Implementation' },
-    ['I'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation' },
-    ['l'] = { '<cmd>lua vim.diagnostic.open_float()<cr>', 'Show line diagnostics' },
-    -- ['f'] = { '<cmd>lua vim.lsp.buf.formatting()<cr>', 'Format' },
-  },
+  -- wh_g_mappings = {
+  --   ['d'] = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Goto Definition' },
+  --   ['s'] = { vim.lsp.buf.signature_help, 'show signature help' },
+  --   ['r'] = { '<cmd>lua vim.lsp.buf.references()<cr>', 'Goto references' },
+  --   ['R'] = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'rename' },
+  --   ['q'] = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code action' },
+  --   ['j'] = { '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Next diagnostic' },
+  --   ['k'] = { '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Prev diagnostic' },
+  --   ['D'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration' },
+  --   ['o'] = { '<cmd>lua vim.lsp.buf.type_definition()<cr>', 'Goto Implementation' },
+  --   ['I'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation' },
+  --   ['l'] = { '<cmd>lua vim.diagnostic.open_float()<cr>', 'Show line diagnostics' },
+  --   -- ['f'] = { '<cmd>lua vim.lsp.buf.formatting()<cr>', 'Format' },
+  -- },
 }
 
 M.setup = function(_, location)
@@ -46,14 +46,6 @@ M.setup = function(_, location)
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       -- 'WhoIsSethDaniel/mason-tool-installer.nvim',
-      -- {
-      --   'SmiteshP/nvim-navbuddy',
-      --   dependencies = {
-      --     'SmiteshP/nvim-navic',
-      --     'MunifTanjim/nui.nvim',
-      --   },
-      --   opts = { lsp = { auto_attach = true } },
-      -- },
     },
     config = function()
       local lsp_settings = location .. '.settings'

@@ -150,6 +150,19 @@ M.wh_key = {
       },
     },
   },
+  wh_g_mappings = {
+    ['d'] = { '<cmd>FzfLua lsp_definitions<CR>', 'Goto Definition', mode = { 'n' } },
+    ['o'] = { '<cmd>FzfLua lsp_typedefs<CR>', 'Peek type definition', mode = { 'n' } },
+    ['s'] = { vim.lsp.buf.signature_help, 'show signature help', mode = { 'n' } },
+    ['r'] = { '<cmd>FzfLua lsp_references<CR>', 'Goto references', mode = { 'n' } },
+    ['R'] = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'rename' },
+    ['q'] = { '<cmd>FzfLua lsp_code_actions<CR>', 'Code action', mode = { 'n', 'v' } },
+    ['j'] = { '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Next diagnostic', mode = { 'n' } },
+    ['k'] = { '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Prev diagnostic', mode = { 'n' } },
+    ['l'] = { '<cmd>lua vim.diagnostic.open_float()<cr>', 'Show line diagnostics', mode = { 'n' } },
+    ['D'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration', mode = { 'n' } },
+    ['I'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation', mode = { 'n' } },
+  },
 }
 
 M.setup = function(settings, _)

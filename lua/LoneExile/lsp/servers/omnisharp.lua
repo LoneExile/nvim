@@ -45,6 +45,9 @@ M.setup = function(lspconfig)
     init_options = {},
 
     -- https://github.com/OmniSharp/omnisharp-roslyn/issues/2483
+    -- handlers = {
+    --   ['textDocument/definition'] = require('omnisharp_extended').handler,
+    -- },
   }
 
   -- local handler = require('omnisharp_extended').handler
@@ -52,6 +55,7 @@ M.setup = function(lspconfig)
   if status then
     config.handlers = { ['textDocument/definition'] = handler }
   end
+  -- lua require('omnisharp_extended').lsp_definitions()
 
   lspconfig.omnisharp.setup(config)
 end

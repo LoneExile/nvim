@@ -35,7 +35,7 @@ return {
   -- Tool
   { 'ibhagwan/fzf-lua',                          true },
 
-  { 'AckslD/muren.nvim',                         true },
+  { 'windwp/nvim-spectre',                       true },
 
 
   { 'wellle/targets.vim',                        true },

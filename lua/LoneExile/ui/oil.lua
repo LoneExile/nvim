@@ -52,8 +52,8 @@ M.setup = function(settings, _)
         float = {
           -- Padding around the floating window
           padding = 2,
-          max_width = 50,
-          max_height = 40,
+          max_width = 80,
+          max_height = 45,
           border = 'rounded',
           win_options = {
             winblend = 0,

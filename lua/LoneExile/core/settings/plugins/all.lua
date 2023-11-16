@@ -68,7 +68,7 @@ return {
   { 'WhoIsSethDaniel/mason-tool-installer.nvim', true },
 
   { 'j-hui/fidget.nvim',                         true },
-  -- { 'glepnir/lspsaga.nvim',                      false },
+  { 'glepnir/lspsaga.nvim',                      true },
   { 'stevearc/conform.nvim',                     true },
   { 'mfussenegger/nvim-lint',                    true },
 

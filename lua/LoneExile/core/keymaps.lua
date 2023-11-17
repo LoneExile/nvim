@@ -88,9 +88,9 @@ local defaults = {
     -- Better indenting
     ['<'] = '<gv',
     ['>'] = '>gv',
-
-    -- ["p"] = '"0p',
-    -- ["P"] = '"0P',
+    -- copy paste not copy value that changing
+    ['p'] = '"0p',
+    ['P'] = '"0P',
   },
 
   visual_block_mode = {
@@ -150,7 +150,7 @@ end
 M.setup = function(root, _)
   M.load(defaults)
 
-  keymap('v', 'p', '"_dP', opts) -- copy paste not copy value that changing
+  -- keymap('v', 'p', '"_dP', opts) -- copy paste not copy value that changing
   keymap('t', '<C-e>', '<C-\\><C-n>', { silent = true }) -- exit insert_mode in terminal
   keymap('v', '<C-/>', '<esc>/\\%V', { noremap = true }) -- search within selection
 

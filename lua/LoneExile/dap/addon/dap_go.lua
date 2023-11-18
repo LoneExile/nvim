@@ -3,9 +3,10 @@ local M = {}
 M.setup = function()
   return {
     'leoluz/nvim-dap-go',
-    -- cmd = { 'DapToggleBreakpoint', 'DapContinue' },
+    ft = { 'go' },
     dependencies = {
       'mfussenegger/nvim-dap',
+      'rcarriga/nvim-dap-ui',
     },
     config = function()
       -- local DEBUGGER_LOCATION = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'bin/dlv'

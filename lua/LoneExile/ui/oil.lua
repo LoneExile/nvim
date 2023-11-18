@@ -22,7 +22,7 @@ vim.keymap.set(
   { desc = 'Oil' }
 )
 
-M.setup = function(settings, _)
+M.setup = function(_, _)
   -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   return {
     'stevearc/oil.nvim',

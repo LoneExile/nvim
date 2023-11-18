@@ -18,7 +18,7 @@ M.wh_key = {
   },
 }
 
-M.setup = function(settings, _)
+M.setup = function(_, _)
   -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   return {
     'rcarriga/nvim-dap-ui',

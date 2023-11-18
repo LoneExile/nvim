@@ -90,7 +90,7 @@ M.setup = function(_, location)
       -- servers that list on this, will be use custom config in subfolder
       local servers_name = {
 
-        'tsserver', -- setup with 'jose-elias-alvarez/typescript.nvim'
+        -- 'tsserver',
         'vuels',
         -- 'deno',
         -- 'eslint',

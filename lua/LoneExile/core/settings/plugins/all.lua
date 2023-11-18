@@ -75,7 +75,7 @@ return {
   { 'folke/lua-dev.nvim',                        true },
   { 'simrat39/rust-tools.nvim',                  true },
   { 'b0o/schemastore.nvim',                      true },
-  { 'jose-elias-alvarez/typescript.nvim',        true },
+  { 'pmizio/typescript-tools.nvim',              true },
   { 'ray-x/go.nvim',                             false },
   { 'laytan/tailwind-sorter.nvim',               false },
   { 'MaximilianLloyd/tw-values.nvim',            true },

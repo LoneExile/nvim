@@ -25,7 +25,7 @@ M.setup = function(lspconfig)
       'jade',
       'leaf',
       'liquid',
-      'markdown',
+      -- 'markdown',
       'mdx',
       'mustache',
       'njk',

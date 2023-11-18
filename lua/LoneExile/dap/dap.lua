@@ -34,12 +34,13 @@ M.wh_key = {
   },
 }
 
-M.setup = function(settings, location)
+M.setup = function(_, location)
   -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   return {
     'mfussenegger/nvim-dap',
     lazy = true,
     cmd = { 'DapToggleBreakpoint', 'DapContinue' },
+    dependencies = { 'rcarriga/nvim-dap-ui' },
     config = function()
       -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
       local status_ok, dap = pcall(require, 'dap')

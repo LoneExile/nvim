@@ -116,6 +116,31 @@ M.wh_key = {
         'Git Files',
         mode = { 'n' },
       },
+      q = {
+        '<cmd>FzfLua quickfix<cr>',
+        'Quickfix',
+        mode = { 'n' },
+      },
+      Q = {
+        '<cmd>FzfLua quickfix_stack<cr>',
+        'Quickfix Stack',
+        mode = { 'n' },
+      },
+      l = {
+        '<cmd>FzfLua loclist<cr>',
+        'Location List',
+        mode = { 'n' },
+      },
+      L = {
+        '<cmd>FzfLua loclist_stack<cr>',
+        'Location List Stack',
+        mode = { 'n' },
+      },
+      B = {
+        '<cmd>FzfLua tabs<cr>',
+        'Tabs',
+        mode = { 'n' },
+      },
     },
     ['g'] = {
       f = {
@@ -169,6 +194,7 @@ M.wh_key = {
 M.setup = function(_, _)
   -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>FzfLua files<cr>', { noremap = true, silent = true, desc = 'Find Files' })
+  vim.api.nvim_set_keymap('n', '<C-q>', '<cmd>FzfLua quickfix_stack<cr>', { noremap = true, silent = true, desc = 'Quickfix' })
   return {
     'ibhagwan/fzf-lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -179,7 +205,33 @@ M.setup = function(_, _)
       if not status then
         return
       end
-      fzf.setup({})
+      local actions = require('fzf-lua.actions')
+      fzf.setup({
+        actions = {
+          files = {
+            ['default'] = actions.file_edit_or_qf,
+            ['ctrl-s'] = actions.file_split,
+            ['ctrl-v'] = actions.file_vsplit,
+            ['ctrl-t'] = actions.file_tabedit,
+            ['ctrl-q'] = actions.file_sel_to_qf,
+            ['alt-l'] = actions.file_sel_to_ll,
+          },
+        },
+        lines = {
+          actions = {
+            ['default'] = actions.buf_edit_or_qf,
+            ['ctrl-q'] = actions.buf_sel_to_qf,
+            ['alt-l'] = actions.buf_sel_to_ll,
+          },
+        },
+        blines = {
+          actions = {
+            ['default'] = actions.buf_edit_or_qf,
+            ['ctrl-q'] = actions.buf_sel_to_qf,
+            ['alt-l'] = actions.buf_sel_to_ll,
+          },
+        },
+      })
     end,
   }
 end

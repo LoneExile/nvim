@@ -14,9 +14,6 @@ M.setup = function()
         return
       end
 
-      -- IntelliSense for styled-components
-      -- npm i -g @styled/typescript-styled-plugin typescript-styled-plugin
-
       local api = require('typescript-tools.api')
 
       typescript.setup({
@@ -36,7 +33,9 @@ M.setup = function()
           -- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
           -- (see 💅 `styled-components` support section)
           tsserver_plugins = {
-            '@styled/typescript-styled-plugin',
+            -- IntelliSense for styled-components
+            -- npm i -g @styled/typescript-styled-plugin typescript-styled-plugin
+            -- '@styled/typescript-styled-plugin',
           },
           -- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
           -- memory limit in megabytes or "auto"(basically no limit)

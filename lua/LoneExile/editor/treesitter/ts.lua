@@ -16,20 +16,16 @@ M.setup = function(_, location)
       pcall(vim.cmd, 'TSUpdate')
     end,
     config = function()
-      local status_ok, configs = pcall(require, 'nvim-treesitter.configs')
+      vim.g.skip_ts_context_commentstring_module = true
+
+      local status_ok, treesitter = pcall(require, 'nvim-treesitter.configs')
       if not status_ok then
         return
       end
 
-      local status, commentConfig = pcall(require, location .. '.settings.commentString')
-      if not status then
-        commentConfig = {}
-        vim.notify('Treesitter comment config not found')
-      end
-
       local tsTextObjects = require(location .. '.settings.tsTextObjects')
 
-      configs.setup({
+      local config = {
         -- ensure_installed = 'all',
         ensure_installed = {
           'markdown',
@@ -80,13 +76,6 @@ M.setup = function(_, location)
         },
         indent = { enable = true, disable = { 'python', 'css' } },
 
-        -- **nvim-ts-context-commentstring**
-        context_commentstring = {
-          enable = true,
-          enable_autocmd = false,
-          config = commentConfig,
-        },
-
         -- ** textobjects **
         textobjects = tsTextObjects,
 
@@ -112,7 +101,9 @@ M.setup = function(_, location)
         },
         -- ** markid ** better highlight (currently suck!?)
         -- markid = { enable = false },
-      })
+      }
+
+      treesitter.setup(config)
     end,
   }
 end

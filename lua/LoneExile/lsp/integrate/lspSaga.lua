@@ -50,20 +50,24 @@ M.setup = function(_, _)
         },
         request_timeout = 20000,
         finder = {
-          edit = { 'o', '<CR>' },
-          vsplit = 's',
-          split = 'i',
-          tabe = 't',
-          quit = { 'q', '<ESC>' },
+          keys = {
+            edit = { 'o', '<CR>' },
+            vsplit = 's',
+            split = 'i',
+            tabe = 't',
+            quit = { 'q', '<ESC>' },
+          },
         },
-        -- definition = {
-        --   edit = '<space>oo',
-        --   vsplit = '<space>ov',
-        --   split = '<space>os',
-        --   tabe = '<space>ot',
-        --   quit = 'q',
-        --   close = '<Esc>',
-        -- },
+        definition = {
+          keys = {
+            edit = '<space>oo',
+            vsplit = '<space>ov',
+            split = '<space>os',
+            tabe = '<space>ot',
+            quit = 'q',
+            close = '<Esc>',
+          },
+        },
         code_action = {
           extend_gitsigns = false,
           num_shortcut = true,

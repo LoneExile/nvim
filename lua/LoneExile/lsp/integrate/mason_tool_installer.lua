@@ -62,7 +62,7 @@ M.setup = function(_, _)
           'prettierd',
           'black', -- Python
           'isort', -- Python
-          'beautysh',
+          'shfmt', -- Shell
           -- 'csharpier', -- C#
           'markdownlint', -- Markdown
           -- 'vale', -- Markdown

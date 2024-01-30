@@ -54,11 +54,11 @@ M.setup = function(setting, _)
           yaml = { 'yamlfmt' },
           json = { 'jq' },
 
-          bash = { 'beautysh' },
-          csh = { 'beautysh' },
-          ksh = { 'beautysh' },
-          sh = { 'beautysh' },
-          zsh = { 'beautysh' },
+          bash = { 'shfmt' },
+          csh = { 'shfmt' },
+          ksh = { 'shfmt' },
+          sh = { 'shfmt' },
+          zsh = { 'shfmt' },
 
           markdown = { 'markdownlint' },
 

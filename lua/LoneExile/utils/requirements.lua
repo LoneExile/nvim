@@ -38,8 +38,11 @@ if M.CURRENTOS == 'Linux' and M.ISWSL then
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
-      ['+'] = 'clip.exe',
-      ['*'] = 'clip.exe',
+      -- ['+'] = 'clip.exe',
+      -- ['*'] = 'clip.exe',
+      -- yay -S xclip
+      ['+'] = 'xclip -selection clipboard',
+      ['*'] = 'xclip -selection clipboard',
     },
     paste = {
       ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',

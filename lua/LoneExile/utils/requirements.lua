@@ -57,7 +57,7 @@ elseif M.CURRENTOS == 'Linux' then
 elseif M.CURRENTOS == 'Darwin' then
   M.SETPYENV()
   vim.opt.clipboard = 'unnamedplus'
-elseif M.CURRENTOS == 'windows' or M.CURRENTOS == 'windows_nt' then
+elseif string.lower(M.CURRENTOS) == 'windows' or string.lower(M.CURRENTOS) == 'windows_nt' then
   vim.opt.clipboard = 'unnamedplus'
   vim.g.clipboard = {
     name = 'win32yank',

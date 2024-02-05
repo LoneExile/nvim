@@ -75,7 +75,7 @@ M.clean_path = function(files, exclude_list, root)
   local paths = {}
 
   for _, file in ipairs(files) do
-    local path = ''
+    local path
     if string.lower(M.CURRENTOS) == 'windows' or string.lower(M.CURRENTOS) == 'windows_nt' then
       path = file:match('nvim\\lua\\(.+)')
     else

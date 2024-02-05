@@ -1,7 +1,7 @@
 if vim.fn.has('nvim-0.9') ~= 1 then
   vim.api.nvim_echo({
     { 'Please upgrade your Neovim base installation.requires v0.9+', 'ErrorMsg' },
-    { 'Press any key to continue', 'WarningMsg' },
+    { 'Press any key to continue',                                   'WarningMsg' },
   }, true, {})
   vim.fn.getchar()
   vim.cmd([[quit]])
@@ -35,7 +35,6 @@ end
 
 if M.CURRENTOS == 'Linux' and M.ISWSL then
   M.SETPYENV()
-  M.TRANSPARENT = true
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
@@ -48,29 +47,15 @@ if M.CURRENTOS == 'Linux' and M.ISWSL then
     },
     cache_enabled = 0,
   }
-  -- vim.g.clipboard = {
-  --   name = 'wsl',
-  --   copy = {
-  --     ['+'] = 'win32yank.exe -i --crlf',
-  --     ['*'] = 'win32yank.exe -i --crlf',
-  --   },
-  --   paste = {
-  --     ['+'] = 'win32yank.exe -o --lf',
-  --     ['*'] = 'win32yank.exe -o --lf',
-  --   },
-  --   cache_enabled = 0,
-  -- }
   vim.opt.clipboard = 'unnamedplus'
 elseif M.CURRENTOS == 'Linux' then
   M.SETPYENV()
-  M.TRANSPARENT = true
   vim.opt.clipboard = 'unnamedplus'
 elseif M.CURRENTOS == 'Darwin' then
   M.SETPYENV()
-  M.TRANSPARENT = true
   vim.opt.clipboard = 'unnamedplus'
 elseif M.CURRENTOS == 'windows' or M.CURRENTOS == 'windows_nt' then
-  M.TRANSPARENT = false
+  vim.opt.clipboard = 'unnamedplus'
   vim.g.clipboard = {
     name = 'win32yank',
     copy = {

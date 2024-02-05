@@ -14,7 +14,8 @@ end
 
 M.get_current_file_path = function()
   local path = M.get_current_script_path(3)
-  local file_path = path and path:match('lua/(.+)') or nil
+  local separator = M.get_separator()
+  local file_path = path and path:match('lua' .. separator .. '(.+)') or nil
   return file_path
 end
 
@@ -41,7 +42,8 @@ end
 M.core = { 'core' }
 
 M.get_files_in_dir = function(dir)
-  local files = vim.fn.glob(dir .. '/*', false, true)
+  local separator = M.get_separator()
+  local files = vim.fn.glob(dir .. separator .. '*', false, true)
   return files
 end
 
@@ -54,16 +56,31 @@ M.is_excluded = function(path, exclude_list)
   return false
 end
 
+M.CURRENTOS = vim.loop.os_uname().sysname
+M.get_separator = function()
+  if string.lower(M.CURRENTOS) == 'windows' or string.lower(M.CURRENTOS) == 'windows_nt' then
+    return '\\'
+  else
+    return '/'
+  end
+end
+
 M.clean_path = function(files, exclude_list, root)
-  local paths = {}
+  local separator = M.get_separator()
   local replacements = {
-    { search = '/', replace = '.' },
+    { search = separator, replace = '.' },
     { search = '%.lua$', replace = '' },
     { search = '^' .. root .. '%.', replace = '' },
   }
+  local paths = {}
 
   for _, file in ipairs(files) do
-    local path = file:match('nvim/lua/(.+)')
+    local path = ''
+    if string.lower(M.CURRENTOS) == 'windows' or string.lower(M.CURRENTOS) == 'windows_nt' then
+      path = file:match('nvim\\lua\\(.+)')
+    else
+      path = file:match('nvim/lua/(.+)')
+    end
     if not M.is_excluded(path, exclude_list) then
       for _, replacement in ipairs(replacements) do
         path = path:gsub(replacement.search, replacement.replace)
@@ -102,10 +119,11 @@ M.get_lazy_plugins = function(data_loc)
   data_loc = data_loc or vim.fn.stdpath('data')
   local paths = M.get_runtimepath_list()
   local lazy_plugins = {}
+  local separator = M.get_separator()
 
   for _, path in ipairs(paths) do
-    if path:match('^' .. data_loc .. '/lazy') then
-      local plugin_name = path:gsub(data_loc .. '/lazy/', '')
+    if path:match('^' .. data_loc .. separator .. 'lazy') then
+      local plugin_name = path:gsub(data_loc .. separator .. 'lazy' .. separator, '')
       table.insert(lazy_plugins, plugin_name)
     end
   end

@@ -1,4 +1,5 @@
 local M = {}
+
 M.setup = function(root, m)
   local set_loc = '.core.settings'
   local settings = require(root .. set_loc).setup(root, set_loc)
@@ -9,7 +10,9 @@ M.setup = function(root, m)
 
   -----------------------------------------------------
   -----------------------------------------------------
-  local lazypath = settings.data_loc .. '/lazy/lazy.nvim'
+  local separator = m.get_separator()
+
+  local lazypath = settings.data_loc .. separator .. 'lazy' .. separator .. 'lazy.nvim'
 
   if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -25,15 +28,15 @@ M.setup = function(root, m)
   -----------------------------------------------------
   -----------------------------------------------------
 
-  local config_location = settings.conf_loc .. '/lua/' .. root
-  local all_files = vim.fn.glob(config_location .. '/**/*.lua', true, true)
+  local config_location = settings.conf_loc .. separator .. 'lua' .. separator .. root
+  local all_files = vim.fn.glob(config_location .. separator .. '**' .. separator .. '*.lua', true, true)
   local files = vim.tbl_filter(function(file)
     return not vim.endswith(file, 'lazy.lua') and not vim.startswith(file, '_')
   end, all_files)
 
   files = vim.tbl_filter(function(file)
     local folder = vim.fn.fnamemodify(file, ':h')
-    local init_file = folder .. '/init.lua'
+    local init_file = folder .. separator .. 'init.lua'
     if vim.fn.filereadable(init_file) == 1 then
       return vim.endswith(file, 'init.lua')
     end
@@ -78,10 +81,19 @@ M.setup = function(root, m)
       location = root .. '.' .. folder_name .. '.' .. file_name
       location = vim.fn.substitute(location, '.init', '', 'g')
     else
-      location = vim.fn.matchstr(file, root .. [[/.*.lua]])
-      location = vim.fn.substitute(location, '/', '.', 'g')
-      location = vim.fn.substitute(location, '.init', '', 'g')
-      location = vim.fn.substitute(location, '.lua$', '', 'g')
+      if separator == '\\' then
+        location = vim.fn.matchstr(file, root .. [[\\.*.lua]])
+        location = vim.fn.substitute(location, '\\', '.', 'g')
+      else
+        location = vim.fn.matchstr(file, root .. [[/.*.lua]])
+        location = vim.fn.substitute(location, '/', '.', 'g')
+      end
+      if location ~= nil then
+        location = vim.fn.substitute(location, '.init', '', 'g')
+      end
+      if location ~= nil then
+        location = vim.fn.substitute(location, '.lua$', '', 'g')
+      end
     end
 
     local plugin_config = require(location)
@@ -144,8 +156,6 @@ M.setup = function(root, m)
     end
   end
 
-  -----------------------------------------------------
-
   --   { 'nvim-lua/plenary.nvim' },
   --   { 'nvim-lua/popup.nvim' },
   --   { 'nvim-tree/nvim-web-devicons' },
@@ -156,7 +166,7 @@ M.setup = function(root, m)
   end
 
   local opts = {
-    lockfile = settings.resources .. '/lazy-lock.json',
+    lockfile = settings.resources .. separator .. 'lazy-lock.json',
     -- TODO: currently not working
     -- dev = {
     --   path = settings.conf_loc .. '/lua/' .. root .. '/dev/',

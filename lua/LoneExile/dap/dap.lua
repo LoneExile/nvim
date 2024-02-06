@@ -34,7 +34,7 @@ M.wh_key = {
   },
 }
 
-M.setup = function(_, location)
+M.setup = function(s, location)
   -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   return {
     'mfussenegger/nvim-dap',
@@ -82,10 +82,10 @@ M.setup = function(_, location)
       dap.defaults.fallback.terminal_win_cmd = '50vsplit new'
 
       location = vim.fn.substitute(location, '.dap.dap', '.dap', 'g')
-      require(location .. '.settings.node').setup(dap)
-      require(location .. '.settings.csharp').setup(dap)
-      require(location .. '.settings.rust').setup(dap)
-      -- require(location .. '.settings.go').setup(dap)
+      require(location .. '.settings.node').setup(dap, s)
+      require(location .. '.settings.csharp').setup(dap, s)
+      require(location .. '.settings.rust').setup(dap, s)
+      -- require(location .. '.settings.go').setup(dap, s)
     end,
   }
 end

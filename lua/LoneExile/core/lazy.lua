@@ -11,6 +11,7 @@ M.setup = function(root, m)
   -----------------------------------------------------
   -----------------------------------------------------
   local separator = m.get_separator()
+  settings.separator = separator
 
   local lazypath = settings.data_loc .. separator .. 'lazy' .. separator .. 'lazy.nvim'
 

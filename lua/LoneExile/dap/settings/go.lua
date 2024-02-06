@@ -1,10 +1,11 @@
 local M = {}
 
--- Debugger installation location
-local DEBUG_ADAPTER = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'packages/go-debug-adapter/extension/dist/debugAdapter.js'
-local DEBUGGER_LOCATION = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'bin/dlv'
+function M.setup(dap, s)
+  -- Debugger installation location
+  local DEBUG_ADAPTER =
+    s.utils.convert_path(vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'packages/go-debug-adapter/extension/dist/debugAdapter.js')
+  local DEBUGGER_LOCATION = s.utils.convert_path(vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'bin/dlv')
 
-function M.setup(dap)
   dap.adapters.go = {
     type = 'executable',
     command = 'node',

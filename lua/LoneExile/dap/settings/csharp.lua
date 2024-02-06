@@ -1,9 +1,9 @@
 local M = {}
 
 -- Debugger installation location
-local DEBUGGER_LOCATION = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'bin/netcoredbg'
 
-function M.setup(dap)
+function M.setup(dap, s)
+  local DEBUGGER_LOCATION = s.utils.convert_path(vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'bin/netcoredbg')
   -- Adapter configuration
   dap.adapters.coreclr = {
     type = 'executable',
@@ -24,7 +24,7 @@ function M.setup(dap)
       request = 'launch',
       program = function()
         -- return vim.fn.input('Path to DLL > ', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-        return vim.fn.input('Path to DLL > ', vim.fn.getcwd() .. '/', 'file')
+        return vim.fn.input('Path to DLL > ', vim.fn.getcwd() .. s.separator, 'file')
       end,
     },
   }

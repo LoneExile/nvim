@@ -1,7 +1,8 @@
 local M = {}
 
-function M.setup(dap)
-  local debugger_path = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. '/packages/js-debug-adapter/js-debug/src/dapDebugServer.js'
+function M.setup(dap, s)
+  local debugger_path =
+    s.utils.convert_path(vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. '/packages/js-debug-adapter/js-debug/src/dapDebugServer.js')
 
   dap.adapters['pwa-node'] = {
     type = 'server',

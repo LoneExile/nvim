@@ -69,8 +69,9 @@ return {
 
   { 'j-hui/fidget.nvim',                         true },
   { 'glepnir/lspsaga.nvim',                      true },
-  { 'stevearc/conform.nvim',                     true },
-  { 'mfussenegger/nvim-lint',                    true },
+  -- { 'stevearc/conform.nvim',                     false },
+  -- { 'mfussenegger/nvim-lint',                    false },
+  { 'nvimtools/none-ls.nvim',                    true },
 
   { 'folke/lua-dev.nvim',                        true },
   { 'simrat39/rust-tools.nvim',                  true },

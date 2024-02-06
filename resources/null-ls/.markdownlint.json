@@ -1,9 +1,13 @@
 {
+  "default": true,
   "MD033": {
     "allowed_elements": [
       "details",
       "summary"
     ]
   },
-  "MD025": false
+  "MD025": false,
+  "MD013": {
+    "line_length": 80
+  }
 }

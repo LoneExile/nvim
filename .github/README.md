@@ -11,7 +11,7 @@
 ---
 
 <details>
-  <summary><b>🛠️&nbsp;&nbsp;Dependencies</b></summary>
+  <summary>🛠️Dependencies</summary>
 
 - neovim >= 0.10
 - nodejs >= 18

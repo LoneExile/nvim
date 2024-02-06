@@ -13,12 +13,24 @@
 <details>
   <summary><b>🛠️&nbsp;&nbsp;Dependencies</b></summary>
 
-- neovim >= 0.9
-- nodejs >= 16
+- neovim >= 0.10
+- nodejs >= 18
 - python3 >= 3.9
 - luarocks >= 5.3 (optional)
-- go >= 1.16 (optional)
-- rust >= 1.51 (optional)
+- go >= 1.21 (optional)
+- rust >= 1.61 (optional)
+
+**windows** via [scoop](https://scoop.sh/)
+
+```pwsh
+  scoop install main/luarocks main/go main/rust main/nodejs-lts main/python
+```
+
+**Arch** via [yay](https://github.com/Jguer/yay)
+
+```bash
+  yay -S python-pynvim nodejs npm luarocks go rust
+```
 
 install
 

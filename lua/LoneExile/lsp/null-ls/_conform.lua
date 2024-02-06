@@ -15,25 +15,34 @@ M.setup = function(setting, _)
 
       local configLoc = setting.conf_loc .. '/resources/null-ls/'
 
-      -- TODO: if current file is in neovim config, use that config
-      require('conform.formatters.stylua').args = { '--config-path', vim.fn.glob(configLoc .. '.stylua.toml'), '$FILENAME', '-' }
-      require('conform.formatters.stylua').range_args = function(ctx)
-        local start_offset, end_offset = util.get_offsets_from_range(ctx.buf, ctx.range)
-        return {
-          -- "--search-parent-directories",
-          '--config-path',
-          vim.fn.glob(configLoc .. '.stylua.toml'),
-          '--stdin-filepath',
-          '$FILENAME',
-          '--range-start',
-          tostring(start_offset),
-          '--range-end',
-          tostring(end_offset),
-          '-',
-        }
-      end
-
       conform.setup({
+        log_level = vim.log.levels.DEBUG,
+        formatters = {
+          -- markdownlint = {
+          --   command = 'markdownlint',
+          --   args = { '--config', vim.fn.glob(configLoc .. '.markdownlint.json'), '$FILENAME', '--fix' },
+          -- },
+
+          -- -- TODO: if current file is in neovim config, use that config
+          stylua = {
+            command = 'stylua',
+            args = { '--config-path', vim.fn.glob(configLoc .. '.stylua.toml'), '$FILENAME', '-' },
+            range_args = function(ctx)
+              local start_offset, end_offset = util.get_offsets_from_range(ctx.buf, ctx.range)
+              return {
+                '--config-path',
+                vim.fn.glob(configLoc .. '.stylua.toml'),
+                '--stdin-filepath',
+                '$FILENAME',
+                '--range-start',
+                tostring(start_offset),
+                '--range-end',
+                tostring(end_offset),
+                '-',
+              }
+            end,
+          },
+        },
         formatters_by_ft = {
           lua = { 'stylua' },
 
@@ -88,7 +97,7 @@ M.setup = function(setting, _)
             ['end'] = { args.line2, end_line:len() },
           }
         end
-        require('conform').format({ async = false, timeout_ms = 1000, lsp_fallback = true, range = range })
+        require('conform').format({ async = false, timeout_ms = 5000, lsp_fallback = true, range = range })
       end, { range = true })
     end,
   }

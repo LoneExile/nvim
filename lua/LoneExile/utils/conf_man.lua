@@ -65,6 +65,15 @@ M.get_separator = function()
   end
 end
 
+M.convert_path = function(path)
+  if string.lower(M.CURRENTOS) == 'windows' or string.lower(M.CURRENTOS) == 'windows_nt' then
+    path = path:gsub('/', '\\')
+  else
+    path = path:gsub('\\', '/')
+  end
+  return path
+end
+
 M.clean_path = function(files, exclude_list, root)
   local separator = M.get_separator()
   local replacements = {

@@ -109,6 +109,7 @@ M.setup = function(_, location)
         -- 'lemminx', -- xml
         -- 'sqls', -- sql
         'golangci_lint_ls', -- Go
+        -- 'vale_ls', -- Markdown, text
       }
 
       --FIX: this load multiple times?

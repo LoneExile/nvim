@@ -27,8 +27,7 @@ M.setup = function(setting, _)
       local markdownlint = lint.linters.markdownlint
       markdownlint.args = {
         '--config',
-        configLoc .. '.markdownlint.json',
-        '--stdin',
+        vim.fn.glob(configLoc .. '.markdownlint.json'),
       }
 
       lint.linters_by_ft = {

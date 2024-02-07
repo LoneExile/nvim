@@ -47,7 +47,7 @@ M.setup = function(settings, _)
         dashboard.button('e', '  New file', ':ene <BAR> startinsert <CR>'),
         -- dashboard.button('p', '  Find project', ':lua require("telescope").extensions.projects.projects{}<CR>'),
         dashboard.button('r', '󰄉  Recently used files', '<cmd>FzfLua oldfiles<cr>'),
-        dashboard.button('c', '  Configuration', ':e' .. settings.conf_loc .. settings.separator .. 'init.lua <CR>'),
+        dashboard.button('c', '  Configuration', ':e ' .. settings.conf_loc .. settings.separator .. 'init.lua <CR>'),
         dashboard.button('q', '󰩈  Quit Neovim', ':qa<CR>'),
       }
 

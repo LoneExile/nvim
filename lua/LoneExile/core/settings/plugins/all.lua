@@ -92,5 +92,5 @@ return {
   { 'stevearc/oil.nvim',                         true },
   { 'folke/which-key.nvim',                      true },
 
-  -- { 'folke/todo-comments.nvim',                  true },
+  { 'folke/todo-comments.nvim',                  true },
 }

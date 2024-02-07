@@ -4,23 +4,20 @@ M.setup = function(null_ls, s)
   local formatting = null_ls.builtins.formatting
 
   local format = {
-    formatting.prettier.with({
-      filetypes = {
-        'javascript',
-        'typescript',
-        'typescriptreact',
-        'javascriptreact',
-        'html',
-        'css',
-        'scss',
-        'lua',
-        'vue',
-        'yaml',
-      },
-      extra_args = { '--no-semi', '--single-quote', '--no-bracket-spacing', '--print-width', '120', '--prose-wrap', 'always' },
-      disabled_filetypes = { 'lua', 'python' },
-      extra_filetypes = { 'toml' },
-    }),
+    -- formatting.prettier.with({
+    --   filetypes = {
+    --     'javascript',
+    --     'typescript',
+    --     'typescriptreact',
+    --     'javascriptreact',
+    --     'html',
+    --     'css',
+    --     'scss',
+    --   },
+    --   extra_args = { '--no-semi', '--single-quote', '--no-bracket-spacing', '--print-width', '120', '--prose-wrap', 'always' },
+    --   disabled_filetypes = { 'lua', 'python' },
+    --   extra_filetypes = { 'toml' },
+    -- }),
 
     formatting.prettier.with({
       filetypes = { 'markdown' },
@@ -46,9 +43,8 @@ M.setup = function(null_ls, s)
       extra_args = { '--fast', '--line-length', '90' },
     }),
 
-    formatting.beautysh.with({
+    formatting.shfmt.with({
       filetypes = { 'bash', 'csh', 'ksh', 'sh', 'zsh' },
-      extra_args = { '$FILENAME' },
     }),
 
     -- formatting.csharpier.with({

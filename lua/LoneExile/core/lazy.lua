@@ -1,17 +1,18 @@
 local M = {}
 
 M.setup = function(root, m)
-  local set_loc = '.core.settings'
-  local settings = require(root .. set_loc).setup(root, set_loc)
+  m.set_loc = root .. '.core.settings'
+  local settings = require(m.set_loc).setup(root, m)
   settings.utils = m
 
   M.opts = m.opts or {}
   settings = vim.tbl_extend('force', settings, M.opts)
 
-  -----------------------------------------------------
-  -----------------------------------------------------
   local separator = m.get_separator()
   settings.separator = separator
+
+  -----------------------------------------------------
+  -----------------------------------------------------
 
   local lazypath = settings.data_loc .. separator .. 'lazy' .. separator .. 'lazy.nvim'
 
@@ -70,7 +71,7 @@ M.setup = function(root, m)
 
   local plugins = {}
 
-  local all_plugins = require(root .. set_loc .. '.plugins.' .. M.opts.plugin)
+  local all_plugins = require(m.set_loc .. '.plugins.' .. M.opts.plugin)
 
   for _, file in ipairs(files) do
     local file_name = vim.fn.fnamemodify(file, ':t:r')

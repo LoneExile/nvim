@@ -1,7 +1,7 @@
 local M = {}
 
-M.setup = function(root, set_loc)
-  local set_path = root .. set_loc .. '.'
+M.setup = function(root, m)
+  local set_path = m.set_loc .. '.'
   local colors = require(set_path .. 'colors')
   local conf_loc = vim.fn.stdpath('config')
   local data_loc = vim.fn.stdpath('data')
@@ -14,7 +14,7 @@ M.setup = function(root, set_loc)
     data_loc = data_loc,
 
     -- TODO: automatically find the resources folder
-    resources = conf_loc .. '/resources',
+    resources = conf_loc .. m.get_separator() .. 'resources',
 
     ------------------------------------------------------------------
     colors = colors,

@@ -13,16 +13,32 @@ M.CURRENTOS = vim.loop.os_uname().sysname
 M.ISWSL = vim.fn.has('wsl') == 1 -- os.getenv('WSL_DISTRO_NAME') ~= nil
 
 M.SETPYENV = function()
-  local python3 = io.popen('which python3')
-  if python3 then
-    vim.g.python3_host_prog = python3:read()
-    python3:close()
-  end
+  if string.lower(M.CURRENTOS) == 'windows' or string.lower(M.CURRENTOS) == 'windows_nt' then
+    local python3 =
+      io.popen('Get-Command -Name python3 -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue')
+    if python3 then
+      vim.g.python3_host_prog = python3:read()
+      python3:close()
+    end
 
-  local python = io.popen('which python')
-  if python then
-    vim.g.python_host_prog = python:read()
-    python:close()
+    local python =
+      io.popen('Get-Command -Name python -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue')
+    if python then
+      vim.g.python_host_prog = python:read()
+      python:close()
+    end
+  else
+    local python3 = io.popen('which python3')
+    if python3 then
+      vim.g.python3_host_prog = python3:read()
+      python3:close()
+    end
+
+    local python = io.popen('which python')
+    if python then
+      vim.g.python_host_prog = python:read()
+      python:close()
+    end
   end
 end
 
@@ -71,8 +87,7 @@ elseif string.lower(M.CURRENTOS) == 'windows' or string.lower(M.CURRENTOS) == 'w
     },
     cache_enabled = 0,
   }
-  vim.g.python_host_prog = '$HOME\\scoop\\apps\\pyenv\\current\\pyenv-win\\shims\\python.bat'
-  vim.g.python3_host_prog = '$HOME\\scoop\\apps\\pyenv\\current\\pyenv-win\\shims\\python3.bat'
+  M.SETPYENV()
 end
 
 return M

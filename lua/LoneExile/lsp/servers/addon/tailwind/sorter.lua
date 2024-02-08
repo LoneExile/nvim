@@ -22,7 +22,7 @@ M.setup = function()
         node_path = 'node',
       })
     end,
-    run = 'cd formatter && npm i && npm run build',
+    build = 'cd formatter && npm i && npm run build',
   }
 end
 

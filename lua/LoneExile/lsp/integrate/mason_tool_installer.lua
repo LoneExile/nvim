@@ -31,7 +31,7 @@ M.setup = function(_, _)
           -- 'clangd', -- C++
           'dockerfile-language-server',
           'marksman', -- Markdown
-          'pyright',
+          'ruff-lsp', -- Python
           'rust-analyzer',
           'taplo', -- TOML
           'yaml-language-server',
@@ -58,7 +58,7 @@ M.setup = function(_, _)
           -- FORMATTER
           'stylua', -- Lua
           'jq', -- JSON
-          'prettier',
+          -- 'prettier',
           'prettierd',
           'black', -- Python
           'isort', -- Python
@@ -74,18 +74,14 @@ M.setup = function(_, _)
           'codespell',
 
           -- CODE ACTION
-          'eslint_d',
-          'shellcheck',
           'impl', -- Go
 
           -- DIAGNOSTICS
           'luacheck',
           -- 'flake8', -- Python
-          'ruff', -- Python
           'actionlint',
           -- 'sqlfluff',
           'alex',
-          'golangci-lint', -- Go
           'gomodifytags', -- Go
           'gotests', -- Go
 
@@ -101,7 +97,7 @@ M.setup = function(_, _)
       })
 
       -- since we are lazy loading mason-tool-installer, we need to manually call the install function
-      -- vim.cmd('MasonToolsInstall')
+      vim.cmd('MasonToolsInstall')
 
       -- vim.api.nvim_create_autocmd('User', {
       --   pattern = 'MasonToolsUpdateCompleted',

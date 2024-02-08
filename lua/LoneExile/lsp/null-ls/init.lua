@@ -16,7 +16,7 @@ M.setup = function(s, location)
       local sources = {
         -- hover
         hover.dictionary.with({
-          -- filetypes = { "text", "markdown" },
+          filetypes = { 'text', 'markdown' },
         }),
         hover.printenv.with({
           filetypes = { 'bash', 'csh', 'ksh', 'sh', 'zsh' },

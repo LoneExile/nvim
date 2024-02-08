@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function(setting, _)
+M.setup = function(s, _)
   return {
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'InsertEnter' },
@@ -10,7 +10,7 @@ M.setup = function(setting, _)
         return
       end
 
-      local configLoc = setting.conf_loc .. '/resources/null-ls/'
+      local configLoc = s.utils.convert_path(s.conf_loc .. '/resources/null-ls/')
 
       local luacheck = lint.linters.luacheck
       luacheck.args = { '--config', configLoc .. '.luacheckrc' }

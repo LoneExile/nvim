@@ -4,22 +4,7 @@ M.setup = function(null_ls, s)
   local formatting = null_ls.builtins.formatting
 
   local format = {
-    -- formatting.prettier.with({
-    --   filetypes = {
-    --     'javascript',
-    --     'typescript',
-    --     'typescriptreact',
-    --     'javascriptreact',
-    --     'html',
-    --     'css',
-    --     'scss',
-    --   },
-    --   extra_args = { '--no-semi', '--single-quote', '--no-bracket-spacing', '--print-width', '120', '--prose-wrap', 'always' },
-    --   disabled_filetypes = { 'lua', 'python' },
-    --   extra_filetypes = { 'toml' },
-    -- }),
-
-    formatting.prettier.with({
+    formatting.prettierd.with({
       filetypes = { 'markdown' },
       extra_args = { '--print-width', '80', '--prose-wrap', 'always' },
     }),
@@ -51,9 +36,6 @@ M.setup = function(null_ls, s)
     --   filetypes = { 'cs' },
     --   command = 'dotnet-csharpier',
     --   extra_args = { '--write-stdout' },
-    -- }),
-    -- formatting.clang_format.with({
-    --   filetypes = { 'cs' },
     -- }),
 
     formatting.markdownlint.with({
@@ -92,11 +74,6 @@ M.setup = function(null_ls, s)
       extra_args = { '-srcdir', '$DIRNAME' },
       filetypes = { 'go' },
     }),
-
-    -- formatting.clang_format.with({
-    --   command = 'clang-format',
-    --   filetypes = { 'c', 'cpp', 'cs', 'java', 'cuda', 'proto' },
-    -- }),
   }
   return format
 end

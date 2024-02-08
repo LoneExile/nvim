@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function(setting, _)
+M.setup = function(s, _)
   return {
     'stevearc/conform.nvim',
     event = { 'BufReadPre', 'InsertEnter' },
@@ -13,7 +13,7 @@ M.setup = function(setting, _)
 
       local util = require('conform.util')
 
-      local configLoc = setting.conf_loc .. '/resources/null-ls/'
+      local configLoc = s.utils.convert_path(s.conf_loc .. '/resources/null-ls/')
 
       conform.setup({
         log_level = vim.log.levels.DEBUG,
@@ -23,7 +23,7 @@ M.setup = function(setting, _)
           --   args = { '--config', vim.fn.glob(configLoc .. '.markdownlint.json'), '$FILENAME', '--fix' },
           -- },
 
-          -- -- TODO: if current file is in neovim config, use that config
+          -- TODO: if current file is in neovim config, use that config
           stylua = {
             command = 'stylua',
             args = { '--config-path', vim.fn.glob(configLoc .. '.stylua.toml'), '$FILENAME', '-' },

@@ -12,11 +12,7 @@ M.setup = function(null_ls, s)
         s.conf_loc .. s.utils.convert_path('/resources/null-ls/.markdownlint.json'),
       },
     }),
-    -- write good is good though
-    -- diagnostics.write_good.with({
-    --   filetypes = { 'markdown' },
-    --   extra_args = { '--text=$TEXT', '--parse' },
-    -- }),
+
     diagnostics.alex.with({
       filetypes = { 'markdown' },
       extra_args = { '--stdin' },
@@ -26,40 +22,6 @@ M.setup = function(null_ls, s)
       filetype = { 'lua' },
       extra_args = { '--config', s.conf_loc .. s.utils.convert_path('/resources/null-ls/.luacheckrc') },
     }),
-    diagnostics.shellcheck.with({
-      filetypes = { 'bash', 'csh', 'ksh', 'sh', 'zsh' },
-      extra_args = { '--severity', 'warning' },
-    }),
-
-    -- diagnostics.flake8.with({
-    --   filetypes = { 'python' },
-    --   extra_args = { '--max-line-length', '90' },
-    -- }),
-
-    diagnostics.ruff.with({
-      filetypes = { 'python' },
-      extra_args = { '-n', '-e', '--stdin-filename', '$FILENAME', '-' },
-    }),
-
-    -- diagnostics.eslint_d.with({
-    --   filetypes = {
-    --     'javascript',
-    --     'javascriptreact',
-    --     'typescript',
-    --     'typescriptreact',
-    --     -- 'vue',
-    --   },
-    --   extra_args = {
-    --     '-f',
-    --     'json',
-    --     '--stdin',
-    --     '--stdin-filename',
-    --     '$FILENAME',
-    --     -- '--no-eslintrc',
-    --     -- '--env',
-    --     -- 'es6',
-    --   },
-    -- }),
 
     diagnostics.zsh.with({
       filetypes = { 'zsh' },
@@ -73,20 +35,6 @@ M.setup = function(null_ls, s)
     -- diagnostics.sqlfluff.with({
     --   filetype = { 'sql' },
     --   extra_args = { '--dialect', 'postgres' },
-    -- }),
-
-    -- NOTE: not working, use LSP instead
-    -- diagnostics.golangci_lint.with({
-    --   filetype = { 'go' },
-    --   extra_args = { 'run', '--fix=false', '--out-format=json', '--path-prefix', '$ROOT' },
-    --   command = 'golangci-lint',
-    --   method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
-    -- }),
-
-    -- diagnostics.cpplint.with({
-    --   filetype = { 'c', 'cpp' },
-    --   command = 'cpplint',
-    --   extra_args = { '$FILENAME' },
     -- }),
   }
   return diagnosticsTable

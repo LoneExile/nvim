@@ -31,6 +31,7 @@ return {
   { 'phaazon/hop.nvim',                          true },
   { 'nacro90/numb.nvim',                         true },
   { 'echasnovski/mini.surround',                 true },
+  { 'declancm/cinnamon.nvim',                    true },
 
   -- Tool
   { 'ibhagwan/fzf-lua',                          true },
@@ -90,6 +91,7 @@ return {
   { 'rcarriga/nvim-notify',                      true },
 
   { 'stevearc/oil.nvim',                         true },
+  { 'nvim-neo-tree/neo-tree.nvim',               true },
   { 'folke/which-key.nvim',                      true },
 
   { 'folke/todo-comments.nvim',                  true },

@@ -58,7 +58,7 @@ M.setup = function(_, _)
           -- FORMATTER
           'stylua', -- Lua
           'jq', -- JSON
-          -- 'prettier',
+          'prettier',
           'prettierd',
           'black', -- Python
           'isort', -- Python

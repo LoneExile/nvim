@@ -1,29 +1,29 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    e = {
-      function()
-        vim.cmd('Oil --float')
-      end,
-      'Explorer',
-      mode = { 'n' },
-    },
-  },
-}
-
-vim.keymap.set(
-  'n',
-  '-',
-  -- require('oil').open
-  function()
-    vim.cmd('Oil')
-  end,
-  { desc = 'Oil' }
-)
+-- M.wh_key = {
+--   wh_mappings = {
+--     e = {
+--       function()
+--         -- vim.cmd('Oil --float')
+--         vim.cmd('Oil')
+--       end,
+--       'Explorer',
+--       mode = { 'n' },
+--     },
+--   },
+-- }
 
 M.setup = function(_, _)
   -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
+  vim.keymap.set(
+    'n',
+    '-',
+    -- require('oil').open
+    function()
+      vim.cmd('Oil')
+    end,
+    { desc = 'Oil' }
+  )
   return {
     'stevearc/oil.nvim',
     cmd = { 'Oil' },

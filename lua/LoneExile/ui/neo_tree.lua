@@ -15,34 +15,6 @@ M.wh_key = {
       'Buffer',
       mode = { 'n' },
     },
-    g = {
-      ['n'] = {
-        '<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>',
-        'Neogit',
-        mode = { 'n' },
-      },
-    },
-    -- u = {
-    --   name = '+Utility',
-    --   n = {
-    --     name = '+Neotree',
-    --     b = {
-    --       '<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>',
-    --       'Buffer',
-    --       mode = { 'n' },
-    --     },
-    --     g = {
-    --       '<cmd>Neotree action=focus source=git_status position=right toggle=true<CR>',
-    --       'Git',
-    --       mode = { 'n' },
-    --     },
-    --     r = {
-    --       '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>',
-    --       'Files',
-    --       mode = { 'n' },
-    --     },
-    --   },
-    -- },
   },
 }
 
@@ -117,7 +89,7 @@ M.setup = function(_, _)
             enable_character_fade = true,
           },
           indent = {
-            indent_size = 1,
+            indent_size = 2,
             padding = 0, -- extra padding on left hand side
             -- indent guides
             with_markers = true,
@@ -172,7 +144,7 @@ M.setup = function(_, _)
             ['t'] = 'open_tabnew',
             -- ["<cr>"] = "open_drop",
             -- ["t"] = "open_tab_drop",
-            ['w'] = 'open_with_window_picker',
+            -- ['w'] = 'open_with_window_picker',
             --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
             ['C'] = 'close_node',
             ['z'] = 'close_all_nodes',

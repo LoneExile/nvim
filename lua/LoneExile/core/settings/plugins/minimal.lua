@@ -17,7 +17,7 @@ return {
   -- { 'akinsho/toggleterm.nvim',                   true },
 
   -- Tool
-  { 'nvim-telescope/telescope.nvim',             true },
+  { 'ibhagwan/fzf-lua',                          true },
 
   -- Treesitter
   { 'numToStr/Comment.nvim',                     true },

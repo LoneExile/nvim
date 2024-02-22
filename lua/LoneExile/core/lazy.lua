@@ -185,8 +185,28 @@ M.setup = function(root, m)
     'zipPlugin', -- Support for browsing zip archives
   }
 
+  -- :Explorer settings (netrw)
   if M.opts.plugin == 'all' then
     table.insert(disabled_plugins, 'netrwPlugin')
+  else
+    vim.keymap.set('n', '-', function()
+      vim.cmd('Ex')
+    end, { desc = 'Explorer' })
+    vim.keymap.set('n', '<leader>e', function()
+      vim.cmd('Ex')
+    end, { desc = 'Explorer' })
+
+    local group = vim.api.nvim_create_augroup('autocmd_netrw', { clear = true })
+    vim.api.nvim_create_autocmd('FileType', {
+      group = group,
+      pattern = {
+        'netrw',
+      },
+      callback = function(event)
+        vim.keymap.set('n', '<C-c>', '<CMD>q<CR>', { buffer = event.buf, silent = true })
+        vim.keymap.set('n', 'q', '<CMD>q<CR>', { buffer = event.buf, silent = true })
+      end,
+    })
   end
 
   local opts = {

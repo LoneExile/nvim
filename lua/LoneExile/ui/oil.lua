@@ -15,15 +15,6 @@ local M = {}
 
 M.setup = function(_, _)
   -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
-  vim.keymap.set(
-    'n',
-    '-',
-    -- require('oil').open
-    function()
-      vim.cmd('Oil')
-    end,
-    { desc = 'Oil' }
-  )
   return {
     'stevearc/oil.nvim',
     cmd = { 'Oil' },
@@ -32,6 +23,16 @@ M.setup = function(_, _)
       if not status_ok_code then
         return
       end
+
+      vim.keymap.set(
+        'n',
+        '-',
+        -- require('oil').open
+        function()
+          vim.cmd('Oil')
+        end,
+        { desc = 'Oil' }
+      )
 
       local config = {
         keymaps = {

@@ -167,6 +167,28 @@ M.setup = function(root, m)
     return
   end
 
+  local disabled_plugins = {
+    'editorconfig', -- A plugin to enforce consistent coding styles using EditorConfig files
+    'gzip', -- Support for reading and writing gzip compressed files
+    'health', -- A plugin to check the health status of Neovim and its plugins
+    'man', -- Support for browsing UNIX manual pages
+    'matchit', -- Extended % matching for HTML, LaTeX, and many other languages
+    'matchparen', -- Highlight matching pairs of parentheses and other characters
+    -- 'netrwPlugin', -- Network-oriented reading, writing, and browsing of files (ftp, scp, etc.)
+    'nvim', -- Default Neovim plugin
+    'rplugin', -- Remote (RPC) plugin support
+    'shada', -- Support for Neovim's ShaDa (shared data) feature
+    'spellfile', -- Manage and download spell files for various languages
+    'tarPlugin', -- Support for browsing tar archives
+    'tohtml', -- Convert the current buffer to HTML with syntax highlighting
+    'tutor', -- Interactive tutorial for learning Vim
+    'zipPlugin', -- Support for browsing zip archives
+  }
+
+  if M.opts.plugin == 'all' then
+    table.insert(disabled_plugins, 'netrwPlugin')
+  end
+
   local opts = {
     lockfile = settings.resources .. separator .. 'lazy-lock.json',
     -- TODO: currently not working
@@ -176,23 +198,7 @@ M.setup = function(root, m)
     -- },
     performance = {
       rtp = {
-        disabled_plugins = {
-          'editorconfig', -- A plugin to enforce consistent coding styles using EditorConfig files
-          'gzip', -- Support for reading and writing gzip compressed files
-          'health', -- A plugin to check the health status of Neovim and its plugins
-          'man', -- Support for browsing UNIX manual pages
-          'matchit', -- Extended % matching for HTML, LaTeX, and many other languages
-          'matchparen', -- Highlight matching pairs of parentheses and other characters
-          'netrwPlugin', -- Network-oriented reading, writing, and browsing of files (ftp, scp, etc.)
-          'nvim', -- Default Neovim plugin
-          'rplugin', -- Remote (RPC) plugin support
-          'shada', -- Support for Neovim's ShaDa (shared data) feature
-          'spellfile', -- Manage and download spell files for various languages
-          'tarPlugin', -- Support for browsing tar archives
-          'tohtml', -- Convert the current buffer to HTML with syntax highlighting
-          'tutor', -- Interactive tutorial for learning Vim
-          'zipPlugin', -- Support for browsing zip archives
-        },
+        disabled_plugins = disabled_plugins,
       },
     },
   }

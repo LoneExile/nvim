@@ -19,17 +19,6 @@ M.wh_key = {
 }
 
 M.setup = function(_, _)
-  local group = vim.api.nvim_create_augroup('autocmd_neo_tree', { clear = true })
-  vim.api.nvim_create_autocmd('FileType', {
-    group = group,
-    pattern = {
-      'neo-tree',
-    },
-    callback = function(event)
-      vim.keymap.set('n', '<C-c>', '<CMD>q<CR>', { buffer = event.buf, silent = true })
-    end,
-  })
-
   return {
     'nvim-neo-tree/neo-tree.nvim',
     cmd = { 'Neotree' },
@@ -48,6 +37,17 @@ M.setup = function(_, _)
       if not status_ok then
         return
       end
+
+      local group = vim.api.nvim_create_augroup('autocmd_neo_tree', { clear = true })
+      vim.api.nvim_create_autocmd('FileType', {
+        group = group,
+        pattern = {
+          'neo-tree',
+        },
+        callback = function(event)
+          vim.keymap.set('n', '<C-c>', '<CMD>q<CR>', { buffer = event.buf, silent = true })
+        end,
+      })
 
       neoTree.setup({
         event_handlers = {

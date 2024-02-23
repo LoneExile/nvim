@@ -3,8 +3,8 @@ local M = {}
 M.wh_key = {
   wh_m_mappings = {
     a = { '<cmd>lua require("harpoon.mark").add_file()<cr>', 'Harpoon' },
-    ['j'] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', 'Harpoon Next' },
-    ['k'] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', 'Harpoon Prev' },
+    ['.'] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', 'Harpoon Next' },
+    [','] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', 'Harpoon Prev' },
     s = { '<cmd>Telescope harpoon marks<cr>', 'Search Files' },
     ['m'] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', 'Harpoon UI' },
   },
@@ -14,6 +14,7 @@ M.setup = function()
   return {
     'theprimeagen/harpoon',
     event = 'BufRead',
+    keys = { 'm' },
     config = function()
       local status_ok, harpoon = pcall(require, 'harpoon')
       if not status_ok then

@@ -32,6 +32,7 @@ return {
   { 'nacro90/numb.nvim',                         true },
   { 'echasnovski/mini.surround',                 true },
   { 'declancm/cinnamon.nvim',                    true },
+  { 'chentoast/marks.nvim',                      true },
 
   -- Tool
   { 'ibhagwan/fzf-lua',                          true },

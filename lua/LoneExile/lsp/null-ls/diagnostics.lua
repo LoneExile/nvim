@@ -18,9 +18,14 @@ M.setup = function(null_ls, s)
       extra_args = { '--stdin' },
     }),
 
-    diagnostics.luacheck.with({
+    -- diagnostics.luacheck.with({
+    --   filetype = { 'lua' },
+    --   extra_args = { '--config', s.conf_loc .. s.utils.convert_path('/resources/null-ls/.luacheckrc') },
+    -- }),
+
+    diagnostics.selene.with({
       filetype = { 'lua' },
-      extra_args = { '--config', s.conf_loc .. s.utils.convert_path('/resources/null-ls/.luacheckrc') },
+      extra_args = { '--config', s.conf_loc .. s.utils.convert_path('/resources/null-ls/selene.toml') },
     }),
 
     diagnostics.zsh.with({

@@ -14,10 +14,6 @@ M.setup = function(null_ls, s)
       extra_args = { '-' },
     }),
 
-    formatting.jq.with({
-      filetypes = { 'json' },
-    }),
-
     formatting.stylua.with({
       filetypes = { 'lua' },
       extra_args = { '-f', s.conf_loc .. s.utils.convert_path('/resources/null-ls/.stylua.toml') },
@@ -56,11 +52,11 @@ M.setup = function(null_ls, s)
       filetypes = { 'sql', 'plpgsql' },
     }),
 
-    formatting.xmlformat.with({
-      filetypes = { 'xml', 'svg' },
-      command = 'xmlformat',
-      extra_args = { '-' },
-    }),
+    -- formatting.xmlformat.with({
+    --   filetypes = { 'xml', 'svg' },
+    --   command = 'xmlformat',
+    --   extra_args = { '-' },
+    -- }),
 
     formatting.golines.with({
       extra_args = {

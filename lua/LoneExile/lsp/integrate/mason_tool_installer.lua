@@ -57,7 +57,6 @@ M.setup = function(_, _)
 
           -- FORMATTER
           'stylua', -- Lua
-          'jq', -- JSON
           'prettier',
           'prettierd',
           'black', -- Python
@@ -68,7 +67,7 @@ M.setup = function(_, _)
           -- 'vale', -- Markdown
           'yamlfmt',
           'sql-formatter',
-          'xmlformatter',
+          'lemminx', -- XML
           'golines', -- Go
           'goimports', -- Go
           'codespell',
@@ -77,7 +76,7 @@ M.setup = function(_, _)
           'impl', -- Go
 
           -- DIAGNOSTICS
-          'luacheck',
+          'selene',
           -- 'flake8', -- Python
           'actionlint',
           -- 'sqlfluff',

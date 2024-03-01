@@ -2,19 +2,19 @@ name: Main
 on: push
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Clone repo
-        uses: actions/checkout@v3
+  # lint:
+  #   name: Lint
+  #   runs-on: ubuntu-20.04
+  #   steps:
+  #     - name: Clone repo
+  #       uses: actions/checkout@v3
 
-      - name: Luacheck
-        uses: nebularg/actions-luacheck@v1
-        with:
-          files: .
-          annotate: warning
-          args: --config ./resources/null-ls/.luacheckrc .
+  #     - name: Luacheck
+  #       uses: nebularg/actions-luacheck@v1
+  #       with:
+  #         files: .
+  #         annotate: warning
+  #         args: --config ./resources/null-ls/.luacheckrc .
 
   format:
     name: Format

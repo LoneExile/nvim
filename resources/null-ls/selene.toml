@@ -1,1 +1,4 @@
-std = "lua51+vim"
+std = "vim"
+
+[rules]
+mixed_table = "allow"

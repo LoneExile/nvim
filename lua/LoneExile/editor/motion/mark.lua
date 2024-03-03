@@ -17,7 +17,7 @@ M.setup = function()
   return {
     'chentoast/marks.nvim',
     event = 'BufRead',
-    keys = { 'm' },
+    -- keys = { 'm' },
     config = function()
       local status_ok, mark = pcall(require, 'marks')
       if not status_ok then

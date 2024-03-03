@@ -14,7 +14,7 @@ M.setup = function()
   return {
     'theprimeagen/harpoon',
     event = 'BufRead',
-    keys = { 'm' },
+    -- keys = { 'm' },
     config = function()
       local status_ok, harpoon = pcall(require, 'harpoon')
       if not status_ok then

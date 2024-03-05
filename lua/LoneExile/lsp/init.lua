@@ -93,7 +93,7 @@ M.setup = function(_, location)
         -- 'tsserver',
         'vuels',
         -- 'deno',
-        -- 'eslint',
+        'eslint',
         'emmet_ls',
         'tailwindcss',
 

@@ -37,6 +37,7 @@ M.setup = function(_, _)
           'yaml-language-server',
           'json-lsp',
           'typescript-language-server', -- Tsserver
+          'eslint-lsp',
           'tailwindcss-language-server',
           'html-lsp',
           'css-lsp',

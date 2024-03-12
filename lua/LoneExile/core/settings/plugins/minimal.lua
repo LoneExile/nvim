@@ -10,6 +10,7 @@ return {
   -- { 'glepnir/lspsaga.nvim',                      true },
   { 'williamboman/mason.nvim',                   true },
   { 'williamboman/mason-lspconfig.nvim',         true },
+  { 'nvimtools/none-ls.nvim',                    true },
   -- { 'WhoIsSethDaniel/mason-tool-installer.nvim', true },
   { 'folke/lua-dev.nvim',                        true },
 

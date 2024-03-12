@@ -3,6 +3,9 @@ local M = {}
 M.setup = function(s, location)
   return {
     'nvimtools/none-ls.nvim',
+    dependencies = {
+      { 'nvim-lua/plenary.nvim' },
+    },
     event = { 'BufReadPre', 'InsertEnter' },
     -- enabled = false,
     config = function()

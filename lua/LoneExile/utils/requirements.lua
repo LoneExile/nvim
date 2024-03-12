@@ -54,11 +54,17 @@ if M.CURRENTOS == 'Linux' and M.ISWSL then
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
-      -- ['+'] = 'clip.exe',
-      -- ['*'] = 'clip.exe',
+      --NOTE: fix "zsh: exec format error:"
+      -- https://github.com/microsoft/WSL/issues/8952#issuecomment-1568212651
+      ----
+      -- sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf'
+      -- sudo systemctl restart systemd-binfmt
+      ----
+      ['+'] = 'clip.exe',
+      ['*'] = 'clip.exe',
       -- yay -S xclip
-      ['+'] = 'xclip -selection clipboard',
-      ['*'] = 'xclip -selection clipboard',
+      -- ['+'] = 'xclip -selection clipboard',
+      -- ['*'] = 'xclip -selection clipboard',
     },
     paste = {
       ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',

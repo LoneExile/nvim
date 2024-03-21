@@ -36,6 +36,9 @@ M.setup = function(null_ls, s)
     diagnostics.actionlint.with({
       filetype = { 'yaml' },
     }),
+    diagnostics.npm_groovy_lint.with({
+      filetype = { 'groovy', 'java', 'Jenkinsfile' },
+    }),
 
     -- diagnostics.sqlfluff.with({
     --   filetype = { 'sql' },

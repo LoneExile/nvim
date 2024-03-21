@@ -48,6 +48,9 @@ M.setup = function(_, _)
           'gopls', -- Go
           'golangci-lint-langserver', -- Go
 
+          'groovy-language-server', -- Groovy (openjdk-11.0.2)
+          'npm-groovy-lint',
+
           -- DAP
           'netcoredbg', -- C#
           'js-debug-adapter', -- JavaScript, TypeScript

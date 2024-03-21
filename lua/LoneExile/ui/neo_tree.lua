@@ -57,6 +57,14 @@ M.setup = function(_, _)
               require('neo-tree.command').execute({ action = 'close' })
             end,
           },
+          {
+            event = 'neo_tree_popup_input_ready',
+            ---@param input NuiInput
+            handler = function(input)
+              -- enter input popup with normal mode by default.
+              vim.cmd('stopinsert')
+            end,
+          },
         },
         use_default_mappings = false,
         source_selector = {
@@ -75,7 +83,7 @@ M.setup = function(_, _)
         enable_git_status = true,
         enable_diagnostics = true,
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
-        enable_normal_mode_for_inputs = true,
+        neo_tree_popup_input_ready = true,
         sort_function = nil, -- use a custom function for sorting files and directories in the tree
         -- sort_function = function (a,b)
         --       if a.type == b.type then

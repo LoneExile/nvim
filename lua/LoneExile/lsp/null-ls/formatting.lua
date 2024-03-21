@@ -58,6 +58,10 @@ M.setup = function(null_ls, s)
     --   extra_args = { '-' },
     -- }),
 
+    formatting.npm_groovy_lint.with({
+      filetypes = { 'groovy', 'java', 'Jenkinsfile' },
+    }),
+
     formatting.golines.with({
       extra_args = {
         '--max-len=120',

@@ -66,6 +66,7 @@ M.setup = function(_, _)
           'shfmt', -- Shell
           -- 'csharpier', -- C#
           'markdownlint', -- Markdown
+          'prettierd',
           -- 'vale', -- Markdown
           'yamlfmt',
           'sql-formatter',

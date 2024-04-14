@@ -207,27 +207,44 @@ M.setup = function(_, _)
       end
       local actions = require('fzf-lua.actions')
       fzf.setup({
+        keymap = {
+          builtin = {
+            ['<F1>'] = 'toggle-help',
+            ['<F2>'] = 'toggle-fullscreen',
+            -- Only valid with the 'builtin' previewer
+            ['<F3>'] = 'toggle-preview-wrap',
+            ['<F4>'] = 'toggle-preview',
+            ['<F5>'] = 'toggle-preview-ccw',
+            ['<F6>'] = 'toggle-preview-cw',
+            ['<S-down>'] = 'preview-page-down',
+            ['<S-up>'] = 'preview-page-up',
+            ['<S-left>'] = 'preview-page-reset',
+          },
+          fzf = {
+            ['alt-a'] = 'toggle-all',
+          },
+        },
         actions = {
           files = {
             ['default'] = actions.file_edit_or_qf,
             ['ctrl-v'] = actions.file_split,
             ['ctrl-s'] = actions.file_vsplit,
             ['ctrl-t'] = actions.file_tabedit,
-            ['ctrl-q'] = actions.file_sel_to_qf,
+            ['alt-q'] = actions.file_sel_to_qf,
             ['alt-l'] = actions.file_sel_to_ll,
           },
         },
         lines = {
           actions = {
             ['default'] = actions.buf_edit_or_qf,
-            ['ctrl-q'] = actions.buf_sel_to_qf,
+            ['alt-q'] = actions.buf_sel_to_qf,
             ['alt-l'] = actions.buf_sel_to_ll,
           },
         },
         blines = {
           actions = {
             ['default'] = actions.buf_edit_or_qf,
-            ['ctrl-q'] = actions.buf_sel_to_qf,
+            ['alt-q'] = actions.buf_sel_to_qf,
             ['alt-l'] = actions.buf_sel_to_ll,
           },
         },

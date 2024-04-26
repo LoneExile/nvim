@@ -1,7 +1,8 @@
 local M = {}
-M.setup = function(lspconfig)
+M.setup = function(lspconfig, capabilities)
   lspconfig.tailwindcss.setup({
     cmd = { 'tailwindcss-language-server', '--stdio' },
+    capabilities = capabilities,
     filetypes = {
       'aspnetcorerazor',
       'astro',
@@ -49,6 +50,7 @@ M.setup = function(lspconfig)
       'typescriptreact',
       'vue',
       'svelte',
+      'templ',
     },
     root_dir = function(fname)
       return lspconfig.util.root_pattern(

@@ -47,6 +47,8 @@ M.setup = function(_, _)
           'yaml-language-server',
           'gopls', -- Go
           'golangci-lint-langserver', -- Go
+          'templ', -- Go templ
+          'htmx-lsp', -- htmx
 
           'groovy-language-server', -- Groovy (openjdk-11.0.2)
           'npm-groovy-lint',

@@ -18,6 +18,7 @@ M.setup = function()
           '*.php',
           '*.heex',
           '*.astro',
+          '*.templ',
         }, -- The file patterns to watch and sort.
         node_path = 'node',
       })

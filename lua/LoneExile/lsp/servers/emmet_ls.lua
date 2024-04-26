@@ -1,10 +1,10 @@
 local M = {}
 
-M.setup = function(lspconfig)
+M.setup = function(lspconfig, capabilities)
   -- local capabilities = vim.lsp.protocol.make_client_capabilities()
   -- capabilities.textDocument.completion.completionItem.snippetSupport = true
   lspconfig.emmet_ls.setup({
-    -- capabilities = capabilities,
+    capabilities = capabilities,
     filetypes = {
       'astro',
       'css',
@@ -19,6 +19,7 @@ M.setup = function(lspconfig)
       'svelte',
       'typescriptreact',
       'vue',
+      'templ',
     },
     cmd = { 'emmet-ls', '--stdio' },
     root_dir = lspconfig.util.root_pattern('git', 'root'),

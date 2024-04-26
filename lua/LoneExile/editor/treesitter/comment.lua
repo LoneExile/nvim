@@ -40,17 +40,8 @@ M.setup = function(_, _)
         return
       end
 
-      local status_tcc, ts_context_commentstring = pcall(require, 'ts_context_commentstring')
-      if not status_tcc then
-        return
-      end
-
-      ts_context_commentstring.setup({
-        enable_autocmd = false,
-        languages = {
-          kdl = '// %s',
-        },
-      })
+      local ft = require('Comment.ft')
+      ft.set('templ', '// %s')
 
       local configs = {
         padding = true,

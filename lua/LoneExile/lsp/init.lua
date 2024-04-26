@@ -64,6 +64,12 @@ M.setup = function(_, location)
         },
       })
 
+      local s, cmpLSP = pcall(require, 'cmp_nvim_lsp')
+      if not s then
+        return
+      end
+      local capabilities = cmpLSP.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
       -- See :help mason-lspconfig-dynamic-server-setup
       local status, mason_lspconfig = pcall(require, 'mason-lspconfig')
       if not status then
@@ -77,7 +83,7 @@ M.setup = function(_, location)
       require(lsp_settings .. '.diagnostic')
       require(lsp_settings .. '.autocmd')
 
-      local lsp_defaults = require(lsp_settings .. '.defaults').setup()
+      local lsp_defaults = require(lsp_settings .. '.defaults').setup(capabilities)
       lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
 
       local default_handler = function(server)
@@ -109,13 +115,15 @@ M.setup = function(_, location)
         -- 'lemminx', -- xml
         -- 'sqls', -- sql
         'golangci_lint_ls', -- Go
+        'gopls', -- Go
+        'html',
         -- 'vale_ls', -- Markdown, text
       }
 
       --FIX: this load multiple times?
       for _, server in ipairs(servers_name) do
         configs[server] = function()
-          require(location .. '.servers.' .. server).setup(lspconfig)
+          require(location .. '.servers.' .. server).setup(lspconfig, capabilities)
         end
       end
 

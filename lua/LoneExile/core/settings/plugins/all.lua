@@ -80,7 +80,7 @@ return {
   { 'b0o/schemastore.nvim',                      true },
   { 'pmizio/typescript-tools.nvim',              true },
   { 'ray-x/go.nvim',                             false },
-  { 'laytan/tailwind-sorter.nvim',               true },
+  -- { 'laytan/tailwind-sorter.nvim',               true },
   { 'MaximilianLloyd/tw-values.nvim',            true },
   { 'Hoffs/omnisharp-extended-lsp.nvim',         true },
 

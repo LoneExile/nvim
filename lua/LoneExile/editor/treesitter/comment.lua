@@ -41,7 +41,7 @@ M.setup = function(_, _)
       end
 
       local ft = require('Comment.ft')
-      ft.set('templ', '// %s')
+      ft.set('templ', { '// %s', '<!-- %s -->' })
 
       local configs = {
         padding = true,

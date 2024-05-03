@@ -52,6 +52,7 @@ M.setup = function(_, _)
 
           'groovy-language-server', -- Groovy (openjdk-11.0.2)
           'npm-groovy-lint',
+          'docker-compose-language-service',
 
           -- DAP
           'netcoredbg', -- C#
@@ -88,6 +89,7 @@ M.setup = function(_, _)
           'alex',
           'gomodifytags', -- Go
           'gotests', -- Go
+          'hadolint', -- Dockerfile
 
           --- c++
           -- 'clangd' -- lsp

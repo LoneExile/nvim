@@ -39,6 +39,9 @@ M.setup = function(null_ls, s)
     diagnostics.npm_groovy_lint.with({
       filetype = { 'groovy', 'java', 'Jenkinsfile' },
     }),
+    diagnostics.hadolint.with({
+      filetype = { 'dockerfile' },
+    }),
 
     -- diagnostics.sqlfluff.with({
     --   filetype = { 'sql' },

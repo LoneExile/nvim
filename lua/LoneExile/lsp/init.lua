@@ -118,9 +118,9 @@ M.setup = function(_, location)
         'gopls', -- Go
         'html',
         -- 'vale_ls', -- Markdown, text
+        'docker_compose_language_service', -- Docker-compose
       }
 
-      --FIX: this load multiple times?
       for _, server in ipairs(servers_name) do
         configs[server] = function()
           require(location .. '.servers.' .. server).setup(lspconfig, capabilities)

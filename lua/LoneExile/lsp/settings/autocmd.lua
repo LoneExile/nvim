@@ -8,7 +8,7 @@ autocmd('ModeChanged', {
   pattern = { 'n:i', 'v:s' },
   desc = 'Disable diagnostics while typing',
   callback = function()
-    vim.diagnostic.disable(0)
+    vim.diagnostic.enable(false)
   end,
 })
 
@@ -17,6 +17,6 @@ autocmd('ModeChanged', {
   pattern = 'i:n',
   desc = 'Enable diagnostics when leaving insert mode',
   callback = function()
-    vim.diagnostic.enable(0)
+    vim.diagnostic.enable(true)
   end,
 })

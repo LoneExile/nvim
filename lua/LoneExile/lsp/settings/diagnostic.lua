@@ -1,19 +1,54 @@
 ---
 -- Diagnostic customization
 ---
-local sign = function(opts)
-  -- See :help sign_define()
-  vim.fn.sign_define(opts.name, {
-    texthl = opts.name,
-    text = opts.text,
-    numhl = '',
-  })
-end
+local M = {}
 
-sign({ name = 'DiagnosticSignError', text = '✘' })
-sign({ name = 'DiagnosticSignWarn', text = '▲' })
-sign({ name = 'DiagnosticSignHint', text = '⚑' })
-sign({ name = 'DiagnosticSignInfo', text = '' })
+function M.set_diagnostic(opts)
+  opts = opts or {
+    error = '✘',
+    warn = '▲',
+    hint = '⚑',
+    info = '',
+  }
+
+  if vim.diagnostic.count then
+    local ds = vim.diagnostic.severity
+    local levels = {
+      [ds.ERROR] = 'error',
+      [ds.WARN] = 'warn',
+      [ds.INFO] = 'info',
+      [ds.HINT] = 'hint',
+    }
+
+    local text = {}
+
+    for i, l in pairs(levels) do
+      if type(opts[l]) == 'string' then
+        text[i] = opts[l]
+      end
+    end
+
+    vim.diagnostic.config({ signs = { text = text } })
+    return
+  end
+
+  local sign = function(args)
+    if opts[args.name] == nil then
+      return
+    end
+
+    vim.fn.sign_define(args.hl, {
+      texthl = args.hl,
+      text = opts[args.name],
+      numhl = '',
+    })
+  end
+
+  sign({ name = 'error', hl = 'DiagnosticSignError' })
+  sign({ name = 'warn', hl = 'DiagnosticSignWarn' })
+  sign({ name = 'hint', hl = 'DiagnosticSignHint' })
+  sign({ name = 'info', hl = 'DiagnosticSignInfo' })
+end
 
 -- See :help vim.diagnostic.config()
 vim.diagnostic.config({
@@ -27,7 +62,7 @@ vim.diagnostic.config({
     focusable = false,
     style = 'minimal',
     border = 'rounded',
-    source = 'always',
+    source = true,
     header = '',
     prefix = '',
   },
@@ -35,3 +70,5 @@ vim.diagnostic.config({
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+
+return M

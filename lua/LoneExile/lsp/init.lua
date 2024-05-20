@@ -80,7 +80,7 @@ M.setup = function(_, location)
         ensure_installed = {},
       })
 
-      require(lsp_settings .. '.diagnostic')
+      require(lsp_settings .. '.diagnostic').set_diagnostic()
       require(lsp_settings .. '.autocmd')
 
       local lsp_defaults = require(lsp_settings .. '.defaults').setup(capabilities)

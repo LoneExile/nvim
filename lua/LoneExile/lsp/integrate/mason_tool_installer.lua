@@ -49,6 +49,7 @@ M.setup = function(_, _)
           'golangci-lint-langserver', -- Go
           'templ', -- Go templ
           'htmx-lsp', -- htmx
+          'svelte-language-server', -- Svelte
 
           'groovy-language-server', -- Groovy (openjdk-11.0.2)
           'npm-groovy-lint',

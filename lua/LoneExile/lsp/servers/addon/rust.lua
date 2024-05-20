@@ -11,7 +11,7 @@ M.setup = function()
         -- tag = 'v0.3.0',
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
-          require('crates').setup()
+          require('crates').setup({})
         end,
       },
     },

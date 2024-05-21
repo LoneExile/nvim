@@ -82,7 +82,8 @@ return {
   { 'ray-x/go.nvim',                             false },
   -- { 'laytan/tailwind-sorter.nvim',               true },
   { 'MaximilianLloyd/tw-values.nvim',            true },
-  { 'Hoffs/omnisharp-extended-lsp.nvim',         true },
+  -- { 'Hoffs/omnisharp-extended-lsp.nvim',         true },
+  { 'LoneExile/omnisharp-extended-lsp.nvim',     true },
 
   -- UI
   { 'folke/tokyonight.nvim',                     true },

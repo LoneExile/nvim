@@ -24,7 +24,8 @@ M.setup = function(_, _)
     cmd = { 'Neotree' },
     -- keys = { '<leader>' },
     -- event = 'BufRead',
-    branch = 'v3.x',
+    -- branch = 'v3.x',
+    branch = 'main',
     dependencies = {
       { 'MunifTanjim/nui.nvim' },
       { 's1n7ax/nvim-window-picker' },

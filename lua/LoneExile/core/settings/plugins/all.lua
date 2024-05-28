@@ -84,6 +84,7 @@ return {
   { 'MaximilianLloyd/tw-values.nvim',            true },
   -- { 'Hoffs/omnisharp-extended-lsp.nvim',         true },
   { 'LoneExile/omnisharp-extended-lsp.nvim',     true },
+  { 'towolf/vim-helm',                           true },
 
   -- UI
   { 'folke/tokyonight.nvim',                     true },

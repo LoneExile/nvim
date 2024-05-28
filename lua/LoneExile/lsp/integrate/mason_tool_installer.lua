@@ -55,6 +55,7 @@ M.setup = function(_, _)
           'groovy-language-server', -- Groovy (openjdk-11.0.2)
           'npm-groovy-lint',
           'docker-compose-language-service',
+          'helm_ls', -- Helm
 
           -- DAP
           'netcoredbg', -- C#

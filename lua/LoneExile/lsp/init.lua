@@ -119,6 +119,7 @@ M.setup = function(_, location)
         'html',
         -- 'vale_ls', -- Markdown, text
         'docker_compose_language_service', -- Docker-compose
+        'helm_ls', -- Helm
       }
 
       for _, server in ipairs(servers_name) do

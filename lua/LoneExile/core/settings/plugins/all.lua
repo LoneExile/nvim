@@ -62,6 +62,7 @@ return {
 
   -- AI
   { 'zbirenbaum/copilot.lua',                    true },
+  { 'CopilotC-Nvim/CopilotChat.nvim',            true },
 
   -- LSP
   { 'neovim/nvim-lspconfig',                     true },

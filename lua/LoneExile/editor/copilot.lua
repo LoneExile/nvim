@@ -1,12 +1,12 @@
 local M = {}
 
--- M.wh_key = {
---   wh_mappings = {
---     x = {
---       p = { '<cmd>Copilot panel<cr>', 'Copilot panel', mode = { 'n' } },
---     },
---   },
--- }
+M.wh_key = {
+  wh_mappings = {
+    c = {
+      P = { '<cmd>Copilot panel<cr>', 'Copilot panel', mode = { 'n' } },
+    },
+  },
+}
 
 M.setup = function(settings, _)
   return {

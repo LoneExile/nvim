@@ -73,6 +73,12 @@ M.setup = function()
         footer = nil, -- footer of chat window
         zindex = 1, -- determines if window is on top or below other floating windows
       },
+      mappings = {
+        reset = {
+          normal = '<C-x>',
+          insert = '<C-x>',
+        },
+      },
     },
   }
 end

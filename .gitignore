@@ -5,5 +5,7 @@ nvim.log
 startup.log
 .env.lua
 
+dadbod_queries
+
 lua/*/dev/*.lua
 

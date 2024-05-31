@@ -63,6 +63,12 @@ return {
   -- AI
   { 'zbirenbaum/copilot.lua',                    true },
   { 'CopilotC-Nvim/CopilotChat.nvim',            true },
+  { 'jackMort/ChatGPT.nvim',                     true },
+
+  -- DB
+  { 'tpope/vim-dadbod',                          true },
+  { 'kristijanhusak/vim-dadbod-completion',      true },
+  { 'kristijanhusak/vim-dadbod-ui',              true },
 
   -- LSP
   { 'neovim/nvim-lspconfig',                     true },

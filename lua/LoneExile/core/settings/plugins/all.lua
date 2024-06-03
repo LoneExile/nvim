@@ -103,6 +103,7 @@ return {
   { 'stevearc/oil.nvim',                         true },
   { 'nvim-neo-tree/neo-tree.nvim',               true },
   { 'folke/which-key.nvim',                      true },
+  { 'kevinhwang91/nvim-ufo',                     true },
 
   { 'folke/todo-comments.nvim',                  true },
 }

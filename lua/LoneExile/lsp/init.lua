@@ -70,6 +70,12 @@ M.setup = function(_, location)
       end
       local capabilities = cmpLSP.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+      -- Tell the server the capability of foldingRange,
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
+
       -- See :help mason-lspconfig-dynamic-server-setup
       local status, mason_lspconfig = pcall(require, 'mason-lspconfig')
       if not status then

@@ -127,6 +127,7 @@ M.setup = function(settings, location)
           -- { name = 'treesitter' },
           { name = 'crates' },
           -- { name = 'tmux' },
+          { name = 'lazydev', group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
         },
         mapping = keymaps,
       }

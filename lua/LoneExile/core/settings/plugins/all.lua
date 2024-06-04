@@ -82,7 +82,7 @@ return {
   -- { 'mfussenegger/nvim-lint',                    false },
   { 'nvimtools/none-ls.nvim',                    true },
 
-  { 'folke/lua-dev.nvim',                        true },
+  { 'folke/lazydev.nvim',                        true },
   { 'simrat39/rust-tools.nvim',                  true },
   { 'b0o/schemastore.nvim',                      true },
   { 'pmizio/typescript-tools.nvim',              true },

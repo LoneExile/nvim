@@ -66,6 +66,10 @@ M.setup = function()
       copilot.setup({
         debug = true, -- Enable debugging
         show_help = true,
+        question_header = '## User ', -- Header to use for user questions
+        answer_header = '## LLM ', -- Header to use for AI answers
+        error_header = '## Error ', -- Header to use for errors
+        separator = '───', -- Separator to use in chat
         window = {
           layout = 'vertical', -- 'vertical', 'horizontal', 'float', 'replace'
           width = 0.5, -- fractional width of parent, or absolute width in columns when > 1

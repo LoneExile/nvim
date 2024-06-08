@@ -40,7 +40,7 @@ return {
   { 'windwp/nvim-spectre',                       true },
 
 
-  { 'wellle/targets.vim',                        true },
+  { 'echasnovski/mini.ai',                       true },
   { 'tpope/vim-repeat',                          true },
 
   { 'nmac427/guess-indent.nvim',                 true },

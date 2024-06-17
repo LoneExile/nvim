@@ -48,6 +48,7 @@ M.setup = function(_, _)
           'yaml-language-server',
           'gopls', -- Go
           'golangci-lint-langserver', -- Go
+          'golangci-lint',
           'templ', -- Go templ
           'htmx-lsp', -- htmx
           'svelte-language-server', -- Svelte

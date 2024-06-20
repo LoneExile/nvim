@@ -57,6 +57,8 @@ M.setup = function()
   return {
     'lewis6991/gitsigns.nvim',
     event = { 'BufRead', 'BufNewFile' },
+    commit = '4a143f13e122ab91abdc88f89eefbe70a4858a56',
+
     config = function()
       local status_ok_ui, gitsigns = pcall(require, 'gitsigns')
       if not status_ok_ui then

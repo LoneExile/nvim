@@ -57,7 +57,6 @@ M.setup = function()
   return {
     'lewis6991/gitsigns.nvim',
     event = { 'BufRead', 'BufNewFile' },
-    commit = '4a143f13e122ab91abdc88f89eefbe70a4858a56',
 
     config = function()
       local status_ok_ui, gitsigns = pcall(require, 'gitsigns')
@@ -67,36 +66,12 @@ M.setup = function()
 
       gitsigns.setup({
         signs = {
-          add = {
-            hl = 'GitSignsAdd',
-            text = '▎',
-            numhl = 'GitSignsAddNr',
-            linehl = 'GitSignsAddLn',
-          },
-          change = {
-            hl = 'GitSignsChange',
-            text = '▎',
-            numhl = 'GitSignsChangeNr',
-            linehl = 'GitSignsChangeLn',
-          },
-          delete = {
-            hl = 'GitSignsDelete',
-            text = ' ',
-            numhl = 'GitSignsDeleteNr',
-            linehl = 'GitSignsDeleteLn',
-          },
-          topdelete = {
-            hl = 'GitSignsDelete',
-            text = ' ',
-            numhl = 'GitSignsDeleteNr',
-            linehl = 'GitSignsDeleteLn',
-          },
-          changedelete = {
-            hl = 'GitSignsChange',
-            text = '▎',
-            numhl = 'GitSignsChangeNr',
-            linehl = 'GitSignsChangeLn',
-          },
+          add = { text = '┃' },
+          change = { text = '┃' },
+          delete = { text = ' ' },
+          topdelete = { text = ' ' },
+          changedelete = { text = '~' },
+          untracked = { text = '┆' },
         },
         numhl = false,
         linehl = false,
@@ -109,9 +84,6 @@ M.setup = function()
           virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
           delay = 1000,
           ignore_whitespace = false,
-        },
-        current_line_blame_formatter_opts = {
-          relative_time = false,
         },
         max_file_length = 40000,
         preview_config = {
@@ -129,7 +101,6 @@ M.setup = function()
         sign_priority = 6,
         update_debounce = 200,
         status_formatter = nil, -- Use default
-        yadm = { enable = false },
       })
     end,
   }

@@ -194,7 +194,7 @@ M.wh_key = {
 M.setup = function(_, _)
   -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>FzfLua files<cr>', { noremap = true, silent = true, desc = 'Find Files' })
-  vim.api.nvim_set_keymap('n', '<C-q>', '<cmd>FzfLua quickfix_stack<cr>', { noremap = true, silent = true, desc = 'Quickfix' })
+  -- vim.api.nvim_set_keymap('n', '<C-q>', '<cmd>FzfLua quickfix_stack<cr>', { noremap = true, silent = true, desc = 'Quickfix' })
   return {
     'ibhagwan/fzf-lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -222,6 +222,7 @@ M.setup = function(_, _)
           },
           fzf = {
             ['alt-a'] = 'toggle-all',
+            ['ctrl-q'] = 'select-all+accept',
           },
         },
         actions = {

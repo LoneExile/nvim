@@ -4,6 +4,7 @@ M.setup = function(settings, location)
   return {
     'folke/which-key.nvim',
     keys = { '<leader>', 'g', 'V' },
+    event = 'VeryLazy',
     -- event = 'BufRead',
     -- cmd = { 'WhichKey' },
     -- priority = 1000,
@@ -35,33 +36,15 @@ M.setup = function(settings, location)
           separator = '➜', -- symbol used between a key and it's label
           group = '+', -- symbol prepended to a group
         },
-        popup_mappings = {
-          scroll_down = '<c-d>',
-          scroll_up = '<c-u>',
-        },
-        window = {
-          border = 'single',
-          position = 'bottom',
-          margin = { 1, 0, 1, 0 },
-          padding = { 0, 0, 0, 0 },
-          winblend = 0,
-          zindex = 1000,
-        },
         layout = {
           height = { min = 4, max = 20 },
           width = { min = 20, max = 30 },
           spacing = 2,
           align = 'left',
         },
-        hidden = { '<silent>', '<cmd>', '<Cmd>', '<CR>', 'call', 'lua', '^:', '^ ' }, -- hide mapping boilerplate
-        ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
         show_help = false,
         triggers = 'auto',
         -- triggers = { '<leader>', 'g', 'm' }, -- or specify a list manually
-        triggers_blacklist = {
-          i = { 'j', 'k' },
-          v = { 'j', 'k' },
-        },
         disable = {
           -- buftypes = { '*' },
           -- filetypes = { '*' },
@@ -86,7 +69,7 @@ M.setup = function(settings, location)
 
       which_key.setup(config)
 
-      which_key.register()
+      -- which_key.register()
       which_key.register(nmappings, opts)
       which_key.register(vmappings, vopts)
       which_key.register(m_mappings, m_opts)

@@ -102,11 +102,19 @@ M.setup = function(root, m)
     local plugin = plugin_config.setup(settings, location)
     if plugin ~= nil then
       for _, p in ipairs(all_plugins) do
-        if p[1] == plugin[1] and p[2] == false then
-          plugin['enabled'] = false
-        elseif p[1] == plugin[1] and p[2] == true then
+        -- if p[1] == plugin[1] and p[2] == false then
+        --   plugin['enabled'] = false
+        -- elseif p[1] == plugin[1] and p[2] == true then
+        --   plugin['enabled'] = true
+        -- elseif plugin.enabled == nil then
+        --   plugin['enabled'] = false
+        -- end
+
+        if p[1] == plugin[1] and p[2] == true then
           plugin['enabled'] = true
-        elseif plugin.enabled == nil then
+        end
+
+        if plugin.enabled == nil then
           plugin['enabled'] = false
         end
 

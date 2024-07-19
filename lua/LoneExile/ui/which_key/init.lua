@@ -3,8 +3,9 @@ local M = {}
 M.setup = function(settings, location)
   return {
     'folke/which-key.nvim',
+    commit = '0099511294f16b81c696004fa6a403b0ae61f7a0',
     keys = { '<leader>', 'g', 'V' },
-    event = 'VeryLazy',
+    -- event = 'VeryLazy',
     -- event = 'BufRead',
     -- cmd = { 'WhichKey' },
     -- priority = 1000,
@@ -17,6 +18,7 @@ M.setup = function(settings, location)
       end
 
       local config = {
+        preset = "modern",
         plugins = {
           marks = true,
           registers = true,
@@ -64,7 +66,8 @@ M.setup = function(settings, location)
 
       local g_opts = require(location .. '.key_g').g_opts
 
-      local fileType = vim.api.nvim_buf_get_option(0, 'filetype')
+      -- local fileType = vim.api.nvim_buf_get_option(0, 'filetype')
+      local fileType = vim.bo.filetype
       local nmappings, vmappings, _, _ = split_mappings(mappings, fileType)
 
       which_key.setup(config)
@@ -77,5 +80,12 @@ M.setup = function(settings, location)
     end,
   }
 end
+
+-- 2024-07-15T15:08:38 which-key.nvim  WARN Your config uses deprecated options:
+-- - `popup_mappings`
+-- - `window`
+-- - `ignore_missing`
+-- - `hidden`
+-- - `triggers_blacklist`
 
 return M

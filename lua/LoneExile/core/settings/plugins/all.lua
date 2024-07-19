@@ -31,7 +31,7 @@ return {
   { 'phaazon/hop.nvim',                          true },
   { 'nacro90/numb.nvim',                         true },
   { 'echasnovski/mini.surround',                 true },
-  { 'declancm/cinnamon.nvim',                    true },
+  { 'declancm/cinnamon.nvim',                    false },
   { 'chentoast/marks.nvim',                      true },
 
   -- Tool
@@ -89,8 +89,7 @@ return {
   { 'ray-x/go.nvim',                             false },
   -- { 'laytan/tailwind-sorter.nvim',               true },
   { 'MaximilianLloyd/tw-values.nvim',            true },
-  -- { 'Hoffs/omnisharp-extended-lsp.nvim',         true },
-  { 'LoneExile/omnisharp-extended-lsp.nvim',     true },
+  { 'Hoffs/omnisharp-extended-lsp.nvim',         true },
   { 'towolf/vim-helm',                           true },
 
   -- UI

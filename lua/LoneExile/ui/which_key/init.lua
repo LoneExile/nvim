@@ -18,7 +18,7 @@ M.setup = function(settings, location)
       end
 
       local config = {
-        preset = "modern",
+        preset = 'modern',
         plugins = {
           marks = true,
           registers = true,

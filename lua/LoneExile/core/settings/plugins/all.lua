@@ -31,7 +31,7 @@ return {
   { 'phaazon/hop.nvim',                          true },
   { 'nacro90/numb.nvim',                         true },
   { 'echasnovski/mini.surround',                 true },
-  { 'declancm/cinnamon.nvim',                    false },
+  { 'declancm/cinnamon.nvim',                    true },
   { 'chentoast/marks.nvim',                      true },
 
   -- Tool
@@ -56,7 +56,7 @@ return {
   { 'numToStr/Comment.nvim',                     true },
   -- { 'm-demare/hlargs.nvim',                      true },
   { 'nvim-treesitter/nvim-treesitter',           true },
-  { 'nvim-treesitter/nvim-treesitter-context',   true },
+  { 'nvim-treesitter/nvim-treesitter-context',   false },
   { 'lukas-reineke/indent-blankline.nvim',       true },
   -- { 'Wansmer/treesj',                            true },
 

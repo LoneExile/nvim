@@ -11,13 +11,13 @@ M.wh_key = {
         'Chat open',
         mode = { 'n' },
       },
-      r = {
-        function()
-          require('CopilotChat').reset()
-        end,
-        'Chat reset',
-        mode = { 'n' },
-      },
+      -- r = {
+      --   function()
+      --     require('CopilotChat').reset()
+      --   end,
+      --   'Chat reset',
+      --   mode = { 'n' },
+      -- },
       b = {
         function()
           local input = vim.fn.input('Quick Chat: ')

@@ -1,6 +1,9 @@
 local M = {}
 
 M.setup = function(root, m)
+  -- NOTE: load the environment variables
+  require(root .. '.utils.init_env').setup()
+
   local set_path = m.set_loc .. '.'
   local colors = require(set_path .. 'colors')
   local conf_loc = vim.fn.stdpath('config')

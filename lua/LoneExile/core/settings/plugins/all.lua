@@ -62,7 +62,7 @@ return {
 
   -- AI
   { 'zbirenbaum/copilot.lua',                    true },
-  { 'CopilotC-Nvim/CopilotChat.nvim',            false },
+  { 'CopilotC-Nvim/CopilotChat.nvim',            true },
   { 'jackMort/ChatGPT.nvim',                     false },
   { 'yetone/avante.nvim',                        true },
 

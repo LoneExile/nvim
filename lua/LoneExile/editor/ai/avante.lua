@@ -85,7 +85,7 @@ M.setup = function()
       -- provider = 'claude',
       provider = 'copilot',
       mappings = {
-        ask = '<leader>cc',
+        ask = '<leader>ca',
         edit = '<leader>ce',
         refresh = '<leader>cr',
         --- @class AvanteConflictMappings

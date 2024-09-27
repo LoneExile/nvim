@@ -53,7 +53,7 @@ M.setup = function()
   return {
     'yetone/avante.nvim',
     event = 'VeryLazy',
-    -- build = 'make BUILD_FROM_SOURCE=true luajit',
+    build = ':AvanteBuild source=false',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
       'stevearc/dressing.nvim',
@@ -82,8 +82,8 @@ M.setup = function()
       },
     },
     opts = {
-      -- provider = 'claude',
-      provider = 'copilot',
+      provider = 'claude',
+      -- provider = 'copilot',
       mappings = {
         ask = '<leader>ca',
         edit = '<leader>ce',

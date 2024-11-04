@@ -53,7 +53,7 @@ M.setup = function()
   return {
     'yetone/avante.nvim',
     event = 'VeryLazy',
-    build = ':AvanteBuild source=false',
+    build = 'make',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
       'stevearc/dressing.nvim',

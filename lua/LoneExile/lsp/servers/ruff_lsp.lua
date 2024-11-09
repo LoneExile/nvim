@@ -1,8 +1,8 @@
 local M = {}
 
 M.setup = function(lspconfig)
-  lspconfig.ruff_lsp.setup({
-    cmd = { 'ruff-lsp' },
+  lspconfig.ruff.setup({
+    cmd = { 'ruff' },
     filetypes = { 'python' },
     hostInfo = 'neovim',
     single_file_support = true,

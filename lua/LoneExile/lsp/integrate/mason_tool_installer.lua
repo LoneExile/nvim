@@ -31,7 +31,7 @@ M.setup = function(_, _)
           -- 'clangd', -- C++
           'dockerfile-language-server',
           'marksman', -- Markdown
-          'ruff-lsp', -- Python
+          'ruff', -- Python
           'pyright', -- Python
           'rust-analyzer',
           'taplo', -- TOML

@@ -1,15 +1,20 @@
 local M = {}
 
-M.wh_key = {
-  wh_g_mappings = {
-    ['h'] = { '<CMD>HopWord<CR>', 'HopWord', mode = { 'n' } },
+M.keys = {
+  {
+    'gh',
+    '<CMD>HopWord<CR>',
+    desc = 'HopWord',
+    mode = 'n',
   },
 }
+
 M.setup = function()
   return {
     'phaazon/hop.nvim',
     event = 'BufRead',
     cmd = { 'HopWord' },
+    keys = M.keys,
     config = function()
       -- local keymap = vim.api.nvim_set_keymap
       -- local opts = { noremap = true, silent = true }

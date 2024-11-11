@@ -1,54 +1,63 @@
 local M = {}
 
 M.wh_key = {
-  wh_mappings = {
-    r = {
-      "<Cmd>lua require('refactoring').select_refactor()<CR>",
-      'Refactor',
-      mode = { 'n', 'v' },
+  -- wh_mappings = {
+  --   r = {
+  --     "<Cmd>lua require('refactoring').select_refactor()<CR>",
+  --     'Refactor',
+  --     mode = { 'n', 'v' },
 
-      -- name = 'Refactor',
-      -- b = {
-      --   "<Cmd>lua require('refactoring').refactor('Extract Block')<cr>",
-      --   'Extract Block',
-      --   mode = { 'n' },
-      -- },
-      -- B = {
-      --   "<Cmd>lua require('refactoring').refactor('Extract Function To File')<cr>",
-      --   'Extract Function To File',
-      --   mode = { 'n' },
-      -- },
-      -- i = {
-      --   "<Cmd>lua require('refactoring').refactor('Inline Variable')<cr>",
-      --   'Inline Local',
-      --   mode = { 'n' },
-      -- },
-      -- f = {
-      --   "<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>",
-      --   'Extract Function',
-      --   mode = { 'v' },
-      -- },
-      -- F = {
-      --   "<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
-      --   'Extract Function To File',
-      --   mode = { 'v' },
-      -- },
-      -- v = {
-      --   "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
-      --   'Extract Variable',
-      --   mode = { 'v' },
-      -- },
-      -- V = {
-      --   "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable To File')<CR>",
-      --   'Extract Variable To File',
-      --   mode = { 'v' },
-      -- },
-      -- s = {
-      --   "<Cmd>lua require('refactoring').select_refactor()<CR>",
-      --   'Select Refactor',
-      --   mode = { 'n', 'v' },
-      -- },
-    },
+  --     -- name = 'Refactor',
+  --     -- b = {
+  --     --   "<Cmd>lua require('refactoring').refactor('Extract Block')<cr>",
+  --     --   'Extract Block',
+  --     --   mode = { 'n' },
+  --     -- },
+  --     -- B = {
+  --     --   "<Cmd>lua require('refactoring').refactor('Extract Function To File')<cr>",
+  --     --   'Extract Function To File',
+  --     --   mode = { 'n' },
+  --     -- },
+  --     -- i = {
+  --     --   "<Cmd>lua require('refactoring').refactor('Inline Variable')<cr>",
+  --     --   'Inline Local',
+  --     --   mode = { 'n' },
+  --     -- },
+  --     -- f = {
+  --     --   "<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>",
+  --     --   'Extract Function',
+  --     --   mode = { 'v' },
+  --     -- },
+  --     -- F = {
+  --     --   "<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
+  --     --   'Extract Function To File',
+  --     --   mode = { 'v' },
+  --     -- },
+  --     -- v = {
+  --     --   "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
+  --     --   'Extract Variable',
+  --     --   mode = { 'v' },
+  --     -- },
+  --     -- V = {
+  --     --   "<Esc><Cmd>lua require('refactoring').refactor('Extract Variable To File')<CR>",
+  --     --   'Extract Variable To File',
+  --     --   mode = { 'v' },
+  --     -- },
+  --     -- s = {
+  --     --   "<Cmd>lua require('refactoring').select_refactor()<CR>",
+  --     --   'Select Refactor',
+  --     --   mode = { 'n', 'v' },
+  --     -- },
+  --   },
+  -- },
+}
+
+M.keys = {
+  {
+    '<leader>r',
+    "<Cmd>lua require('refactoring').select_refactor()<CR>",
+    desc = 'Refactor',
+    mode = 'n',
   },
 }
 
@@ -61,6 +70,7 @@ M.setup = function()
     },
     lazy = true,
     -- ft = { 'go', 'javascript', 'lua', 'python', 'typescript' },
+    keys = M.keys,
     config = function()
       local status_ok_ui, refactoring = pcall(require, 'refactoring')
       if not status_ok_ui then

@@ -1,16 +1,13 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    u = {
-      name = '+Utility',
-      r = {
-        '<cmd>Hypersonic<CR>',
-        'regex',
-        mode = { 'n' },
-      },
-    },
+M.keys = {
+  {
+    '<leader>ur',
+    '<cmd>Hypersonic<CR>',
+    desc = 'regex',
+    mode = 'n',
   },
+
 }
 
 M.setup = function()
@@ -19,6 +16,7 @@ M.setup = function()
     'tomiis4/Hypersonic.nvim',
     event = 'CmdlineEnter',
     cmd = 'Hypersonic',
+    keys = M.keys,
 
     config = function()
       require('hypersonic').setup({

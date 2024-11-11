@@ -1,21 +1,20 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    ['s'] = {
-      name = 'Search',
-      n = {
-        '<cmd>Notifications<cr>',
-        'Notifications',
-        mode = { 'n' },
-      },
-    },
+M.keys = {
+
+  {
+    '<leader>sn',
+    '<cmd>Notifications<cr>',
+    desc = 'Notifications',
+    mode = 'n',
   },
 }
+
 M.setup = function(s, _)
   return {
     'rcarriga/nvim-notify',
     event = 'VeryLazy',
+    keys = M.keys,
     config = function()
       local status_ok, notify = pcall(require, 'notify')
       if not status_ok then

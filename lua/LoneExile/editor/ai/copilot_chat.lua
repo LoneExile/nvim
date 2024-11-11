@@ -1,50 +1,54 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    c = {
-      name = 'Copilot',
-      c = {
-        function()
-          require('CopilotChat').toggle()
-        end,
-        'Chat open',
-        mode = { 'n' },
-      },
-      -- r = {
-      --   function()
-      --     require('CopilotChat').reset()
-      --   end,
-      --   'Chat reset',
-      --   mode = { 'n' },
-      -- },
-      b = {
-        function()
-          local input = vim.fn.input('Quick Chat: ')
-          if input ~= '' then
-            require('CopilotChat').ask(input, { selection = require('CopilotChat.select').buffer })
-          end
-        end,
-        'Chat buff',
-        mode = { 'n' },
-      },
-      h = {
-        function()
-          local actions = require('CopilotChat.actions')
-          require('CopilotChat.integrations.fzflua').pick(actions.help_actions())
-        end,
-        'Help actions',
-        mode = { 'n' },
-      },
-      p = {
-        function()
-          local actions = require('CopilotChat.actions')
-          require('CopilotChat.integrations.fzflua').pick(actions.prompt_actions())
-        end,
-        'Prompt actions',
-        mode = { 'n' },
-      },
-    },
+M.keys = {
+  {
+    '<leader>c',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'Copilot',
+    mode = 'n',
+  },
+  {
+    '<leader>cc',
+    function()
+      require('CopilotChat').toggle()
+    end,
+    desc = 'Chat',
+    mode = 'n',
+  },
+  {
+    '<leader>cb',
+    function()
+      local input = vim.fn.input('Quick Chat: ')
+      if input ~= '' then
+        require('CopilotChat').ask(input, { selection = require('CopilotChat.select').buffer })
+      end
+    end,
+    desc = 'Chat buff',
+    mode = 'n',
+  },
+  {
+    '<leader>ch',
+    function()
+      local actions = require('CopilotChat.actions')
+      require('CopilotChat.integrations.fzflua').pick(actions.help_actions())
+    end,
+    desc = 'Help actions',
+    mode = 'n',
+  },
+  {
+    '<leader>cp',
+    function()
+      local actions = require('CopilotChat.actions')
+      require('CopilotChat.integrations.fzflua').pick(actions.prompt_actions())
+    end,
+    desc = 'Prompt actions',
+    mode = 'n',
   },
 }
 
@@ -53,6 +57,7 @@ M.setup = function()
     'CopilotC-Nvim/CopilotChat.nvim',
     branch = 'canary',
     event = { 'BufReadPre', 'InsertEnter' },
+    keys = M.keys,
     dependencies = {
       { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
       { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper

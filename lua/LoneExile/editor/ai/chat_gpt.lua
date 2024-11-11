@@ -1,14 +1,23 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    c = {
-      g = {
-        '<cmd>ChatGPT<CR>',
-        'ChatGPT',
-        mode = { 'n' },
-      },
-    },
+M.keys = {
+  {
+    '<leader>c',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'Copilot',
+    mode = 'n',
+  },
+  {
+    '<leader>cg',
+    '<cmd>ChatGPT<CR>',
+    desc = 'ChatGPT',
+    mode = 'n',
   },
 }
 
@@ -17,6 +26,7 @@ M.setup = function()
     'jackMort/ChatGPT.nvim',
     cmd = { 'ChatGPT' },
     -- event = 'VeryLazy',
+    keys = M.keys,
     config = function()
       require('chatgpt').setup()
     end,

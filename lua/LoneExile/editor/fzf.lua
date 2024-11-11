@@ -1,195 +1,255 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    -- lsp_declarations
-    -- lsp_typedefs
-    -- lsp_live_workspace_symbols
-    l = {
-      name = 'LSP',
-      d = {
-        '<cmd>FzfLua lsp_definitions<cr>',
-        'Definitions',
-        mode = { 'n' },
-      },
-      i = {
-        '<cmd>FzfLua lsp_implementations<cr>',
-        'Implementations',
-        mode = { 'n' },
-      },
-      s = {
-        '<cmd>FzfLua lsp_document_symbols<cr>',
-        'Document Symbols',
-        mode = { 'n' },
-      },
-      S = {
-        '<cmd>FzfLua lsp_workspace_symbols<cr>',
-        'Workspace Symbols',
-        mode = { 'n' },
-      },
-      q = {
-        '<cmd>FzfLua lsp_code_actions<cr>',
-        'Code Actions',
-        mode = { 'n' },
-      },
-      c = {
-        '<cmd>FzfLua lsp_incoming_calls<cr>',
-        'Incoming Calls',
-        mode = { 'n' },
-      },
-      F = {
-        '<cmd>FzfLua lsp_finder<cr>',
-        'LSP Finder',
-        mode = { 'n' },
-      },
-      C = {
-        '<cmd>FzfLua lsp_outgoing_calls<cr>',
-        'Outgoing Calls',
-        mode = { 'n' },
-      },
-      r = {
-        '<cmd>FzfLua lsp_references<cr>',
-        'References',
-        mode = { 'n' },
-      },
-      l = {
-        '<cmd>FzfLua diagnostics_document<CR>',
-        'Diagnostics',
-        mode = { 'n' },
-      },
-      L = {
-        '<cmd>FzfLua diagnostics_workspace<CR>',
-        'Workspace Diagnostics',
-        mode = { 'n' },
-      },
-    },
-
-    ['s'] = {
-      name = 'Search',
-      b = {
-        '<cmd>FzfLua buffers<cr>',
-        'Buffers',
-        mode = { 'n' },
-      },
-      f = {
-        '<cmd>FzfLua files<cr>',
-        'Find File',
-        mode = { 'n' },
-      },
-      H = {
-        '<cmd>FzfLua highlights<cr>',
-        'Find highlight groups',
-        mode = { 'n' },
-      },
-      o = {
-        '<cmd>FzfLua oldfiles<cr>',
-        'Open Recent File',
-        mode = { 'n' },
-      },
-      r = {
-        '<cmd>FzfLua resume<cr>',
-        'Resume',
-        mode = { 'n' },
-      },
-      c = {
-        '<cmd>FzfLua builtin<cr>',
-        'FZF commands',
-        mode = { 'n', 'v' },
-      },
-      t = {
-        '<cmd>FzfLua grep<cr>',
-        'Text',
-        mode = { 'n' },
-      },
-      T = {
-        '<cmd>FzfLua grep_cword<cr>',
-        'Text (string)',
-        mode = { 'n', 'v' },
-      },
-      u = {
-        '<cmd>FzfLua changes<cr>',
-        'Undo',
-        mode = { 'n' },
-      },
-      g = {
-        '<cmd>FzfLua git_files<cr>',
-        'Git Files',
-        mode = { 'n' },
-      },
-      q = {
-        '<cmd>FzfLua quickfix<cr>',
-        'Quickfix',
-        mode = { 'n' },
-      },
-      Q = {
-        '<cmd>FzfLua quickfix_stack<cr>',
-        'Quickfix Stack',
-        mode = { 'n' },
-      },
-      l = {
-        '<cmd>FzfLua loclist<cr>',
-        'Location List',
-        mode = { 'n' },
-      },
-      L = {
-        '<cmd>FzfLua loclist_stack<cr>',
-        'Location List Stack',
-        mode = { 'n' },
-      },
-      B = {
-        '<cmd>FzfLua tabs<cr>',
-        'Tabs',
-        mode = { 'n' },
-      },
-    },
-    ['g'] = {
-      f = {
-        '<cmd>FzfLua git_files<cr>',
-        'Open changed file',
-        mode = { 'n' },
-      },
-      x = {
-        '<cmd>FzfLua git_status<cr>',
-        'Open changed file',
-        mode = { 'n' },
-      },
-      b = {
-        '<cmd>FzfLua git_branches<cr>',
-        'Checkout branch',
-        mode = { 'n' },
-      },
-      c = {
-        '<cmd>FzfLua git_commits<cr>',
-        'Checkout commit',
-        mode = { 'n' },
-      },
-      C = {
-        '<cmd>FzfLua git_bcommits<cr>',
-        'Checkout commit(for current file)',
-        mode = { 'n' },
-      },
-      t = {
-        '<cmd>FzfLua git_stash<cr>',
-        'Stash',
-        mode = { 'n' },
-      },
-    },
+M.keys = {
+  -- LSP
+  {
+    '<leader>l',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'LSP',
+    mode = 'n',
   },
-  -- wh_g_mappings = {
-  --   ['d'] = { '<cmd>FzfLua lsp_definitions<CR>', 'Goto Definition', mode = { 'n' } },
-  --   ['o'] = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Peek type definition', mode = { 'n' } },
-  --   ['O'] = { '<cmd>FzfLua lsp_typedefs<CR>', 'Peek type definition', mode = { 'n' } },
-  --   ['s'] = { vim.lsp.buf.signature_help, 'show signature help', mode = { 'n' } },
-  --   ['r'] = { '<cmd>FzfLua lsp_references<CR>', 'Goto references', mode = { 'n' } },
-  --   ['R'] = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'rename' },
-  --   ['q'] = { '<cmd>FzfLua lsp_code_actions<CR>', 'Code action', mode = { 'n', 'v' } },
-  --   ['j'] = { '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Next diagnostic', mode = { 'n' } },
-  --   ['k'] = { '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Prev diagnostic', mode = { 'n' } },
-  --   ['l'] = { '<cmd>lua vim.diagnostic.open_float()<cr>', 'Show line diagnostics', mode = { 'n' } },
-  --   ['D'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration', mode = { 'n' } },
-  --   ['I'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation', mode = { 'n' } },
+  {
+    '<leader>ld',
+    '<cmd>FzfLua lsp_definitions<cr>',
+    desc = 'Definitions',
+    mode = 'n',
+  },
+  {
+    '<leader>li',
+    '<cmd>FzfLua lsp_implementations<cr>',
+    desc = 'Implementations',
+    mode = 'n',
+  },
+  {
+    '<leader>ls',
+    '<cmd>FzfLua lsp_document_symbols<cr>',
+    desc = 'Document Symbols',
+    mode = 'n',
+  },
+  {
+    '<leader>lS',
+    '<cmd>FzfLua lsp_workspace_symbols<cr>',
+    desc = 'Workspace Symbols',
+    mode = 'n',
+  },
+  {
+    '<leader>lq',
+    '<cmd>FzfLua lsp_code_actions<cr>',
+    desc = 'Code Actions',
+    mode = 'n',
+  },
+  {
+    '<leader>lc',
+    '<cmd>FzfLua lsp_incoming_calls<cr>',
+    desc = 'Incoming Calls',
+    mode = 'n',
+  },
+  {
+    '<leader>lF',
+    '<cmd>FzfLua lsp_finder<cr>',
+    desc = 'LSP Finder',
+    mode = 'n',
+  },
+  {
+    '<leader>lC',
+    '<cmd>FzfLua lsp_outgoing_calls<cr>',
+    desc = 'Outgoing Calls',
+    mode = 'n',
+  },
+  {
+    '<leader>lr',
+    '<cmd>FzfLua lsp_references<cr>',
+    desc = 'References',
+    mode = 'n',
+  },
+  {
+    '<leader>ll',
+    '<cmd>FzfLua diagnostics_document<CR>',
+    desc = 'Diagnostics',
+    mode = 'n',
+  },
+  {
+    '<leader>lL',
+    '<cmd>FzfLua diagnostics_workspace<CR>',
+    desc = 'Workspace Diagnostics',
+    mode = 'n',
+  },
+
+  -- Search
+  {
+    '<leader>s',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'Search',
+    mode = 'n',
+  },
+  {
+    '<leader>sb',
+    '<cmd>FzfLua buffers<cr>',
+    desc = 'Buffers',
+    mode = 'n',
+  },
+  {
+    '<leader>sf',
+    '<cmd>FzfLua files<cr>',
+    desc = 'Find File',
+    mode = 'n',
+  },
+  {
+    '<leader>sH',
+    '<cmd>FzfLua highlights<cr>',
+    desc = 'Find highlight groups',
+    mode = 'n',
+  },
+  {
+    '<leader>so',
+    '<cmd>FzfLua oldfiles<cr>',
+    desc = 'Open Recent File',
+    mode = 'n',
+  },
+  {
+    '<leader>sr',
+    '<cmd>FzfLua resume<cr>',
+    desc = 'Resume',
+    mode = 'n',
+  },
+  {
+    '<leader>sc',
+    '<cmd>FzfLua builtin<cr>',
+    desc = 'FZF commands',
+    mode = { 'n', 'v' },
+  },
+  {
+    '<leader>st',
+    '<cmd>FzfLua grep<cr>',
+    desc = 'Text',
+    mode = 'n',
+  },
+  {
+    '<leader>sT',
+    '<cmd>FzfLua grep_cword<cr>',
+    desc = 'Text (string)',
+    mode = { 'n', 'v' },
+  },
+  {
+    '<leader>su',
+    '<cmd>FzfLua changes<cr>',
+    desc = 'Undo',
+    mode = 'n',
+  },
+  {
+    '<leader>sg',
+    '<cmd>FzfLua git_files<cr>',
+    desc = 'Git Files',
+    mode = 'n',
+  },
+  {
+    '<leader>sq',
+    '<cmd>FzfLua quickfix<cr>',
+    desc = 'Quickfix',
+    mode = 'n',
+  },
+  {
+    '<leader>sQ',
+    '<cmd>FzfLua quickfix_stack<cr>',
+    desc = 'Quickfix Stack',
+    mode = 'n',
+  },
+  {
+    '<leader>sl',
+    '<cmd>FzfLua loclist<cr>',
+    desc = 'Location List',
+    mode = 'n',
+  },
+  {
+    '<leader>sL',
+    '<cmd>FzfLua loclist_stack<cr>',
+    desc = 'Location List Stack',
+    mode = 'n',
+  },
+  {
+    '<leader>sB',
+    '<cmd>FzfLua tabs<cr>',
+    desc = 'Tabs',
+    mode = 'n',
+  },
+
+  -- Git
+  -- {
+  --   '<leader>g',
+  --   function()
+  --     local status, wk = pcall(require, 'which-key')
+  --     if not status then
+  --       return
+  --     end
+  --     wk.show({ global = false })
+  --   end,
+  --   desc = 'Git',
+  --   mode = 'n',
   -- },
+  {
+    '<leader>gf',
+    '<cmd>FzfLua git_files<cr>',
+    desc = 'Open changed file',
+    mode = 'n',
+  },
+  {
+    '<leader>gx',
+    '<cmd>FzfLua git_status<cr>',
+    desc = 'Open changed file',
+    mode = 'n',
+  },
+  {
+    '<leader>gb',
+    '<cmd>FzfLua git_branches<cr>',
+    desc = 'Checkout branch',
+    mode = 'n',
+  },
+  {
+    '<leader>gc',
+    '<cmd>FzfLua git_commits<cr>',
+    desc = 'Checkout commit',
+    mode = 'n',
+  },
+  {
+    '<leader>gC',
+    '<cmd>FzfLua git_bcommits<cr>',
+    desc = 'Checkout commit(for current file)',
+    mode = 'n',
+  },
+  {
+    '<leader>gt',
+    '<cmd>FzfLua git_stash<cr>',
+    desc = 'Stash',
+    mode = 'n',
+  },
 }
+
+-- wh_g_mappings = {
+--   ['d'] = { '<cmd>FzfLua lsp_definitions<CR>', 'Goto Definition', mode = { 'n' } },
+--   ['o'] = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Peek type definition', mode = { 'n' } },
+--   ['O'] = { '<cmd>FzfLua lsp_typedefs<CR>', 'Peek type definition', mode = { 'n' } },
+--   ['s'] = { vim.lsp.buf.signature_help, 'show signature help', mode = { 'n' } },
+--   ['r'] = { '<cmd>FzfLua lsp_references<CR>', 'Goto references', mode = { 'n' } },
+--   ['R'] = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'rename' },
+--   ['q'] = { '<cmd>FzfLua lsp_code_actions<CR>', 'Code action', mode = { 'n', 'v' } },
+--   ['j'] = { '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Next diagnostic', mode = { 'n' } },
+--   ['k'] = { '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Prev diagnostic', mode = { 'n' } },
+--   ['l'] = { '<cmd>lua vim.diagnostic.open_float()<cr>', 'Show line diagnostics', mode = { 'n' } },
+--   ['D'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration', mode = { 'n' } },
+--   ['I'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation', mode = { 'n' } },
+-- },
 
 M.setup = function(_, _)
   -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
@@ -200,6 +260,7 @@ M.setup = function(_, _)
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     lazy = true,
     cmd = { 'FzfLua' },
+    keys = M.keys,
     config = function()
       local status, fzf = pcall(require, 'fzf-lua')
       if not status then

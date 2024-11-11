@@ -20,7 +20,7 @@ local events = { 'BufEnter', 'BufWinEnter', 'CursorMoved' }
 vim.api.nvim_create_autocmd(events, {
   pattern = { '*' },
   callback = function()
-    local fileType = vim.api.nvim_buf_get_option(0, 'filetype')
+    local fileType = vim.api.nvim_get_option_value('filetype', { buf = 0 })
     if fileType ~= '' then
       local nmappings, vmappings, ignore_nmappings, ignore_vmappings = split_mappings(mappings, fileType)
       deregister(ignore_nmappings, '<leader>', 'n', whichkey)

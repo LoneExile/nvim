@@ -1,11 +1,11 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    d = {
-      name = 'Debug',
-      v = { '<cmd>DapVirtualTextToggle<cr>', 'Toggle virtual text', mode = { 'n' } },
-    },
+M.keys = {
+  {
+    '<leader>dv',
+    '<cmd>DapVirtualTextToggle<cr>',
+    desc = 'Toggle virtual text',
+    mode = 'n',
   },
 }
 
@@ -16,6 +16,7 @@ M.setup = function(_, _)
     cmd = { 'DapVirtualTextToggle' },
     -- event = { 'BufReadPre', 'InsertEnter' },
     dependencies = { 'mfussenegger/nvim-dap' },
+    keys = M.keys,
     config = function()
       require('nvim-dap-virtual-text').setup({
         enabled = true,

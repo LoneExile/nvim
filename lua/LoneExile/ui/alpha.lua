@@ -1,18 +1,18 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    [';'] = {
-      '<cmd>Alpha<CR>',
-      'Dashboard',
-      mode = { 'n' },
-    },
-  },
-}
+-- M.keys = {
+--   {
+--     '<leader>;',
+--     '<cmd>Alpha<CR>',
+--     desc = 'Dashboard',
+--     mode = 'n',
+--   },
+-- }
 
 M.setup = function(settings, _)
   return {
     'goolord/alpha-nvim',
+    -- keys = M.keys,
     config = function()
       local status_ok, alpha = pcall(require, 'alpha')
       if not status_ok then

@@ -102,60 +102,12 @@ M.setup = function(root, m)
     local plugin = plugin_config.setup(settings, location)
     if plugin ~= nil then
       for _, p in ipairs(all_plugins) do
-        -- if p[1] == plugin[1] and p[2] == false then
-        --   plugin['enabled'] = false
-        -- elseif p[1] == plugin[1] and p[2] == true then
-        --   plugin['enabled'] = true
-        -- elseif plugin.enabled == nil then
-        --   plugin['enabled'] = false
-        -- end
-
         if p[1] == plugin[1] and p[2] == true then
           plugin['enabled'] = true
         end
 
         if plugin.enabled == nil then
           plugin['enabled'] = false
-        end
-
-        if plugin['enabled'] == true and p[1] == plugin[1] then
-          if plugin_config.wh_key ~= nil then -- and plugin_config.wh_key.enabled ~= false then
-            if plugin_config.wh_key.wh_mappings ~= nil then
-              local wh_mappings = plugin_config.wh_key.wh_mappings
-              for key, value in pairs(wh_mappings) do
-                if settings.wh_mappings.mappings[key] == nil then
-                  settings.wh_mappings.mappings[key] = value
-                else
-                  settings.wh_mappings.mappings[key] = vim.tbl_deep_extend('force', settings.wh_mappings.mappings[key], value)
-                end
-              end
-            end
-
-            -- M keymaps
-            if plugin_config.wh_key.wh_m_mappings ~= nil then
-              local wh_mappings = plugin_config.wh_key.wh_m_mappings
-              for key, value in pairs(wh_mappings) do
-                if settings.wh_mappings.m_mappings[key] == nil then
-                  settings.wh_mappings.m_mappings[key] = value
-                else
-                  settings.wh_mappings.m_mappings[key] = vim.tbl_deep_extend('force', settings.wh_mappings.m_mappings[key], value)
-                end
-              end
-            end
-
-            -- G keymaps
-            if plugin_config.wh_key.wh_g_mappings ~= nil then
-              local wh_mappings = plugin_config.wh_key.wh_g_mappings
-              for key, value in pairs(wh_mappings) do
-                if settings.wh_mappings.g_mappings[key] == nil then
-                  settings.wh_mappings.g_mappings[key] = value
-                else
-                  settings.wh_mappings.g_mappings[key] = vim.tbl_deep_extend('force', settings.wh_mappings.g_mappings[key], value)
-                end
-              end
-            end
-          end
-          break
         end
       end
 

@@ -7,7 +7,6 @@ M.keys = {
     desc = 'regex',
     mode = 'n',
   },
-
 }
 
 M.setup = function()

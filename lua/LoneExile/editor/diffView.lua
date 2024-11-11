@@ -49,7 +49,7 @@ M.keys = {
     desc = 'Diff History',
     mode = 'n',
   },
---       c = { name = 'Conflict' },
+  --       c = { name = 'Conflict' },
 }
 
 M.setup = function()

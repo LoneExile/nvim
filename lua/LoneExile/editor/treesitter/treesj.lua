@@ -1,6 +1,6 @@
 local M = {}
 
-M.keys ={
+M.keys = {
   {
     'uj',
     '<cmd>TSJToggle<cr>',

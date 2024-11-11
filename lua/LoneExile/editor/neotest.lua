@@ -1,59 +1,73 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    t = {
-      name = '+Test',
-      r = {
-        function()
-          require('neotest').run.run()
-        end,
-        'Run Nearest',
-        mode = { 'n' },
-      },
-      R = {
-        function()
-          require('neotest').run.run(vim.fn.expand('%'))
-        end,
-        'Run File',
-        mode = { 'n' },
-      },
-      s = {
-        function()
-          require('neotest').summary.toggle()
-        end,
-        'Toggle Summary',
-        mode = { 'n' },
-      },
-      o = {
-        function()
-          require('neotest').output.open({ enter = true, auto_close = true })
-        end,
-        'Show Output',
-        mode = { 'n' },
-      },
-      O = {
-        function()
-          require('neotest').output_panel.toggle()
-        end,
-        'Toggle Output Panel',
-        mode = { 'n' },
-      },
-      S = {
-        function()
-          require('neotest').run.stop()
-        end,
-        'Stop',
-        mode = { 'n' },
-      },
-      d = {
-        function()
-          require('neotest').run.run({ strategy = 'dap' })
-        end,
-        'Debug Nearest',
-        mode = { 'n' },
-      },
-    },
+M.keys = {
+  {
+    '<leader>t',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'Test',
+    mode = 'n',
+  },
+  {
+    '<leader>tr',
+    function()
+      require('neotest').run.run()
+    end,
+    desc = 'Run Nearest',
+    mode = 'n',
+  },
+  {
+    '<leader>tR',
+    function()
+      require('neotest').run.run(vim.fn.expand('%'))
+    end,
+    desc = 'Run File',
+    mode = 'n',
+  },
+  {
+    '<leader>ts',
+    function()
+      require('neotest').summary.toggle()
+    end,
+    desc = 'Toggle Summary',
+    mode = 'n',
+  },
+  {
+    '<leader>to',
+    function()
+      require('neotest').output.open({ enter = true, auto_close = true })
+    end,
+    desc = 'Show Output',
+    mode = 'n',
+  },
+  {
+    '<leader>tO',
+    function()
+      require('neotest').output_panel.toggle()
+    end,
+    desc = 'Toggle Output Panel',
+    mode = 'n',
+  },
+  {
+    '<leader>tS',
+    function()
+      require('neotest').run.stop()
+    end,
+    desc = 'Stop',
+    mode = 'n',
+  },
+  {
+    '<leader>td',
+    function()
+      require('neotest').run({ strategy = 'dap' })
+    end,
+    desc = 'Debug Nearest',
+    mode = 'n',
   },
 }
 
@@ -61,6 +75,7 @@ M.setup = function()
   return {
     'nvim-neotest/neotest',
     ft = { 'go' },
+    keys = M.keys,
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-neotest/nvim-nio',

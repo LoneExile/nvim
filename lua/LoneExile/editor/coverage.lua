@@ -1,31 +1,41 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    t = {
-      name = '+Test',
-      c = {
-        function()
-          vim.cmd('CoverageToggle')
-        end,
-        'CoverageToggle',
-        mode = { 'n' },
-      },
-      C = {
-        function()
-          vim.cmd('CoverageSummary')
-        end,
-        'CoverageSummary',
-        mode = { 'n' },
-      },
-      l = {
-        function()
-          vim.cmd('CoverageLoad')
-        end,
-        'CoverageLoad',
-        mode = { 'n' },
-      },
-    },
+M.keys = {
+  {
+    '<leader>t',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'Test',
+    mode = 'n',
+  },
+  {
+    '<leader>tc',
+    function()
+      vim.cmd('CoverageToggle')
+    end,
+    desc = 'CoverageToggle',
+    mode = 'n',
+  },
+  {
+    '<leader>tC',
+    function()
+      vim.cmd('CoverageSummary')
+    end,
+    desc = 'CoverageSummary',
+    mode = 'n',
+  },
+  {
+    '<leader>tl',
+    function()
+      vim.cmd('CoverageLoad')
+    end,
+    desc = 'CoverageLoad',
+    mode = 'n',
   },
 }
 
@@ -33,6 +43,7 @@ M.setup = function()
   return {
     'andythigpen/nvim-coverage',
     -- ft = { 'go' },
+    keys = M.keys,
     dependencies = {
       'nvim-lua/plenary.nvim',
     },

@@ -1,48 +1,82 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    c = {
-      name = 'Copilot',
-      -- c = {
-      --   '<cmd>AvanteAsk<CR>',
-      --   'Chat',
-      --   mode = { 'n', 'v' },
-      -- },
-      n = {
-        '<cmd>AvanteConflictNextConflict<CR>',
-        'Next Conflict',
-        mode = { 'n' },
-      },
-      p = {
-        '<cmd>AvanteConflictPrevConflict<CR>',
-        'Prev Conflict',
-        mode = { 'n' },
-      },
-      s = {
-        name = 'Switch Provider',
-        o = {
-          '<cmd>AvanteSwitchProvider openai<CR>',
-          'OpenAI',
-          mode = { 'n' },
-        },
-        c = {
-          '<cmd>AvanteSwitchProvider claude<CR>',
-          'Claude',
-          mode = { 'n' },
-        },
-        p = {
-          '<cmd>AvanteSwitchProvider copilot<CR>',
-          'Copilot',
-          mode = { 'n' },
-        },
-        g = {
-          '<cmd>AvanteSwitchProvider gemini<CR>',
-          'Gemini',
-          mode = { 'n' },
-        },
-      },
-    },
+M.keys = {
+  {
+    '<leader>a',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'Avante',
+    mode = 'n',
+  },
+  {
+    '<leader>c',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'Copilot',
+    mode = 'n',
+  },
+  {
+    '<leader>ca',
+    '<cmd>AvanteAsk<CR>',
+    desc = 'Ask',
+    mode = 'n',
+  },
+  {
+    '<leader>cn',
+    '<cmd>AvanteConflictNextConflict<CR>',
+    desc = 'Next Conflict',
+    mode = 'n',
+  },
+  {
+    '<leader>cp',
+    '<cmd>AvanteConflictPrevConflict<CR>',
+    desc = 'Prev Conflict',
+    mode = 'n',
+  },
+  {
+    '<leader>cs',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'Switch Provider',
+  },
+  {
+    '<leader>cso',
+    '<cmd>AvanteSwitchProvider openai<CR>',
+    desc = 'OpenAI',
+    mode = 'n',
+  },
+  {
+    '<leader>csc',
+    '<cmd>AvanteSwitchProvider claude<CR>',
+    desc = 'Claude',
+    mode = 'n',
+  },
+  {
+    '<leader>csp',
+    '<cmd>AvanteSwitchProvider copilot<CR>',
+    desc = 'Copilot',
+    mode = 'n',
+  },
+  {
+    '<leader>csg',
+    '<cmd>AvanteSwitchProvider gemini<CR>',
+    desc = 'Gemini',
+    mode = 'n',
   },
 }
 
@@ -53,7 +87,9 @@ M.setup = function()
   return {
     'yetone/avante.nvim',
     event = 'VeryLazy',
+    lazy = false,
     build = 'make',
+    keys = M.keys,
     dependencies = {
       'nvim-tree/nvim-web-devicons',
       'stevearc/dressing.nvim',
@@ -84,31 +120,34 @@ M.setup = function()
     opts = {
       provider = 'claude',
       -- provider = 'copilot',
-      mappings = {
-        ask = '<leader>ca',
-        edit = '<leader>ce',
-        refresh = '<leader>cr',
-        --- @class AvanteConflictMappings
-        diff = {
-          ours = 'co',
-          theirs = 'ct',
-          both = 'cb',
-          next = ']x',
-          prev = '[x',
-        },
-        jump = {
-          next = ']]',
-          prev = '[[',
-        },
-        submit = {
-          normal = '<CR>',
-          insert = '<C-s>',
-        },
-        toggle = {
-          debug = '<leader>ad',
-          hint = '<leader>ah',
-        },
+      behaviour = {
+        auto_set_keymaps = false,
       },
+      -- mappings = {
+      --   ask = '<leader>ca',
+      --   edit = '<leader>ce',
+      --   refresh = '<leader>cr',
+      --   --- @class AvanteConflictMappings
+      --   diff = {
+      --     ours = 'co',
+      --     theirs = 'ct',
+      --     both = 'cb',
+      --     next = ']x',
+      --     prev = '[x',
+      --   },
+      --   jump = {
+      --     next = ']]',
+      --     prev = '[[',
+      --   },
+      --   submit = {
+      --     normal = '<CR>',
+      --     insert = '<C-s>',
+      --   },
+      --   toggle = {
+      --     debug = '<leader>ad',
+      --     hint = '<leader>ah',
+      --   },
+      -- },
       hints = { enabled = false },
     },
   }

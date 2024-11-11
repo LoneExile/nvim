@@ -1,20 +1,28 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    d = {
-      name = 'Debug',
-      U = {
-        name = 'UI',
-        T = { "lua require('dapui').toggle()<cr>", 'Toggle Dap UI', mode = { 'n' } },
-        e = { "lua require('dapui').eval()<cr>", 'Evaluate Expression', mode = { 'n' } },
-        f = {
-          "<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>",
-          'UI Scopes',
-          mode = { 'n' },
-        },
-      },
-    },
+M.keys = {
+  {
+    '<leader>dU',
+    desc = 'UI',
+    mode = 'n',
+  },
+  {
+    '<leader>dUT',
+    "<cmd>lua require('dapui').toggle()<cr>",
+    desc = 'Toggle Dap UI',
+    mode = 'n',
+  },
+  {
+    '<leader>dUe',
+    "<cmd>lua require('dapui').eval()<cr>",
+    desc = 'Evaluate Expression',
+    mode = 'n',
+  },
+  {
+    '<leader>dUf',
+    "<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>",
+    desc = 'UI Scopes',
+    mode = 'n',
   },
 }
 
@@ -24,6 +32,7 @@ M.setup = function(_, _)
     'rcarriga/nvim-dap-ui',
     dependencies = { 'mfussenegger/nvim-dap' },
     lazy = true,
+    keys = M.keys,
     config = function()
       local status_ok_ui, dapui = pcall(require, 'dapui')
       if not status_ok_ui then

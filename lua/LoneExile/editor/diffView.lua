@@ -1,18 +1,55 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    ['g'] = {
-      name = 'Git',
-      d = { '<cmd>DiffviewOpen<cr>', 'Git Diff', mode = { 'n' } },
-      q = { '<cmd>DiffviewClose<cr>', 'Diff Quit', mode = { 'n' } },
-      -- f = { '<cmd>DiffviewToggleFiles<cr>', 'Diff Toggle Files', mode = { 'n' } },
-      -- r = { '<cmd>DiffviewRefresh<cr>', 'Diff Refresh', mode = { 'n' } },
-      h = { '<cmd>DiffviewFileHistory %<cr>', 'History Current', mode = { 'n' } },
-      H = { '<cmd>DiffviewFileHistory<cr>', 'Diff History', mode = { 'n' } },
-      c = { name = 'Conflict' },
-    },
+M.keys = {
+  {
+    '<leader>g',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'Git',
+    mode = 'n',
   },
+  {
+    '<leader>gd',
+    '<cmd>DiffviewOpen<cr>',
+    desc = 'Git Diff',
+    mode = 'n',
+  },
+  {
+    '<leader>gq',
+    '<cmd>DiffviewClose<cr>',
+    desc = 'Diff Quit',
+    mode = 'n',
+  },
+  {
+    '<leader>gf',
+    '<cmd>DiffviewToggleFiles<cr>',
+    desc = 'Diff Toggle Files',
+    mode = 'n',
+  },
+  {
+    '<leader>gr',
+    '<cmd>DiffviewRefresh<cr>',
+    desc = 'Diff Refresh',
+    mode = 'n',
+  },
+  {
+    '<leader>gh',
+    '<cmd>DiffviewFileHistory %<cr>',
+    desc = 'History Current',
+    mode = 'n',
+  },
+  {
+    '<leader>gH',
+    '<cmd>DiffviewFileHistory<cr>',
+    desc = 'Diff History',
+    mode = 'n',
+  },
+--       c = { name = 'Conflict' },
 }
 
 M.setup = function()
@@ -20,6 +57,7 @@ M.setup = function()
     'sindrets/diffview.nvim',
     lazy = true,
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
+    keys = M.keys,
     config = function()
       local status_ok, diffview = pcall(require, 'diffview')
       if not status_ok then

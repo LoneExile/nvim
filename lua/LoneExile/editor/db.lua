@@ -1,19 +1,20 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    D = {
-      name = 'DBUI',
-      '<cmd>DBUIToggle<CR>',
-      'DBUI',
-      mode = { 'n' },
-    },
+-- print(vim.fn.stdpath('data'))
+
+M.keys = {
+  {
+    '<leader>D',
+    '<cmd>DBUIToggle<CR>',
+    desc = 'DBUI',
+    mode = 'n',
   },
 }
-print(vim.fn.stdpath('data'))
+
 M.setup = function()
   return {
     'kristijanhusak/vim-dadbod-ui',
+    keys = M.keys,
     cmd = {
       'DBUIToggle',
     },

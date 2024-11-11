@@ -30,6 +30,7 @@ M.transparent = function()
     'EndOfBuffer',
     'MsgArea',
     'WhichKeyFloat',
+    'WhichKeyNormal',
     'FloatBorder',
     'NormalFloat',
     'VertSplit',

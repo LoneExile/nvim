@@ -1,36 +1,118 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    d = {
-      name = 'Debug',
-      v = { '<cmd>DapVirtualTextToggle<cr>', 'Toggle virtual text', mode = { 'n' } },
-      T = { '<cmd>DapTerminate<cr>', 'Terminate', mode = { 'n' } },
-      t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", 'Toggle Breakpoint', mode = { 'n' } },
-      b = { "<cmd>lua require'dap'.step_back()<cr>", 'Step Back', mode = { 'n' } },
-      B = {
-        "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
-        'Breakpoint condition',
-        mode = { 'n' },
-      },
-      l = {
-        "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>",
-        'Log point',
-        mode = { 'n' },
-      },
-      L = { "<Cmd>lua require'dap'.run_last()<CR>", 'Run last', mode = { 'n' } },
-      c = { "<cmd>lua require'dap'.continue()<cr>", 'Continue', mode = { 'n' } },
-      C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", 'Run To Cursor', mode = { 'n' } },
-      d = { "<cmd>lua require'dap'.disconnect()<cr>", 'Disconnect', mode = { 'n' } },
-      g = { "<cmd>lua require'dap'.session()<cr>", 'Get Session', mode = { 'n' } },
-      i = { "<cmd>lua require'dap'.step_into()<cr>", 'Step Into', mode = { 'n' } },
-      o = { "<cmd>lua require'dap'.step_over()<cr>", 'Step Over', mode = { 'n' } },
-      u = { "<cmd>lua require'dap'.step_out()<cr>", 'Step Out', mode = { 'n' } },
-      p = { "<cmd>lua require'dap'.pause()<cr>", 'Pause', mode = { 'n' } },
-      r = { "<cmd>lua require'dap'.repl.toggle()<cr>", 'Toggle Repl', mode = { 'n' } },
-      s = { "<cmd>lua require'dap'.continue()<cr>", 'Start', mode = { 'n' } },
-      q = { "<cmd>lua require'dap'.close()<cr>", 'Quit', mode = { 'n' } },
-    },
+M.keys = {
+  {
+    '<leader>d',
+    desc = 'Debug',
+    mode = 'n',
+  },
+  {
+    '<leader>dv',
+    '<cmd>DapVirtualTextToggle<cr>',
+    desc = 'Toggle virtual text',
+    mode = 'n',
+  },
+  {
+    '<leader>dT',
+    '<cmd>DapTerminate<cr>',
+    desc = 'Terminate',
+    mode = 'n',
+  },
+  {
+    '<leader>dt',
+    "<cmd>lua require'dap'.toggle_breakpoint()<cr>",
+    desc = 'Toggle Breakpoint',
+    mode = 'n',
+  },
+  {
+    '<leader>db',
+    "<cmd>lua require'dap'.step_back()<cr>",
+    desc = 'Step Back',
+    mode = 'n',
+  },
+  {
+    '<leader>dB',
+    "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
+    desc = 'Breakpoint condition',
+    mode = 'n',
+  },
+  {
+    '<leader>dl',
+    "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>",
+    desc = 'Log point',
+    mode = 'n',
+  },
+  {
+    '<leader>dL',
+    "<Cmd>lua require'dap'.run_last()<CR>",
+    desc = 'Run last',
+    mode = 'n',
+  },
+  {
+    '<leader>dc',
+    "<cmd>lua require'dap'.continue()<cr>",
+    desc = 'Continue',
+    mode = 'n',
+  },
+  {
+    '<leader>dC',
+    "<cmd>lua require'dap'.run_to_cursor()<cr>",
+    desc = 'Run To Cursor',
+    mode = 'n',
+  },
+  {
+    '<leader>dd',
+    "<cmd>lua require'dap'.disconnect()<cr>",
+    desc = 'Disconnect',
+    mode = 'n',
+  },
+  {
+    '<leader>dg',
+    "<cmd>lua require'dap'.session()<cr>",
+    desc = 'Get Session',
+    mode = 'n',
+  },
+  {
+    '<leader>di',
+    "<cmd>lua require'dap'.step_into()<cr>",
+    desc = 'Step Into',
+    mode = 'n',
+  },
+  {
+    '<leader>do',
+    "<cmd>lua require'dap'.step_over()<cr>",
+    desc = 'Step Over',
+    mode = 'n',
+  },
+  {
+    '<leader>du',
+    "<cmd>lua require'dap'.step_out()<cr>",
+    desc = 'Step Out',
+    mode = 'n',
+  },
+  {
+    '<leader>dp',
+    "<cmd>lua require'dap'.pause()<cr>",
+    desc = 'Pause',
+    mode = 'n',
+  },
+  {
+    '<leader>dr',
+    "<cmd>lua require'dap'.repl.toggle()<cr>",
+    desc = 'Toggle Repl',
+    mode = 'n',
+  },
+  {
+    '<leader>ds',
+    "<cmd>lua require'dap'.continue()<cr>",
+    desc = 'Start',
+    mode = 'n',
+  },
+  {
+    '<leader>dq',
+    "<cmd>lua require'dap'.close()<cr>",
+    desc = 'Quit',
+    mode = 'n',
   },
 }
 
@@ -41,6 +123,7 @@ M.setup = function(s, location)
     lazy = true,
     cmd = { 'DapToggleBreakpoint', 'DapContinue' },
     dependencies = { 'rcarriga/nvim-dap-ui' },
+    keys = M.keys,
     config = function()
       -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
       local status_ok, dap = pcall(require, 'dap')

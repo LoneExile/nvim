@@ -4,32 +4,83 @@ local M = {}
 -- vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>', { noremap = true, silent = true })
 -- vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { noremap = true, silent = true })
 
-M.wh_key = {
-  wh_mappings = {
-    l = {
-      name = 'LSP',
-      f = { '<cmd>FormatCurrentBuf<CR>', 'Format', mode = { 'n' } },
-      -- d = { vim.diagnostic.setloclist, 'Diagnostics', mode = { 'n' } },
-      x = { '<cmd>LspInfo<cr>', 'LSP Info', mode = { 'n' } },
-      I = { '<cmd>Mason<cr>', 'Mason', mode = { 'n' } },
-      R = { '<cmd>LspRestart<cr>', 'Restart', mode = { 'n' } },
-      z = { '<cmd>LspStop<cr>', 'Stop', mode = { 'n' } },
-    },
+-- M.wh_key = {
+--   wh_mappings = {
+--     l = {
+--       name = 'LSP',
+--       f = { '<cmd>FormatCurrentBuf<CR>', 'Format', mode = { 'n' } },
+--       -- d = { vim.diagnostic.setloclist, 'Diagnostics', mode = { 'n' } },
+--       x = { '<cmd>LspInfo<cr>', 'LSP Info', mode = { 'n' } },
+--       I = { '<cmd>Mason<cr>', 'Mason', mode = { 'n' } },
+--       R = { '<cmd>LspRestart<cr>', 'Restart', mode = { 'n' } },
+--       z = { '<cmd>LspStop<cr>', 'Stop', mode = { 'n' } },
+--     },
+--   },
+--   -- wh_g_mappings = {
+--   --   ['d'] = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Goto Definition' },
+--   --   ['s'] = { vim.lsp.buf.signature_help, 'show signature help' },
+--   --   ['r'] = { '<cmd>lua vim.lsp.buf.references()<cr>', 'Goto references' },
+--   --   ['R'] = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'rename' },
+--   --   ['q'] = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code action' },
+--   --   ['j'] = { '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Next diagnostic' },
+--   --   ['k'] = { '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Prev diagnostic' },
+--   --   ['D'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration' },
+--   --   ['o'] = { '<cmd>lua vim.lsp.buf.type_definition()<cr>', 'Goto Implementation' },
+--   --   ['I'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation' },
+--   --   ['l'] = { '<cmd>lua vim.diagnostic.open_float()<cr>', 'Show line diagnostics' },
+--   --   -- ['f'] = { '<cmd>lua vim.lsp.buf.formatting()<cr>', 'Format' },
+--   -- },
+-- }
+
+M.keys = {
+  {
+    '<leader>l',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'LSP',
+    mode = 'n',
   },
-  -- wh_g_mappings = {
-  --   ['d'] = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Goto Definition' },
-  --   ['s'] = { vim.lsp.buf.signature_help, 'show signature help' },
-  --   ['r'] = { '<cmd>lua vim.lsp.buf.references()<cr>', 'Goto references' },
-  --   ['R'] = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'rename' },
-  --   ['q'] = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code action' },
-  --   ['j'] = { '<cmd>lua vim.diagnostic.goto_next()<cr>', 'Next diagnostic' },
-  --   ['k'] = { '<cmd>lua vim.diagnostic.goto_prev()<cr>', 'Prev diagnostic' },
-  --   ['D'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Goto declaration' },
-  --   ['o'] = { '<cmd>lua vim.lsp.buf.type_definition()<cr>', 'Goto Implementation' },
-  --   ['I'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Goto Implementation' },
-  --   ['l'] = { '<cmd>lua vim.diagnostic.open_float()<cr>', 'Show line diagnostics' },
-  --   -- ['f'] = { '<cmd>lua vim.lsp.buf.formatting()<cr>', 'Format' },
-  -- },
+  {
+    '<leader>lf',
+    '<cmd>FormatCurrentBuf<CR>',
+    desc = 'Format',
+    mode = 'n',
+  },
+  -- {
+  --   '<leader>ld',
+  --   '<cmd>lua vim.diagnostic.setloclist()<CR>',
+  --   desc = 'Diagnostics',
+  --   mode = 'n',
+  -- }
+  {
+    '<leader>lx',
+    '<cmd>LspInfo<CR>',
+    desc = 'LSP Info',
+    mode = 'n',
+  },
+  {
+    '<leader>lI',
+    '<cmd>Mason<CR>',
+    desc = 'Mason',
+    mode = 'n',
+  },
+  {
+    '<leader>lR',
+    '<cmd>LspRestart<CR>',
+    desc = 'Restart',
+    mode = 'n',
+  },
+  {
+    '<leader>lz',
+    '<cmd>LspStop<CR>',
+    desc = 'Stop',
+    mode = 'n',
+  },
 }
 
 M.setup = function(_, location)
@@ -37,10 +88,10 @@ M.setup = function(_, location)
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'InsertEnter' },
     cmd = { 'LspInfo', 'LspRestart', 'LspStop', 'Mason' },
-    -- keys = { '<leader>', 'g' }, -- BUG: this makes the which_key `g` not load properly
-    keys = {
-      { 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', desc = 'Hover' },
-    },
+    -- keys = {
+    --   { 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', desc = 'Hover' },
+    -- },
+    keys = M.keys,
 
     dependencies = {
       'williamboman/mason.nvim',

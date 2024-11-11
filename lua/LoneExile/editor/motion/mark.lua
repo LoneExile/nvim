@@ -1,15 +1,53 @@
 local M = {}
 
-M.wh_key = {
-  wh_m_mappings = {
-    t = { '<cmd>MarksToggleSigns<cr>', 'Mark Toggle', mode = { 'n' } },
-    l = { '<cmd>MarksListBuf<cr>', 'Mark List', mode = { 'n' } },
-    d = { '<Plug>(Marks-deleteline)', 'Mark Delete', mode = { 'n' } },
-    D = { '<Plug>(Marks-deletebuf)', 'Mark Delete Buf', mode = { 'n' } },
-    p = { '<Plug>(Marks-preview)', 'Mark Preview', mode = { 'n' } },
-    j = { '<Plug>(Marks-next)', 'Mark Next', mode = { 'n' } },
-    k = { '<Plug>(Marks-prev)', 'Mark Prev', mode = { 'n' } },
-    s = { '<Plug>(Marks-set)', 'Mark Set', mode = { 'n' } },
+M.keys = {
+  {
+    'mt',
+    '<cmd>MarksToggleSigns<cr>',
+    desc = 'Mark Toggle',
+    mode = 'n',
+  },
+  {
+    'ml',
+    '<cmd>MarksListBuf<cr>',
+    desc = 'Mark List',
+    mode = 'n',
+  },
+  {
+    'md',
+    '<Plug>(Marks-deleteline)',
+    desc = 'Mark Delete',
+    mode = 'n',
+  },
+  {
+    'mD',
+    '<Plug>(Marks-deletebuf)',
+    desc = 'Mark Delete Buf',
+    mode = 'n',
+  },
+  {
+    'mp',
+    '<Plug>(Marks-preview)',
+    desc = 'Mark Preview',
+    mode = 'n',
+  },
+  {
+    'mj',
+    '<Plug>(Marks-next)',
+    desc = 'Mark Next',
+    mode = 'n',
+  },
+  {
+    'mk',
+    '<Plug>(Marks-prev)',
+    desc = 'Mark Prev',
+    mode = 'n',
+  },
+  {
+    'ms',
+    '<Plug>(Marks-set)',
+    desc = 'Mark Set',
+    mode = 'n',
   },
 }
 
@@ -17,7 +55,7 @@ M.setup = function()
   return {
     'chentoast/marks.nvim',
     event = 'BufRead',
-    -- keys = { 'm' },
+    keys = M.keys,
     config = function()
       local status_ok, mark = pcall(require, 'marks')
       if not status_ok then

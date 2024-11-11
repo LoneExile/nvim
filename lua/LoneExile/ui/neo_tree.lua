@@ -1,20 +1,17 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    ['e'] = {
-      '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>',
-      -- function()
-      -- 	vim.cmd("Neotree position=right toggle=true")
-      -- end,
-      'Explorer',
-      mode = { 'n' },
-    },
-    ['b'] = {
-      '<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>',
-      'Buffer',
-      mode = { 'n' },
-    },
+M.keys = {
+  {
+    '<leader>e',
+    '<cmd>Neotree action=focus source=filesystem position=right toggle=true<CR>',
+    desc = 'Explorer',
+    mode = 'n',
+  },
+  {
+    '<leader>b',
+    '<cmd>Neotree action=focus source=buffers position=right toggle=true<CR>',
+    desc = 'Buffer',
+    mode = 'n',
   },
 }
 
@@ -22,6 +19,7 @@ M.setup = function(_, _)
   return {
     'nvim-neo-tree/neo-tree.nvim',
     cmd = { 'Neotree' },
+    keys = M.keys,
     -- keys = { '<leader>' },
     -- event = 'BufRead',
     -- branch = 'v3.x',

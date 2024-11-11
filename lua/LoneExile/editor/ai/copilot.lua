@@ -1,10 +1,23 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    c = {
-      P = { '<cmd>Copilot panel<cr>', 'panel', mode = { 'n' } },
-    },
+M.keys = {
+  {
+    '<leader>c',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'Copilot',
+    mode = 'n',
+  },
+  {
+    '<leader>cP',
+    '<cmd>Copilot panel<cr>',
+    desc = 'panel',
+    mode = 'n',
   },
 }
 
@@ -12,6 +25,7 @@ M.setup = function(settings, _)
   return {
     'zbirenbaum/copilot.lua',
     event = { 'BufReadPre', 'InsertEnter' },
+    keys = M.keys,
     config = function()
       local status_ok, copilot = pcall(require, 'copilot')
       if not status_ok then

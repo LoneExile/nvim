@@ -1,12 +1,47 @@
 local M = {}
 
-M.wh_key = {
-  wh_m_mappings = {
-    a = { '<cmd>lua require("harpoon.mark").add_file()<cr>', 'Harpoon' },
-    ['.'] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', 'Harpoon Next' },
-    [','] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', 'Harpoon Prev' },
-    s = { '<cmd>Telescope harpoon marks<cr>', 'Search Files' },
-    ['m'] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', 'Harpoon UI' },
+M.keys = {
+  {
+    'm',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ keys = 'm', mode = 'n' })
+    end,
+    desc = 'Harpoon',
+    mode = 'n',
+  },
+  {
+    'ma',
+    '<cmd>lua require("harpoon.mark").add_file()<cr>',
+    desc = 'Harpoon',
+    mode = 'n',
+  },
+  {
+    'm.',
+    '<cmd>lua require("harpoon.ui").nav_next()<cr>',
+    desc = 'Harpoon Next',
+    mode = 'n',
+  },
+  {
+    'm,',
+    '<cmd>lua require("harpoon.ui").nav_prev()<cr>',
+    desc = 'Harpoon Prev',
+    mode = 'n',
+  },
+  {
+    'ms',
+    '<cmd>Telescope harpoon marks<cr>',
+    desc = 'Search Files',
+    mode = 'n',
+  },
+  {
+    'mm',
+    '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>',
+    desc = 'Harpoon UI',
+    mode = 'n',
   },
 }
 
@@ -14,7 +49,7 @@ M.setup = function()
   return {
     'theprimeagen/harpoon',
     event = 'BufRead',
-    -- keys = { 'm' },
+    keys = M.keys,
     config = function()
       local status_ok, harpoon = pcall(require, 'harpoon')
       if not status_ok then

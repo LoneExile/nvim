@@ -1,55 +1,71 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    ['g'] = {
-      name = 'Git',
-      S = {
-        '<cmd>lua require "gitsigns".stage_buffer()<cr>',
-        'Stage Buffer',
-        mode = { 'n' },
-      },
-      j = {
-        "<cmd>lua require 'gitsigns'.next_hunk()<cr>",
-        'Next Hunk',
-        mode = { 'n' },
-      },
-      k = {
-        "<cmd>lua require 'gitsigns'.prev_hunk()<cr>",
-        'Prev Hunk',
-        mode = { 'n' },
-      },
-      l = {
-        "<cmd>lua require 'gitsigns'.blame_line()<cr>",
-        'Blame',
-        mode = { 'n' },
-      },
-      p = {
-        "<cmd>lua require 'gitsigns'.preview_hunk()<cr>",
-        'Preview Hunk',
-        mode = { 'n' },
-      },
-      r = {
-        "<cmd>lua require 'gitsigns'.reset_hunk()<cr>",
-        'Reset Hunk',
-        mode = { 'n' },
-      },
-      R = {
-        "<cmd>lua require 'gitsigns'.reset_buffer()<cr>",
-        'Reset Buffer',
-        mode = { 'n' },
-      },
-      s = {
-        "<cmd>lua require 'gitsigns'.stage_hunk()<cr>",
-        'Stage Hunk',
-        mode = { 'n' },
-      },
-      u = {
-        "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-        'Undo Stage Hunk',
-        mode = { 'n' },
-      },
-    },
+M.keys = {
+  {
+    '<leader>g',
+    function()
+      local status, wk = pcall(require, 'which-key')
+      if not status then
+        return
+      end
+      wk.show({ global = false })
+    end,
+    desc = 'Git',
+    mode = 'n',
+  },
+  {
+    '<leader>gS',
+    '<cmd>lua require "gitsigns".stage_buffer()<cr>',
+    desc = 'Stage Buffer',
+    mode = 'n',
+  },
+  {
+    '<leader>gj',
+    '<cmd>lua require "gitsigns".next_hunk()<cr>',
+    desc = 'Next Hunk',
+    mode = 'n',
+  },
+  {
+    '<leader>gk',
+    '<cmd>lua require "gitsigns".prev_hunk()<cr>',
+    desc = 'Prev Hunk',
+    mode = 'n',
+  },
+  {
+    '<leader>gl',
+    '<cmd>lua require "gitsigns".blame_line()<cr>',
+    desc = 'Blame',
+    mode = 'n',
+  },
+  {
+    '<leader>gp',
+    '<cmd>lua require "gitsigns".preview_hunk()<cr>',
+    desc = 'Preview Hunk',
+    mode = 'n',
+  },
+  {
+    '<leader>gr',
+    '<cmd>lua require "gitsigns".reset_hunk()<cr>',
+    desc = 'Reset Hunk',
+    mode = 'n',
+  },
+  {
+    '<leader>gR',
+    '<cmd>lua require "gitsigns".reset_buffer()<cr>',
+    desc = 'Reset Buffer',
+    mode = 'n',
+  },
+  {
+    '<leader>gs',
+    '<cmd>lua require "gitsigns".stage_hunk()<cr>',
+    desc = 'Stage Hunk',
+    mode = 'n',
+  },
+  {
+    '<leader>gu',
+    '<cmd>lua require "gitsigns".undo_stage_hunk()<cr>',
+    desc = 'Undo Stage Hunk',
+    mode = 'n',
   },
 }
 
@@ -57,6 +73,7 @@ M.setup = function()
   return {
     'lewis6991/gitsigns.nvim',
     event = { 'BufRead', 'BufNewFile' },
+    keys = M.keys,
 
     config = function()
       local status_ok_ui, gitsigns = pcall(require, 'gitsigns')

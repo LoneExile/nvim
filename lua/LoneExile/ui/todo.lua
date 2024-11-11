@@ -1,11 +1,11 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    u = {
-      name = '+Utility',
-      t = { '<cmd>TodoTelescope<cr>', 'TODO', mode = { 'n' } },
-    },
+M.keys = {
+  {
+    '<leader>ut',
+    '<cmd>TodoTelescope<cr>',
+    desc = 'TODO',
+    mode = 'n',
   },
 }
 
@@ -13,6 +13,7 @@ M.setup = function()
   return {
     'folke/todo-comments.nvim',
     event = { 'BufReadPre', 'InsertEnter' },
+    keys = M.keys,
     config = function()
       local status_ok, todo = pcall(require, 'todo-comments')
       if not status_ok then

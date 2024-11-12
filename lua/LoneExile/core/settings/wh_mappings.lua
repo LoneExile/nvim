@@ -1,9 +1,17 @@
 local M = {}
 M.setup = function(root)
   return {
-    '<leader>',
-    'g',
-    'V',
+    {
+      '<leader>?',
+      function()
+        local status, wk = pcall(require, 'which-key')
+        if not status then
+          return
+        end
+        wk.show({ global = false })
+      end,
+      desc = 'Buffer Local Keymaps (which-key)',
+    },
     {
       '<leader>w',
       '<cmd>SaveNFormat<CR>',

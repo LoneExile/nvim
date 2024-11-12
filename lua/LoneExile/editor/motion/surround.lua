@@ -10,6 +10,8 @@ M.setup = function()
         return
       end
 
+      vim.o.timeout = false
+
       mini.setup({
         custom_surroundings = nil,
         highlight_duration = 1000,

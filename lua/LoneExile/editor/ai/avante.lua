@@ -86,8 +86,9 @@ M.setup = function()
   vim.fn.setenv('GEMINI_API_KEY', vim.env.GEMINI_API_KEY)
   return {
     'yetone/avante.nvim',
-    event = 'VeryLazy',
-    lazy = false,
+    cmd = 'AvanteAsk',
+    -- event = 'VeryLazy',
+    -- lazy = false,
     build = 'make',
     keys = M.keys,
     dependencies = {
@@ -105,7 +106,7 @@ M.setup = function()
       },
       {
         'HakonHarnes/img-clip.nvim',
-        event = 'VeryLazy',
+        -- event = 'VeryLazy',
         opts = {
           default = {
             embed_image_as_base64 = false,

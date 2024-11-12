@@ -1,14 +1,11 @@
 local M = {}
 
-M.wh_key = {
-  wh_mappings = {
-    u = {
-      name = '+Utility',
-      h = {
-        name = 'highlight',
-        a = { '<cmd>lua require("hlargs").toggle()<cr>', 'Arguments', mode = { 'n' } },
-      },
-    },
+M.keys = {
+  {
+    '<leader>uh',
+    "<cmd>lua require('hlargs').toggle()<cr>",
+    desc = 'highlight',
+    mode = 'n',
   },
 }
 

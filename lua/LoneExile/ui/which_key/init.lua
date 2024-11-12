@@ -9,7 +9,7 @@ M.setup = function(settings, _)
     opts = {
       preset = 'modern',
       icons = { mappings = false },
-      -- show_help = false,
+      show_help = false,
     },
   }
 end

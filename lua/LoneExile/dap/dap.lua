@@ -117,7 +117,6 @@ M.keys = {
 }
 
 M.setup = function(s, location)
-  -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   return {
     'mfussenegger/nvim-dap',
     lazy = true,
@@ -130,6 +129,11 @@ M.setup = function(s, location)
       if not status_ok then
         return
       end
+
+      require('which-key').show({
+        keys = '<leader>d',
+        loop = true,
+      })
 
       local icons = {
         breakpoint = {

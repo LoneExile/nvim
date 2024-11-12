@@ -1,12 +1,12 @@
 local M = {}
 
 M.keys = {
-  {
-    '<leader>ut',
-    '<cmd>TodoTelescope<cr>',
-    desc = 'TODO',
-    mode = 'n',
-  },
+  -- {
+  --   '<leader>ut',
+  --   '<cmd>TodoTelescope<cr>',
+  --   desc = 'TODO',
+  --   mode = 'n',
+  -- },
 }
 
 M.setup = function()

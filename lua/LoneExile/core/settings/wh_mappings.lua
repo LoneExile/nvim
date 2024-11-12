@@ -118,11 +118,18 @@ M.setup = function(root)
         end
         wk.show({ global = false })
       end,
-      desc = '+Utility',
+      desc = 'Utility',
       mode = 'n',
     },
     {
       '<leader>ud',
+      function()
+        local status, wk = pcall(require, 'which-key')
+        if not status then
+          return
+        end
+        wk.show({ global = false })
+      end,
       desc = 'Diff Buf',
       mode = 'n',
     },

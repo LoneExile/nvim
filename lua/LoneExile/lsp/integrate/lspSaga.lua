@@ -1,12 +1,12 @@
 local M = {}
 
 M.keys = {
-  {
-    'lo',
-    '<cmd>Lspsaga outline<cr>',
-    desc = 'Outline',
-    mode = 'n',
-  },
+  -- {
+  --   '<leader>lo',
+  --   '<cmd>Lspsaga outline<cr>',
+  --   desc = 'Outline',
+  --   mode = 'n',
+  -- },
   {
     'gd',
     '<cmd>Lspsaga peek_definition<CR>',

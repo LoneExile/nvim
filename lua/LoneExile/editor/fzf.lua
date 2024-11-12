@@ -234,7 +234,6 @@ M.keys = {
 -- },
 
 M.setup = function(_, _)
-  -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>FzfLua files<cr>', { noremap = true, silent = true, desc = 'Find Files' })
   -- vim.api.nvim_set_keymap('n', '<C-q>', '<cmd>FzfLua quickfix_stack<cr>', { noremap = true, silent = true, desc = 'Quickfix' })
   return {

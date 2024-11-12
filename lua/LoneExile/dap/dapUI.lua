@@ -3,6 +3,7 @@ local M = {}
 M.keys = {
   {
     '<leader>dU',
+    '',
     desc = 'UI',
     mode = 'n',
   },
@@ -27,7 +28,6 @@ M.keys = {
 }
 
 M.setup = function(_, _)
-  -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   return {
     'rcarriga/nvim-dap-ui',
     dependencies = { 'mfussenegger/nvim-dap' },

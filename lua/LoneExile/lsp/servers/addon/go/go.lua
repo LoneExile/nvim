@@ -1,9 +1,5 @@
 local M = {}
 
--- M.wh_key = {
---   wh_mappings = {},
--- }
-
 M.setup = function()
   return {
     'ray-x/go.nvim',

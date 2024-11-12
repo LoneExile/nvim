@@ -19,6 +19,7 @@ return {
 
   { 'nvim-neotest/neotest',                      true },
   { 'andythigpen/nvim-coverage',                 true },
+  { 'danymat/neogen',                            true },
 
   { 'olexsmir/gopher.nvim',                      true },
 

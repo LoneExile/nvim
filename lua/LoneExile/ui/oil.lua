@@ -1,20 +1,17 @@
 local M = {}
 
--- M.wh_key = {
---   wh_mappings = {
---     e = {
---       function()
---         -- vim.cmd('Oil --float')
---         vim.cmd('Oil')
---       end,
---       'Explorer',
---       mode = { 'n' },
---     },
---   },
--- }
+M.keys = {
+  {
+    '<leader>uo',
+    function()
+      vim.cmd('Oil --float')
+    end,
+    desc = 'Oil',
+    mode = 'n',
+  },
+}
 
 M.setup = function(_, _)
-  -- settings.utils.setup_mappings('<leader>', M.wh_key.wh_mappings, _)
   vim.keymap.set(
     'n',
     '-',

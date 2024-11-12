@@ -3,6 +3,7 @@ local M = {}
 M.keys = {
   {
     '<leader>d',
+    '',
     desc = 'Debug',
     mode = 'n',
   },

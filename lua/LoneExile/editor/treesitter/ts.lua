@@ -46,6 +46,7 @@ M.setup = function(_, location)
           'cpp',
           'c_sharp',
           'rust',
+          'diff',
           'heex', -- elixir
         },
         sync_install = false,

@@ -1,17 +1,17 @@
 local M = {}
 M.setup = function(root)
   return {
-    {
-      '<leader>?',
-      function()
-        local status, wk = pcall(require, 'which-key')
-        if not status then
-          return
-        end
-        wk.show({ global = false })
-      end,
-      desc = 'Buffer Local Keymaps (which-key)',
-    },
+    -- {
+    --   '<leader>?',
+    --   function()
+    --     local status, wk = pcall(require, 'which-key')
+    --     if not status then
+    --       return
+    --     end
+    --     wk.show({ global = false })
+    --   end,
+    --   desc = 'Buffer Local Keymaps (which-key)',
+    -- },
     {
       '<leader>w',
       '<cmd>SaveNFormat<CR>',
@@ -45,13 +45,7 @@ M.setup = function(root)
     },
     {
       '<leader>p',
-      function()
-        local status, wk = pcall(require, 'which-key')
-        if not status then
-          return
-        end
-        wk.show({ global = false })
-      end,
+      '',
       desc = 'Plugin',
       mode = 'n',
     },
@@ -93,13 +87,7 @@ M.setup = function(root)
     },
     {
       '<leader>N',
-      function()
-        local status, wk = pcall(require, 'which-key')
-        if not status then
-          return
-        end
-        wk.show({ global = false })
-      end,
+      '',
       desc = 'Neovim',
       mode = 'n',
     },
@@ -111,25 +99,13 @@ M.setup = function(root)
     },
     {
       '<leader>u',
-      function()
-        local status, wk = pcall(require, 'which-key')
-        if not status then
-          return
-        end
-        wk.show({ global = false })
-      end,
-      desc = 'Utility',
+      '',
+      desc = '+Utility',
       mode = 'n',
     },
     {
       '<leader>ud',
-      function()
-        local status, wk = pcall(require, 'which-key')
-        if not status then
-          return
-        end
-        wk.show({ global = false })
-      end,
+      '',
       desc = 'Diff Buf',
       mode = 'n',
     },

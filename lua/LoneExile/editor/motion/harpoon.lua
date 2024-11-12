@@ -3,13 +3,7 @@ local M = {}
 M.keys = {
   {
     'm',
-    function()
-      local status, wk = pcall(require, 'which-key')
-      if not status then
-        return
-      end
-      wk.show({ keys = 'm', mode = 'n' })
-    end,
+    '',
     desc = 'Harpoon',
     mode = 'n',
   },

@@ -35,13 +35,7 @@ local M = {}
 M.keys = {
   {
     '<leader>l',
-    function()
-      local status, wk = pcall(require, 'which-key')
-      if not status then
-        return
-      end
-      wk.show({ global = false })
-    end,
+    '',
     desc = 'LSP',
     mode = 'n',
   },

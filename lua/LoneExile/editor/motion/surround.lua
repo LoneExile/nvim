@@ -10,6 +10,7 @@ M.setup = function()
         return
       end
 
+      -- https://github.com/folke/which-key.nvim/issues/837
       vim.o.timeout = false
 
       mini.setup({

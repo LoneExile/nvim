@@ -4,13 +4,7 @@ M.keys = {
   -- LSP
   {
     '<leader>l',
-    function()
-      local status, wk = pcall(require, 'which-key')
-      if not status then
-        return
-      end
-      wk.show({ global = false })
-    end,
+    '',
     desc = 'LSP',
     mode = 'n',
   },
@@ -84,13 +78,7 @@ M.keys = {
   -- Search
   {
     '<leader>s',
-    function()
-      local status, wk = pcall(require, 'which-key')
-      if not status then
-        return
-      end
-      wk.show({ global = false })
-    end,
+    '',
     desc = 'Search',
     mode = 'n',
   },
@@ -186,18 +174,12 @@ M.keys = {
   },
 
   -- Git
-  -- {
-  --   '<leader>g',
-  --   function()
-  --     local status, wk = pcall(require, 'which-key')
-  --     if not status then
-  --       return
-  --     end
-  --     wk.show({ global = false })
-  --   end,
-  --   desc = 'Git',
-  --   mode = 'n',
-  -- },
+  {
+    '<leader>g',
+    '',
+    desc = 'Git',
+    mode = 'n',
+  },
   {
     '<leader>gf',
     '<cmd>FzfLua git_files<cr>',

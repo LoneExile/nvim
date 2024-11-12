@@ -1,27 +1,15 @@
 local M = {}
 
 M.keys = {
-  {
-    '<leader>a',
-    function()
-      local status, wk = pcall(require, 'which-key')
-      if not status then
-        return
-      end
-      wk.show({ global = false })
-    end,
-    desc = 'Avante',
-    mode = 'n',
-  },
+  -- {
+  --   '<leader>a',
+  --   '',
+  --   desc = 'Avante',
+  --   mode = 'n',
+  -- },
   {
     '<leader>c',
-    function()
-      local status, wk = pcall(require, 'which-key')
-      if not status then
-        return
-      end
-      wk.show({ global = false })
-    end,
+    '',
     desc = 'Copilot',
     mode = 'n',
   },
@@ -45,13 +33,7 @@ M.keys = {
   },
   {
     '<leader>cs',
-    function()
-      local status, wk = pcall(require, 'which-key')
-      if not status then
-        return
-      end
-      wk.show({ global = false })
-    end,
+    '',
     desc = 'Switch Provider',
   },
   {

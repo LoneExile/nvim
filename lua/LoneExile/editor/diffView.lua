@@ -3,13 +3,7 @@ local M = {}
 M.keys = {
   {
     '<leader>g',
-    function()
-      local status, wk = pcall(require, 'which-key')
-      if not status then
-        return
-      end
-      wk.show({ global = false })
-    end,
+    '',
     desc = 'Git',
     mode = 'n',
   },

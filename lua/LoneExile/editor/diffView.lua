@@ -25,18 +25,18 @@ M.keys = {
     desc = 'Diff Toggle Files',
     mode = 'n',
   },
-  {
-    '<leader>gr',
-    '<cmd>DiffviewRefresh<cr>',
-    desc = 'Diff Refresh',
-    mode = 'n',
-  },
-  {
-    '<leader>gh',
-    '<cmd>DiffviewFileHistory %<cr>',
-    desc = 'History Current',
-    mode = 'n',
-  },
+  -- {
+  --   '<leader>gr',
+  --   '<cmd>DiffviewRefresh<cr>',
+  --   desc = 'Diff Refresh',
+  --   mode = 'n',
+  -- },
+  -- {
+  --   '<leader>gh',
+  --   '<cmd>DiffviewFileHistory %<cr>',
+  --   desc = 'History Current',
+  --   mode = 'n',
+  -- },
   {
     '<leader>gH',
     '<cmd>DiffviewFileHistory<cr>',

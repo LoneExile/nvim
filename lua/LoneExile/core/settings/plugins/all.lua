@@ -59,7 +59,7 @@ return {
   { 'nvim-treesitter/nvim-treesitter',           true },
   { 'nvim-treesitter/nvim-treesitter-context',   false },
   { 'lukas-reineke/indent-blankline.nvim',       true },
-  -- { 'Wansmer/treesj',                            true },
+  { 'Wansmer/treesj',                            true },
 
   -- AI
   { 'zbirenbaum/copilot.lua',                    true },
@@ -90,6 +90,7 @@ return {
   { 'pmizio/typescript-tools.nvim',              true },
   { 'ray-x/go.nvim',                             false },
   -- { 'laytan/tailwind-sorter.nvim',               true },
+  
   { 'MaximilianLloyd/tw-values.nvim',            true },
   { 'Hoffs/omnisharp-extended-lsp.nvim',         true },
   { 'towolf/vim-helm',                           true },

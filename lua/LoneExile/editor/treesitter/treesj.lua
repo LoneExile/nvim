@@ -2,7 +2,7 @@ local M = {}
 
 M.keys = {
   {
-    'uj',
+    '<leader>uj',
     '<cmd>TSJToggle<cr>',
     desc = 'Split/Join',
     mode = 'n',

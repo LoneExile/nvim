@@ -80,6 +80,7 @@ return {
 
   { 'j-hui/fidget.nvim',                         true },
   { 'glepnir/lspsaga.nvim',                      true },
+  { 'stevearc/aerial.nvim',                      true },
   -- { 'stevearc/conform.nvim',                     false },
   -- { 'mfussenegger/nvim-lint',                    false },
   { 'nvimtools/none-ls.nvim',                    true },

@@ -49,6 +49,7 @@ M.transparent = function()
     'CmpDocumentation',
     'NormalSB', -- help tag
     'SignColumnSB', -- help tag
+    'FzfLuaNormal',
   }
   for _, name in ipairs(hl_groups) do
     vim.cmd(string.format('highlight %s ctermbg=none guibg=none', name))

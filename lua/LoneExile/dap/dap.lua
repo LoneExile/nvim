@@ -131,11 +131,6 @@ M.setup = function(s, location)
         return
       end
 
-      require('which-key').show({
-        keys = '<leader>d',
-        loop = true,
-      })
-
       local icons = {
         breakpoint = {
           text = ' ',

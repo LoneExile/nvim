@@ -1,5 +1,6 @@
 local group = vim.api.nvim_create_augroup('close_with_q', { clear = true })
 
+-- :lua print(vim.bo.filetype)
 vim.api.nvim_create_autocmd('FileType', {
   group = group,
   pattern = {
@@ -14,6 +15,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'neotest-output-panel',
     'neotest-output',
     'neotest-summary',
+    'aerial-nav',
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

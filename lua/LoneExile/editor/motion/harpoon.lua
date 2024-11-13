@@ -3,9 +3,7 @@ local M = {}
 M.keys = {
   {
     'm',
-    '',
     desc = 'Harpoon',
-    mode = 'n',
   },
   {
     'ma',

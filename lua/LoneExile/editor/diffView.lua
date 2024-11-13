@@ -31,12 +31,12 @@ M.keys = {
   --   desc = 'Diff Refresh',
   --   mode = 'n',
   -- },
-  -- {
-  --   '<leader>gh',
-  --   '<cmd>DiffviewFileHistory %<cr>',
-  --   desc = 'History Current',
-  --   mode = 'n',
-  -- },
+  {
+    '<leader>gh',
+    '<cmd>DiffviewFileHistory %<cr>',
+    desc = 'History Current',
+    mode = 'n',
+  },
   {
     '<leader>gH',
     '<cmd>DiffviewFileHistory<cr>',

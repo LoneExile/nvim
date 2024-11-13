@@ -10,6 +10,11 @@ M.setup = function(settings, _)
       preset = 'modern',
       icons = { mappings = false },
       show_help = false,
+      triggers = {
+        { '<auto>', mode = 'nxso' },
+        { 'm', mode = 'n' },
+        { 's', mode = 'nv' },
+      },
     },
   }
 end

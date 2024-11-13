@@ -110,4 +110,5 @@ return {
   { 'kevinhwang91/nvim-ufo',                     true },
 
   { 'folke/todo-comments.nvim',                  true },
+  { 'folke/snacks.nvim',                         true },
 }

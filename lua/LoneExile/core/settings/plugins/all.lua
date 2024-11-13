@@ -95,6 +95,7 @@ return {
   { 'MaximilianLloyd/tw-values.nvim',            true },
   { 'Hoffs/omnisharp-extended-lsp.nvim',         true },
   { 'towolf/vim-helm',                           true },
+  { 'hat0uma/csvview.nvim',                      true },
 
   -- UI
   { 'folke/tokyonight.nvim',                     true },

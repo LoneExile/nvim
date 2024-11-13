@@ -69,6 +69,6 @@ configuration will automatically load based on the name you've set.
 - If you want to add new plugin, you can look my other config file. all magic
   happen in `lazy.lua`
 
-## TODO
+<!-- ## TODO -->
 
-- [ ] refactor how to load config
+<!-- - [ ] refactor how to load config -->

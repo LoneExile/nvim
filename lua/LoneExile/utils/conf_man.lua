@@ -163,6 +163,14 @@ M.convert_kind_icons = function(kindIcon)
   return kind_icons
 end
 
+M.cond_keys = function(keys)
+  for _, key in pairs(keys) do
+    if key.cond == nil or key.cond() then
+      vim.api.nvim_set_keymap('n', key[1], key[2], { noremap = true, silent = true })
+    end
+  end
+end
+
 M.mapping_types = function(mode, lhs, rhs, rhs_type, desc)
   if rhs_type == 'function' then
     vim.api.nvim_set_keymap(mode, lhs, '', { noremap = true, silent = true, callback = rhs, desc = desc })

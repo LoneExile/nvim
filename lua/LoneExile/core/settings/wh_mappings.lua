@@ -98,6 +98,14 @@ M.setup = function(root)
       mode = 'n',
     },
     {
+      '<leader>Nf',
+      function()
+        print(vim.bo.filetype)
+      end,
+      desc = 'Check Filetype',
+      mode = 'n',
+    },
+    {
       '<leader>u',
       '',
       desc = '+Utility',

@@ -32,9 +32,9 @@ M.keys = {
     mode = 'n',
   },
   {
-    '<leader>cs',
+    '<leader>cS',
     '',
-    desc = 'Switch Provider',
+    desc = 'Avante Switch Provider',
   },
   {
     '<leader>cso',

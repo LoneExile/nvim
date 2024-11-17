@@ -44,6 +44,12 @@ M.keys = {
     desc = 'Prompt actions',
     mode = 'n',
   },
+  -- CopilotChatAgents
+  {
+    '<leader>cs',
+    '<cmd>CopilotChatAgents<CR>',
+    desc = 'Copilot Switch Provider',
+  },
 }
 
 M.setup = function()

@@ -69,6 +69,7 @@ M.setup = function()
       end
 
       copilot.setup({
+        chat_autocomplete = true,
         debug = true, -- Enable debugging
         show_help = true,
         question_header = '## User ', -- Header to use for user questions
@@ -95,7 +96,6 @@ M.setup = function()
           },
         },
       })
-      require('CopilotChat.integrations.cmp').setup()
     end,
   }
 end

@@ -55,7 +55,7 @@ M.keys = {
 M.setup = function()
   return {
     'CopilotC-Nvim/CopilotChat.nvim',
-    branch = 'canary',
+    branch = 'main',
     event = { 'BufReadPre', 'InsertEnter' },
     keys = M.keys,
     dependencies = {

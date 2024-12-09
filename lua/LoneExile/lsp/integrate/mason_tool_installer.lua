@@ -69,6 +69,7 @@ M.setup = function(_, _)
 
           -- FORMATTER
           'stylua', -- Lua
+          'luacheck',
           'black', -- Python
           'isort', -- Python
           'shfmt', -- Shell

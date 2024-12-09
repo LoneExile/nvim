@@ -82,7 +82,7 @@ return {
   { 'glepnir/lspsaga.nvim',                      true },
   { 'stevearc/aerial.nvim',                      true },
   { 'stevearc/conform.nvim',                     true },
-  { 'mfussenegger/nvim-lint',                    false },
+  { 'mfussenegger/nvim-lint',                    true },
 
   { 'folke/lazydev.nvim',                        true },
   { 'simrat39/rust-tools.nvim',                  true },

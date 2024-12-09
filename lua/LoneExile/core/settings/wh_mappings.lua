@@ -13,12 +13,6 @@ M.setup = function(root)
     --   desc = 'Buffer Local Keymaps (which-key)',
     -- },
     {
-      '<leader>w',
-      '<cmd>SaveNFormat<CR>',
-      desc = 'Save',
-      mode = 'n',
-    },
-    {
       '<leader>q',
       "<cmd>lua require('" .. root .. ".utils.quit').smart_quit()<CR>",
       desc = 'Quit',

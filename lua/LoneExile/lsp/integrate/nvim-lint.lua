@@ -58,8 +58,11 @@ M.setup = function(s, _)
         sh = { 'shellcheck' },
         bash = { 'shellcheck' },
         csh = { 'shellcheck' },
+        cmake = { 'cmakelint' },
+        dockerfile = { 'hadolint' },
 
         groovy = { 'npm-groovy-lint' },
+        sql = { 'sqlfluff' },
       }
 
       -- for ft, _ in pairs(lint.linters_by_ft) do

@@ -54,7 +54,7 @@ M.setup = function(_, _)
           'svelte-language-server', -- Svelte
           'elixir-ls', -- Elixir
 
-          'groovy-language-server', -- Groovy (openjdk-11.0.2)
+          -- 'groovy-language-server', -- Groovy (openjdk-11.0.2)
           'npm-groovy-lint',
           'docker-compose-language-service',
           'helm_ls', -- Helm
@@ -74,6 +74,9 @@ M.setup = function(_, _)
           'shfmt', -- Shell
           -- 'csharpier', -- C#
           'markdownlint', -- Markdown
+          'markdown-toc',
+          'markdownlint-cli2',
+          'prettier',
           'prettierd',
           -- 'vale', -- Markdown
           'yamlfmt',
@@ -82,6 +85,7 @@ M.setup = function(_, _)
           'golines', -- Go
           'goimports', -- Go
           'codespell',
+          'elm-format',
 
           -- CODE ACTION
           'impl', -- Go
@@ -90,10 +94,11 @@ M.setup = function(_, _)
           'selene',
           -- 'flake8', -- Python
           'actionlint',
-          -- 'sqlfluff',
+          'sqlfluff',
           'alex',
           'gomodifytags', -- Go
           'gotests', -- Go
+          'gofumpt',
           'hadolint', -- Dockerfile
 
           --- c++

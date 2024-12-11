@@ -55,13 +55,15 @@ M.keys = {
 M.setup = function()
   return {
     'CopilotC-Nvim/CopilotChat.nvim',
-    branch = 'main',
+    branch = 'canary',
     event = { 'BufReadPre', 'InsertEnter' },
+    commit = '17da917aca96146189badf500a53d6d9aa853648',
     keys = M.keys,
     dependencies = {
       { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
       { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
     },
+    build = 'make tiktoken',
     config = function()
       local status_ok, copilot = pcall(require, 'CopilotChat')
       if not status_ok then

@@ -40,20 +40,13 @@ M.setup = function(s, _)
         -- impl
         -- gomodifytags
 
-        -- javascript = { 'eslint_d' },
-        -- javascriptreact = { 'eslint_d' },
-        -- typescript = { 'eslint_d' },
-        -- typescriptreact = { 'eslint_d' },
-        -- vue = { 'eslint_d' },
-
         go = { 'golangcilint' },
 
         markdown = { 'markdownlint' },
         lua = { 'luacheck' },
 
         python = { 'ruff' },
-        yaml = { 'actionlint' },
-
+        ghaction = { 'actionlint' },
         zsh = { 'shellcheck' },
         sh = { 'shellcheck' },
         bash = { 'shellcheck' },

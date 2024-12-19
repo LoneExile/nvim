@@ -101,6 +101,7 @@ M.setup = function(_, _)
           'gotests', -- Go
           'gofumpt',
           'hadolint', -- Dockerfile
+          'shellcheck',
 
           --- c++
           -- 'clangd' -- lsp

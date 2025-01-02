@@ -8,7 +8,8 @@ M.setup = function(s, _)
     keys = {
       {
         '<leader>w',
-        '<cmd>Format<CR>',
+        -- '<cmd>Format<CR>',
+        '<cmd>w<CR>',
         mode = { 'n', 'v' },
         desc = 'Format Injected Langs',
       },

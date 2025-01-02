@@ -88,7 +88,7 @@ M.setup = function(_, location)
     keys = M.keys,
 
     dependencies = {
-      'williamboman/mason.nvim',
+      { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       -- 'WhoIsSethDaniel/mason-tool-installer.nvim',
     },
@@ -139,7 +139,9 @@ M.setup = function(_, location)
 
       local default_handler = function(server)
         -- See :help lspconfig-setup
-        lspconfig[server].setup({})
+        if server ~= nil then
+          return lspconfig[server].setup({})
+        end
       end
 
       local configs = { default_handler }

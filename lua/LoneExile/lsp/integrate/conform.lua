@@ -11,6 +11,13 @@ M.setup = function(s, _)
         -- '<cmd>Format<CR>',
         '<cmd>w<CR>',
         mode = { 'n', 'v' },
+        desc = 'Save',
+      },
+      {
+        '<leader>lf',
+        '<cmd>Format<CR>',
+        -- '<cmd>w<CR>',
+        mode = { 'n', 'v' },
         desc = 'Format Injected Langs',
       },
     },

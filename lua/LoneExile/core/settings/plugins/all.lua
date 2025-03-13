@@ -32,7 +32,7 @@ return {
   { 'phaazon/hop.nvim',                          true },
   { 'nacro90/numb.nvim',                         true },
   { 'echasnovski/mini.surround',                 true },
-  { 'declancm/cinnamon.nvim',                    true },
+  { 'declancm/cinnamon.nvim',                    false },
   { 'chentoast/marks.nvim',                      true },
 
   -- Tool

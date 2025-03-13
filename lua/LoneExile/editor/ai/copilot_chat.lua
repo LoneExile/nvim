@@ -55,9 +55,9 @@ M.keys = {
 M.setup = function()
   return {
     'CopilotC-Nvim/CopilotChat.nvim',
-    branch = 'canary',
+    -- branch = 'canary',
     event = { 'BufReadPre', 'InsertEnter' },
-    commit = '17da917aca96146189badf500a53d6d9aa853648',
+    -- commit = '17da917aca96146189badf500a53d6d9aa853648',
     keys = M.keys,
     dependencies = {
       { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim

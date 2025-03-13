@@ -53,6 +53,8 @@ M.setup = function(_, _)
           'htmx-lsp', -- htmx
           'svelte-language-server', -- Svelte
           'elixir-ls', -- Elixir
+          'terraform-ls', -- Terraform
+          'tflint',
 
           -- 'groovy-language-server', -- Groovy (openjdk-11.0.2)
           'npm-groovy-lint',

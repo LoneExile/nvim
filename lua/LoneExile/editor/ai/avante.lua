@@ -11,12 +11,25 @@ M.keys = {
     '<leader>c',
     '',
     desc = 'Copilot',
-    mode = 'n',
+    mode = { 'n', 'v' },
   },
   {
     '<leader>ca',
     '<cmd>AvanteAsk<CR>',
     desc = 'Ask',
+    mode = 'n',
+  },
+  -- AvanteEdit
+  {
+    '<leader>ce',
+    '<cmd>AvanteEdit<CR>',
+    desc = 'Edit',
+    mode = 'v',
+  },
+  {
+    '<leader>cC',
+    '<cmd>AvanteClear<CR>',
+    desc = 'Clear',
     mode = 'n',
   },
   {
@@ -32,33 +45,15 @@ M.keys = {
     mode = 'n',
   },
   {
-    '<leader>cS',
-    '',
+    '<leader>cs',
+    '<cmd>AvanteStop<CR>',
+    desc = 'Stop',
+    mode = 'n',
+  },
+  {
+    '<leader>cx',
+    '<cmd>AvanteModels<CR>',
     desc = 'Avante Switch Provider',
-  },
-  {
-    '<leader>cso',
-    '<cmd>AvanteSwitchProvider openai<CR>',
-    desc = 'OpenAI',
-    mode = 'n',
-  },
-  {
-    '<leader>csc',
-    '<cmd>AvanteSwitchProvider claude<CR>',
-    desc = 'Claude',
-    mode = 'n',
-  },
-  {
-    '<leader>csp',
-    '<cmd>AvanteSwitchProvider copilot<CR>',
-    desc = 'Copilot',
-    mode = 'n',
-  },
-  {
-    '<leader>csg',
-    '<cmd>AvanteSwitchProvider gemini<CR>',
-    desc = 'Gemini',
-    mode = 'n',
   },
 }
 
@@ -66,14 +61,16 @@ M.setup = function()
   vim.fn.setenv('ANTHROPIC_API_KEY', vim.env.ANTHROPIC_API_KEY)
   vim.fn.setenv('OPENAI_API_KEY', vim.env.OPENAI_API_KEY)
   vim.fn.setenv('GEMINI_API_KEY', vim.env.GEMINI_API_KEY)
+  vim.fn.setenv('TAVILY_API_KEY', vim.env.TAVILY_API_KEY)
   return {
     'yetone/avante.nvim',
-    cmd = 'AvanteAsk',
-    -- event = 'VeryLazy',
-    -- lazy = false,
+    -- cmd = { 'AvanteAsk', 'AvanteEdit'  },
+    event = 'VeryLazy',
+    lazy = false,
     build = 'make',
     keys = M.keys,
     dependencies = {
+      'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',
       'stevearc/dressing.nvim',
       'nvim-lua/plenary.nvim',
@@ -106,32 +103,16 @@ M.setup = function()
       behaviour = {
         auto_set_keymaps = false,
       },
-      -- mappings = {
-      --   ask = '<leader>ca',
-      --   edit = '<leader>ce',
-      --   refresh = '<leader>cr',
-      --   --- @class AvanteConflictMappings
-      --   diff = {
-      --     ours = 'co',
-      --     theirs = 'ct',
-      --     both = 'cb',
-      --     next = ']x',
-      --     prev = '[x',
-      --   },
-      --   jump = {
-      --     next = ']]',
-      --     prev = '[[',
-      --   },
-      --   submit = {
-      --     normal = '<CR>',
-      --     insert = '<C-s>',
-      --   },
-      --   toggle = {
-      --     debug = '<leader>ad',
-      --     hint = '<leader>ah',
-      --   },
-      -- },
       hints = { enabled = false },
+      windows = {
+        edit = {
+          border = 'rounded',
+          start_insert = false,
+        },
+        ask = {
+          start_insert = false,
+        },
+      },
     },
   }
 end

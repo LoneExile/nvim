@@ -73,9 +73,9 @@ M.setup = function(_, _)
               end
               for _, buf in ipairs(vim.api.nvim_list_bufs()) do
                 if
-                  not shown_buffers[buf]
-                  and vim.api.nvim_buf_get_option(buf, 'buftype') == 'nofile'
-                  and vim.api.nvim_buf_get_option(buf, 'filetype') == 'neo-tree'
+                    not shown_buffers[buf]
+                    and vim.api.nvim_buf_get_option(buf, 'buftype') == 'nofile'
+                    and vim.api.nvim_buf_get_option(buf, 'filetype') == 'neo-tree'
                 then
                   vim.api.nvim_buf_delete(buf, {})
                 end
@@ -85,7 +85,7 @@ M.setup = function(_, _)
         },
         use_default_mappings = false,
         source_selector = {
-          winbar = true, -- toggle to show selector on winbar
+          winbar = true,      -- toggle to show selector on winbar
           statusline = false, -- toggle to show selector on statusline
           sources = {
             { source = 'filesystem' },
@@ -101,7 +101,7 @@ M.setup = function(_, _)
         enable_diagnostics = true,
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
         neo_tree_popup_input_ready = true,
-        sort_function = nil, -- use a custom function for sorting files and directories in the tree
+        sort_function = nil,           -- use a custom function for sorting files and directories in the tree
         -- sort_function = function (a,b)
         --       if a.type == b.type then
         --           return a.path > b.path
@@ -205,6 +205,29 @@ M.setup = function(_, _)
         nesting_rules = {},
         -- harpoon_index = function(config, node, state)
         filesystem = {
+          commands = {
+            avante_add_files = function(state)
+              local node = state.tree:get_node()
+              local filepath = node:get_id()
+              local relative_path = require('avante.utils').relative_path(filepath)
+
+              local sidebar = require('avante').get()
+
+              local open = sidebar:is_open()
+              -- ensure avante sidebar is open
+              if not open then
+                require('avante.api').ask()
+                sidebar = require('avante').get()
+              end
+
+              sidebar.file_selector:add_selected_file(relative_path)
+
+              -- remove neo tree buffer
+              if not open then
+                sidebar.file_selector:remove_selected_file('neo-tree filesystem [1]')
+              end
+            end,
+          },
           components = {
             harpoon_index = function(config, node)
               local harpoon, Marked = pcall(require, 'harpoon.mark')
@@ -241,11 +264,11 @@ M.setup = function(_, _)
                   --   zindex = 10,
                   --   highlight = "NeoTreeSymbolicLinkTarget",
                   -- },
-                  { 'clipboard', zindex = 10 },
-                  { 'bufnr', zindex = 10 },
-                  { 'modified', zindex = 20, align = 'right' },
-                  { 'diagnostics', zindex = 20, align = 'right' },
-                  { 'git_status', zindex = 20, align = 'right' },
+                  { 'clipboard',     zindex = 10 },
+                  { 'bufnr',         zindex = 10 },
+                  { 'modified',      zindex = 20, align = 'right' },
+                  { 'diagnostics',   zindex = 20, align = 'right' },
+                  { 'git_status',    zindex = 20, align = 'right' },
                 },
               },
             },
@@ -271,13 +294,13 @@ M.setup = function(_, _)
             },
           },
           follow_current_file = {
-            enabled = true, -- This will find and focus the file in the active buffer every time
+            enabled = true,         -- This will find and focus the file in the active buffer every time
             --               -- the current file is changed while the tree is open.
             leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
           },
 
           -- time the current file is changed while the tree is open.
-          group_empty_dirs = false, -- when true, empty folders will be grouped together
+          group_empty_dirs = false,               -- when true, empty folders will be grouped together
           hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree
           -- in whatever position is specified in window.position
           -- "open_current",  -- netrw disabled, opening a directory opens within the
@@ -287,6 +310,7 @@ M.setup = function(_, _)
           -- instead of relying on nvim autocmd events.
           window = {
             mappings = {
+              ['oa'] = 'avante_add_files',
               ['<bs>'] = 'navigate_up',
               ['.'] = 'set_root',
               ['H'] = 'toggle_hidden',
@@ -302,7 +326,7 @@ M.setup = function(_, _)
         buffers = {
           follow_current_file = { enable = true }, -- This will find and focus the file in the active buffer every
           -- time the current file is changed while the tree is open.
-          group_empty_dirs = true, -- when true, empty folders will be grouped together
+          group_empty_dirs = true,                 -- when true, empty folders will be grouped together
           show_unloaded = true,
           window = {
             mappings = {

@@ -9,9 +9,10 @@ M.keys = {
   },
   {
     '<leader>cc',
-    function()
-      require('CopilotChat').toggle()
-    end,
+    -- function()
+    --   require('CopilotChat').toggle()
+    -- end,
+    '<cmd>CopilotChat<CR>',
     desc = 'Chat',
     mode = 'n',
   },
@@ -44,10 +45,9 @@ M.keys = {
     desc = 'Prompt actions',
     mode = 'n',
   },
-  -- CopilotChatAgents
   {
-    '<leader>cs',
-    '<cmd>CopilotChatAgents<CR>',
+    '<leader>cX',
+    '<cmd>CopilotChatModels<CR>',
     desc = 'Copilot Switch Provider',
   },
 }

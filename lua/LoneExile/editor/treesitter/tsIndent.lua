@@ -1,17 +1,18 @@
 local M = {}
 
+vim.opt.list = true
+vim.opt.listchars:append('eol:↴')
+
 M.setup = function()
   return {
     'lukas-reineke/indent-blankline.nvim',
-    commit = '9637670896b68805430e2f72cf5d16be5b97a22a',
+    main = 'ibl',
     event = 'BufRead',
     config = function()
-      local status_ok_code, indent_blankline = pcall(require, 'indent_blankline')
+      local status_ok_code, indent_blankline = pcall(require, 'ibl')
       if not status_ok_code then
         return
       end
-
-      -- :help indent_blankline.txt
 
       vim.opt.termguicolors = true
       -- vim.cmd([[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]])
@@ -24,32 +25,8 @@ M.setup = function()
 
       vim.opt.list = true
       vim.opt.listchars:append('eol:↴')
-      -- vim.opt.listchars:append("space:⋅")
 
       local opts = {
-        char_highlight_list = {},
-        -- char = "▏",
-        filetype_exclude = {
-          'alpha',
-          'help',
-          'terminal',
-          'dashboard',
-          'lspinfo',
-          'lsp-installer',
-          'mason',
-          'neo-tree',
-          'packer',
-          'noice',
-        },
-        buftype_exclude = { 'terminal' },
-        bufname_exclude = { 'config.lua' },
-        show_trailing_blankline_indent = false,
-        show_first_indent_level = true,
-        use_treesitter = true,
-        show_end_of_line = true,
-        space_char_blankline = ' ',
-        show_current_context = true,
-        show_current_context_start = false, -- underline
       }
 
       indent_blankline.setup(opts)

@@ -26,8 +26,7 @@ M.setup = function()
       vim.opt.list = true
       vim.opt.listchars:append('eol:↴')
 
-      local opts = {
-      }
+      local opts = {}
 
       indent_blankline.setup(opts)
     end,

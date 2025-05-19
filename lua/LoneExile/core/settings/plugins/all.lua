@@ -15,7 +15,6 @@ return {
   -- Editor
   { 'theprimeagen/refactoring.nvim',             true },
   { 'akinsho/toggleterm.nvim',                   true },
-  { 'nvchad/nvim-colorizer.lua',                 true },
 
   { 'nvim-neotest/neotest',                      true },
   { 'andythigpen/nvim-coverage',                 true },
@@ -49,7 +48,8 @@ return {
 
   -- Other
   { 'glacambre/firenvim',                        true },
-  { 'iamcco/markdown-preview.nvim',              true },
+  -- { 'iamcco/markdown-preview.nvim',              false },
+  { 'toppair/peek.nvim',                         true },
 
   -- Treesitter
   { 'windwp/nvim-autopairs',                     true },
@@ -66,6 +66,7 @@ return {
   { 'CopilotC-Nvim/CopilotChat.nvim',            true },
   { 'jackMort/ChatGPT.nvim',                     false },
   { 'yetone/avante.nvim',                        true },
+  { 'ravitemer/mcphub.nvim',                     true },
 
   -- DB
   { 'tpope/vim-dadbod',                          true },

@@ -34,6 +34,7 @@ M.setup = function(settings, location)
             lualine_c = { '' },
             lualine_x = {},
             lualine_y = {
+              components.mcphub,
               components.treesitter,
               components.lsp,
               components.diagnostics,

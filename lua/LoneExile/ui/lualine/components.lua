@@ -176,6 +176,7 @@ M.setup = function(s, loc)
       color = { fg = colors.yellow, bg = colors.bg },
       cond = nil,
     },
+    mcphub = { require('mcphub.extensions.lualine') },
   }
 end
 

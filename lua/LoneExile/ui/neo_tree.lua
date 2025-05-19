@@ -74,8 +74,8 @@ M.setup = function(_, _)
               for _, buf in ipairs(vim.api.nvim_list_bufs()) do
                 if
                   not shown_buffers[buf]
-                  and vim.api.nvim_buf_get_option(buf, 'buftype') == 'nofile'
-                  and vim.api.nvim_buf_get_option(buf, 'filetype') == 'neo-tree'
+                  and vim.api.nvim_get_option_value('buftype', { buf = buf }) == 'nofile'
+                  and vim.api.nvim_get_option_value('filetype', { buf = buf }) == 'neo-tree'
                 then
                   vim.api.nvim_buf_delete(buf, {})
                 end

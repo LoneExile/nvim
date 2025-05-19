@@ -144,12 +144,12 @@ M.setup = function(s, loc)
     progress = { 'progress', cond = conditions.hide_in_width, color = {} },
     spaces = {
       function()
-        if not vim.api.nvim_buf_get_option(0, 'expandtab') then
-          return 'Tab size: ' .. vim.api.nvim_buf_get_option(0, 'tabstop') .. ' '
+        if not vim.api.nvim_get_option_value('expandtab', { buf = 0 }) then
+          return 'Tab size: ' .. vim.api.nvim_get_option_value('tabstop', { buf = 0 }) .. ' '
         end
-        local size = vim.api.nvim_buf_get_option(0, 'shiftwidth')
+        local size = vim.api.nvim_get_option_value('shiftwidth', { buf = 0 })
         if size == 0 then
-          size = vim.api.nvim_buf_get_option(0, 'tabstop')
+          size = vim.api.nvim_get_option_value('tabstop', { buf = 0 })
         end
         return 'Spaces: ' .. size .. ' '
       end,

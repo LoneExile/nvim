@@ -89,6 +89,7 @@ M.setup = function(_, _)
           'goimports', -- Go
           'codespell',
           'elm-format',
+          'hclfmt',
 
           -- CODE ACTION
           'impl', -- Go

@@ -100,6 +100,12 @@ M.setup = function()
     opts = {
       provider = 'claude',
       -- provider = 'copilot',
+      vendors = {
+        claude = {
+          __inherited_from = 'claude',
+          max_tokens = 40000,
+        },
+      },
       behaviour = {
         auto_set_keymaps = false,
       },

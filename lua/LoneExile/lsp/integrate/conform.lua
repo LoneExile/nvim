@@ -95,6 +95,8 @@ M.setup = function(s, _)
           css = { 'prettier' },
           scss = { 'prettier' },
           astro = { 'prettier' },
+          hcl = { 'terragrunt_hclfmt' },
+          tf = { 'terraform_fmt' },
 
           groovy = { 'npm_groovy_lint' },
 

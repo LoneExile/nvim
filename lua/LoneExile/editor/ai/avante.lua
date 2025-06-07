@@ -76,13 +76,13 @@ M.setup = function()
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
       'zbirenbaum/copilot.lua',
-      -- {
-      --   'MeanderingProgrammer/render-markdown.nvim',
-      --   opts = {
-      --     file_types = { 'markdown', 'Avante' },
-      --   },
-      --   ft = { 'markdown', 'Avante' },
-      -- },
+      {
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { 'markdown', 'Avante' },
+        },
+        ft = { 'markdown', 'Avante' },
+      },
       {
         'HakonHarnes/img-clip.nvim',
         -- event = 'VeryLazy',
@@ -98,14 +98,25 @@ M.setup = function()
       },
     },
     opts = {
-      provider = 'claude',
-      -- provider = 'copilot',
-      claude = {
-        endpoint = "https://api.anthropic.com",
-        model = "claude-sonnet-4-20250514",
-        -- disable_tools = true,
-        temperature = 0,
-        max_tokens = 40000,
+      -- provider = 'claude',
+      -- -- provider = 'copilot',
+      -- claude = {
+      --   endpoint = "https://api.anthropic.com",
+      --   model = "claude-sonnet-4-20250514",
+      --   -- disable_tools = true,
+      --   temperature = 0,
+      --   max_tokens = 40000,
+      -- },
+      providers = {
+        claude = {
+          endpoint = "https://api.anthropic.com",
+          model = "claude-sonnet-4-20250514",
+           extra_request_body = {
+             max_tokens = 40000,
+             temperature = 0,
+           },
+          -- disable_tools = true,
+        },
       },
       behaviour = {
         auto_set_keymaps = false,
@@ -121,33 +132,34 @@ M.setup = function()
         },
       },
       -- ---- ## ravitemer/mcphub.nvim
-      -- disabled_tools = {
-      --   'list_files', -- Built-in file operations
-      --   'search_files',
-      --   'read_file',
-      --   'create_file',
-      --   'rename_file',
-      --   'delete_file',
-      --   'create_dir',
-      --   'rename_dir',
-      --   'delete_dir',
-      --   'bash', -- Built-in terminal access
-      -- },
+      disabled_tools = {
+        'list_files', -- Built-in file operations
+        'search_files',
+        'read_file',
+        'create_file',
+        'rename_file',
+        'delete_file',
+        'create_dir',
+        'rename_dir',
+        'delete_dir',
+        'bash', -- Built-in terminal access
+      },
+
     },
-    -- ---- ## ravitemer/mcphub.nvim
-    -- -- system_prompt as function ensures LLM always has latest MCP server state
-    -- -- This is evaluated for every message, even in existing chats
-    -- system_prompt = function()
-    --   local hub = require('mcphub').get_hub_instance()
-    --   return hub and hub:get_active_servers_prompt() or ''
-    -- end,
-    -- -- Using function prevents requiring mcphub before it's loaded
-    -- custom_tools = function()
-    --   return {
-    --     require('mcphub.extensions.avante').mcp_tool(),
-    --   }
-    -- end,
-    -- ---- ########################
+    ---- ## ravitemer/mcphub.nvim
+    -- system_prompt as function ensures LLM always has latest MCP server state
+    -- This is evaluated for every message, even in existing chats
+    system_prompt = function()
+      local hub = require('mcphub').get_hub_instance()
+      return hub and hub:get_active_servers_prompt() or ''
+    end,
+    -- Using function prevents requiring mcphub before it's loaded
+    custom_tools = function()
+      return {
+        require('mcphub.extensions.avante').mcp_tool(),
+      }
+    end,
+    ---- ########################
   }
 end
 

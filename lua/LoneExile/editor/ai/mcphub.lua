@@ -23,13 +23,16 @@ M.setup = function()
     keys = M.keys,
     build = 'pnpm install -g mcp-hub@latest',
     config = function()
-      require('mcphub').setup({ auto_approve = true })
+      require('mcphub').setup({
+        auto_approve = true,
+        extensions = {
+          avante = {
+            enabled = true,
+            make_slash_commands = true, -- make /slash commands from MCP server prompts
+          },
+        },
+      })
     end,
-    extensions = {
-      avante = {
-        make_slash_commands = true, -- make /slash commands from MCP server prompts
-      },
-    },
   }
 end
 

@@ -14,7 +14,7 @@ M.keys = {
   },
 }
 
-M.setup = function()
+M.setup = function(s,_)
   return {
     'ravitemer/mcphub.nvim',
     dependencies = {
@@ -25,6 +25,7 @@ M.setup = function()
     config = function()
       require('mcphub').setup({
         auto_approve = true,
+        config = vim.fn.expand(s.conf_loc .. '/resources/mcphub/servers.json'),
         extensions = {
           avante = {
             enabled = true,

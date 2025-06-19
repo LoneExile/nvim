@@ -1,27 +1,29 @@
 {
-  "nativeMCPServers": [],
+  "nativeMCPServers": [
+    
+  ],
   "mcpServers": {
     "postgres_toolbox": {
-      "name": "PostgreSQL Toolbox",
-      "disabled": false,
+      "command": "toolbox",
+      "description": "Google GenAI Toolbox for PostgreSQL database access",
       "args": [
         "--prebuilt",
         "postgres",
         "--stdio"
       ],
+      "disabled": true,
+      "name": "PostgreSQL Toolbox",
+      "env": {
+        "POSTGRES_HOST": "${POSTGRES_HOST}",
+        "POSTGRES_USER": "${POSTGRES_USER}",
+        "POSTGRES_PORT": "${POSTGRES_PORT}",
+        "POSTGRES_DATABASE": "${POSTGRES_DATABASE}",
+        "POSTGRES_PASSWORD": "${POSTGRES_PASSWORD}"
+      },
       "autoApprove": [
         "list_tables",
         "execute_sql"
-      ],
-      "env": {
-        "POSTGRES_PORT": "${POSTGRES_PORT}",
-        "POSTGRES_DATABASE": "${POSTGRES_DATABASE}",
-        "POSTGRES_USER": "${POSTGRES_USER}",
-        "POSTGRES_HOST": "${POSTGRES_HOST}",
-        "POSTGRES_PASSWORD": "${POSTGRES_PASSWORD}"
-      },
-      "description": "Google GenAI Toolbox for PostgreSQL database access",
-      "command": "toolbox"
+      ]
     },
     "terraform": {
       "command": "terraform-mcp-server",

@@ -101,7 +101,7 @@ M.setup = function()
 
     config = function()
       require('avante').setup({
-        provider = "openrouter",
+        provider = "claude",
         providers = {
           claude = {
             endpoint = 'https://api.anthropic.com',
@@ -118,6 +118,7 @@ M.setup = function()
             -- model = 'anthropic/claude-opus-4',
             model = 'google/gemini-2.5-pro-preview-06-05',
             api_key_name = 'OPENROUTER_API_KEY',
+            disable_tools = false,
           },
         },
         behaviour = {

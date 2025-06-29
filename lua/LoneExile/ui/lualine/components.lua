@@ -28,6 +28,8 @@ M.setup = function(s, loc)
 
   ----------------------------------------------------------------------------
 
+  local status_ok, mcphub = pcall(require, 'mcphub')
+
   return {
     mode = {
       function()
@@ -176,7 +178,7 @@ M.setup = function(s, loc)
       color = { fg = colors.yellow, bg = colors.bg },
       cond = nil,
     },
-    mcphub = { require('mcphub.extensions.lualine') },
+    mcphub = status_ok and { require('mcphub.extensions.lualine') } or nil,
   }
 end
 

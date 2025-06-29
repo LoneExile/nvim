@@ -101,7 +101,7 @@ M.setup = function()
 
     config = function()
       require('avante').setup({
-        provider = "copilot",
+        provider = 'copilot',
         providers = {
           claude = {
             endpoint = 'https://api.anthropic.com',
@@ -113,13 +113,13 @@ M.setup = function()
             -- disable_tools = true,
           },
           copilot = {
-            endpoint = "https://api.githubcopilot.com",
-            model = "claude-sonnet-4",
+            endpoint = 'https://api.githubcopilot.com',
+            model = 'claude-sonnet-4',
             proxy = nil, -- [protocol://]host[:port] Use this proxy
             allow_insecure = false, -- Allow insecure server connections
             timeout = 30000, -- Timeout in milliseconds
             extra_request_body = {
-              temperature = 0.75,
+              temperature = 0,
               max_tokens = 40000,
             },
           },

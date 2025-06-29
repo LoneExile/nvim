@@ -14,7 +14,7 @@ M.keys = {
   },
 }
 
-M.setup = function(s,_)
+M.setup = function(s, _)
   return {
     'ravitemer/mcphub.nvim',
     dependencies = {

@@ -23,7 +23,7 @@ return {
   -- Treesitter
   { 'numToStr/Comment.nvim',                     true },
   { 'nvim-treesitter/nvim-treesitter',           true },
-  { 'nvim-treesitter/nvim-treesitter-context',   true },
+  { 'nvim-treesitter/nvim-treesitter-context',   false },
   { 'lukas-reineke/indent-blankline.nvim',       true },
 
   -- UI

@@ -4,8 +4,9 @@ M.setup = function()
   return {
     'toppair/peek.nvim',
     ft = { 'markdown' },
+    -- event = { 'VeryLazy' },
+    event = { 'BufReadPre', 'InsertEnter' },
     cmd = { 'PeekOpen', 'PeekClose' },
-    event = { 'VeryLazy' },
     build = 'deno task --quiet build:fast',
     config = function()
       require('peek').setup()

@@ -66,8 +66,9 @@ M.setup = function()
   return {
     'yetone/avante.nvim',
     -- cmd = { 'AvanteAsk', 'AvanteEdit'  },
-    event = 'VeryLazy',
-    lazy = false,
+    -- event = 'VeryLazy',
+    event = { 'BufReadPre', 'InsertEnter' },
+    lazy = true,
     build = 'make',
     keys = M.keys,
     dependencies = {

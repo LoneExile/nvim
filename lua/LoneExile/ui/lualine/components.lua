@@ -47,9 +47,9 @@ M.setup = function(s, loc)
     },
     filename = {
       'filename',
-      file_status = true, -- Displays file status (readonly status, modified status)
+      file_status = true,     -- Displays file status (readonly status, modified status)
       newfile_status = false, -- Display new file status (new file means no write after created)
-      path = 1, -- 0: Just the filename
+      path = 1,               -- 0: Just the filename
       --                          -- 1: Relative path
       --                          -- 2: Absolute path
       --                          -- 3: Absolute path, with tilde as the home directory
@@ -57,10 +57,10 @@ M.setup = function(s, loc)
       shorting_target = 40, -- Shortens path to leave 40 spaces in the window
       --                          -- for other components. (terrible name, any suggestions?)
       symbols = {
-        modified = '[+]', -- Text to show when the file is modified.
-        readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
+        modified = '[+]',      -- Text to show when the file is modified.
+        readonly = '[-]',      -- Text to show when the file is non-modifiable or readonly.
         unnamed = '[No Name]', -- Text to show for unnamed buffers.
-        newfile = '[New]', -- Text to show for new created file before first writing
+        newfile = '[New]',     -- Text to show for new created file before first writing
       },
     },
     diff = {
@@ -178,7 +178,47 @@ M.setup = function(s, loc)
       color = { fg = colors.yellow, bg = colors.bg },
       cond = nil,
     },
-    mcphub = status_ok and { require('mcphub.extensions.lualine') } or nil,
+    mcphub = status_ok and {
+
+      function()
+        -- Check if MCPHub is loaded
+        if not vim.g.loaded_mcphub then
+          return "󰐻 -"
+        end
+
+        local count = vim.g.mcphub_servers_count or 0
+        local status = vim.g.mcphub_status or "stopped"
+        local executing = vim.g.mcphub_executing
+
+        -- Show "-" when stopped
+        if status == "stopped" then
+          return "󰐻 -"
+        end
+
+        -- Show spinner when executing, starting, or restarting
+        if executing or status == "starting" or status == "restarting" then
+          local frames = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+          local frame = math.floor(vim.loop.now() / 100) % #frames + 1
+          return "󰐻 " .. frames[frame]
+        end
+
+        return "󰐻 " .. count
+      end,
+      color = function()
+        if not vim.g.loaded_mcphub then
+          return { fg = "#6c7086" } -- Gray for not loaded
+        end
+
+        local status = vim.g.mcphub_status or "stopped"
+        if status == "ready" or status == "restarted" then
+          return { fg = "#50fa7b" } -- Green for connected
+        elseif status == "starting" or status == "restarting" then
+          return { fg = "#ffb86c" } -- Orange for connecting
+        else
+          return { fg = "#ff5555" } -- Red for error/stopped
+        end
+      end,
+    } or nil
   }
 end
 

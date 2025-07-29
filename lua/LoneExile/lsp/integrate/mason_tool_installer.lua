@@ -7,7 +7,7 @@ M.setup = function(_, _)
     cmd = { 'MasonToolsInstall' },
     dependencies = {
       'neovim/nvim-lspconfig',
-      { 'mason-org/mason.nvim', version = '1.11.0' },
+      { 'mason-org/mason.nvim',           version = '1.11.0' },
       { 'mason-org/mason-lspconfig.nvim', version = '1.32.0' },
     },
     config = function()
@@ -31,14 +31,14 @@ M.setup = function(_, _)
           -- 'clangd', -- C++
           'dockerfile-language-server',
           'marksman', -- Markdown
-          'ruff', -- Python
-          'pyright', -- Python
+          'ruff',     -- Python
+          'pyright',  -- Python
           'rust-analyzer',
-          'taplo', -- TOML
+          'taplo',    -- TOML
           'yaml-language-server',
           'json-lsp',
           'typescript-language-server', -- Tsserver
-          'eslint-lsp',
+          -- 'eslint-lsp',
           'tailwindcss-language-server',
           'html-lsp',
           'css-lsp',
@@ -47,34 +47,35 @@ M.setup = function(_, _)
           'astro-language-server',
           'yaml-language-server',
           'gopls', -- Go
-          'golangci-lint-langserver', -- Go
+          -- 'golangci-lint-langserver', -- Go
           'golangci-lint',
-          'templ', -- Go templ
-          'htmx-lsp', -- htmx
+          'templ',                  -- Go templ
+          'htmx-lsp',               -- htmx
           'svelte-language-server', -- Svelte
-          'elixir-ls', -- Elixir
-          'terraform-ls', -- Terraform
+          'elixir-ls',              -- Elixir
+          'terraform-ls',           -- Terraform
           'tflint',
 
           -- 'groovy-language-server', -- Groovy (openjdk-11.0.2)
           'npm-groovy-lint',
           'docker-compose-language-service',
           'helm_ls', -- Helm
+          'nil',     -- Nix
 
           -- DAP
-          'netcoredbg', -- C#
+          'netcoredbg',       -- C#
           'js-debug-adapter', -- JavaScript, TypeScript
-          'codelldb', -- Rust
-          'delve', -- Go
+          'codelldb',         -- Rust
+          'delve',            -- Go
           'go-debug-adapter', -- Go
-          'debugpy', -- Python
+          'debugpy',          -- Python
 
           -- FORMATTER
-          'stylua', -- Lua
+          'stylua',       -- Lua
           'luacheck',
-          'black', -- Python
-          'isort', -- Python
-          'shfmt', -- Shell
+          'black',        -- Python
+          'isort',        -- Python
+          'shfmt',        -- Shell
           -- 'csharpier', -- C#
           'markdownlint', -- Markdown
           'markdown-toc',
@@ -84,12 +85,13 @@ M.setup = function(_, _)
           -- 'vale', -- Markdown
           'yamlfmt',
           'sql-formatter',
-          'lemminx', -- XML
-          'golines', -- Go
+          'lemminx',   -- XML
+          'golines',   -- Go
           'goimports', -- Go
           'codespell',
           'elm-format',
           'hclfmt',
+          'alejandra', -- Nix
 
           -- CODE ACTION
           'impl', -- Go
@@ -101,9 +103,9 @@ M.setup = function(_, _)
           'sqlfluff',
           'alex',
           'gomodifytags', -- Go
-          'gotests', -- Go
+          'gotests',      -- Go
           'gofumpt',
-          'hadolint', -- Dockerfile
+          'hadolint',     -- Dockerfile
           'shellcheck',
 
           --- c++

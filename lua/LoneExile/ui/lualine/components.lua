@@ -28,7 +28,7 @@ M.setup = function(s, loc)
 
   ----------------------------------------------------------------------------
 
-  local status_ok, mcphub = pcall(require, 'mcphub')
+  local status_ok, _ = pcall(require, 'mcphub')
 
   return {
     mode = {

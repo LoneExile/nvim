@@ -40,7 +40,7 @@ M.setup = function(s, _)
         -- impl
         -- gomodifytags
 
-        go = { 'golangcilint' },
+        -- go = { 'golangcilint' },
 
         markdown = { 'markdownlint' },
         lua = { 'luacheck' },

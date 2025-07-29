@@ -21,12 +21,13 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Clone repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: StyLua
-        uses: JohnnyMorganz/stylua-action@v2.0.0
+        uses: JohnnyMorganz/stylua-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          version: latest
           args: --color always --check -f ./resources/null-ls/.stylua.toml .
 #           ignore = {
 #     "011", -- A syntax error.

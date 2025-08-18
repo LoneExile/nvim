@@ -39,7 +39,7 @@
         "@playwright/mcp@latest"
       ],
       "command": "npx",
-      "disabled": false
+      "disabled": true
     },
     "postgres_toolbox": {
       "args": [
@@ -55,11 +55,11 @@
       "description": "Google GenAI Toolbox for PostgreSQL database access",
       "disabled": true,
       "env": {
-        "POSTGRES_PORT": "${POSTGRES_PORT}",
         "POSTGRES_DATABASE": "${POSTGRES_DATABASE}",
-        "POSTGRES_USER": "${POSTGRES_USER}",
         "POSTGRES_HOST": "${POSTGRES_HOST}",
-        "POSTGRES_PASSWORD": "${POSTGRES_PASSWORD}"
+        "POSTGRES_PASSWORD": "${POSTGRES_PASSWORD}",
+        "POSTGRES_PORT": "${POSTGRES_PORT}",
+        "POSTGRES_USER": "${POSTGRES_USER}"
       },
       "name": "PostgreSQL Toolbox"
     },

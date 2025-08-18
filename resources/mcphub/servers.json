@@ -1,35 +1,83 @@
 {
-  "nativeMCPServers": [
-    
-  ],
   "mcpServers": {
+    "api_fmc_spec": {
+      "args": [
+        "-y",
+        "mcp-openapi-schema-explorer@latest",
+        "~/.config/nvim/resources/api/fmc/fmc_oas3.json",
+        "--output-format",
+        "yaml"
+      ],
+      "command": "npx",
+      "disabled": true,
+      "env": []
+    },
+    "awslabs.aws-api-mcp-server": {
+      "args": [
+        "awslabs.aws-api-mcp-server@latest"
+      ],
+      "autoApprove": [],
+      "command": "uvx",
+      "disabled": true,
+      "env": {
+        "AWS_REGION": "ap-southeast-1"
+      }
+    },
+    "awslabs.terraform-mcp-server": {
+      "args": [
+        "awslabs.terraform-mcp-server@latest"
+      ],
+      "autoApprove": [],
+      "command": "uvx",
+      "disabled": true,
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "playwright": {
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "command": "npx",
+      "disabled": false
+    },
     "postgres_toolbox": {
-      "command": "toolbox",
-      "description": "Google GenAI Toolbox for PostgreSQL database access",
       "args": [
         "--prebuilt",
         "postgres",
         "--stdio"
       ],
-      "disabled": true,
-      "name": "PostgreSQL Toolbox",
-      "env": {
-        "POSTGRES_HOST": "${POSTGRES_HOST}",
-        "POSTGRES_USER": "${POSTGRES_USER}",
-        "POSTGRES_PORT": "${POSTGRES_PORT}",
-        "POSTGRES_DATABASE": "${POSTGRES_DATABASE}",
-        "POSTGRES_PASSWORD": "${POSTGRES_PASSWORD}"
-      },
       "autoApprove": [
         "list_tables",
         "execute_sql"
-      ]
+      ],
+      "command": "toolbox",
+      "description": "Google GenAI Toolbox for PostgreSQL database access",
+      "disabled": true,
+      "env": {
+        "POSTGRES_PORT": "${POSTGRES_PORT}",
+        "POSTGRES_DATABASE": "${POSTGRES_DATABASE}",
+        "POSTGRES_USER": "${POSTGRES_USER}",
+        "POSTGRES_HOST": "${POSTGRES_HOST}",
+        "POSTGRES_PASSWORD": "${POSTGRES_PASSWORD}"
+      },
+      "name": "PostgreSQL Toolbox"
+    },
+    "sequentialthinking": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "command": "npx",
+      "disabled": true
     },
     "terraform": {
-      "command": "terraform-mcp-server",
       "args": [
         "stdio"
-      ]
+      ],
+      "command": "terraform-mcp-server",
+      "disabled": true
     }
-  }
+  },
+  "nativeMCPServers": []
 }

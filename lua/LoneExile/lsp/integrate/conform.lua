@@ -118,6 +118,7 @@ M.setup = function(s, _)
           go = { 'goimports', 'gofumpt', 'golines' },
           elm = { 'elm_format' },
           cs = { 'csharpier' },
+          nix = { 'alejandra', 'nixpkgs-fmt' },
 
           -- ['*'] = { 'codespell' },
           ['_'] = { 'trim_whitespace' },

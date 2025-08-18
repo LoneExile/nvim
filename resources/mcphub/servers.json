@@ -1,5 +1,13 @@
 {
   "mcpServers": {
+    "shadcn-ui": {
+      "command": "npx",
+      "args": [
+        "@jpisnice/shadcn-ui-mcp-server",
+        "--github-api-key",
+        "${GITHUB_API_KEY}"
+      ]
+    },
     "api_fmc_spec": {
       "args": [
         "-y",

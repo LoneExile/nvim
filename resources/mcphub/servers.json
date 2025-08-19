@@ -1,18 +1,10 @@
 {
   "mcpServers": {
-    "shadcn-ui": {
-      "command": "npx",
-      "args": [
-        "@jpisnice/shadcn-ui-mcp-server",
-        "--github-api-key",
-        "${GITHUB_API_KEY}"
-      ]
-    },
     "api_fmc_spec": {
       "args": [
         "-y",
         "mcp-openapi-schema-explorer@latest",
-        "~/.config/nvim/resources/api/fmc/fmc_oas3.json",
+        "${HOME}/.config/nvim/resources/api/fmc/fmc_oas3.json",
         "--output-format",
         "yaml"
       ],
@@ -75,6 +67,15 @@
       "args": [
         "-y",
         "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "command": "npx",
+      "disabled": true
+    },
+    "shadcn-ui": {
+      "args": [
+        "@jpisnice/shadcn-ui-mcp-server",
+        "--github-api-key",
+        "${GITHUB_API_KEY}"
       ],
       "command": "npx",
       "disabled": true

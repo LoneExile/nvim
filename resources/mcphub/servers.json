@@ -9,7 +9,7 @@
         "yaml"
       ],
       "command": "npx",
-      "disabled": true,
+      "disabled": false,
       "env": []
     },
     "awslabs.aws-api-mcp-server": {
@@ -33,6 +33,20 @@
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR"
       }
+    },
+    "github": {
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_API_KEY}"
+      },
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "memory": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "command": "npx",
+      "disabled": true
     },
     "playwright": {
       "args": [

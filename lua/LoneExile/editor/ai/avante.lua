@@ -32,6 +32,13 @@ M.keys = {
     desc = 'Clear',
     mode = 'n',
   },
+  -- AvanteModels
+  {
+    '<leader>cm',
+    '<cmd>AvanteModels<CR>',
+    desc = 'Avante Models',
+    mode = 'n',
+  },
   {
     '<leader>cn',
     '<cmd>AvanteConflictNextConflict<CR>',

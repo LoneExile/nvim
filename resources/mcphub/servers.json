@@ -9,7 +9,7 @@
         "yaml"
       ],
       "command": "npx",
-      "disabled": false,
+      "disabled": true,
       "env": []
     },
     "awslabs.aws-api-mcp-server": {
@@ -35,6 +35,7 @@
       }
     },
     "github": {
+      "disabled": true,
       "headers": {
         "Authorization": "Bearer ${GITHUB_API_KEY}"
       },
@@ -100,6 +101,13 @@
       ],
       "command": "terraform-mcp-server",
       "disabled": true
+    },
+    "drawio": {
+      "command": "pnpm",
+      "args": [
+        "dlx",
+        "drawio-mcp-server"
+      ]
     }
   },
   "nativeMCPServers": []

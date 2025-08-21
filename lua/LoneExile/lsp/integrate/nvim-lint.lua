@@ -52,7 +52,7 @@ M.setup = function(s, _)
         bash = { 'shellcheck' },
         csh = { 'shellcheck' },
         cmake = { 'cmakelint' },
-        dockerfile = { 'hadolint' },
+        dockerfile = { 'trivy' }, -- snyk
 
         groovy = { 'npm-groovy-lint' },
         sql = { 'sqlfluff' },

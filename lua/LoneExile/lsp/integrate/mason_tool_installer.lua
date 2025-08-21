@@ -105,7 +105,9 @@ M.setup = function(_, _)
           'gomodifytags', -- Go
           'gotests', -- Go
           'gofumpt',
-          'hadolint', -- Dockerfile
+          -- 'hadolint', -- Dockerfile
+          'snyk',
+          'trivy',
           'shellcheck',
 
           --- c++

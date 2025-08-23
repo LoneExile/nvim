@@ -34,6 +34,14 @@
         "FASTMCP_LOG_LEVEL": "ERROR"
       }
     },
+    "drawio": {
+      "args": [
+        "dlx",
+        "drawio-mcp-server"
+      ],
+      "command": "pnpm",
+      "disabled": true
+    },
     "github": {
       "disabled": true,
       "headers": {
@@ -101,13 +109,6 @@
       ],
       "command": "terraform-mcp-server",
       "disabled": true
-    },
-    "drawio": {
-      "command": "pnpm",
-      "args": [
-        "dlx",
-        "drawio-mcp-server"
-      ]
     }
   },
   "nativeMCPServers": []

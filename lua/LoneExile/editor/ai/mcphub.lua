@@ -8,7 +8,7 @@ M.keys = {
     mode = 'n',
   },
   {
-    '<leader>cm',
+    '<leader>cM',
     '<cmd>MCPHub<CR>',
     desc = 'MCPHub',
   },

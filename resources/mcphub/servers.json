@@ -42,12 +42,27 @@
       "command": "pnpm",
       "disabled": true
     },
+    "excalidraw": {
+      "args": [
+        "/Users/apinant/Dev/my_repos/mcp_excalidraw/dist/index.js"
+      ],
+      "command": "node",
+      "disabled": true
+    },
     "github": {
       "disabled": true,
       "headers": {
         "Authorization": "Bearer ${GITHUB_API_KEY}"
       },
       "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "kubernetes": {
+      "args": [
+        "-y",
+        "kubernetes-mcp-server@latest"
+      ],
+      "command": "npx",
+      "disabled": true
     },
     "memory": {
       "args": [

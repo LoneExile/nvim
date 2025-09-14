@@ -15,6 +15,9 @@ return {
   -- Editor
   { 'theprimeagen/refactoring.nvim',             true },
   { 'akinsho/toggleterm.nvim',                   true },
+  { 'olimorris/codecompanion.nvim',              true },
+  { 'HakonHarnes/img-clip.nvim',                 true },
+  { 'echasnovski/mini.diff',                     true },
 
   { 'nvim-neotest/neotest',                      true },
   { 'andythigpen/nvim-coverage',                 true },

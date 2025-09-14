@@ -16,37 +16,28 @@ M.keys = {
     desc = 'Chat',
     mode = 'n',
   },
+  -- {
+  --   '<leader>cb',
+  --   function()
+  --     local input = vim.fn.input('Quick Chat: ')
+  --     if input ~= '' then
+  --       require('CopilotChat').ask(input, { selection = require('CopilotChat.select').buffer })
+  --     end
+  --   end,
+  --   desc = 'Chat buff',
+  --   mode = 'n',
+  -- },
+  -- {
+  --   '<leader>ch',
+  --   function()
+  --     local actions = require('CopilotChat.actions')
+  --     require('CopilotChat.integrations.fzflua').pick(actions.help_actions())
+  --   end,
+  --   desc = 'Help actions',
+  --   mode = 'n',
+  -- },
   {
-    '<leader>cb',
-    function()
-      local input = vim.fn.input('Quick Chat: ')
-      if input ~= '' then
-        require('CopilotChat').ask(input, { selection = require('CopilotChat.select').buffer })
-      end
-    end,
-    desc = 'Chat buff',
-    mode = 'n',
-  },
-  {
-    '<leader>ch',
-    function()
-      local actions = require('CopilotChat.actions')
-      require('CopilotChat.integrations.fzflua').pick(actions.help_actions())
-    end,
-    desc = 'Help actions',
-    mode = 'n',
-  },
-  {
-    '<leader>cp',
-    function()
-      local actions = require('CopilotChat.actions')
-      require('CopilotChat.integrations.fzflua').pick(actions.prompt_actions())
-    end,
-    desc = 'Prompt actions',
-    mode = 'n',
-  },
-  {
-    '<leader>cX',
+    '<leader>cMx',
     '<cmd>CopilotChatModels<CR>',
     desc = 'Copilot Switch Provider',
   },

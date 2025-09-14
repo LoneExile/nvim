@@ -7,12 +7,12 @@ M.keys = {
     desc = 'Copilot',
     mode = 'n',
   },
-  {
-    '<leader>cP',
-    '<cmd>Copilot panel<cr>',
-    desc = 'panel',
-    mode = 'n',
-  },
+  -- {
+  --   '<leader>cP',
+  --   '<cmd>Copilot panel<cr>',
+  --   desc = 'panel',
+  --   mode = 'n',
+  -- },
 }
 
 M.setup = function(settings, _)

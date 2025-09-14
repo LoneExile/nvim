@@ -14,53 +14,54 @@ M.keys = {
     mode = { 'n', 'v' },
   },
   {
+    '<leader>cM',
+    '',
+    desc = 'Models',
+    mode = { 'n', 'v' },
+  },
+  {
     '<leader>ca',
     '<cmd>AvanteAsk<CR>',
-    desc = 'Ask',
+    desc = 'Ask Avante',
     mode = 'n',
   },
   -- AvanteEdit
-  {
-    '<leader>ce',
-    '<cmd>AvanteEdit<CR>',
-    desc = 'Edit',
-    mode = 'v',
-  },
-  {
-    '<leader>cC',
-    '<cmd>AvanteClear<CR>',
-    desc = 'Clear',
-    mode = 'n',
-  },
+  -- {
+  --   '<leader>ce',
+  --   '<cmd>AvanteEdit<CR>',
+  --   desc = 'Edit',
+  --   mode = 'v',
+  -- },
+  -- {
+  --   '<leader>cC',
+  --   '<cmd>AvanteClear<CR>',
+  --   desc = 'Clear',
+  --   mode = 'n',
+  -- },
   -- AvanteModels
   {
-    '<leader>cm',
+    '<leader>cMa',
     '<cmd>AvanteModels<CR>',
     desc = 'Avante Models',
     mode = 'n',
   },
-  {
-    '<leader>cn',
-    '<cmd>AvanteConflictNextConflict<CR>',
-    desc = 'Next Conflict',
-    mode = 'n',
-  },
-  {
-    '<leader>cp',
-    '<cmd>AvanteConflictPrevConflict<CR>',
-    desc = 'Prev Conflict',
-    mode = 'n',
-  },
+  -- {
+  --   '<leader>cn',
+  --   '<cmd>AvanteConflictNextConflict<CR>',
+  --   desc = 'Next Conflict',
+  --   mode = 'n',
+  -- },
+  -- {
+  --   '<leader>cp',
+  --   '<cmd>AvanteConflictPrevConflict<CR>',
+  --   desc = 'Prev Conflict',
+  --   mode = 'n',
+  -- },
   {
     '<leader>cs',
     '<cmd>AvanteStop<CR>',
     desc = 'Stop',
     mode = 'n',
-  },
-  {
-    '<leader>cx',
-    '<cmd>AvanteModels<CR>',
-    desc = 'Avante Switch Provider',
   },
 }
 

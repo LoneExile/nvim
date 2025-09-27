@@ -2,7 +2,7 @@ local M = {}
 
 M.setup = function()
   return {
-    'echasnovski/mini.surround',
+    'nvim-mini/mini.surround',
     event = 'BufRead',
     config = function()
       local status_ok_code, mini = pcall(require, 'mini.surround')

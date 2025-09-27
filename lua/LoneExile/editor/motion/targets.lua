@@ -2,7 +2,7 @@ local M = {}
 
 M.setup = function()
   return {
-    'echasnovski/mini.ai',
+    'nvim-mini/mini.ai',
     event = 'BufRead',
     config = function()
       local status_ok_code, mini = pcall(require, 'mini.ai')

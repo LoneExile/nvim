@@ -17,7 +17,7 @@ return {
   { 'akinsho/toggleterm.nvim',                   true },
   { 'olimorris/codecompanion.nvim',              true },
   { 'HakonHarnes/img-clip.nvim',                 true },
-  { 'echasnovski/mini.diff',                     true },
+  { 'nvim-mini/mini.diff',                     true },
 
   { 'nvim-neotest/neotest',                      true },
   { 'andythigpen/nvim-coverage',                 true },
@@ -33,7 +33,7 @@ return {
   { 'theprimeagen/harpoon',                      true },
   { 'phaazon/hop.nvim',                          true },
   { 'nacro90/numb.nvim',                         true },
-  { 'echasnovski/mini.surround',                 true },
+  { 'nvim-mini/mini.surround',                 true },
   { 'declancm/cinnamon.nvim',                    false },
   { 'chentoast/marks.nvim',                      true },
 
@@ -43,7 +43,7 @@ return {
   { 'windwp/nvim-spectre',                       true },
 
 
-  { 'echasnovski/mini.ai',                       true },
+  { 'nvim-mini/mini.ai',                       true },
   { 'tpope/vim-repeat',                          true },
 
   { 'nmac427/guess-indent.nvim',                 true },
@@ -114,5 +114,5 @@ return {
 
   { 'folke/todo-comments.nvim',                  true },
   { 'folke/snacks.nvim',                         true },
-  { 'echasnovski/mini.icon',                     false  },
+  { 'nvim-mini/mini.icons',                       true },
 }

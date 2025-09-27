@@ -1,5 +1,3 @@
-local utils = require('lsp._utils')
-
 return {
   settings = {
     yaml = {
@@ -7,7 +5,13 @@ return {
         enable = false,
         url = '',
       },
-      schemas = utils.get_schemas('yaml'),
+      schemas = function()
+        local status, schemastore = pcall(require, 'schemastore')
+        if status then
+          return schemastore.yaml.schemas()
+        end
+        return {}
+      end,
       customTags = {
         -- AWS CloudFormation
         '!And scalar',

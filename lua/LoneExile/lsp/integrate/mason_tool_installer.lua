@@ -7,8 +7,8 @@ M.setup = function(_, _)
     cmd = { 'MasonToolsInstall' },
     dependencies = {
       'neovim/nvim-lspconfig',
-      { 'mason-org/mason.nvim'},
-      { 'mason-org/mason-lspconfig.nvim'},
+      { 'mason-org/mason.nvim' },
+      { 'mason-org/mason-lspconfig.nvim' },
     },
     config = function()
       local status_tool, mason_tool = pcall(require, 'mason-tool-installer')

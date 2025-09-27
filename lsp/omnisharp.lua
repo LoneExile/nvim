@@ -1,0 +1,38 @@
+return {
+  cmd = function()
+    local omnisharp_path = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/') .. 'packages/omnisharp/libexec/OmniSharp.dll'
+    return { 'dotnet', omnisharp_path }
+  end,
+  filetypes = { 'cs', 'vb' },
+  init_options = {},
+  settings = {
+    FormattingOptions = {
+      EnableEditorConfigSupport = true,
+      OrganizeImports = nil,
+    },
+    MsBuild = {
+      LoadProjectsOnDemand = nil,
+    },
+    RoslynExtensionsOptions = {
+      EnableAnalyzersSupport = nil,
+      EnableImportCompletion = nil,
+      AnalyzeOpenDocumentsOnly = nil,
+      EnableDecompilationSupport = true,
+    },
+    Sdk = {
+      IncludePrereleases = true,
+    },
+  },
+  handlers = function()
+    local status, handler = pcall(require, 'omnisharp_extended')
+    if status then
+      return {
+        ['textDocument/definition'] = handler.definition_handler,
+        ['textDocument/typeDefinition'] = handler.type_definition_handler,
+        ['textDocument/references'] = handler.references_handler,
+        ['textDocument/implementation'] = handler.implementation_handler,
+      }
+    end
+    return {}
+  end,
+}

@@ -60,7 +60,7 @@ M.split_mappings = function(maps, ft)
             map[key].ft = nil
           end
         end
-        --
+      --
       elseif not mapping.mode and key ~= 'name' then
         map[key] = add_mapping(mapping, mode, k .. key)
         map = remove_noisy(map, key)

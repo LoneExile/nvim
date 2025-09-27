@@ -15,7 +15,6 @@ The LSP configuration uses the new Neovim 0.10+ core LSP approach:
 ```
 lsp/
 ├── README.md              # This documentation
-├── _utils.lua             # Shared utilities to reduce redundancy
 ├── lua_ls.lua             # Lua language server config
 ├── gopls.lua              # Go language server config
 ├── tsserver.lua           # TypeScript/JavaScript server config
@@ -31,12 +30,13 @@ Each server configuration file should return a table with server-specific settin
 
 ```lua
 -- Example: lsp/example_server.lua
-local utils = require('lsp._utils')
-
 return {
   cmd = { 'example-language-server', '--stdio' },
   filetypes = { 'example' },
-  root_dir = utils.root_dir(utils.root_patterns.git), -- Use shared patterns
+  root_dir = function(fname)
+    local lspconfig = require('lspconfig')
+    return lspconfig.util.root_pattern('.git')(fname) or lspconfig.util.path.dirname(fname)
+  end,
   settings = {
     example = {
       -- Server-specific settings
@@ -45,23 +45,38 @@ return {
 }
 ```
 
-## Utilities
+## Common Patterns
 
-The `_utils.lua` file provides shared utilities to reduce redundancy:
+### Root Directory Functions
 
-### Root Directory Patterns
+Most servers need a root_dir function. Common patterns:
 
-Common root directory patterns are predefined:
-- `utils.root_patterns.js_ts` - JavaScript/TypeScript projects
-- `utils.root_patterns.python` - Python projects  
-- `utils.root_patterns.go` - Go projects
-- `utils.root_patterns.git` - Generic git-based projects
+```lua
+-- Git-based projects
+root_dir = function(fname)
+  local lspconfig = require('lspconfig')
+  return lspconfig.util.root_pattern('.git')(fname) or lspconfig.util.path.dirname(fname)
+end
+
+-- JavaScript/TypeScript projects
+root_dir = function(fname)
+  local lspconfig = require('lspconfig')
+  return lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname) 
+    or lspconfig.util.path.dirname(fname)
+end
+```
 
 ### Schema Integration
 
 For JSON/YAML servers with schemastore integration:
 ```lua
-schemas = utils.get_schemas('json'), -- or 'yaml'
+schemas = function()
+  local status, schemastore = pcall(require, 'schemastore')
+  if status then
+    return schemastore.json.schemas() -- or schemastore.yaml.schemas()
+  end
+  return {}
+end
 ```
 
 ## Adding New Servers
@@ -69,7 +84,7 @@ schemas = utils.get_schemas('json'), -- or 'yaml'
 1. Create a new file `lsp/server_name.lua`
 2. Return a configuration table with server-specific settings
 3. Add the server name to the `servers` list in `lua/LoneExile/lsp/init.lua`
-4. Use shared utilities from `_utils.lua` when possible
+4. Use common patterns for root_dir and schema functions when applicable
 
 ## Migration from Old System
 
@@ -98,5 +113,5 @@ vim.lsp.enable(servers)
 
 - **Performance**: Global configuration reduces redundancy and improves startup time
 - **Maintainability**: Server-specific configs are isolated and easier to manage
-- **Consistency**: Shared utilities ensure consistent patterns across servers
+- **Consistency**: Common patterns ensure consistent configuration across servers
 - **Simplicity**: Adding new servers requires minimal configuration

@@ -147,6 +147,31 @@ M.setup = function(_, location)
         'html', -- HTML
         'docker_compose_language_service', -- Docker Compose
         'helm_ls', -- Helm
+
+        'lua-language-server',
+        'bash-language-server',
+        'dockerfile-language-server',
+        'marksman', -- Markdown
+        'ruff', -- Python
+        'rust-analyzer',
+        'taplo', -- TOML
+        'yaml-language-server',
+        'json-lsp',
+        'typescript-language-server', -- Tsserver
+        'tailwindcss-language-server',
+        'html-lsp',
+        'css-lsp',
+        'vetur-vls',
+        'astro-language-server',
+        'golangci-lint',
+        'templ', -- Go templ
+        'htmx-lsp', -- htmx
+        'svelte-language-server', -- Svelte
+        'elixir-ls', -- Elixir
+        'terraform-ls', -- Terraform
+        'tflint',
+        'npm-groovy-lint',
+        'nil', -- Nix
       }
 
       -- Enable LSP servers using the new core LSP system

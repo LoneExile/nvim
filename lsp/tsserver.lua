@@ -1,10 +1,11 @@
-local utils = require('lsp._utils')
-
 return {
   cmd = { 'typescript-language-server', '--stdio' },
   filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
-  stInfo = 'neovim',
-  root_dir = utils.root_dir(utils.root_patterns.js_ts),
+  hostInfo = 'neovim',
+  root_dir = function(fname)
+    local lspconfig = require('lspconfig')
+    return lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname) or lspconfig.util.path.dirname(fname)
+  end,
   init_options = {
     hostInfo = 'neovim',
     preferences = {

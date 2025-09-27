@@ -1,5 +1,3 @@
-local utils = require('lsp._utils')
-
 return {
   cmd = { 'tailwindcss-language-server', '--stdio' },
   filetypes = {
@@ -54,7 +52,24 @@ return {
     'svelte',
     'templ',
   },
-  root_dir = utils.root_dir(utils.root_patterns.tailwind),
+  root_dir = function(fname)
+    local lspconfig = require('lspconfig')
+    return lspconfig.util.root_pattern(
+      'tailwind.config.js',
+      'tailwind.config.ts',
+      'tailwind.config.cjs',
+      'tailwind.config.mjs',
+      'tailwind.config.json',
+      'postcss.config.js',
+      'postcss.config.ts',
+      'postcss.config.cjs',
+      'postcss.config.mjs',
+      'postcss.config.json',
+      'package.json',
+      'node_modules',
+      '.git'
+    )(fname) or lspconfig.util.path.dirname(fname)
+  end,
   init_options = {
     userLanguages = {
       eelixir = 'html-eex',

@@ -114,4 +114,5 @@ return {
 
   { 'folke/todo-comments.nvim',                  true },
   { 'folke/snacks.nvim',                         true },
+  { 'echasnovski/mini.icon',                     false  },
 }

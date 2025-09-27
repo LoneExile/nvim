@@ -2,7 +2,7 @@ local M = {}
 
 M.setup = function()
   return {
-    'echasnovski/mini.icon',
+    'nvim-mini/mini.icons',
     version = false,
     -- event = 'BufRead',
   }

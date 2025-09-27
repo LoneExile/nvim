@@ -2,7 +2,7 @@ local M = {}
 
 M.setup = function()
   return {
-    'echasnovski/mini.diff',
+    'nvim-mini/mini.diff',
     event = 'BufRead',
     config = function()
       local status_ok_code, diff = pcall(require, 'mini.diff')

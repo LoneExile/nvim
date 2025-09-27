@@ -76,7 +76,7 @@ M.setup = function(_, _)
           'black', -- Python
           'isort', -- Python
           'shfmt', -- Shell
-          -- 'csharpier', -- C#
+          'csharpier', -- C#
           'markdownlint', -- Markdown
           'markdown-toc',
           'markdownlint-cli2',

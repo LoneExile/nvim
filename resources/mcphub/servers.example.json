@@ -1,0 +1,134 @@
+{
+  "mcpServers": {
+    "api_fmc_spec": {
+      "args": [
+        "-y",
+        "mcp-openapi-schema-explorer@latest",
+        "${HOME}/.config/nvim/resources/api/fmc/fmc_oas3.json",
+        "--output-format",
+        "yaml"
+      ],
+      "command": "npx",
+      "disabled": true,
+      "env": []
+    },
+    "awslabs.aws-api-mcp-server": {
+      "args": [
+        "awslabs.aws-api-mcp-server@latest"
+      ],
+      "autoApprove": [],
+      "command": "uvx",
+      "disabled": true,
+      "env": {
+        "AWS_REGION": "ap-southeast-1"
+      }
+    },
+    "awslabs.terraform-mcp-server": {
+      "args": [
+        "awslabs.terraform-mcp-server@latest"
+      ],
+      "autoApprove": [],
+      "command": "uvx",
+      "disabled": true,
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "drawio": {
+      "args": [
+        "dlx",
+        "drawio-mcp-server"
+      ],
+      "command": "pnpm",
+      "disabled": true
+    },
+    "excalidraw": {
+      "args": [
+        "/Users/apinant/Dev/my_repos/mcp_excalidraw/dist/index.js"
+      ],
+      "command": "node",
+      "disabled": true
+    },
+    "github": {
+      "disabled": true,
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_API_KEY}"
+      },
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "kubernetes": {
+      "args": [
+        "-y",
+        "kubernetes-mcp-server@latest"
+      ],
+      "command": "npx",
+      "disabled": true
+    },
+    "memory": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "command": "npx",
+      "disabled": true
+    },
+    "playwright": {
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "command": "npx",
+      "disabled": true
+    },
+    "postgres_toolbox": {
+      "args": [
+        "--prebuilt",
+        "postgres",
+        "--stdio"
+      ],
+      "autoApprove": [
+        "list_tables",
+        "execute_sql"
+      ],
+      "command": "toolbox",
+      "description": "Google GenAI Toolbox for PostgreSQL database access",
+      "disabled": true,
+      "env": {
+        "POSTGRES_DATABASE": "${POSTGRES_DATABASE}",
+        "POSTGRES_HOST": "${POSTGRES_HOST}",
+        "POSTGRES_PASSWORD": "${POSTGRES_PASSWORD}",
+        "POSTGRES_PORT": "${POSTGRES_PORT}",
+        "POSTGRES_USER": "${POSTGRES_USER}"
+      },
+      "name": "PostgreSQL Toolbox"
+    },
+    "sequentialthinking": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "command": "npx",
+      "disabled": true
+    },
+    "shadcn-ui": {
+      "args": [
+        "@jpisnice/shadcn-ui-mcp-server",
+        "--github-api-key",
+        "${GITHUB_API_KEY}"
+      ],
+      "command": "npx",
+      "disabled": true
+    },
+    "terraform": {
+      "args": [
+        "stdio"
+      ],
+      "command": "terraform-mcp-server",
+      "disabled": true
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["chrome-devtools-mcp@latest"]
+    }
+  },
+  "nativeMCPServers": []
+}

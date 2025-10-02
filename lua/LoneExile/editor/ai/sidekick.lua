@@ -20,15 +20,19 @@ M.keys = {
   },
   {
     '<leader>cs',
-    function() require("sidekick.cli").toggle({ name = "copilot", focus = true }) end,
+    function()
+      require('sidekick.cli').toggle({ name = 'copilot', focus = true })
+    end,
     mode = { 'n', 'v' },
     desc = 'Sidekick Toggle CLI',
   },
   {
-    "<leader>cs",
-    function() require("sidekick.cli").send({ name = "copilot", selection = true }) end,
-    mode = { "v" },
-    desc = "Sidekick Send Visual Selection",
+    '<leader>cs',
+    function()
+      require('sidekick.cli').send({ name = 'copilot', selection = true })
+    end,
+    mode = { 'v' },
+    desc = 'Sidekick Send Visual Selection',
   },
   -- {
   --   "<leader>ap",

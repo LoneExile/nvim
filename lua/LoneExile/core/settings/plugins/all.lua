@@ -70,6 +70,7 @@ return {
   { 'jackMort/ChatGPT.nvim',                     false },
   { 'yetone/avante.nvim',                        true },
   { 'ravitemer/mcphub.nvim',                     true },
+  { 'folke/sidekick.nvim',                       true },
 
   -- DB
   { 'tpope/vim-dadbod',                          true },

@@ -58,7 +58,7 @@ M.keys = {
   --   mode = 'n',
   -- },
   {
-    '<leader>cs',
+    '<leader>cS',
     '<cmd>AvanteStop<CR>',
     desc = 'Stop',
     mode = 'n',

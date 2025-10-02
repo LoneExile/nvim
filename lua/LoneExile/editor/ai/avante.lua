@@ -123,7 +123,7 @@ M.setup = function()
           },
           copilot = {
             endpoint = 'https://api.githubcopilot.com',
-            model = 'claude-sonnet-4',
+            model = 'claude-sonnet-4.5',
             proxy = nil, -- [protocol://]host[:port] Use this proxy
             allow_insecure = false, -- Allow insecure server connections
             -- timeout = 30000, -- Timeout in milliseconds
@@ -142,16 +142,16 @@ M.setup = function()
           },
         },
         acp_providers = {
-          ['claude-code'] = {
-            -- pnpm install -g @anthropic-ai/claude-code
-            -- pnpm install -g acp-claude-code
-            command = 'npx',
-            args = { 'acp-claude-code' },
-            env = {
-              NODE_NO_WARNINGS = '1',
-              ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY'),
-            },
-          },
+          -- ['claude-code'] = {
+          --   -- pnpm install -g @anthropic-ai/claude-code
+          --   -- pnpm install -g acp-claude-code
+          --   command = 'npx',
+          --   args = { 'acp-claude-code' },
+          --   env = {
+          --     NODE_NO_WARNINGS = '1',
+          --     ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY'),
+          --   },
+          -- },
           -- npm install -g @google/gemini-cli
           ['gemini-cli'] = {
             command = 'gemini',

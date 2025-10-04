@@ -2,10 +2,8 @@ return {
   cmd = { 'typescript-language-server', '--stdio' },
   filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
   hostInfo = 'neovim',
-  root_dir = function(fname)
-    local lspconfig = require('lspconfig')
-    return lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname) or lspconfig.util.path.dirname(fname)
-  end,
+  -- Note: root_dir removed - functions cannot be serialized with vim.lsp.enable()
+  -- The default root_dir from lspconfig will be used (looks for package.json, tsconfig.json, etc.)
   init_options = {
     hostInfo = 'neovim',
     preferences = {

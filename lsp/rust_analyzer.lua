@@ -1,6 +1,8 @@
 return {
   cmd = { 'rust-analyzer' },
   filetypes = { 'rust' },
+  -- Note: root_dir removed - functions cannot be serialized with vim.lsp.enable()
+  -- The default root_dir from lspconfig will be used (looks for Cargo.toml, rust-project.json, .git, etc.)
   settings = {
     ['rust-analyzer'] = {
       lens = {
@@ -12,8 +14,4 @@ return {
       },
     },
   },
-  root_dir = function(fname)
-    local lspconfig = require('lspconfig')
-    return lspconfig.util.root_pattern('Cargo.toml', 'rust-project.json', '.git')(fname) or lspconfig.util.path.dirname(fname)
-  end,
 }

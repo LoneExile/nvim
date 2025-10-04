@@ -4,8 +4,7 @@ return {
   init_options = {
     AutomaticWorkspaceInit = true,
   },
-  root_dir = function(fname)
-    local lspconfig = require('lspconfig')
-    return lspconfig.util.root_pattern('*.sln', '*.csproj', '.git')(fname) or lspconfig.util.path.dirname(fname)
-  end,
+  -- NOTE: root_dir function removed for Neovim 0.10+ compatibility
+  -- vim.lsp.config() cannot serialize functions
+  -- Using default lspconfig root_dir pattern (looks for *.sln, *.csproj, .git)
 }

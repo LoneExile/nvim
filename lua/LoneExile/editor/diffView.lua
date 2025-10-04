@@ -55,7 +55,8 @@ M.setup = function()
     config = function()
       local status_ok, diffview = pcall(require, 'diffview')
       if not status_ok then
-        vim.notify('diffview' .. ' not found!')
+        -- vim.notify('diffview' .. ' not found!')
+        print('diffview not found!')
         return
       end
 

@@ -16,7 +16,8 @@ M.keys = {
         return
       end
       ---@diagnostic disable-next-line: missing-parameter
-      notify.dismiss()
+      -- notify.dismiss()
+      print('Dismiss all notifications')
     end,
     desc = 'Hide Notification',
   },

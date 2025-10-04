@@ -1,11 +1,8 @@
 return {
   cmd = { 'pyright-langserver', '--stdio' },
   filetypes = { 'python' },
-  root_dir = function(fname)
-    local lspconfig = require('lspconfig')
-    return lspconfig.util.root_pattern('pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', '.git')(fname)
-      or lspconfig.util.path.dirname(fname)
-  end,
+  -- Note: root_dir removed - functions cannot be serialized with vim.lsp.enable()
+  -- The default root_dir from lspconfig will be used (looks for pyproject.toml, setup.py, etc.)
   settings = {
     python = {
       analysis = {

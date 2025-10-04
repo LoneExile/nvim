@@ -16,10 +16,8 @@ return {
     'templ',
   },
   cmd = { 'emmet-ls', '--stdio' },
-  root_dir = function(fname)
-    local lspconfig = require('lspconfig')
-    return lspconfig.util.root_pattern('.git')(fname) or lspconfig.util.path.dirname(fname)
-  end,
+  -- Note: root_dir removed - functions cannot be serialized with vim.lsp.enable()
+  -- The default root_dir from lspconfig will be used
   single_file_support = true,
   init_options = {
     html = {

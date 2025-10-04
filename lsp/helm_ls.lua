@@ -1,10 +1,9 @@
 return {
   cmd = { 'helm_ls', 'serve' },
   filetypes = { 'helm' },
-  root_dir = function(fname)
-    local lspconfig = require('lspconfig')
-    return lspconfig.util.root_pattern('Chart.yaml')(fname) or lspconfig.util.path.dirname(fname)
-  end,
+  -- NOTE: root_dir function removed for Neovim 0.10+ compatibility
+  -- vim.lsp.config() cannot serialize functions
+  -- Using default lspconfig root_dir pattern (looks for Chart.yaml)
   settings = {
     ['helm-ls'] = {
       logLevel = 'info',

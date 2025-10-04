@@ -52,24 +52,9 @@ return {
     'svelte',
     'templ',
   },
-  root_dir = function(fname)
-    local lspconfig = require('lspconfig')
-    return lspconfig.util.root_pattern(
-      'tailwind.config.js',
-      'tailwind.config.ts',
-      'tailwind.config.cjs',
-      'tailwind.config.mjs',
-      'tailwind.config.json',
-      'postcss.config.js',
-      'postcss.config.ts',
-      'postcss.config.cjs',
-      'postcss.config.mjs',
-      'postcss.config.json',
-      'package.json',
-      'node_modules',
-      '.git'
-    )(fname) or lspconfig.util.path.dirname(fname)
-  end,
+  -- NOTE: root_dir function removed for Neovim 0.10+ compatibility
+  -- vim.lsp.config() cannot serialize functions
+  -- Using default lspconfig root_dir pattern (looks for tailwind.config.*, postcss.config.*, package.json, etc.)
   init_options = {
     userLanguages = {
       eelixir = 'html-eex',

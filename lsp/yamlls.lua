@@ -1,3 +1,11 @@
+-- Load schemas immediately instead of using a function
+-- Functions cannot be serialized with vim.lsp.enable()
+local schemas = {}
+local status, schemastore = pcall(require, 'schemastore')
+if status then
+  schemas = schemastore.yaml.schemas()
+end
+
 return {
   settings = {
     yaml = {
@@ -5,13 +13,7 @@ return {
         enable = false,
         url = '',
       },
-      schemas = function()
-        local status, schemastore = pcall(require, 'schemastore')
-        if status then
-          return schemastore.yaml.schemas()
-        end
-        return {}
-      end,
+      schemas = schemas,
       customTags = {
         -- AWS CloudFormation
         '!And scalar',

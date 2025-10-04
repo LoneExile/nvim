@@ -1,10 +1,8 @@
 return {
   cmd = { 'vls' },
   filetypes = { 'vue' },
-  root_dir = function(fname)
-    local lspconfig = require('lspconfig')
-    return lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git')(fname) or lspconfig.util.path.dirname(fname)
-  end,
+  -- Note: root_dir removed - functions cannot be serialized with vim.lsp.enable()
+  -- The default root_dir from lspconfig will be used (looks for package.json, etc.)
   init_options = {
     config = {
       css = {},

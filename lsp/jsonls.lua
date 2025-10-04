@@ -1,13 +1,15 @@
+-- Load schemas immediately instead of using a function
+-- Functions cannot be serialized with vim.lsp.enable()
+local schemas = {}
+local status, schemastore = pcall(require, 'schemastore')
+if status then
+  schemas = schemastore.json.schemas()
+end
+
 return {
   settings = {
     json = {
-      schemas = function()
-        local status, schemastore = pcall(require, 'schemastore')
-        if status then
-          return schemastore.json.schemas()
-        end
-        return {}
-      end,
+      schemas = schemas,
       validate = { enable = true },
     },
   },

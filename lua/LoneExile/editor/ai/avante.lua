@@ -95,7 +95,7 @@ M.setup = function()
       },
       {
         'HakonHarnes/img-clip.nvim',
-        -- event = 'VeryLazy',
+        event = 'VeryLazy',
         opts = {
           default = {
             embed_image_as_base64 = false,

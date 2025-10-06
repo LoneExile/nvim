@@ -52,6 +52,9 @@ M.setup = function()
           backend = 'tmux',
           enabled = true,
         },
+        tools = {
+          copilot = { cmd = { 'copilot' }, url = 'https://github.com/github/copilot-cli' },
+        },
       },
     },
   }

@@ -6,7 +6,7 @@ return {
 
   -- Dap
   { 'leoluz/nvim-dap-go',                        true },
-  { 'mfussenegger/nvim-dap-python',              true },
+  { 'mfussenegger/nvim-dap-python',              false },
   { 'mfussenegger/nvim-dap',                     true },
   { 'rcarriga/nvim-dap-ui',                      true },
   { 'theHamsta/nvim-dap-virtual-text',           true },

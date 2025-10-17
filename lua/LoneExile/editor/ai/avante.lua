@@ -123,6 +123,7 @@ M.setup = function()
           },
           copilot = {
             endpoint = 'https://api.githubcopilot.com',
+            -- model = 'claude-sonnet-4',
             model = 'claude-sonnet-4.5',
             allow_insecure = false, -- Allow insecure server connections
             -- timeout = 30000, -- Timeout in milliseconds

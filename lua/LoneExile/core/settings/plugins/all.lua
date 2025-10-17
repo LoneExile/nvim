@@ -28,6 +28,7 @@ return {
   -- Git
   { 'sindrets/diffview.nvim',                    true },
   { 'lewis6991/gitsigns.nvim',                   true },
+  { 'tpope/vim-fugitive',                        true },
 
   -- Motion
   { 'theprimeagen/harpoon',                      true },

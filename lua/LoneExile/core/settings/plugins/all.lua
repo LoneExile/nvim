@@ -53,7 +53,8 @@ return {
   -- Other
   { 'glacambre/firenvim',                        true },
   -- { 'iamcco/markdown-preview.nvim',              false },
-  { 'toppair/peek.nvim',                         true },
+  -- { 'toppair/peek.nvim',                         true },
+  { 'brianhuster/live-preview.nvim',             true },
 
   -- Treesitter
   { 'windwp/nvim-autopairs',                     true },
@@ -97,7 +98,7 @@ return {
   { 'ray-x/go.nvim',                             false },
   -- { 'laytan/tailwind-sorter.nvim',               true },
   
-  { 'MaximilianLloyd/tw-values.nvim',            true },
+  { 'MaximilianLloyd/tw-values.nvim',            false },
   { 'Hoffs/omnisharp-extended-lsp.nvim',         true },
   { 'towolf/vim-helm',                           true },
   { 'hat0uma/csvview.nvim',                      true },

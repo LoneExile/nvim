@@ -15,8 +15,7 @@ return {
   -- Editor
   { 'theprimeagen/refactoring.nvim',             true },
   { 'akinsho/toggleterm.nvim',                   true },
-  { 'olimorris/codecompanion.nvim',              true },
-  { 'HakonHarnes/img-clip.nvim',                 true },
+  { 'HakonHarnes/img-clip.nvim',                 false },
   { 'nvim-mini/mini.diff',                      false },
 
   { 'nvim-neotest/neotest',                      true },
@@ -69,9 +68,10 @@ return {
   -- AI
   { 'zbirenbaum/copilot.lua',                    true },
   { 'CopilotC-Nvim/CopilotChat.nvim',            true },
+  { 'olimorris/codecompanion.nvim',              false },
   { 'jackMort/ChatGPT.nvim',                     false },
-  { 'yetone/avante.nvim',                        true },
-  { 'ravitemer/mcphub.nvim',                     true },
+  { 'yetone/avante.nvim',                        false },
+  { 'ravitemer/mcphub.nvim',                     false },
   { 'folke/sidekick.nvim',                       true },
 
   -- DB
@@ -117,5 +117,5 @@ return {
 
   { 'folke/todo-comments.nvim',                  true },
   { 'folke/snacks.nvim',                         true },
-  { 'nvim-mini/mini.icons',                       true },
+  { 'nvim-mini/mini.icons',                      true }
 }

@@ -16,7 +16,10 @@ M.keys = function()
     },
     {
       '<leader>ums',
-      '<cmd>LivePreview start<CR>',
+    function()
+        vim.cmd('LivePreview stop')
+        vim.cmd('LivePreview start')
+    end,
       mode = 'n',
       desc = 'Markdown Live Preview Start',
     },

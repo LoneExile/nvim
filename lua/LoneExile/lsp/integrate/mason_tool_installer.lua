@@ -38,6 +38,7 @@ M.setup = function(_, _)
           'yaml-language-server',
           'json-lsp',
           'typescript-language-server', -- Tsserver
+          'biome',
           -- 'eslint-lsp',
           'tailwindcss-language-server',
           'html-lsp',

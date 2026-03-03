@@ -56,6 +56,7 @@ M.setup = function(s, _)
 
         groovy = { 'npm-groovy-lint' },
         sql = { 'sqlfluff' },
+        tflint = { 'tflint' }
       }
 
       -- for ft, _ in pairs(lint.linters_by_ft) do

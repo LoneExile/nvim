@@ -18,6 +18,57 @@ M.setup = function(_, location)
     config = function()
       vim.g.skip_ts_context_commentstring_module = true
 
+      vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufNewFile' }, {
+        callback = function(args)
+          vim.b[args.buf].match_disable_ts = 1
+        end,
+      })
+
+      -- Neovim 0.12+ returns match[id] as a list; nvim-treesitter's
+      -- query_predicates.lua assumes a single TSNode and crashes with
+      -- "attempt to call method 'range' (a nil value)" on markdown injections.
+      -- Re-register the broken directives/predicates with list-aware wrappers.
+      pcall(require, 'nvim-treesitter.query_predicates')
+      do
+        local query = vim.treesitter.query
+        local function unwrap(val)
+          if type(val) == 'table' and val[1] ~= nil and type(val[1]) == 'userdata' then
+            return val[1]
+          end
+          return val
+        end
+
+        local function get_parser_from_info_string(alias)
+          local map = {
+            bash = 'bash', sh = 'bash', shell = 'bash', zsh = 'bash',
+            js = 'javascript', javascript = 'javascript',
+            ts = 'typescript', typescript = 'typescript',
+            py = 'python', python = 'python',
+            rb = 'ruby', ruby = 'ruby',
+            rs = 'rust', rust = 'rust',
+            go = 'go', lua = 'lua', vim = 'vim', c = 'c', cpp = 'cpp',
+            json = 'json', yaml = 'yaml', toml = 'toml', html = 'html', css = 'css',
+          }
+          return map[alias] or alias
+        end
+
+        query.add_directive('set-lang-from-info-string!', function(match, _, bufnr, pred, metadata)
+          local node = unwrap(match[pred[2]])
+          if not node then return end
+          local alias = vim.treesitter.get_node_text(node, bufnr):lower()
+          metadata['injection.language'] = get_parser_from_info_string(alias)
+        end, { force = true, all = false })
+
+        query.add_directive('downcase!', function(match, _, bufnr, pred, metadata)
+          local node = unwrap(match[pred[2]])
+          if not node then return end
+          local text = vim.treesitter.get_node_text(node, bufnr)
+          local id = pred[2]
+          metadata[id] = metadata[id] or {}
+          metadata[id].text = text:lower()
+        end, { force = true, all = false })
+      end
+
       local status_ok, treesitter = pcall(require, 'nvim-treesitter.configs')
       if not status_ok then
         return
@@ -97,9 +148,7 @@ M.setup = function(_, location)
 
         -- matchup
         matchup = {
-          enable = true, -- mandatory, false will disable the whole extension
-          disable = { 'c', 'ruby' }, -- optional, list of language that will be disabled
-          -- [options]
+          enable = false, -- disabled: treesitter engine crashes on markdown injections (falls back to regex)
         },
         -- ** markid ** better highlight (currently suck!?)
         -- markid = { enable = false },

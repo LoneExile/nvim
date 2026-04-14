@@ -108,7 +108,7 @@ M.setup = function(_, _)
           'gotests', -- Go
           'gofumpt',
           -- 'hadolint', -- Dockerfile
-          'snyk',
+          -- 'snyk',
           'trivy',
           'shellcheck',
 

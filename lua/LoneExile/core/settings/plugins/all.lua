@@ -117,5 +117,6 @@ return {
 
   { 'folke/todo-comments.nvim',                  true },
   { 'folke/snacks.nvim',                         true },
-  { 'nvim-mini/mini.icons',                      true }
+  { 'nvim-mini/mini.icons',                      true },
+  { 'wakatime/vim-wakatime',                     false }
 }

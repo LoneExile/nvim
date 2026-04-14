@@ -110,49 +110,21 @@ M.setup = function()
 
     config = function()
       require('avante').setup({
-        provider = 'copilot',
+        provider = 'claude',
         providers = {
           claude = {
-            endpoint = 'https://api.anthropic.com',
-            model = 'claude-sonnet-4-20250514',
+            -- endpoint = 'https://api.anthropic.com',
+            endpoint = 'https://crs.0dl.me/api',
+            model = 'claude-opus-4-6',
+            -- model = 'claude-sonnet-4-5-20250929',
             extra_request_body = {
-              max_tokens = 40000,
+              max_tokens = 200000,
               temperature = 0,
             },
             -- disable_tools = true,
           },
-          copilot = {
-            endpoint = 'https://api.githubcopilot.com',
-            -- model = 'claude-sonnet-4',
-            model = 'claude-sonnet-4.5',
-            allow_insecure = false, -- Allow insecure server connections
-            -- timeout = 30000, -- Timeout in milliseconds
-            extra_request_body = {
-              -- temperature = 0,
-              max_tokens = 128000,
-            },
-          },
-          openrouter = {
-            __inherited_from = 'openai',
-            endpoint = 'https://openrouter.ai/api/v1',
-            -- model = 'anthropic/claude-opus-4',
-            model = 'google/gemini-2.5-pro-preview-06-05',
-            api_key_name = 'OPENROUTER_API_KEY',
-            disable_tools = false,
-          },
         },
         acp_providers = {
-          -- ['claude-code'] = {
-          --   -- pnpm install -g @anthropic-ai/claude-code
-          --   -- pnpm install -g acp-claude-code
-          --   command = 'npx',
-          --   args = { 'acp-claude-code' },
-          --   env = {
-          --     NODE_NO_WARNINGS = '1',
-          --     ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY'),
-          --   },
-          -- },
-          -- npm install -g @google/gemini-cli
           ['gemini-cli'] = {
             command = 'gemini',
             args = { '--experimental-acp' },
@@ -175,31 +147,31 @@ M.setup = function()
             start_insert = false,
           },
         },
-        -- ---- ## ravitemer/mcphub.nvim
-        disabled_tools = {
-          'list_files', -- Built-in file operations
-          'search_files',
-          'read_file',
-          'create_file',
-          'rename_file',
-          'delete_file',
-          'create_dir',
-          'rename_dir',
-          'delete_dir',
-          'bash', -- Built-in terminal access
-        },
-        -- system_prompt as function ensures LLM always has latest MCP server state
-        -- This is evaluated for every message, even in existing chats
-        system_prompt = function()
-          local hub = require('mcphub').get_hub_instance()
-          return hub and hub:get_active_servers_prompt() or ''
-        end,
-        -- Using function prevents requiring mcphub before it's loaded
-        custom_tools = function()
-          return {
-            require('mcphub.extensions.avante').mcp_tool(),
-          }
-        end,
+        -- -- ---- ## ravitemer/mcphub.nvim
+        -- disabled_tools = {
+        --   'list_files', -- Built-in file operations
+        --   'search_files',
+        --   'read_file',
+        --   'create_file',
+        --   'rename_file',
+        --   'delete_file',
+        --   'create_dir',
+        --   'rename_dir',
+        --   'delete_dir',
+        --   'bash', -- Built-in terminal access
+        -- },
+        -- -- system_prompt as function ensures LLM always has latest MCP server state
+        -- -- This is evaluated for every message, even in existing chats
+        -- system_prompt = function()
+        --   local hub = require('mcphub').get_hub_instance()
+        --   return hub and hub:get_active_servers_prompt() or ''
+        -- end,
+        -- -- Using function prevents requiring mcphub before it's loaded
+        -- custom_tools = function()
+        --   return {
+        --     require('mcphub.extensions.avante').mcp_tool(),
+        --   }
+        -- end,
       })
     end,
   }

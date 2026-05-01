@@ -11,7 +11,45 @@ M.setup = function(settings, location)
       { 'hrsh7th/cmp-nvim-lua' },
       { 'saadparwaiz1/cmp_luasnip', dependencies = { 'L3MON4D3/LuaSnip', event = 'InsertCharPre' } },
       { 'rafamadriz/friendly-snippets' },
-      { 'jcha0713/cmp-tw2css' },
+      {
+        'jcha0713/cmp-tw2css',
+        init = function()
+          -- Neovim 0.12+ can return nil from pcall(vim.treesitter.get_parser)
+          -- even when pcall succeeds. Monkey-patch is_available and complete
+          -- to guard against nil tree before the plugin calls tree:lang().
+          local ok, src = pcall(require, 'cmp-tw2css')
+          if not ok then return end
+
+          local orig_is_available = src.is_available
+          src.is_available = function(self)
+            local bufnr = vim.api.nvim_get_current_buf() or 0
+            local buf_lang = vim.api.nvim_buf_get_option(bufnr, 'ft')
+            local pok, tree = pcall(vim.treesitter.get_parser, bufnr, buf_lang)
+            if pok and tree == nil then
+              local filename = vim.fn.expand('%:e')
+              if not filename then return false end
+              local function is_ss(l) return l == 'css' or l == 'scss' end
+              return is_ss(filename)
+            end
+            return orig_is_available(self)
+          end
+
+          local orig_complete = src.complete
+          src.complete = function(self, params, callback)
+            local bufnr = vim.api.nvim_get_current_buf() or 0
+            local buf_lang = vim.api.nvim_buf_get_option(bufnr, 'ft')
+            local pok, tree = pcall(vim.treesitter.get_parser, bufnr, buf_lang)
+            if pok and tree == nil then
+              if require('cmp-tw2css').setup ~= nil then
+                -- fallback behavior: skip completion
+                callback()
+              end
+              return
+            end
+            return orig_complete(self, params, callback)
+          end
+        end,
+      },
       { 'windwp/nvim-autopairs', dependencies = { 'nvim-treesitter/nvim-treesitter' }, event = 'InsertEnter' },
       { 'SergioRibera/cmp-dotenv' },
     },

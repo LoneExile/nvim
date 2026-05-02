@@ -53,28 +53,7 @@ M.setup = function(settings, location)
 
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
-        menu = {
-          border = 'rounded',
-          draw = {
-            components = {
-              -- Tailwind color preview in the kind icon column. Falls back
-              -- to the default BlinkCmpKind* highlight for non-color items.
-              -- See LoneExile/tailwind-tools.nvim (fork w/ blink module).
-              kind_icon = {
-                ellipsis = false,
-                text = function(ctx) return ctx.kind_icon .. ctx.icon_gap end,
-                -- Match blink's default: return a priority-wrapped range
-                -- array (priority 20000) so the highlight beats the cursorline
-                -- (default priority 10000). Plain-string returns fall behind.
-                highlight = function(ctx)
-                  local ok, tt = pcall(require, 'tailwind-tools.blink')
-                  local hl = (ok and tt.highlight(ctx)) or ctx.kind_hl
-                  return { { group = hl, priority = 20000 } }
-                end,
-              },
-            },
-          },
-        },
+        menu = { border = 'rounded' },
         ghost_text = { enabled = false },
       },
 
@@ -90,6 +69,14 @@ M.setup = function(settings, location)
             module = 'lazydev.integrations.blink',
             score_offset = 100,
           },
+          -- blink ships a built-in Tailwind hack at
+          -- `blink.cmp.sources.lsp.hacks.tailwind` that runs automatically
+          -- when client.name == 'tailwindcss'. It detects color items
+          -- (kind=Color + 7-char #RRGGBB documentation) and rewrites
+          -- `item.kind_icon` to the configured icon and `item.kind_hl` to
+          -- a `HexColor<rgb>` group with `fg = #<rgb>`. The default icon
+          -- is '██' — bumping the size makes the color more readable.
+          lsp = { opts = { tailwind_color_icon = '██' } },
         },
       },
 

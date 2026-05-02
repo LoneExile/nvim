@@ -35,6 +35,11 @@ M.setup = function(_, _)
       'JoosepAlviste/nvim-ts-context-commentstring',
     },
     config = function()
+      -- Skip ts_context_commentstring's deprecated module-style auto-setup
+      -- (it required nvim-treesitter.configs which is gone on main branch).
+      -- Only the pre_hook integration below is used by Comment.nvim.
+      vim.g.skip_ts_context_commentstring_module = true
+
       local status_ok, comment = pcall(require, 'Comment')
       if not status_ok then
         return

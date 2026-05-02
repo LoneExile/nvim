@@ -17,8 +17,12 @@ local M = {}
 --     Comment.nvim's resolver is pre_hook -> F.calculate(ctx) -> bo.commentstring
 --     and F.calculate uses an internal hardcoded `L` table (never
 --     vim.filetype.get_option). Source: lua/Comment/utils.lua and ft.lua.
---   * Matchup TS engine is intentionally disabled (regex fallback). vim-matchup
---     has no upstream fix for the markdown-injection crash class.
+--   * vim-matchup's treesitter engine is on by default
+--     (`g:matchup_treesitter_enabled = v:true`). On nvim-treesitter `main`
+--     branch the old `setup({ matchup = ... })` module API is gone, so the
+--     engine runs whenever a parser is available — no opt-in needed. We
+--     still call `require('match-up').setup(...)` for opinionated tweaks
+--     (offscreen popup + deferred matchparen for perf).
 --   * Background-prime runs on User VeryLazy so startup is not blocked.
 
 M.ensure_installed = {
@@ -48,6 +52,19 @@ M.setup = function(_, _)
       { 'folke/ts-comments.nvim', opts = {} },
     },
     config = function()
+      -- vim-matchup: opinionated tweaks. TS engine is the default, so this
+      -- is purely about UX (offscreen popup beats the status-line method
+      -- on tall files; deferred matchparen avoids re-matching on every
+      -- cursor move).
+      pcall(function()
+        require('match-up').setup({
+          matchparen = {
+            deferred = 1,
+            offscreen = { method = 'popup' },
+          },
+        })
+      end)
+
       -- Defer the parser background-prime to VeryLazy so we don't iterate
       -- 22 langs on every startup. Build hook (above) handles :Lazy sync.
       vim.api.nvim_create_autocmd('User', {

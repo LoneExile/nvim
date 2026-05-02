@@ -77,7 +77,7 @@ You already have `folke/snacks.nvim` loaded. These are duplicates:
 
 - [x] ~~`numToStr/Comment.nvim` — drop~~ **RECONSIDERED — kept** (load-bearing for JSX/TSX commentstring via `pre_hook`, see treesitter migration).
 - [x] ~~`JoosepAlviste/nvim-ts-context-commentstring` — drop~~ **RECONSIDERED — kept** (same reason).
-- [ ] `andymass/vim-matchup` — re-enable TS engine. The TODO's `matchup = { enable = true }` snippet was the old `master`-branch nvim-treesitter API and no longer applies. On `main` branch, vim-matchup integrates via its own `g:` vars (e.g. `vim.g.matchup_treesitter_enabled`). Needs verification against current vim-matchup release before flipping on.
+- [x] `andymass/vim-matchup` — verified 2026-05-02. The TODO's `matchup = { enable = true }` snippet was the old `master`-branch nvim-treesitter module API which no longer exists on `main`. On the current setup the TS engine is **on by default** (`g:matchup_treesitter_enabled = v:true`) — no opt-in flag exists or is needed. Cleaned up the stale "intentionally disabled" comment in `ts.lua` and added `require('match-up').setup({ matchparen = { deferred = 1, offscreen = { method = 'popup' } } })` for nicer offscreen UX + perf-friendly deferred matchparen.
 - [x] `windwp/nvim-ts-autotag` — config rewritten 2026-05-02 to post-2024 API: `setup({ opts = { enable_close, enable_rename, enable_close_on_slash } })`. Top-level `filetypes`/`skip_tags` removed (now auto-detected via TS parser; void elements handled internally).
   - File: `lua/LoneExile/editor/treesitter/autoTag.lua`
 - [ ] `ThePrimeagen/harpoon` — pin `branch = "harpoon2"`. Completely different API (`harpoon:list():add()`, `harpoon:list():select(N)`, `harpoon.ui:toggle_quick_menu(harpoon:list())`). Whole `harpoon.lua` gets rewritten.

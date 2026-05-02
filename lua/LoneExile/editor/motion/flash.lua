@@ -8,15 +8,15 @@ M.keys = {
   {
     'gh',
     function() require('flash').jump() end,
-    desc = 'Flash jump (was HopWord)',
-    mode = { 'n', 'x', 'o' },
-  },
-  {
-    's',
-    function() require('flash').jump() end,
     desc = 'Flash jump',
     mode = { 'n', 'x', 'o' },
   },
+  -- {
+  --   's',
+  --   function() require('flash').jump() end,
+  --   desc = 'Flash jump',
+  --   mode = { 'n', 'x', 'o' },
+  -- },
   {
     'S',
     function() require('flash').treesitter() end,
@@ -29,12 +29,12 @@ M.keys = {
     desc = 'Flash remote',
     mode = 'o',
   },
-  {
-    'R',
-    function() require('flash').treesitter_search() end,
-    desc = 'Flash treesitter search',
-    mode = { 'o', 'x' },
-  },
+  -- {
+  --   'R',
+  --   function() require('flash').treesitter_search() end,
+  --   desc = 'Flash treesitter search',
+  --   mode = { 'o', 'x' },
+  -- },
 }
 
 M.setup = function()

@@ -98,11 +98,25 @@ M.setup = function()
       if not harpoon then return end
 
       -- harpoon2 setup is REQUIRED (it wires up autocmds for cwd/save/etc).
+      --
+      -- `settings.key` namespaces the persisted list. Default is just `cwd`
+      -- so all branches share one list. We override to `git_branch .. cwd`
+      -- so each branch gets its own harpoon list — switching branches now
+      -- swaps the marked-files set automatically.
+      -- Snippet from upstream issue:
+      --   github.com/ThePrimeagen/harpoon/issues/322#issuecomment-2049065966
+      -- Falls back to bare cwd outside a git repo (empty branch string).
       harpoon:setup({
         settings = {
-          save_on_toggle = false,
+          save_on_toggle = true,
           sync_on_ui_close = true,
-          mark_branch = false,
+          key = function()
+            local handle = io.popen('git branch --show-current 2> /dev/null')
+            local git_branch = handle and handle:read('*a') or ''
+            if handle then handle:close() end
+            git_branch = git_branch:gsub('\n', '')
+            return git_branch .. vim.fn.getcwd()
+          end,
         },
       })
 

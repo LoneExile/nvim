@@ -230,21 +230,22 @@ M.setup = function(_, _)
           },
           components = {
             harpoon_index = function(config, node)
-              local harpoon, Marked = pcall(require, 'harpoon.mark')
-              if not harpoon then
+              -- harpoon2: no `harpoon.mark` module — iterate `harpoon:list().items`
+              -- and match `item.value` against the node path.
+              local ok, harpoon = pcall(require, 'harpoon')
+              if not ok then
                 return {}
               end
-              -- local Marked = require('harpoon.mark')
               local path = node:get_id()
-              local success, index = pcall(Marked.get_index_of, path)
-              if success and index and index > 0 then
-                return {
-                  text = string.format(' ⥤ %d', index), -- <-- Add your favorite harpoon like arrow here
-                  highlight = config.highlight or 'NeoTreeDirectoryIcon',
-                }
-              else
-                return {}
+              for i, item in ipairs(harpoon:list().items or {}) do
+                if item.value == path then
+                  return {
+                    text = string.format(' ⥤ %d', i),
+                    highlight = config.highlight or 'NeoTreeDirectoryIcon',
+                  }
+                end
               end
+              return {}
             end,
           },
           renderers = {

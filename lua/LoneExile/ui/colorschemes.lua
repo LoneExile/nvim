@@ -46,10 +46,20 @@ M.transparent = function()
     'LspReferenceText',
     'LspFloatWinNormal',
     'LspReferenceWrite',
-    'CmpDocumentation',
     'NormalSB', -- help tag
     'SignColumnSB', -- help tag
     'FzfLuaNormal',
+    -- blink.cmp (replaced nvim-cmp's CmpDocumentation, etc.)
+    'BlinkCmpMenu',
+    'BlinkCmpMenuBorder',
+    'BlinkCmpMenuSelection',
+    'BlinkCmpDoc',
+    'BlinkCmpDocBorder',
+    'BlinkCmpDocSeparator',
+    'BlinkCmpSignatureHelp',
+    'BlinkCmpSignatureHelpBorder',
+    'BlinkCmpScrollBarGutter',
+    'BlinkCmpScrollBarThumb',
   }
   for _, name in ipairs(hl_groups) do
     vim.cmd(string.format('highlight %s ctermbg=none guibg=none', name))

@@ -1,194 +1,80 @@
 local M = {}
 
+-- blink.cmp migration (2026-05-02):
+--   * Replaces nvim-cmp + cmp-buffer + cmp-path + cmp-nvim-lsp + cmp-nvim-lua
+--     + cmp_luasnip with a single Rust-backed completion engine.
+--   * Drops cmp-tw2css (no blink equivalent — Tailwind LSP still gives class
+--     completions; for inline color preview see `luckasRanarison/tailwind-tools.nvim`).
+--   * Drops cmp-dotenv (no blink port).
+--   * Copilot intentionally NOT added as a completion source — ghost-text via
+--     copilot.lua suggestions is the sole UX (user preference).
+--   * `lsp/init.lua` now sources capabilities from blink instead of cmp_nvim_lsp.
+--   * nvim-autopairs cmp_autopairs.on_confirm_done hook removed; modern
+--     nvim-autopairs auto-detects blink and integrates without it.
+
 M.setup = function(settings, location)
   return {
-    'hrsh7th/nvim-cmp',
+    'Saghen/blink.cmp',
     event = 'InsertEnter',
+    version = '1.*', -- prebuilt fuzzy matcher binary
     dependencies = {
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lua' },
-      { 'saadparwaiz1/cmp_luasnip', dependencies = { 'L3MON4D3/LuaSnip', event = 'InsertCharPre' } },
-      { 'rafamadriz/friendly-snippets' },
       {
-        'jcha0713/cmp-tw2css',
-        init = function()
-          -- Neovim 0.12+ can return nil from pcall(vim.treesitter.get_parser)
-          -- even when pcall succeeds. Monkey-patch is_available and complete
-          -- to guard against nil tree before the plugin calls tree:lang().
-          local ok, src = pcall(require, 'cmp-tw2css')
+        'L3MON4D3/LuaSnip',
+        event = 'InsertCharPre',
+        dependencies = { 'rafamadriz/friendly-snippets' },
+        config = function()
+          local ok, luasnip = pcall(require, 'luasnip')
           if not ok then return end
-
-          local orig_is_available = src.is_available
-          src.is_available = function(self)
-            local bufnr = vim.api.nvim_get_current_buf() or 0
-            local buf_lang = vim.api.nvim_buf_get_option(bufnr, 'ft')
-            local pok, tree = pcall(vim.treesitter.get_parser, bufnr, buf_lang)
-            if pok and tree == nil then
-              local filename = vim.fn.expand('%:e')
-              if not filename then return false end
-              local function is_ss(l) return l == 'css' or l == 'scss' end
-              return is_ss(filename)
-            end
-            return orig_is_available(self)
-          end
-
-          local orig_complete = src.complete
-          src.complete = function(self, params, callback)
-            local bufnr = vim.api.nvim_get_current_buf() or 0
-            local buf_lang = vim.api.nvim_buf_get_option(bufnr, 'ft')
-            local pok, tree = pcall(vim.treesitter.get_parser, bufnr, buf_lang)
-            if pok and tree == nil then
-              if require('cmp-tw2css').setup ~= nil then
-                -- fallback behavior: skip completion
-                callback()
-              end
-              return
-            end
-            return orig_complete(self, params, callback)
-          end
+          require(location .. '.luasnip').setup_luasnip(luasnip)
         end,
       },
-      { 'windwp/nvim-autopairs', dependencies = { 'nvim-treesitter/nvim-treesitter' }, event = 'InsertEnter' },
-      { 'SergioRibera/cmp-dotenv' },
     },
-    config = function()
-      local cmp_ok, cmp = pcall(require, 'cmp')
-      if not cmp_ok then
-        return
-      end
-      local luasnip_ok, luasnip = pcall(require, 'luasnip')
-      if not luasnip_ok then
-        return
-      end
-      require(location .. '.luasnip').setup_luasnip(luasnip)
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      -- 'default' preset: <C-y> accept, <C-Space> show, <C-e> cancel,
+      -- <C-d>/<C-f> scroll docs. <CR> is intentionally NOT mapped (falls
+      -- through to insert a literal newline — user's existing behavior).
+      keymap = {
+        preset = 'default',
+        ['<Down>'] = { 'select_next', 'fallback' },
+        ['<Up>'] = { 'select_prev', 'fallback' },
+        ['<C-j>'] = { 'snippet_forward', 'fallback' },
+        ['<C-k>'] = { 'snippet_backward', 'fallback' },
+      },
 
-      local use_icons = true
-      local kind = settings.utils.convert_kind_icons(settings.kindIcon)
+      appearance = {
+        -- Reuse the existing kind icon table (same shape as blink expects:
+        -- { Function = '', Method = '', ... }).
+        kind_icons = settings.utils.convert_kind_icons(settings.kindIcon),
+      },
 
-      local keymaps = require(location .. '.keymaps').keymaps(cmp, luasnip, settings)
+      snippets = { preset = 'luasnip' },
 
-      ----- cmp config
-      local setting = {
-        max_width = 0,
-        kind_icons = kind,
-        source_names = {
-          ['cmp-tw2css'] = '(CSS)',
-          copilot = '(Copilot)',
-          nvim_lsp = '(LSP)',
-          -- emoji = '(Emoji)',
-          path = '(Path)',
-          -- calc = '(Calc)',
-          -- cmp_tabnine = '(Tabnine)',
-          vsnip = '(Snippet)',
-          luasnip = '(Snippet)',
-          buffer = '(Buffer)',
-          -- tmux = '(TMUX)',
-        },
-        duplicates = {
-          buffer = 1,
-          path = 1,
-          nvim_lsp = 0,
-          luasnip = 1,
-        },
-        duplicates_default = 0,
-      }
+      completion = {
+        documentation = { auto_show = true, auto_show_delay_ms = 200 },
+        menu = { border = 'rounded' },
+        ghost_text = { enabled = false },
+      },
 
-      local cmp_config = {
-        completion = {
-          keyword_length = 1,
-        },
-        experimental = {
-          ghost_text = false,
-          native_menu = false,
-        },
-        formatting = {
-          fields = { 'kind', 'abbr', 'menu' },
-          format = function(entry, vim_item)
-            local max_width = setting.max_width
-            if max_width ~= 0 and #vim_item.abbr > max_width then
-              vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. '…'
-            end
-            if use_icons then
-              vim_item.kind = setting.kind_icons[vim_item.kind]
-            end
-            if entry.source.name == 'copilot' then
-              vim_item.kind = ' '
-              vim_item.kind_hl_group = 'CmpItemKindCopilot'
-            end
+      signature = { enabled = true, window = { border = 'rounded' } },
 
-            -- get color highlight on tailwindcss
-            if vim_item.kind == kind['Color'] and entry.completion_item.documentation then
-              local blackOrWhiteFg = function(r, g, b)
-                return ((r * 0.299 + g * 0.587 + b * 0.114) > 186) and '#000000' or '#ffffff'
-              end
-              local _, _, r, g, b = string.find(entry.completion_item.documentation, '^rgb%((%d+), (%d+), (%d+)')
-              if r then
-                local color = string.format('%02x', r) .. string.format('%02x', g) .. string.format('%02x', b)
-                print(color)
-                local group = 'Tw_' .. color
-                if vim.fn.hlID(group) < 1 then
-                  vim.api.nvim_set_hl(0, group, { fg = blackOrWhiteFg(r, g, b), bg = '#' .. color })
-                end
-
-                vim_item.kind = kind['Color']
-                -- vim_item.kind_hl_group = group -- get hl to icon
-                vim_item.abbr_hl_group = group
-              end
-            end
-
-            vim_item.menu = setting.source_names[entry.source.name]
-            vim_item.dup = setting.duplicates[entry.source.name] or setting.duplicates_default
-            return vim_item
-          end,
-        },
-        snippet = {
-          expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-          end,
-        },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
-        sources = {
-          { name = 'copilot' },
-          { name = 'nvim_lsp' },
-          { name = 'path' },
-          { name = 'luasnip' },
-          -- { name = 'cmp_tabnine'},
-          { name = 'nvim_lua' },
-          { name = 'cmp-tw2css' },
-          {
-            name = 'dotenv',
-            option = {
-              path = '.',
-              load_shell = true,
-              item_kind = cmp.lsp.CompletionItemKind.Variable,
-              eval_on_confirm = false,
-              show_documentation = true,
-              show_content_on_docs = true,
-              documentation_kind = 'markdown',
-              dotenv_environment = '.*',
-              file_priority = function(a, b)
-                -- Prioritizing local files
-                return a:upper() < b:upper()
-              end,
-            },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+        providers = {
+          -- lazydev: mirror the previous group_index = 0 behavior so its
+          -- Lua API completions take priority over LuaLS workspace results.
+          lazydev = {
+            name = 'LazyDev',
+            module = 'lazydev.integrations.blink',
+            score_offset = 100,
           },
-          { name = 'buffer', max_item_count = 5 },
-          -- { name = 'calc' },
-          -- { name = 'emoji' },
-          -- { name = 'treesitter' },
-          { name = 'crates' },
-          -- { name = 'tmux' },
-          { name = 'lazydev', group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
         },
-        mapping = keymaps,
-      }
-      cmp.setup(cmp_config)
-    end,
+      },
+
+      fuzzy = { implementation = 'prefer_rust_with_warning' },
+    },
+    opts_extend = { 'sources.default' },
   }
 end
 

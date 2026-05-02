@@ -91,7 +91,12 @@ You already have `folke/snacks.nvim` loaded. These are duplicates:
 
 ## 🔵 Optional / nice-to-have
 
-- [ ] `nvim-cmp` → `Saghen/blink.cmp` (LazyVim, kickstart, AstroNvim are migrating). Big rewrite — optional swap.
+- [x] `nvim-cmp` → `Saghen/blink.cmp` — migrated 2026-05-02. Replaces `nvim-cmp + cmp-buffer + cmp-path + cmp-nvim-lsp + cmp-nvim-lua + cmp_luasnip` (6 plugins → 1). LuaSnip + friendly-snippets kept as snippet engine. Default keymap preset (`<C-y>` confirm) plus custom `<C-j>`/`<C-k>` for snippet jump and `<Down>`/`<Up>` for select. lsp/init.lua capabilities source swapped from `cmp_nvim_lsp.default_capabilities()` to `blink.cmp.get_lsp_capabilities()`. `cmp/keymaps.lua` and `cmp/utils.lua` deleted (folded into blink config / dead code respectively). Rust fuzzy matcher prebuilt binary downloaded by lazy on first launch.
+  - **Dropped (no blink equivalent):**
+    - `cmp-tw2css` — Tailwind class → CSS value preview with inline color swatches. **Alternative:** [`luckasRanarison/tailwind-tools.nvim`](https://github.com/luckasRanarison/tailwind-tools.nvim) (⭐590, actively maintained, has built-in blink integration; provides class concealing + EOL color preview, similar but not identical UX). Adopt later if missed.
+    - `cmp-dotenv` — `.env` variable completion. No port available.
+  - **Dropped (intentional, per user):** Copilot completion source. Ghost-text via `copilot.lua` remains the sole Copilot UX.
+  - **Removed integration:** nvim-autopairs `cmp_autopairs.on_confirm_done` hook (modern nvim-autopairs auto-detects blink).
 - [x] ~~Drop `folke/neodev.nvim`~~ — verified 2026-05-02: not referenced anywhere in `lua/` or `init.lua`, not in `resources/lazy-lock.json`, not on disk under `~/.local/share/nvim/lazy/`. Migration to `lazydev.nvim` is fully complete (no transitive pulls).
 - [ ] Watch `nvim-ufo` on 0.13 — slow release pace. Native `vim.lsp.foldexpr()` is the fallback if it breaks.
 - [ ] `wakatime` org renamed `williamboman` → `mason-org` checks complete; verify `mason-tool-installer` still works against v2.

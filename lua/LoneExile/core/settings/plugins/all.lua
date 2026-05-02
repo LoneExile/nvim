@@ -97,7 +97,8 @@ return {
   { 'pmizio/typescript-tools.nvim',              false }, -- replaced by vtsls (lsp/vtsls.lua)
   { 'ray-x/go.nvim',                             false },
   -- { 'laytan/tailwind-sorter.nvim',               true },
-  
+
+  { 'LoneExile/tailwind-tools.nvim',             true }, -- fork of luckasRanarison/* (archived) + blink.cmp integration
   { 'MaximilianLloyd/tw-values.nvim',            false },
   { 'Hoffs/omnisharp-extended-lsp.nvim',         true },
   { 'towolf/vim-helm',                           true },

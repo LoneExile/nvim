@@ -92,7 +92,7 @@ You already have `folke/snacks.nvim` loaded. These are duplicates:
 ## 🔵 Optional / nice-to-have
 
 - [ ] `nvim-cmp` → `Saghen/blink.cmp` (LazyVim, kickstart, AstroNvim are migrating). Big rewrite — optional swap.
-- [ ] Drop `folke/neodev.nvim` if anywhere transitively — EOL'd in favor of `lazydev.nvim` (you've moved).
+- [x] ~~Drop `folke/neodev.nvim`~~ — verified 2026-05-02: not referenced anywhere in `lua/` or `init.lua`, not in `resources/lazy-lock.json`, not on disk under `~/.local/share/nvim/lazy/`. Migration to `lazydev.nvim` is fully complete (no transitive pulls).
 - [ ] Watch `nvim-ufo` on 0.13 — slow release pace. Native `vim.lsp.foldexpr()` is the fallback if it breaks.
 - [ ] `wakatime` org renamed `williamboman` → `mason-org` checks complete; verify `mason-tool-installer` still works against v2.
 

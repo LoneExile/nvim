@@ -44,6 +44,14 @@ M.setup = function()
       'nvim-lua/plenary.nvim',
     },
     opts = {
+      -- Don't let tailwind-tools call lspconfig.tailwindcss.setup() —
+      -- our `lsp/tailwindcss.lua` already configures the server via the
+      -- modern `vim.lsp.config()` runtime path. With override=true the
+      -- plugin's setup() goes through `require('lspconfig')` and triggers
+      -- the deprecation warning ("framework is deprecated, use
+      -- vim.lsp.config"). All non-server features (color request, conceal,
+      -- sort) hook in via an LspAttach autocmd that runs regardless.
+      server = { override = false, settings = {} },
       document_color = {
         enabled = true,
         kind = 'inline', -- inline | foreground | background

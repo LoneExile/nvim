@@ -81,8 +81,8 @@ return {
 
   -- LSP
   { 'neovim/nvim-lspconfig',                     true },
-  { 'williamboman/mason.nvim',                   true },
-  { 'williamboman/mason-lspconfig.nvim',         true },
+  { 'mason-org/mason.nvim',                      true }, -- org rename (was williamboman/)
+  { 'mason-org/mason-lspconfig.nvim',            true }, -- org rename (was williamboman/)
   { 'WhoIsSethDaniel/mason-tool-installer.nvim', true },
 
   { 'j-hui/fidget.nvim',                         true },

@@ -62,6 +62,13 @@ M.setup = function(settings, location)
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
         providers = {
+          -- Buffer source: deprioritize so it doesn't out-rank LSP for
+          -- completion-rich filetypes. Tailwind LSP returns ~6k+ color
+          -- items + utilities; without offsetting buffer, file-content
+          -- words like `bg-rose-500` (already in the file) get scored
+          -- ahead of the LSP's color-tagged items, defeating the
+          -- built-in Tailwind hack that only runs on LSP-source items.
+          buffer = { score_offset = -3, min_keyword_length = 3 },
           -- lazydev: mirror the previous group_index = 0 behavior so its
           -- Lua API completions take priority over LuaLS workspace results.
           lazydev = {

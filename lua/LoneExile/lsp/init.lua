@@ -90,10 +90,13 @@ M.setup = function(_, location)
       -- tweaks live in `lsp/<name>.lua` files and are picked up by core.
       mason_lspconfig.setup({
         ensure_installed = {},
-        -- Exclude ts_ls so it doesn't double-attach alongside vtsls when
-        -- typescript-language-server is still installed locally. vtsls is
-        -- the canonical TS server in this config (lsp/vtsls.lua).
-        automatic_enable = { exclude = { 'ts_ls' } },
+        -- Excludes:
+        --   ts_ls: replaced by vtsls (lsp/vtsls.lua); excluding prevents
+        --     a double-attach if typescript-language-server is still in
+        --     mason from a previous setup.
+        --   rust_analyzer: rustaceanvim manages rust-analyzer itself via
+        --     vim.lsp.start(); excluding prevents a double-attach.
+        automatic_enable = { exclude = { 'ts_ls', 'rust_analyzer' } },
       })
 
       -- Get LSP capabilities from nvim-cmp for autocompletion integration

@@ -23,14 +23,10 @@ Order of operations is roughly top-to-bottom (biggest blast radius first).
 - Plan: `.omc/plans/treesitter-main-migration.md` (3 ralplan iterations).
 - Rollback if needed: `git checkout -- lua/LoneExile/editor/treesitter/ts.lua lua/LoneExile/editor/treesitter/comment.lua lua/LoneExile/core/settings/plugins/all.lua && cp resources/lazy-lock.json.pre-ts-main resources/lazy-lock.json && nvim --headless +"Lazy! restore" +qa`.
 
-### Archived plugin replacements
-- [ ] Replace `simrat39/rust-tools.nvim` → `mrcjkb/rustaceanvim` (archived Jan 2024)
-  - File: `lua/LoneExile/lsp/servers/addon/rust.lua`
-  - rustaceanvim works without lspconfig, ships its own `:Rust*` commands
-- [ ] Replace `phaazon/hop.nvim` → `folke/flash.nvim` (author abandoned, smoka7 fork in slow-maint)
-  - File: `lua/LoneExile/editor/motion/hop.lua`
-- [ ] Replace `sindrets/diffview.nvim` → `dlyongemallo/diffview.nvim` (upstream silent since June 2024, mem leaks on 0.12)
-  - File: `lua/LoneExile/editor/git/diffView.lua`
+### Archived plugin replacements — ✅ DONE 2026-05-02
+- [x] `simrat39/rust-tools.nvim` → `mrcjkb/rustaceanvim` (archived Jan 2024). Rust LSP settings (lens/clippy/inlayHints) moved to `vim.g.rustaceanvim.server.default_settings`. `lsp/rust_analyzer.lua` deleted; `rust_analyzer` excluded from mason-lspconfig `automatic_enable` to prevent double-attach (rustaceanvim manages the LSP itself).
+- [x] `phaazon/hop.nvim` → `folke/flash.nvim` (author abandoned). File renamed `motion/hop.lua` → `motion/flash.lua`. Preserved `gh` keymap, added `s`/`S`/`r`/`R` defaults, kept the same label-key string `etovxqpdygfblzhckisuran` for muscle memory.
+- [x] `sindrets/diffview.nvim` → `dlyongemallo/diffview.nvim` (upstream silent since June 2024). Config + keymaps unchanged (active fork is API-compatible). Required `rm -rf ~/.local/share/nvim/lazy/diffview.nvim` + re-install since lazy.nvim keys plugins by final-path-segment.
 
 ### mason-lspconfig v2 breakage — ✅ DONE 2026-05-02
 - [x] `lua/LoneExile/lsp/init.lua`: dropped `automatic_installation`, set `automatic_enable = { exclude = { 'ts_ls' } }` (excludes ts_ls so vtsls is the only TS LSP).

@@ -1,14 +1,19 @@
 local M = {}
 
+-- rustaceanvim is the maintained successor to simrat39/rust-tools.nvim.
+-- It manages rust-analyzer itself via vim.lsp.start, so we EXCLUDE
+-- `rust_analyzer` from mason-lspconfig's automatic_enable in lsp/init.lua
+-- to prevent a double LSP attach.
+
 M.setup = function()
   return {
-    'simrat39/rust-tools.nvim',
+    'mrcjkb/rustaceanvim',
+    version = '^7', -- pin major; rustaceanvim follows semver
     ft = { 'rust' },
     dependencies = {
       {
         'saecki/crates.nvim',
         event = { 'BufRead Cargo.toml' },
-        -- tag = 'v0.3.0',
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
           require('crates').setup({})
@@ -16,45 +21,52 @@ M.setup = function()
       },
     },
     config = function()
-      local status, rt = pcall(require, 'rust-tools')
-      if not status then
-        return
-      end
-
-      local _, rt_e = pcall(require, 'rust-tools/executors')
-
-      rt.setup({
+      vim.g.rustaceanvim = {
         tools = {
-          executor = rt_e.termopen,
-          reload_workspace_from_cargo_toml = true,
-          runnables = {
-            use_telescope = true,
-          },
-          inlay_hints = {
-            auto = true,
-            only_current_line = false,
-            show_parameter_hints = true,
-            parameter_hints_prefix = '<-',
-            other_hints_prefix = '=>',
-            max_len_align = false,
-            max_len_align_padding = 1,
-            right_align = false,
-            right_align_padding = 7,
-            highlight = 'Comment',
-          },
           hover_actions = {
+            replace_builtin_hover = true,
+          },
+          float_win_config = {
             border = 'rounded',
           },
-          on_initialized = function()
+        },
+        server = {
+          on_attach = function(_, bufnr)
+            -- Inlay hints (replaces rust-tools' tools.inlay_hints)
+            if vim.lsp.inlay_hint then
+              vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+            end
+            -- Codelens auto-refresh (was rust-tools' on_initialized)
             vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter', 'CursorHold', 'InsertLeave' }, {
-              pattern = { '*.rs' },
+              buffer = bufnr,
               callback = function()
-                local _, _ = pcall(vim.lsp.codelens.refresh)
+                pcall(vim.lsp.codelens.refresh)
               end,
             })
           end,
+          default_settings = {
+            ['rust-analyzer'] = {
+              lens = { enable = true },
+              checkOnSave = {
+                enable = true,
+                command = 'clippy',
+              },
+              inlayHints = {
+                bindingModeHints = { enable = false },
+                chainingHints = { enable = true },
+                closingBraceHints = { enable = true, minLines = 25 },
+                closureReturnTypeHints = { enable = 'never' },
+                lifetimeElisionHints = { enable = 'never', useParameterNames = false },
+                maxLength = 25,
+                parameterHints = { enable = true },
+                reborrowHints = { enable = 'never' },
+                renderColons = true,
+                typeHints = { enable = true, hideClosureInitialization = false, hideNamedConstructor = false },
+              },
+            },
+          },
         },
-      })
+      }
     end,
   }
 end

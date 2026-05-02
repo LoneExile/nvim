@@ -37,14 +37,14 @@ M.setup = function(_, _)
           'taplo', -- TOML
           'yaml-language-server',
           'json-lsp',
-          'typescript-language-server', -- Tsserver
+          'vtsls', -- TypeScript (replaces typescript-language-server)
+          'vue-language-server', -- Vue 3 (Volar / Vue Language Tools)
+          'emmet-language-server', -- Emmet (replaces aca/emmet-ls)
           'biome',
           -- 'eslint-lsp',
           'tailwindcss-language-server',
           'html-lsp',
           'css-lsp',
-          'vetur-vls',
-          -- 'emmet-ls', -- emmet
           'astro-language-server',
           'yaml-language-server',
           'gopls', -- Go

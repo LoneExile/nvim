@@ -15,7 +15,7 @@ return {
     'vue',
     'templ',
   },
-  cmd = { 'emmet-ls', '--stdio' },
+  cmd = { 'emmet-language-server', '--stdio' },
   -- Note: root_dir removed - functions cannot be serialized with vim.lsp.enable()
   -- The default root_dir from lspconfig will be used
   single_file_support = true,

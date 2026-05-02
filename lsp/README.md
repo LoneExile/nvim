@@ -4,24 +4,29 @@ This directory contains server-specific configurations for the Neovim 0.10+ core
 
 ## Architecture
 
-The LSP configuration uses the new Neovim 0.10+ core LSP approach:
+The LSP configuration uses the Neovim 0.11+ core LSP approach:
 
-- **Global Configuration**: Set via `vim.lsp.config('*', {...})` in the main init.lua
-- **Server Activation**: Done via `vim.lsp.enable(servers)` instead of individual setup calls
-- **Server-Specific Config**: Individual files in this directory that return configuration tables
+- **Global Configuration**: Set via `vim.lsp.config('*', {...})` in `lua/LoneExile/lsp/init.lua` (capabilities + on_attach).
+- **Server Activation**: `mason-lspconfig.nvim` v2 with `automatic_enable = true` calls `vim.lsp.enable()` for every installed server. The manual `servers = {...}` list and explicit `vim.lsp.enable()` calls have been removed.
+- **Server-Specific Config**: Individual files in this directory that return configuration tables. Files are auto-discovered from the runtime path by `vim.lsp.enable()`.
+
+The `require('lspconfig')` framework call has been removed. Neovim 0.11+ resolves `lsp/<name>.lua` files via the runtime path automatically; lspconfig v3 will drop the framework entirely and only ship server data files.
 
 ## File Structure
 
 ```
 lsp/
-├── README.md              # This documentation
-├── lua_ls.lua             # Lua language server config
-├── gopls.lua              # Go language server config
-├── tsserver.lua           # TypeScript/JavaScript server config
-├── pyright.lua            # Python language server config
-├── jsonls.lua             # JSON language server config
-├── yamlls.lua             # YAML language server config
-└── [other servers].lua    # Additional server configurations
+├── README.md                       # This documentation
+├── lua_ls.lua                      # Lua
+├── gopls.lua                       # Go
+├── ts_ls.lua                       # TypeScript (legacy; vtsls is preferred)
+├── vtsls.lua                       # TypeScript wrapper (registers @vue/typescript-plugin for Vue)
+├── vue_ls.lua                      # Vue Language Tools (Volar)
+├── emmet_language_server.lua       # Emmet (olrtg/emmet-language-server)
+├── pyright.lua                     # Python
+├── jsonls.lua                      # JSON
+├── yamlls.lua                      # YAML
+└── [other servers].lua             # Additional server configurations
 ```
 
 ## Configuration Format
@@ -81,10 +86,10 @@ end
 
 ## Adding New Servers
 
-1. Create a new file `lsp/server_name.lua`
-2. Return a configuration table with server-specific settings
-3. Add the server name to the `servers` list in `lua/LoneExile/lsp/init.lua`
-4. Use common patterns for root_dir and schema functions when applicable
+1. Create a new file `lsp/<server_name>.lua` returning the config table.
+2. If the server is on Mason: add the Mason package name to `ensure_installed` in `lua/LoneExile/lsp/integrate/mason_tool_installer.lua`. mason-lspconfig (`automatic_enable = true`) will call `vim.lsp.enable('<server_name>')` automatically.
+3. If the server is NOT on Mason: install the binary yourself and call `vim.lsp.enable('<server_name>')` from a setup hook.
+4. Use common patterns for root_dir and schema functions when applicable.
 
 ## Migration from Old System
 

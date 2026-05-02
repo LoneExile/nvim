@@ -53,7 +53,23 @@ M.setup = function(settings, location)
 
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
-        menu = { border = 'rounded' },
+        menu = {
+          border = 'rounded',
+          draw = {
+            components = {
+              -- Tailwind color preview in the kind icon column. Falls back
+              -- to the default BlinkCmpKind* highlight for non-color items.
+              -- See LoneExile/tailwind-tools.nvim (fork w/ blink module).
+              kind_icon = {
+                text = function(ctx) return ctx.kind_icon .. ctx.icon_gap end,
+                highlight = function(ctx)
+                  local ok, tt = pcall(require, 'tailwind-tools.blink')
+                  return (ok and tt.highlight(ctx)) or ctx.kind_hl
+                end,
+              },
+            },
+          },
+        },
         ghost_text = { enabled = false },
       },
 

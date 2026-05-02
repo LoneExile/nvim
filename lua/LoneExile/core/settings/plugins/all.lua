@@ -2,7 +2,7 @@
 
 return {
   -- CMP
-  { 'hrsh7th/nvim-cmp',                          true },
+  { 'Saghen/blink.cmp',                          true }, -- replaced hrsh7th/nvim-cmp (Rust-backed engine)
 
   -- Dap
   { 'leoluz/nvim-dap-go',                        true },

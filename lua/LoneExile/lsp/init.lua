@@ -99,12 +99,15 @@ M.setup = function(_, location)
         automatic_enable = { exclude = { 'ts_ls', 'rust_analyzer' } },
       })
 
-      -- Get LSP capabilities from nvim-cmp for autocompletion integration
-      local s, cmpLSP = pcall(require, 'cmp_nvim_lsp')
-      if not s then
-        return
+      -- LSP capabilities for autocompletion integration. blink.cmp replaced
+      -- nvim-cmp + cmp_nvim_lsp; if blink isn't loaded yet (e.g. before the
+      -- first InsertEnter), fall back to default caps so LSP still works,
+      -- just with reduced completion fidelity.
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      local ok_blink, blink = pcall(require, 'blink.cmp')
+      if ok_blink then
+        capabilities = blink.get_lsp_capabilities(capabilities)
       end
-      local capabilities = cmpLSP.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
       -- Add folding range capabilities for code folding support
       capabilities.textDocument.foldingRange = {

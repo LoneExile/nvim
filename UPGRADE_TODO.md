@@ -35,9 +35,9 @@ Order of operations is roughly top-to-bottom (biggest blast radius first).
 - [x] Replaced deprecated `vim.lsp.with(vim.lsp.handlers.hover, {border='rounded'})` with `vim.o.winborder = 'rounded'` (Nvim 0.11+).
 - [x] mason org `williamboman/` → `mason-org/` already in spec.
 
-### `mini.*` org rename (Oct 2025)
-- [ ] In `lua/LoneExile/core/settings/plugins/all.lua` — rename `echasnovski/` → `nvim-mini/`:
-  - `mini.surround`, `mini.ai`, `mini.icons`, `mini.diff` (you've already updated these — verify)
+### `mini.*` org rename (Oct 2025) — ✅ DONE (already in repo before this session)
+- [x] All four specs (`mini.surround`, `mini.ai`, `mini.icons`, `mini.diff`) already use `nvim-mini/` in `all.lua` and the per-plugin spec files.
+- [x] Clones on disk verified pointing at `https://github.com/nvim-mini/...` origins (mini.diff isn't cloned because it's disabled in all.lua).
 
 ---
 
@@ -75,27 +75,17 @@ You already have `folke/snacks.nvim` loaded. These are duplicates:
 
 ## 🟢 Config updates needed (keep the plugin, fix usage)
 
-- [ ] `numToStr/Comment.nvim` — unmaintained since April 2023. Nvim 0.10+ has builtin `gc`/`gcc`. **Drop**, optionally add `folke/ts-comments.nvim`.
-  - File: `lua/LoneExile/editor/treesitter/comment.lua`
-- [ ] `JoosepAlviste/nvim-ts-context-commentstring` — superseded by builtin commentstring. Drop or replace with `folke/ts-comments.nvim`.
-  - Listed as treesitter dep in `editor/treesitter/ts.lua`
-- [ ] `andymass/vim-matchup` — July 2025 release decoupled from nvim-treesitter. **Re-enable the TS engine** in `ts.lua`:
-  ```lua
-  matchup = { enable = true }  -- was disabled with crash workaround note
-  ```
-- [ ] `windwp/nvim-ts-autotag` — 2024 rewrite removed nvim-treesitter dep. If still using old `autotag = { enable = true }` sub-module pattern, switch to:
-  ```lua
-  require('nvim-ts-autotag').setup({ opts = { enable_close = true, enable_rename = true } })
-  ```
+- [x] ~~`numToStr/Comment.nvim` — drop~~ **RECONSIDERED — kept** (load-bearing for JSX/TSX commentstring via `pre_hook`, see treesitter migration).
+- [x] ~~`JoosepAlviste/nvim-ts-context-commentstring` — drop~~ **RECONSIDERED — kept** (same reason).
+- [ ] `andymass/vim-matchup` — re-enable TS engine. The TODO's `matchup = { enable = true }` snippet was the old `master`-branch nvim-treesitter API and no longer applies. On `main` branch, vim-matchup integrates via its own `g:` vars (e.g. `vim.g.matchup_treesitter_enabled`). Needs verification against current vim-matchup release before flipping on.
+- [x] `windwp/nvim-ts-autotag` — config rewritten 2026-05-02 to post-2024 API: `setup({ opts = { enable_close, enable_rename, enable_close_on_slash } })`. Top-level `filetypes`/`skip_tags` removed (now auto-detected via TS parser; void elements handled internally).
   - File: `lua/LoneExile/editor/treesitter/autoTag.lua`
-- [ ] `ThePrimeagen/harpoon` — pin `branch = "harpoon2"`. Completely different API (`Harpoon:list():add()`).
+- [ ] `ThePrimeagen/harpoon` — pin `branch = "harpoon2"`. Completely different API (`harpoon:list():add()`, `harpoon:list():select(N)`, `harpoon.ui:toggle_quick_menu(harpoon:list())`). Whole `harpoon.lua` gets rewritten.
   - File: `lua/LoneExile/editor/motion/harpoon.lua`
-- [ ] `lukas-reineke/indent-blankline.nvim` — v3 rewrite needs `main = "ibl"`, all `g:indent_blankline_*` globals removed. Or replace with `nvim-mini/mini.indentscope`. Verify config is v3.
-- [ ] `glepnir/lspsaga.nvim` → `nvimdev/lspsaga.nvim` (org rename, glepnir still commits). Old URL redirects but update spec. **Consider dropping** — 0.11+ ships native `vim.lsp.buf.*` UIs.
-  - File: `lua/LoneExile/lsp/integrate/lspSaga.lua`
-- [ ] `pmizio/typescript-tools.nvim` — still works but ecosystem moved to `vtsls`. Required if also using `vue_ls`. Consider switching.
-- [ ] `tomiis4/Hypersonic.nvim` — stale since Aug 2024, niche. Drop.
-  - File: `lua/LoneExile/editor/regex.lua`
+- [x] `lukas-reineke/indent-blankline.nvim` — verified v3-compliant: `tsIndent.lua` already sets `main = 'ibl'`, requires `'ibl'`, calls `indent_blankline.setup({})`. No `g:indent_blankline_*` globals used.
+- [x] `glepnir/lspsaga.nvim` → `nvimdev/lspsaga.nvim` — URL updated 2026-05-02 in `all.lua` and `lspSaga.lua`. (Old org name still redirects, but updating the spec keeps lazy-lock clean.) Native `vim.lsp.buf.*` UIs in 0.11+ remain a future-drop candidate.
+- [x] ~~`pmizio/typescript-tools.nvim`~~ — already disabled in LSP cleanup (replaced by vtsls).
+- [x] `tomiis4/Hypersonic.nvim` — dropped 2026-05-02. Removed from `all.lua`; deleted `lua/LoneExile/editor/regex.lua`.
 
 ---
 

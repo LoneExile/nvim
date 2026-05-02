@@ -25,13 +25,13 @@ return {
   { 'olexsmir/gopher.nvim',                      true },
 
   -- Git
-  { 'sindrets/diffview.nvim',                    true },
+  { 'dlyongemallo/diffview.nvim',                true }, -- replaced sindrets fork (silent since June 2024)
   { 'lewis6991/gitsigns.nvim',                   true },
   { 'tpope/vim-fugitive',                        true },
 
   -- Motion
   { 'theprimeagen/harpoon',                      true },
-  { 'phaazon/hop.nvim',                          true },
+  { 'folke/flash.nvim',                          true }, -- replaced phaazon/hop.nvim (abandoned)
   { 'nacro90/numb.nvim',                         true },
   { 'nvim-mini/mini.surround',                   true },
   { 'declancm/cinnamon.nvim',                    false },
@@ -93,7 +93,7 @@ return {
   { 'mfussenegger/nvim-lint',                    true },
 
   { 'folke/lazydev.nvim',                        true },
-  { 'simrat39/rust-tools.nvim',                  true },
+  { 'mrcjkb/rustaceanvim',                       true }, -- replaced rust-tools.nvim (archived Jan 2024)
   { 'b0o/schemastore.nvim',                      true },
   { 'pmizio/typescript-tools.nvim',              false }, -- replaced by vtsls (lsp/vtsls.lua)
   { 'ray-x/go.nvim',                             false },

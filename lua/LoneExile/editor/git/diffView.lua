@@ -48,7 +48,7 @@ M.keys = {
 
 M.setup = function()
   return {
-    'sindrets/diffview.nvim',
+    'dlyongemallo/diffview.nvim', -- active fork; sindrets upstream silent since June 2024
     lazy = true,
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
     keys = M.keys,

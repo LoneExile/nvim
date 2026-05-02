@@ -61,10 +61,15 @@ M.setup = function(settings, location)
               -- to the default BlinkCmpKind* highlight for non-color items.
               -- See LoneExile/tailwind-tools.nvim (fork w/ blink module).
               kind_icon = {
+                ellipsis = false,
                 text = function(ctx) return ctx.kind_icon .. ctx.icon_gap end,
+                -- Match blink's default: return a priority-wrapped range
+                -- array (priority 20000) so the highlight beats the cursorline
+                -- (default priority 10000). Plain-string returns fall behind.
                 highlight = function(ctx)
                   local ok, tt = pcall(require, 'tailwind-tools.blink')
-                  return (ok and tt.highlight(ctx)) or ctx.kind_hl
+                  local hl = (ok and tt.highlight(ctx)) or ctx.kind_hl
+                  return { { group = hl, priority = 20000 } }
                 end,
               },
             },

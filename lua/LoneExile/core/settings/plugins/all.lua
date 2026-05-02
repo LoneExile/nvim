@@ -62,6 +62,7 @@ return {
   -- { 'm-demare/hlargs.nvim',                      true },
   { 'nvim-treesitter/nvim-treesitter',           true },
   { 'nvim-treesitter/nvim-treesitter-context',   false },
+  { 'folke/ts-comments.nvim',                    true },
   { 'lukas-reineke/indent-blankline.nvim',       true },
   { 'Wansmer/treesj',                            true },
 

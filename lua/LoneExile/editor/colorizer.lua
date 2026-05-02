@@ -26,7 +26,13 @@ M.setup = function()
           mode = 'background', -- Set the display mode.
           -- Available methods are false / true / "normal" / "lsp" / "both"
           -- True is same as normal
-          tailwind = true, -- Enable tailwind colors
+          --
+          -- Tailwind detection is OFF here because tailwind-tools.nvim
+          -- already renders Tailwind classes as inline color boxes (see
+          -- lsp/servers/addon/tailwind/tools.lua). Leaving colorizer's
+          -- tailwind=true would double-render and paint the class text
+          -- with a background color in addition to the inline box.
+          tailwind = false,
           -- parsers can contain values used in |user_default_options|
           -- sass = { enable = false, parsers = { css } }, -- Enable sass colors
           virtualtext = '■',

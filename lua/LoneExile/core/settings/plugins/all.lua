@@ -47,7 +47,6 @@ return {
   { 'tpope/vim-repeat',                          true },
 
   { 'nmac427/guess-indent.nvim',                 true },
-  { 'tomiis4/Hypersonic.nvim',                   false }, -- regex
 
   -- Other
   { 'glacambre/firenvim',                        true },
@@ -87,7 +86,7 @@ return {
   { 'WhoIsSethDaniel/mason-tool-installer.nvim', true },
 
   { 'j-hui/fidget.nvim',                         true },
-  { 'glepnir/lspsaga.nvim',                      true },
+  { 'nvimdev/lspsaga.nvim',                      true }, -- org rename (was glepnir/)
   { 'stevearc/aerial.nvim',                      true },
   { 'stevearc/conform.nvim',                     true },
   { 'mfussenegger/nvim-lint',                    true },

@@ -15,45 +15,17 @@ M.setup = function()
       -- <div           >              <div></div>
       -- <div></div>    ciwspan<esc>   <span></span>
       -- ------------------------------------
+      --
+      -- 2024 rewrite removed nvim-treesitter dependency and the top-level
+      -- `filetypes` / `skip_tags` keys. Supported filetypes are now derived
+      -- from the available TS parser, and void-element handling is built-in.
+      -- See: github.com/windwp/nvim-ts-autotag (post-rewrite README).
 
       autotag.setup({
-        filetypes = {
-          'html',
-          'javascript',
-          'typescript',
-          'javascriptreact',
-          'typescriptreact',
-          'svelte',
-          'vue',
-          'tsx',
-          'jsx',
-          'rescript',
-          'xml',
-          'php',
-          'markdown',
-          'glimmer',
-          'handlebars',
-          'hbs',
-        },
-        skip_tags = {
-          'area',
-          'base',
-          'br',
-          'col',
-          'command',
-          'embed',
-          'hr',
-          'img',
-          'slot',
-          'input',
-          'keygen',
-          'link',
-          'meta',
-          'param',
-          'source',
-          'track',
-          'wbr',
-          'menuitem',
+        opts = {
+          enable_close = true,
+          enable_rename = true,
+          enable_close_on_slash = false,
         },
       })
     end,

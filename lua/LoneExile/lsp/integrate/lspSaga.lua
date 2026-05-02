@@ -89,7 +89,7 @@ M.keys = {
 
 M.setup = function(_, _)
   return {
-    'glepnir/lspsaga.nvim',
+    'nvimdev/lspsaga.nvim',
     event = { 'BufRead' },
     dependencies = { 'neovim/nvim-lspconfig' },
     keys = M.keys,

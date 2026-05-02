@@ -96,7 +96,13 @@ M.setup = function(_, location)
         --     mason from a previous setup.
         --   rust_analyzer: rustaceanvim manages rust-analyzer itself via
         --     vim.lsp.start(); excluding prevents a double-attach.
-        automatic_enable = { exclude = { 'ts_ls', 'rust_analyzer' } },
+        --   htmx: htmx-lsp is upstream-flagged "very much work in progress
+        --     and experimental" and doesn't respond to textDocument/
+        --     completion. Blink's LSP source uses async.task.all to wait
+        --     for every attached client — a non-responding client hangs
+        --     LSP completions entirely, so tailwindcss/vtsls items never
+        --     reach the menu. Excluded until htmx-lsp is mature.
+        automatic_enable = { exclude = { 'ts_ls', 'rust_analyzer', 'htmx' } },
       })
 
       -- LSP capabilities for autocompletion integration. blink.cmp replaced

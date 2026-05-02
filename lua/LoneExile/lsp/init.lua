@@ -84,9 +84,16 @@ M.setup = function(_, location)
       if not status then
         return
       end
+      -- mason-lspconfig v2: automatic_enable runs vim.lsp.enable() for every
+      -- installed server automatically, so we no longer maintain a manual
+      -- `servers = {...}` list or call vim.lsp.enable() ourselves. Server
+      -- tweaks live in `lsp/<name>.lua` files and are picked up by core.
       mason_lspconfig.setup({
-        automatic_installation = false,
         ensure_installed = {},
+        -- Exclude ts_ls so it doesn't double-attach alongside vtsls when
+        -- typescript-language-server is still installed locally. vtsls is
+        -- the canonical TS server in this config (lsp/vtsls.lua).
+        automatic_enable = { exclude = { 'ts_ls' } },
       })
 
       -- Get LSP capabilities from nvim-cmp for autocompletion integration
@@ -106,9 +113,11 @@ M.setup = function(_, location)
       require(lsp_settings .. '.diagnostic').set_diagnostic()
       require(lsp_settings .. '.autocmd')
 
-      -- Set up global LSP handlers with rounded borders
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+      -- Rounded borders for hover / signature help. Nvim 0.11+ has a global
+      -- `winborder` option that applies to all floating windows (including
+      -- LSP hover, completion, and notifications), replacing the deprecated
+      -- vim.lsp.with(vim.lsp.handlers.hover, {border=...}) pattern.
+      vim.o.winborder = 'rounded'
 
       -- Global LSP configuration using Neovim 0.10+ core LSP system
       -- This replaces individual lspconfig[server].setup() calls with a unified approach
@@ -125,58 +134,11 @@ M.setup = function(_, location)
         end,
       })
 
-      -- Initialize lspconfig to register server configurations in runtime path
-      -- This must happen before vim.lsp.enable() to ensure server configs are available
-      require('lspconfig')
-
-      -- List of servers to enable with vim.lsp.enable()
-      -- Server-specific configurations are loaded from lsp/ directory
-      local servers = {
-        'vuels', -- Vue.js
-        'eslint', -- ESLint
-        'emmet_ls', -- Emmet
-        'tailwindcss', -- Tailwind CSS
-        'lua_ls', -- Lua
-        'pyright', -- Python
-        'jsonls', -- JSON
-        'yamlls', -- YAML
-        'omnisharp', -- C#
-        'rust_analyzer', -- Rust
-        'golangci_lint_ls', -- Go linting
-        'gopls', -- Go
-        'html', -- HTML
-        'docker_compose_language_service', -- Docker Compose
-        'helm_ls', -- Helm
-
-        'lua-language-server',
-        'bash-language-server',
-        'dockerfile-language-server',
-        'marksman', -- Markdown
-        'ruff', -- Python
-        'rust-analyzer',
-        'taplo', -- TOML
-        'yaml-language-server',
-        'json-lsp',
-        'typescript-language-server', -- Tsserver
-        'tailwindcss-language-server',
-        'html-lsp',
-        'css-lsp',
-        'vetur-vls',
-        'astro-language-server',
-        'golangci-lint',
-        'templ', -- Go templ
-        'htmx-lsp', -- htmx
-        'svelte-language-server', -- Svelte
-        'elixir-ls', -- Elixir
-        'terraform-ls', -- Terraform
-        'tflint',
-        'npm-groovy-lint',
-        'nil', -- Nix
-      }
-
-      -- Enable LSP servers using the new core LSP system
-      -- This replaces the traditional mason-lspconfig setup_handlers approach
-      vim.lsp.enable(servers)
+      -- nvim-lspconfig v3 will remove the require('lspconfig') framework;
+      -- on Nvim 0.11+ the `lsp/<name>.lua` files in the runtime path are
+      -- discovered automatically by vim.lsp.enable(), so the require call
+      -- is not needed. mason-lspconfig (automatic_enable = true) calls
+      -- vim.lsp.enable() for every installed server.
     end,
   }
 end

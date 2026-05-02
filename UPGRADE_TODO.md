@@ -32,13 +32,12 @@ Order of operations is roughly top-to-bottom (biggest blast radius first).
 - [ ] Replace `sindrets/diffview.nvim` → `dlyongemallo/diffview.nvim` (upstream silent since June 2024, mem leaks on 0.12)
   - File: `lua/LoneExile/editor/git/diffView.lua`
 
-### mason-lspconfig v2 breakage
-- [ ] In `lua/LoneExile/lsp/init.lua`:
-  - Remove `automatic_installation = false` (removed in v2)
-  - Add `automatic_enable = true` — auto-runs `vim.lsp.enable` for installed servers
-  - Drop the entire `servers = {...}` list and `vim.lsp.enable(servers)` call (mason will do it)
-  - `ensure_installed` should be flat list of server names (already is)
-- [ ] Update plugin spec org: `williamboman/mason*` → `mason-org/mason*` (you partially have this)
+### mason-lspconfig v2 breakage — ✅ DONE 2026-05-02
+- [x] `lua/LoneExile/lsp/init.lua`: dropped `automatic_installation`, set `automatic_enable = { exclude = { 'ts_ls' } }` (excludes ts_ls so vtsls is the only TS LSP).
+- [x] Dropped the manual `servers = {...}` list and `vim.lsp.enable(servers)` call.
+- [x] Dropped `require('lspconfig')` call.
+- [x] Replaced deprecated `vim.lsp.with(vim.lsp.handlers.hover, {border='rounded'})` with `vim.o.winborder = 'rounded'` (Nvim 0.11+).
+- [x] mason org `williamboman/` → `mason-org/` already in spec.
 
 ### `mini.*` org rename (Oct 2025)
 - [ ] In `lua/LoneExile/core/settings/plugins/all.lua` — rename `echasnovski/` → `nvim-mini/`:
@@ -46,20 +45,17 @@ Order of operations is roughly top-to-bottom (biggest blast radius first).
 
 ---
 
-## 🟡 LSP server name renames
+## 🟡 LSP server name renames — ✅ DONE 2026-05-02
 
-In `lsp/init.lua` `servers` list, in `lsp/*.lua` filenames, and any `ensure_installed`:
+- [x] `tsserver` → `ts_ls` (file renamed; kept as fallback, but excluded from auto-enable in favour of vtsls).
+- [x] `vuels` → `vue_ls` (file renamed and **rewritten** for Vue Language Tools / Volar; cmd `vls` → `vue-language-server`).
+- [x] `emmet_ls` → `emmet_language_server` (file renamed; cmd `emmet-ls` → `emmet-language-server`; mason package `emmet-ls` → `emmet-language-server`).
+- [x] Added `lsp/vtsls.lua` (registers `@vue/typescript-plugin` for `.vue` support).
+- [x] Disabled `pmizio/typescript-tools.nvim` in `all.lua`; deleted `lua/LoneExile/lsp/servers/addon/typescript.lua`.
+- [x] Updated `mason_tool_installer.lua`: `+vtsls`, `+vue-language-server`, `+emmet-language-server`; removed `typescript-language-server`, `vetur-vls`, `emmet-ls`.
+- [x] Dropped `require('lspconfig')` call (Nvim 0.11+ auto-discovers `lsp/<name>.lua` from runtime path).
 
-- [ ] `tsserver` → `ts_ls` (rename file `lsp/tsserver.lua` → `lsp/ts_ls.lua`)
-- [ ] `vuels` → `vue_ls` (rename file `lsp/vuels.lua` → `lsp/vue_ls.lua`)
-  - If you want Vue+TS, pair `vue_ls` with `vtsls` (NOT `ts_ls`)
-- [ ] `emmet_ls` → `emmet_language_server` (different repo: `olrtg/emmet-language-server`)
-  - Rename `lsp/emmet_ls.lua` → `lsp/emmet_language_server.lua`
-
-### Drop `require('lspconfig')` once safe
-- [ ] In Nvim 0.11+, `lsp/<server>.lua` files load automatically via `vim.lsp.enable()`
-- [ ] lspconfig v3.0.0 will remove the `require('lspconfig')` framework — only data files survive
-- [ ] After confirming all server tweaks live in `lsp/`, drop the lone `require('lspconfig')` call in `lsp/init.lua`
+**Manual step**: in your nvim session, run `:Lazy sync` (to pick up disabled typescript-tools) then `:Mason` and uninstall the now-obsolete `typescript-language-server`, `vetur-vls`, `emmet-ls` packages.
 
 ---
 

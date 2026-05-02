@@ -95,7 +95,7 @@ return {
   { 'folke/lazydev.nvim',                        true },
   { 'simrat39/rust-tools.nvim',                  true },
   { 'b0o/schemastore.nvim',                      true },
-  { 'pmizio/typescript-tools.nvim',              true },
+  { 'pmizio/typescript-tools.nvim',              false }, -- replaced by vtsls (lsp/vtsls.lua)
   { 'ray-x/go.nvim',                             false },
   -- { 'laytan/tailwind-sorter.nvim',               true },
   

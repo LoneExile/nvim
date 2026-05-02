@@ -99,7 +99,7 @@ You already have `folke/snacks.nvim` loaded. These are duplicates:
   - **Removed integration:** nvim-autopairs `cmp_autopairs.on_confirm_done` hook (modern nvim-autopairs auto-detects blink).
 - [x] ~~Drop `folke/neodev.nvim`~~ — verified 2026-05-02: not referenced anywhere in `lua/` or `init.lua`, not in `resources/lazy-lock.json`, not on disk under `~/.local/share/nvim/lazy/`. Migration to `lazydev.nvim` is fully complete (no transitive pulls).
 - [ ] Watch `nvim-ufo` on 0.13 — slow release pace. Native `vim.lsp.foldexpr()` is the fallback if it breaks.
-- [ ] `wakatime` org renamed `williamboman` → `mason-org` checks complete; verify `mason-tool-installer` still works against v2.
+- [x] mason org rename + `mason-tool-installer` v2 compat — verified 2026-05-02. Plugin loads cleanly against `mason.nvim` v2 (`mason-org/`) and `mason-lspconfig.nvim` v2; `mason-registry.get_package` + `refresh` APIs unchanged. Probed all 67 `ensure_installed` names against the registry — 66 resolved, 1 typo (`helm_ls` → `helm-ls`) fixed. Updated stale `williamboman/mason*` URLs in `all.lua` to `mason-org/`. Uninstalled 2 stale mason packages left over from prior LSP migrations: `typescript-language-server` (replaced by vtsls) and `vetur-vls` (replaced by vue-language-server). `emmet-ls` already gone. (TODO bullet's "wakatime" wording was a misnomer — wakatime itself isn't a mason concern.)
 
 ---
 

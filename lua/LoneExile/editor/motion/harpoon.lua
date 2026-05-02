@@ -1,5 +1,46 @@
 local M = {}
 
+-- harpoon2 migration (2026-05-02):
+--   * `branch = 'harpoon2'` is required — the master branch is harpoon v1
+--     and ships a different, incompatible API.
+--   * v1's `harpoon.mark.add_file()`, `harpoon.ui.nav_file(n)`, and
+--     `harpoon.ui.toggle_quick_menu()` are all gone. v2 uses an OO API:
+--       harpoon:list():add()
+--       harpoon:list():select(n)
+--       harpoon:list():prev()  / harpoon:list():next()
+--       harpoon.ui:toggle_quick_menu(harpoon:list())
+--   * v2 has no built-in Telescope picker; we implement the wrapper from
+--     the upstream README inline (toggle_telescope) so the existing `ms`
+--     muscle memory keeps working.
+
+local function get_harpoon()
+  local ok, harpoon = pcall(require, 'harpoon')
+  if not ok then return nil end
+  return harpoon
+end
+
+local function toggle_telescope()
+  local harpoon = get_harpoon()
+  if not harpoon then return end
+  local ok_pickers, pickers = pcall(require, 'telescope.pickers')
+  local ok_finders, finders = pcall(require, 'telescope.finders')
+  local ok_conf, conf = pcall(require, 'telescope.config')
+  if not (ok_pickers and ok_finders and ok_conf) then return end
+
+  local list = harpoon:list()
+  local file_paths = {}
+  for _, item in ipairs(list.items or {}) do
+    table.insert(file_paths, item.value)
+  end
+
+  pickers.new({}, {
+    prompt_title = 'Harpoon',
+    finder = finders.new_table({ results = file_paths }),
+    previewer = conf.values.file_previewer({}),
+    sorter = conf.values.generic_sorter({}),
+  }):find()
+end
+
 M.keys = {
   {
     'm',
@@ -7,31 +48,39 @@ M.keys = {
   },
   {
     'ma',
-    '<cmd>lua require("harpoon.mark").add_file()<cr>',
+    function()
+      local h = get_harpoon(); if h then h:list():add() end
+    end,
     desc = 'Harpoon',
     mode = 'n',
   },
   {
     'm.',
-    '<cmd>lua require("harpoon.ui").nav_next()<cr>',
+    function()
+      local h = get_harpoon(); if h then h:list():next() end
+    end,
     desc = 'Harpoon Next',
     mode = 'n',
   },
   {
     'm,',
-    '<cmd>lua require("harpoon.ui").nav_prev()<cr>',
+    function()
+      local h = get_harpoon(); if h then h:list():prev() end
+    end,
     desc = 'Harpoon Prev',
     mode = 'n',
   },
   {
     'ms',
-    '<cmd>Telescope harpoon marks<cr>',
+    toggle_telescope,
     desc = 'Search Files',
     mode = 'n',
   },
   {
     'mm',
-    '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>',
+    function()
+      local h = get_harpoon(); if h then h.ui:toggle_quick_menu(h:list()) end
+    end,
     desc = 'Harpoon UI',
     mode = 'n',
   },
@@ -40,62 +89,39 @@ M.keys = {
 M.setup = function()
   return {
     'theprimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
     event = 'BufRead',
     keys = M.keys,
     config = function()
-      local status_ok, harpoon = pcall(require, 'harpoon')
-      if not status_ok then
-        return
-      end
+      local harpoon = get_harpoon()
+      if not harpoon then return end
 
-      local configs = {
-        global_settings = {
-          -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
+      -- harpoon2 setup is REQUIRED (it wires up autocmds for cwd/save/etc).
+      harpoon:setup({
+        settings = {
           save_on_toggle = false,
-
-          -- saves the harpoon file upon every change. disabling is unrecommended.
-          save_on_change = true,
-
-          -- sets harpoon to run the command immediately as it's passed to the terminal when calling `sendCommand`.
-          enter_on_sendcmd = false,
-
-          -- closes any tmux windows harpoon that harpoon creates when you close Neovim.
-          tmux_autoclose_windows = false,
-
-          -- filetypes that you want to prevent from adding to the harpoon list menu.
-          excluded_filetypes = { 'harpoon' },
-
-          -- set marks specific to each git branch inside git repository
+          sync_on_ui_close = true,
           mark_branch = false,
         },
-      }
-
-      harpoon.setup(configs)
+      })
 
       local opts = { noremap = true, silent = true }
 
-      -- vim.keymap.set("n", "<C-1>", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", opts)
       vim.keymap.set('n', '<C-1>', '<cmd>OpenHarpoonNav<CR>', opts)
-      vim.keymap.set('n', '<C-2>', "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", opts)
-      vim.keymap.set('n', '<C-3>', "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", opts)
-      vim.keymap.set('n', '<C-4>', "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", opts)
-      vim.keymap.set('n', '<C-5>', "<cmd>lua require('harpoon.ui').nav_file(5)<CR>", opts)
+      vim.keymap.set('n', '<C-2>', function() harpoon:list():select(2) end, opts)
+      vim.keymap.set('n', '<C-3>', function() harpoon:list():select(3) end, opts)
+      vim.keymap.set('n', '<C-4>', function() harpoon:list():select(4) end, opts)
+      vim.keymap.set('n', '<C-5>', function() harpoon:list():select(5) end, opts)
 
       vim.api.nvim_create_user_command('OpenHarpoonNav', function()
-        require('harpoon.ui').nav_file(1)
+        harpoon:list():select(1)
       end, {})
 
       vim.api.nvim_create_user_command('OpenHarpoonAll', function()
-        require('harpoon.ui').nav_file(1)
-        require('harpoon.ui').nav_file(2)
-        require('harpoon.ui').nav_file(3)
-        require('harpoon.ui').nav_file(4)
-        require('harpoon.ui').nav_file(5)
-        require('harpoon.ui').nav_file(6)
-        require('harpoon.ui').nav_file(7)
-        require('harpoon.ui').nav_file(8)
-        require('harpoon.ui').nav_file(9)
-        -- vim.cmd("NvimTreeClose")
+        for i = 1, 9 do
+          harpoon:list():select(i)
+        end
       end, {})
     end,
   }

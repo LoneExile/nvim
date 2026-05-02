@@ -63,6 +63,24 @@ M.setup = function(_, _)
       -- Per-session sentinel: don't re-trigger install for the same lang.
       local installed_in_session = {}
 
+      -- Cache the set of parsers nvim-treesitter actually knows about, so we
+      -- never try to install parsers that don't exist (e.g. plugin-internal
+      -- filetypes like `fidget`, `notify`, `lazy`, `mason`, `which-key`).
+      -- Built lazily on first use; if get_available isn't ready we skip the
+      -- gate and rely on language.add() failing silently.
+      local available_parsers
+      local function known_parser(lang)
+        if not available_parsers then
+          local ok, list = pcall(function()
+            return require('nvim-treesitter').get_available()
+          end)
+          if not ok or type(list) ~= 'table' then return true end -- be permissive
+          available_parsers = {}
+          for _, name in ipairs(list) do available_parsers[name] = true end
+        end
+        return available_parsers[lang] == true
+      end
+
       vim.api.nvim_create_autocmd('FileType', {
         group = vim.api.nvim_create_augroup('UserTsAttach', { clear = true }),
         callback = function(ev)
@@ -73,6 +91,11 @@ M.setup = function(_, _)
           -- it does NOT raise. Use the tuple form, not pcall.
           local added, add_err = vim.treesitter.language.add(lang)
           if not added then
+            -- Skip silently if the parser isn't even in nvim-treesitter's
+            -- registry — no point trying to install something that doesn't
+            -- exist. Filters out plugin filetypes like `fidget`/`notify`.
+            if not known_parser(lang) then return end
+
             if not installed_in_session[lang] then
               installed_in_session[lang] = true
               vim.notify(

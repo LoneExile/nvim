@@ -229,24 +229,34 @@ M.setup = function(_, _)
             end,
           },
           components = {
-            harpoon_index = function(config, node)
-              -- harpoon2: no `harpoon.mark` module — iterate `harpoon:list().items`
-              -- and match `item.value` against the node path.
-              local ok, harpoon = pcall(require, 'harpoon')
-              if not ok then
-                return {}
-              end
-              local path = node:get_id()
-              for i, item in ipairs(harpoon:list().items or {}) do
-                if item.value == path then
+            -- Cache a path->index map per render burst. Without this, every file
+            -- row re-iterates `harpoon:list().items`, making render O(files × marks).
+            harpoon_index = (function()
+              local cache = { time = 0, map = nil }
+              local uv = vim.uv or vim.loop
+              return function(config, node)
+                local now = uv.now()
+                if not cache.map or (now - cache.time) > 50 then
+                  local map = {}
+                  local ok, harpoon = pcall(require, 'harpoon')
+                  if ok then
+                    for i, item in ipairs(harpoon:list().items or {}) do
+                      map[item.value] = i
+                    end
+                  end
+                  cache.map = map
+                  cache.time = now
+                end
+                local idx = cache.map[node:get_id()]
+                if idx then
                   return {
-                    text = string.format(' ⥤ %d', i),
+                    text = string.format(' ⥤ %d', idx),
                     highlight = config.highlight or 'NeoTreeDirectoryIcon',
                   }
                 end
+                return {}
               end
-              return {}
-            end,
+            end)(),
           },
           renderers = {
             file = {
@@ -307,7 +317,7 @@ M.setup = function(_, _)
           -- "open_current",  -- netrw disabled, opening a directory opens within the
           -- window like netrw would, regardless of window.position
           -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
-          use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
+          use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
           -- instead of relying on nvim autocmd events.
           window = {
             mappings = {

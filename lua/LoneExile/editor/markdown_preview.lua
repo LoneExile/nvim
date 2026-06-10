@@ -1,52 +1,32 @@
 local M = {}
 
--- M.ft = { 'markdown', 'md', 'html' }
-
-M.keys = function()
-  -- if not vim.tbl_contains(M.ft, vim.bo.filetype) then
-  --   return {}
-  -- end
-
-  return {
-    {
-      '<leader>um',
-      '',
-      desc = 'Markdown',
-      mode = 'n',
-    },
-    {
-      '<leader>ums',
-    function()
-        vim.cmd('LivePreview stop')
-        vim.cmd('LivePreview start')
-    end,
-      mode = 'n',
-      desc = 'Markdown Live Preview Start',
-    },
-    {
-      '<leader>umc',
-      '<cmd>LivePreview close<CR>',
-      mode = 'n',
-      desc = 'Markdown Live Preview Close',
-    },
-    {
-      '<leader>ump',
-      '<cmd>LivePreview pick<CR>',
-      mode = 'n',
-      desc = 'Markdown Live Preview Pick',
-    },
-  }
-end
-
+-- FluxMarkdown: macOS Finder QuickLook / standalone Markdown viewer app.
+-- https://github.com/xykong/flux-markdown  (brew install --cask xykong/tap/flux-markdown)
+-- Not a Neovim plugin -> no lazy spec. setup() runs at config build time, so
+-- register the keymap directly and return nil (nothing added to lazy.nvim).
 M.setup = function()
-  return {
-    'brianhuster/live-preview.nvim',
-    cmd = { 'LivePreview' },
-    keys = M.keys,
-    dependencies = {
-      'ibhagwan/fzf-lua',
-    },
-  }
+  vim.keymap.set('n', '<leader>ums', function()
+    local file = vim.fn.expand('%:p')
+    if file == '' then
+      vim.notify('FluxMarkdown: current buffer has no file', vim.log.levels.WARN)
+      return
+    end
+
+    if vim.bo.modified then
+      vim.cmd('write')
+    end
+
+    -- macOS has no `FluxMarkdown` on PATH; `open -a` launches the app with the file.
+    vim.system({ 'open', '-a', 'FluxMarkdown', file }, { text = true }, function(out)
+      if out.code ~= 0 then
+        vim.schedule(function()
+          vim.notify('FluxMarkdown failed: ' .. (out.stderr or ('exit ' .. out.code)), vim.log.levels.ERROR)
+        end)
+      end
+    end)
+  end, { desc = 'Markdown Preview (FluxMarkdown)' })
+
+  return nil
 end
 
 return M

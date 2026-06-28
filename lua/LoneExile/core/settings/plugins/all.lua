@@ -106,6 +106,7 @@ return {
 
   -- UI
   { 'folke/tokyonight.nvim',                     true },
+  { 'IogaMaster/tuxedo.nvim',                    true },
   { 'goolord/alpha-nvim',                        true },
   { 'nvim-lualine/lualine.nvim',                 true },
   { 'stevearc/dressing.nvim',                    true },

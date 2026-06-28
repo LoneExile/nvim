@@ -10,3 +10,4 @@ dadbod_queries
 lua/*/dev/*.lua
 
 servers.json
+todo.txt

@@ -28,6 +28,7 @@ return {
   { 'dlyongemallo/diffview.nvim',                true }, -- replaced sindrets fork (silent since June 2024)
   { 'lewis6991/gitsigns.nvim',                   true },
   { 'tpope/vim-fugitive',                        true },
+  { 'NeogitOrg/neogit',                          true },
 
   -- Motion
   { 'theprimeagen/harpoon',                      true },

@@ -31,6 +31,7 @@ M.setup = function(_, _)
           -- 'clangd', -- C++
           'dockerfile-language-server',
           'marksman', -- Markdown
+          'harper-ls', -- Grammar/spell checker (Harper)
           'ruff', -- Python
           'pyright', -- Python
           'rust-analyzer',
